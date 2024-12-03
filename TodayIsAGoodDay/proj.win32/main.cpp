@@ -33,9 +33,12 @@ int WINAPI _tWinMain(HINSTANCE hInstance,
                        LPTSTR    lpCmdLine,
                        int       nCmdShow)
 {
+    // 初始化随机数生成器
+    srand(static_cast<unsigned int>(time(0)));
+    
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-
+    // 初始化 Cocos2d-x 应用程序实例
     // create the application instance
     AppDelegate app;
     return Application::getInstance()->run();

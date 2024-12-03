@@ -10,6 +10,30 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{568dce1d-b403-4587-a8b6-a5f0f36a7119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Control">
+      <UniqueIdentifier>{23168bf5-67c5-4956-bee4-f3b93f0f8b52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Map">
+      <UniqueIdentifier>{e1c4db96-b7d9-41c7-9478-483f8741f6b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Person">
+      <UniqueIdentifier>{681c5ecd-36a0-48c9-a232-64d8dd5ba6c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Setting">
+      <UniqueIdentifier>{c4887730-90af-4c30-8e76-b80617f62907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Store">
+      <UniqueIdentifier>{66c758f8-77da-41b2-b1ad-9a229c64ee95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Cooperation">
+      <UniqueIdentifier>{af47008e-1e6e-4491-a966-83b2b1280b00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Tools">
+      <UniqueIdentifier>{04b64301-bca4-4979-a9bc-9500500e773f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -20,6 +44,72 @@
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMain.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="daytime.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="season.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="tree.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="stone.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="plough.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="house.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="sundry.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="bag.cpp">
+      <Filter>Classes\Person</Filter>
+    </ClCompile>
+    <ClCompile Include="weather.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="person.cpp">
+      <Filter>Classes\Person</Filter>
+    </ClCompile>
+    <ClCompile Include="move.cpp">
+      <Filter>Classes\Person</Filter>
+    </ClCompile>
+    <ClCompile Include="action.cpp">
+      <Filter>Classes\Person</Filter>
+    </ClCompile>
+    <ClCompile Include="store.cpp">
+      <Filter>Classes\Store</Filter>
+    </ClCompile>
+    <ClCompile Include="totaltools.cpp">
+      <Filter>Classes\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="definiton.cpp">
+      <Filter>Classes\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="cooperation.cpp">
+      <Filter>Classes\Cooperation</Filter>
+    </ClCompile>
+    <ClCompile Include="setting.cpp">
+      <Filter>Classes\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="music.cpp">
+      <Filter>Classes\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="sound.cpp">
+      <Filter>Classes\Setting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
