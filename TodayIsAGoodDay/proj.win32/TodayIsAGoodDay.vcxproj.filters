@@ -51,7 +51,6 @@
     <ClCompile Include=".\Person\action.cpp" />
     <ClCompile Include=".\Person\bag.cpp" />
     <ClCompile Include=".\Cooperation\cooperation.cpp" />
-    <ClCompile Include=".\Control\daytime.cpp" />
     <ClCompile Include=".\Control\GameMain.cpp" />
     <ClCompile Include=".\Map\house.cpp" />
     <ClCompile Include=".\Map\map.cpp" />
@@ -60,7 +59,6 @@
     <ClCompile Include=".\Setting\music.cpp" />
     <ClCompile Include=".\Person\person.cpp" />
     <ClCompile Include=".\Map\plough.cpp" />
-    <ClCompile Include=".\Control\season.cpp" />
     <ClCompile Include=".\Setting\setting.cpp" />
     <ClCompile Include=".\Setting\sound.cpp" />
     <ClCompile Include=".\Map\stone.cpp" />
@@ -69,6 +67,7 @@
     <ClCompile Include=".\Control\weather.cpp" />
     <ClCompile Include="totaltools.cpp" />
     <ClCompile Include="Map\tree.cpp" />
+    <ClCompile Include="Control\time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -87,6 +86,7 @@
     <ClInclude Include="definition.h" />
     <ClInclude Include="totaltools.h" />
     <ClInclude Include="Map\tree.h" />
+    <ClInclude Include="Control\time.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
