@@ -1,0 +1,45 @@
+# 操作系统生成的文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编译生成的文件
+*.obj
+*.exe
+*.dll
+*.pdb
+*.lib
+*.o
+*.a
+*.so
+*.out
+
+# 临时文件
+*.log
+*.bak
+*.swp
+*.tmp
+*.~ 
+
+# IDE 配置文件
+.vs/
+.vscode/
+.idea/
+*.iml
+*.suo
+*.user
+*.userosscache
+
+# Node.js
+node_modules/
+
+# Python 编译缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# Java
+*.class
+
+# C++ 文件
+*.dSYM/
