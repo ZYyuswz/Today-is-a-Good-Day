@@ -48,26 +48,69 @@
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include=".\Person\action.cpp" />
-    <ClCompile Include=".\Person\bag.cpp" />
-    <ClCompile Include=".\Cooperation\cooperation.cpp" />
-    <ClCompile Include=".\Control\GameMain.cpp" />
-    <ClCompile Include=".\Map\house.cpp" />
-    <ClCompile Include=".\Map\map.cpp" />
-    <ClCompile Include=".\Control\menu.cpp" />
-    <ClCompile Include=".\Person\move.cpp" />
-    <ClCompile Include=".\Setting\music.cpp" />
-    <ClCompile Include=".\Person\person.cpp" />
-    <ClCompile Include=".\Map\plough.cpp" />
-    <ClCompile Include=".\Setting\setting.cpp" />
-    <ClCompile Include=".\Setting\sound.cpp" />
-    <ClCompile Include=".\Map\stone.cpp" />
-    <ClCompile Include=".\Store\store.cpp" />
-    <ClCompile Include=".\Map\sundry.cpp" />
-    <ClCompile Include=".\Control\weather.cpp" />
-    <ClCompile Include="totaltools.cpp" />
-    <ClCompile Include="Map\tree.cpp" />
-    <ClCompile Include="Control\time.cpp" />
+    <ClCompile Include=".\Person\action.cpp">
+      <Filter>Classes\Person</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Person\bag.cpp">
+      <Filter>Classes\Person</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Control\GameMain.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Cooperation\cooperation.cpp">
+      <Filter>Classes\Cooperation</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Control\daytime.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Map\house.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Map\map.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Control\menu.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Person\move.cpp">
+      <Filter>Classes\Person</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Setting\music.cpp">
+      <Filter>Classes\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Person\person.cpp">
+      <Filter>Classes\Person</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Map\plough.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Control\season.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Setting\setting.cpp">
+      <Filter>Classes\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Setting\sound.cpp">
+      <Filter>Classes\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Map\stone.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Store\store.cpp">
+      <Filter>Classes\Store</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Map\sundry.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map\tree.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include=".\Control\weather.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="totaltools.cpp">
+      <Filter>win32\TotalTools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -79,17 +122,26 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Map\map.h" />
     <ClInclude Include="Tools\Totaltools\totaltools.h">
       <Filter>win32\TotalTools</Filter>
     </ClInclude>
     <ClInclude Include="definition.h" />
-    <ClInclude Include="totaltools.h" />
-    <ClInclude Include="Map\tree.h" />
-    <ClInclude Include="Control\time.h" />
-    <ClInclude Include="Map\drop.h" />
-    <ClInclude Include="Map\object.h" />
-    <ClInclude Include="Map\stone.h" />
+
+    <ClInclude Include="Map\tree.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\map.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="totaltools.h">
+      <Filter>win32\TotalTools</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\menu.h">
+      <Filter>Classes\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\GameMain.h">
+      <Filter>Classes\Control</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
