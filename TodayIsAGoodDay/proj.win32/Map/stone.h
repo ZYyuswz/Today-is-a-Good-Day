@@ -7,11 +7,9 @@ private:
     StoneType type; // 石头的种类
 public:
     // 构造函数
-    Stone(TMXTiledMap* tileMap, const Vec2& tile, Layer* objectLayer, StoneType ty){}
+    Stone(TMXTiledMap* tileMap, const Vec2& tile, Layer* objectLayer, StoneType ty);
 
 protected:
-    // 设置贴图
-    void setTexture() override;
 
     // 死亡动画
     void deathAnimation() override;

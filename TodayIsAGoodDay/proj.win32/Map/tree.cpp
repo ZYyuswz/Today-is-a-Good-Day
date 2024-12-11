@@ -15,7 +15,7 @@ Tree::Tree(TMXTiledMap* tileMap, Vec2 tile, Layer* objectLayer, TreeType ty, Sta
 
     // 加载纹理图集（只需要加载一次）
     //auto spriteFrameCache = SpriteFrameCache::getInstance();
-    //spriteFrameCache->addSpriteFramesWithFile("res/Tree/tree.plist");
+    //spriteFrameCache->addSpriteFramesWithFile("Tree/tree.plist");
 
     // 创建初始贴图
     updateSpriteBySeason();

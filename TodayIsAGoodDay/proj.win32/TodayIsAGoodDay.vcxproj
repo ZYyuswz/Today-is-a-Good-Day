@@ -170,7 +170,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include=".\Map\stone.cpp" />
     <ClCompile Include=".\Store\store.cpp" />
     <ClCompile Include=".\Map\sundry.cpp" />
-    <ClCompile Include=".\Control\weather.cpp" />
+    <ClCompile Include="Map\drop.cpp" />
     <ClCompile Include="Map\tree.cpp" />
     <ClCompile Include="totaltools.cpp" />
   </ItemGroup>
@@ -185,7 +185,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="Map\object.h" />
     <ClInclude Include="Map\stone.h" />
     <ClInclude Include="Map\tree.h" />
-    <ClInclude Include="Tools\Totaltools\totaltools.h" />
     <ClInclude Include="totaltools.h" />
   </ItemGroup>
   <ItemGroup>
