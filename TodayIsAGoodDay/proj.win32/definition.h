@@ -24,10 +24,19 @@ enum class TreeType {
     Maple   // 枫树
 };
 
-// 枚举表示树的阶段
-enum class TreeStage {
-    Sapling,  // 树苗
-    Mature    // 大树
+// 枚举表示GrowObject的阶段
+enum class Stage {
+    Childhood, // 幼年阶段
+    Mature     // 成熟阶段
+};
+
+// 定义石头的种类枚举
+enum class StoneType {
+    Stone,      // 石头
+    Copper,     // 铜矿
+    Iron,       // 铁矿
+    Gold,       // 金矿
+    Coal        // 煤炭
 };
 
 // 定义角点枚举类型 -- 瓦片的四个角定义

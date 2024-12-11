@@ -87,6 +87,9 @@
     <ClInclude Include="totaltools.h" />
     <ClInclude Include="Map\tree.h" />
     <ClInclude Include="Control\time.h" />
+    <ClInclude Include="Map\drop.h" />
+    <ClInclude Include="Map\object.h" />
+    <ClInclude Include="Map\stone.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

@@ -1,9 +1,19 @@
-/*  -----实现右上角时间的显示并可以反馈给任何想知道时间的地方 ----- */
 #include "Time.h"
 #include <iostream>
 
+// 单例模式：静态成员变量初始化
+GameTime* GameTime::instance = nullptr;
+
+// 单例模式：获取单例实例
+GameTime* GameTime::getInstance() {
+    if (!instance) {
+        instance = new GameTime();
+    }
+    return instance;
+}
+
 // 构造函数，初始化时间
-Time::Time() {
+GameTime::GameTime() {
     year = 1;
     day = 1;
     totalDays = 1;
@@ -11,7 +21,7 @@ Time::Time() {
 }
 
 // 更新一天的时间
-void Time::updateTime() {
+void GameTime::updateTime() {
     day++;
     totalDays++;
     // 切换季节
@@ -24,22 +34,21 @@ void Time::updateTime() {
 }
 
 // 获取当前年份
-int Time::getYear() const {
+int GameTime::getYear() const {
     return year;
 }
 
 // 获取当前天数
-int Time::getDay() const {
+int GameTime::getDay() const {
     return day;
 }
 
 // 获取当前季节
-Season Time::getSeason() const {
+Season GameTime::getSeason() const {
     return season;
 }
 
 // 获取总天数
-int Time::getTotalDays() const {
+int GameTime::getTotalDays() const {
     return totalDays;
 }
-
