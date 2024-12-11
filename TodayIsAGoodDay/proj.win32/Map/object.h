@@ -32,10 +32,10 @@ public:
     }
 
     // 死亡动画
-    virtual void deathAnimation();
+    virtual void deathAnimation() = 0;
 
     // 产生掉落物
-    virtual void generateDrops();
+    virtual void generateDrops(){}
 };
 
 
@@ -62,7 +62,7 @@ public:
     }
 
     // 生长完成时的回调
-    virtual void growToMature() {}
+    virtual void growToMature() = 0;
 };
 
 
@@ -70,5 +70,4 @@ class DeadObject : public MyObject {
 public:
     // 构造函数
     DeadObject(){}
-    virtual void setTexture();
 };
