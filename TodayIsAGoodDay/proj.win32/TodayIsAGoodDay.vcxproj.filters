@@ -135,6 +135,12 @@
     <ClInclude Include="totaltools.h">
       <Filter>win32\TotalTools</Filter>
     </ClInclude>
+    <ClInclude Include="Control\menu.h">
+      <Filter>Classes\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\GameMain.h">
+      <Filter>Classes\Control</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
