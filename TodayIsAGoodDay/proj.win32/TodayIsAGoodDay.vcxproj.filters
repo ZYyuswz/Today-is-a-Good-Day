@@ -126,6 +126,7 @@
       <Filter>win32\TotalTools</Filter>
     </ClInclude>
     <ClInclude Include="definition.h" />
+
     <ClInclude Include="Map\tree.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>

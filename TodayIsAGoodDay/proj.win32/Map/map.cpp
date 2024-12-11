@@ -19,6 +19,8 @@ Vec2 getTilePixelPosition(const Vec2& tileCoord, const Size& tileSize, const Siz
             return Vec2(x + tileSize.width, y + tileSize.height); // 右上角
         case BOTTOM_RIGHT:
             return Vec2(x + tileSize.width, y); // 右下角
+        case BOTTOM_CENTER:
+            return Vec2(x + tileSize.width / 2, y); // 下方中心
         default:
             // 瓦片中心
             return Vec2(x + tileSize.width / 2, y + tileSize.height / 2);
