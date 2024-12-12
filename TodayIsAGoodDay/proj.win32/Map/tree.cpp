@@ -4,7 +4,7 @@
 #include "Control\Time.h"
 
 // 构造函数
-Tree::Tree(TMXTiledMap* tileMap, Vec2 tile, Layer* objectLayer, TreeType ty, Stage st){
+Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st){
     // 基本项目的初始化
     this->type = ty;  // 初始化树种类
     this->tilePosition = tile;  // 初始化树的坐标
@@ -28,11 +28,14 @@ Tree::Tree(TMXTiledMap* tileMap, Vec2 tile, Layer* objectLayer, TreeType ty, Sta
     const Size tileSize = tileMap->getTileSize();
     Vec2 pixelPosition = getTilePixelPosition(tilePosition, tileSize, mapSize, TileCorner::BOTTOM_CENTER);
 
+    // 将精灵的图像上下颠倒
+    this->setFlippedY(true);
+
+    // 设置精灵的锚点为底部中心
+    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+
     // 设置精灵的位置
     this->setPosition(pixelPosition);
-
-    // 设置精灵的锚点为底部中心 (0.5, 0)
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
     // 将精灵添加到物体层
     objectLayer->addChild(this);
@@ -147,8 +150,8 @@ void Tree::updateSpriteBySeason() {
     }
 }
 
-// 在瓦片地图上随机生成 num 个树苗
-void Tree::randomGenerate(int num, TMXTiledMap* tileMap, Layer* objectLayer) {
+// 在瓦片地图上随机生成 num 个树
+void Tree::randomGenerate(int num, Stage stage, TMXTiledMap* tileMap, Layer* objectLayer) {
     // 获取瓦片地图的 floor 层
     auto floorLayer = tileMap->getLayer("floor");
     if (!floorLayer) {
@@ -193,9 +196,8 @@ void Tree::randomGenerate(int num, TMXTiledMap* tileMap, Layer* objectLayer) {
         if (isValidTile) {
             // 随机选择树的种类
             TreeType treeType = static_cast<TreeType>(treeTypeDist(gen));  // 随机生成树种类
-            // 生成树苗
-            auto sapling = new Tree(tileMap, Vec2(tileX, tileY), objectLayer, treeType, Stage::Childhood);
-            objectLayer->addChild(sapling);  // 将树苗添加到 objectLayer 中
+            // 生成树苗 并添加到目标层
+            auto sapling = new Tree(tileMap, objectLayer, Vec2(tileX, tileY), treeType, stage);
             // 增加成功生成的树苗数量
             i++;
         }

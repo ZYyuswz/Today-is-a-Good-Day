@@ -7,8 +7,7 @@ Vec2 getTilePixelPosition(const Vec2& tileCoord, const Size& tileSize, const Siz
     // 计算瓦片中心的像素坐标
     // 这样计算的是左下角的坐标
     const float x = tileCoord.x * tileSize.width;
-    const float y = (mapSize.height - tileCoord.y - 1) * tileSize.height; // 注意y轴方向
-
+    const float y = tileCoord.y * tileSize.height;
     // 根据角点类型调整
     switch (corner) {
         case TOP_LEFT:

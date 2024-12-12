@@ -10,13 +10,13 @@ private:
     TreeType type; // 树的种类
 public:
     // 构造函数
-    Tree(TMXTiledMap* tileMap, Vec2 tile, Layer* objectLayer, TreeType ty,  Stage st);
+    Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty,  Stage st);
 
     // 更新树的贴图
     void updateSpriteBySeason();
 
     // 在瓦片地图上随机生成 num 个树苗
-    static void randomGenerate(int num, TMXTiledMap* tileMap, Layer* objectLayer);
+    static void randomGenerate(int num, Stage stage,TMXTiledMap* tileMap, Layer* objectLayer);
 
 protected:
     // 死亡动画
