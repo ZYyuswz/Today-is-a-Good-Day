@@ -1,1 +1,161 @@
-/* ----- ÂÆûÁé∞‰∏ª‰∫∫ÂÖ¨ÁßªÂä®ÂäüËÉΩ ----- */
+/* -----  µœ÷÷˜»Àπ´“∆∂Øπ¶ƒ‹ ----- */
+/*œÍº˚ø™∑¢’ﬂ ÷≤·*/
+#include "person.h"
+
+const int ONE_CELL = 10.0f;
+
+class Move : public Person
+{
+private:
+    cocos2d::Animation* _frontWalkAnimation;
+    cocos2d::Animation* _backWalkAnimation;
+    cocos2d::Animation* _leftWalkAnimation;
+    cocos2d::Animation* _rightWalkAnimation;
+
+    // …„œÒÕ∑
+    cocos2d::Camera* _camera;
+public:
+    //ππ‘Ï∫Ø ˝
+    Move(const std::string& name, const int& sex, const std::string& farmName,
+        int level, int HP, int energy, int money);
+
+    // ¥¥Ω®∂Øª≠
+    void createAnimations();
+
+    // “∆∂Ø∫Ø ˝
+    void PersonMove(float deltaX, float deltaY);
+
+    //≈–∂œ «∑Òø…“‘“∆∂Ø
+    bool canMove(float deltaX, float deltaY);
+
+    // º¸≈Ã ¬º˛¥¶¿Ì∫Ø ˝
+    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+};
+
+Move::Move(const std::string& name, const int& sex, const std::string& farmName,
+    int level, int HP, int energy, int money) : Person(name, sex, farmName)
+{
+    //≥ı ºªØº¸≈Ãº‡Ã˝∆˜
+    _keyboardListener->onKeyPressed = CC_CALLBACK_2(Move::onKeyPressed, this);
+
+    // ªÒ»°ƒ¨»œ…„œÒÕ∑
+    _camera = cocos2d::Camera::getDefaultCamera();
+}
+
+bool Move::canMove(float deltaX, float deltaY)
+{
+    // º∆À„ƒø±ÍŒª÷√
+    cocos2d::Vec2 currentPosition = this->getPosition();
+    cocos2d::Vec2 targetPosition = currentPosition + cocos2d::Vec2(deltaX, deltaY);
+
+    auto currentMap = getMap();
+    auto _wallLayer = currentMap->getLayer("Wall");
+    auto _itemLayer = currentMap->getLayer("Item");
+
+    // Ω´ƒø±ÍŒª÷√◊™ªªŒ™Õﬂ∆¨◊¯±Í
+    cocos2d::Vec2 tileCoord = _wallLayer ->getTileCoordinateAt(targetPosition);
+
+    // ªÒ»°ƒø±ÍŒª÷√µƒÕﬂ∆¨ GID
+    int wallGID = _wallLayer->getTileGIDAt(tileCoord);
+    int itemGID = _itemLayer->getTileGIDAt(tileCoord);
+
+    // »Áπ˚ƒø±ÍŒª÷√ « wall ªÚ item£¨‘Ú≤ªƒ‹“∆∂Ø
+    if (wallGID != 0 || itemGID != 0)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+void Move::createAnimations()
+{
+    // ¥¥Ω®«∞◊ﬂ∂Øª≠
+    _frontWalkAnimation = cocos2d::Animation::create();
+    _frontWalkAnimation->addSpriteFrameWithFile("person_front_walk.png");
+    _frontWalkAnimation->addSpriteFrameWithFile("person_front_stand.png");
+    _frontWalkAnimation->setDelayPerUnit(0.2f);
+    _frontWalkAnimation->setLoops(-1);
+
+    // ¥¥Ω®∫Û◊ﬂ∂Øª≠
+    _backWalkAnimation = cocos2d::Animation::create();
+    _backWalkAnimation->addSpriteFrameWithFile("person_back_walk.png");
+    _backWalkAnimation->addSpriteFrameWithFile("person_back_stand.png");
+    _backWalkAnimation->setDelayPerUnit(0.2f);
+    _backWalkAnimation->setLoops(-1);
+
+    // ¥¥Ω®◊Û◊ﬂ∂Øª≠
+    _leftWalkAnimation = cocos2d::Animation::create();
+    _leftWalkAnimation->addSpriteFrameWithFile("person_left_walk.png");
+    _leftWalkAnimation->addSpriteFrameWithFile("person_left_stand.png");
+    _leftWalkAnimation->setDelayPerUnit(0.2f);
+    _leftWalkAnimation->setLoops(-1);
+
+    // ¥¥Ω®”“◊ﬂ∂Øª≠
+    _rightWalkAnimation = cocos2d::Animation::create();
+    _rightWalkAnimation->addSpriteFrameWithFile("person_right_walk.png");
+    _rightWalkAnimation->addSpriteFrameWithFile("person_right_stand.png");
+    _rightWalkAnimation->setDelayPerUnit(0.2f);
+    _rightWalkAnimation->setLoops(-1);
+}
+
+void Move::PersonMove(float deltaX, float deltaY)
+{
+    // º∆À„–¬µƒŒª÷√
+    cocos2d::Vec2 newPosition = this->getPosition() + cocos2d::Vec2(deltaX, deltaY);
+
+    //≈–∂œ «∑Òø…“‘“∆∂Ø
+    if (!canMove(deltaX, deltaY))
+        return;
+
+    //  π”√∂Ø◊˜¿¥∆Ωª¨“∆∂Øæ´¡È
+    auto moveAction = cocos2d::MoveTo::create(0.1f, newPosition); // 0.1√Îƒ⁄“∆∂ØµΩ–¬Œª÷√
+
+    // ∏˘æ›“∆∂Ø∑ΩœÚ«–ªª∂Øª≠
+    if (deltaX > 0)
+    {
+        _sprite->runAction(cocos2d::Animate::create(_rightWalkAnimation));
+    }
+    else if (deltaX < 0)
+    {
+        _sprite->runAction(cocos2d::Animate::create(_leftWalkAnimation));
+    }
+    else if (deltaY > 0)
+    {
+        _sprite->runAction(cocos2d::Animate::create(_backWalkAnimation));
+    }
+    else if (deltaY < 0)
+    {
+        _sprite->runAction(cocos2d::Animate::create(_frontWalkAnimation));
+    }
+
+    this->runAction(moveAction);
+
+    // ∏¸–¬…„œÒÕ∑µƒƒø±ÍŒª÷√£¨–Ë“™‘⁄±ﬂΩÁ ±◊ˆÃÿ≈–
+    cocos2d::Vec3 cameraTarget(newPosition.x, newPosition.y, 0);
+    _camera->setPosition3D(cameraTarget);
+    1
+}
+
+void Move::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+{
+    float moveDistance = ONE_CELL; // √ø¥Œ“∆∂Øµƒæ‡¿Î
+
+    switch (keyCode)
+    {
+    case cocos2d::EventKeyboard::KeyCode::KEY_W:
+        PersonMove(0, moveDistance); // œÚ…œ“∆∂Ø
+        break;
+    case cocos2d::EventKeyboard::KeyCode::KEY_A:
+        PersonMove(-moveDistance, 0); // œÚ◊Û“∆∂Ø
+        break;
+    case cocos2d::EventKeyboard::KeyCode::KEY_S:
+        PersonMove(0, -moveDistance); // œÚœ¬“∆∂Ø
+        break;
+    case cocos2d::EventKeyboard::KeyCode::KEY_D:
+        PersonMove(moveDistance, 0); // œÚ”““∆∂Ø
+        break;
+    default:
+        break;
+    }
+}

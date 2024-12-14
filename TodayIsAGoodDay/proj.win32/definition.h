@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 #pragma once
 
 //屏幕显示比例
@@ -65,7 +64,8 @@ enum class Stage {
 enum class StoneType {
     Stone,      // 石头
     Copper,     // 铜矿
-    Iron,       // 铁矿
+
+    Silver,      // 银矿
     Gold,       // 金矿
     Coal        // 煤炭
 };
@@ -79,4 +79,4 @@ enum TileCorner {
     CENTER, // 中心
     BOTTOM_CENTER // 下方中心
 };
->>>>>>> Stashed changes
+

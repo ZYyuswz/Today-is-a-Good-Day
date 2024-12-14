@@ -3,18 +3,10 @@
 
 #pragma once
 #include "cocos2d.h"
+#include "definition.h"
 
 USING_NS_CC;
 
-// 这个放到宏定义?
-// 定义角点枚举类型 -- 瓦片的四个角定义
-enum TileCorner {
-    TOP_LEFT,    // 左上角
-    BOTTOM_LEFT, // 左下角
-    TOP_RIGHT,   // 右上角
-    BOTTOM_RIGHT, // 右下角
-    CENTER // 中心
-};
 
 /**
  * @brief 获取瓦片指定角落的像素坐标。

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -77,7 +77,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END);$(ProjectDir)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -155,14 +155,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include=".\Person\action.cpp" />
     <ClCompile Include=".\Person\bag.cpp" />
     <ClCompile Include=".\Cooperation\cooperation.cpp" />
-    <ClCompile Include=".\Control\daytime.cpp" />
     <ClCompile Include=".\Control\GameMain.cpp" />
     <ClCompile Include=".\Map\house.cpp" />
-<<<<<<< Updated upstream
-=======
+
     <ClCompile Include="Control\scene.cpp" />
     <ClCompile Include="Control\Time.cpp" />
->>>>>>> Stashed changes
+
     <ClCompile Include="main.cpp" />
     <ClCompile Include=".\Map\map.cpp" />
     <ClCompile Include=".\Control\menu.cpp" />
@@ -170,34 +168,34 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include=".\Setting\music.cpp" />
     <ClCompile Include=".\Person\person.cpp" />
     <ClCompile Include=".\Map\plough.cpp" />
-    <ClCompile Include=".\Control\season.cpp" />
     <ClCompile Include=".\Setting\setting.cpp" />
     <ClCompile Include=".\Setting\sound.cpp" />
     <ClCompile Include=".\Map\stone.cpp" />
     <ClCompile Include=".\Store\store.cpp" />
     <ClCompile Include=".\Map\sundry.cpp" />
-    <ClCompile Include=".\Control\weather.cpp" />
+    <ClCompile Include="Map\drop.cpp" />
     <ClCompile Include="Map\tree.cpp" />
     <ClCompile Include="totaltools.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
-<<<<<<< Updated upstream
-=======
+
     <ClInclude Include="Control\scene.h" />
     <ClInclude Include="Control\Time.h" />
->>>>>>> Stashed changes
+
     <ClInclude Include="definition.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Map\drop.h" />
     <ClInclude Include="Map\map.h" />
+    <ClInclude Include="Map\object.h" />
+    <ClInclude Include="Map\stone.h" />
     <ClInclude Include="Map\tree.h" />
-<<<<<<< Updated upstream
+
     <ClInclude Include="Tools\Totaltools\totaltools.h" />
-=======
+
     <ClInclude Include="Setting\setting.h" />
->>>>>>> Stashed changes
-    <ClInclude Include="totaltools.h" />
+
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
