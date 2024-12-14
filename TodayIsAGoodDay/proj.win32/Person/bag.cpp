@@ -1,15 +1,25 @@
-/* ----- 实现背包及其功能 包括合成操作 ----- */
 #include "cocos2d.h"
 #include <vector>
 #include <string>
 #include "person.h"
 #include <iostream>
 
+const int AXE = 100;//斧头，砍树用
+const int hammer = 101;//榔头，凿石头
+const int DRAFT = 102; //锄头，锄地用
+const int KETTLE = 103;//水壶，浇花
+const int FISHING_POLE = 104;//钓鱼竿
+
+const int BAG_LEFT_LOCATION = 500;
+const int BAG_UP_LOCATION = 1000;
+const int BAG_RIGHT_LOCATION = 1500;
+const int BAG_CELL = 100;
+
 struct item
 {
     std::string name;
     int num;
-    item(const std::string itemName, const int itemNum = 1) :name(itemName), num(itemNum){} 
+    item(const std::string itemName, const int itemNum = 1) :name(itemName), num(itemNum) {}
 };
 
 
@@ -99,7 +109,7 @@ void Bag::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* 
         {
             closeBag();
         }
-    }       
+    }
 }
 
 
@@ -148,9 +158,15 @@ void Bag::displayBag()
     }
     _itemSprites.clear();
 
+    // 显示背包网格背景图片
+    auto bagBackground = cocos2d::Sprite::create("bag_grid.png"); // 假设网格背景图片名为 "bag_grid.png"
+    bagBackground->setPosition(cocos2d::Vec2(BAG_LEFT_LOCATION + (BAG_RIGHT_LOCATION - BAG_LEFT_LOCATION) / 2,
+        BAG_UP_LOCATION - (BAG_UP_LOCATION - BAG_CELL) / 2));
+    this->addChild(bagBackground);
+
     // 显示背包格的图片和物品图案
-    int x = 100;
-    int y = 400;
+    int x = BAG_LEFT_LOCATION;
+    int y = BAG_UP_LOCATION;
     for (const auto& item : _items)
     {
         auto itemSprite = cocos2d::Sprite::create(item.name + ".png"); // 假设每个物品都有一个对应的图片
@@ -158,14 +174,41 @@ void Bag::displayBag()
         this->addChild(itemSprite);
         _itemSprites.push_back(itemSprite);
 
-        x += 100;
-        if (x > 700)
+        x += BAG_CELL;
+        if (x > BAG_RIGHT_LOCATION)
         {
-            x = 100;
-            y -= 100;
+            x = BAG_LEFT_LOCATION;
+            y -= BAG_CELL;
         }
     }
 }
+
+void Bag::closeBag()
+{
+    // 清除物品精灵
+    for (auto sprite : _itemSprites)
+    {
+        sprite->removeFromParent();
+    }
+    _itemSprites.clear();
+
+    // 清除物品信息标签
+    _itemInfoLabel->setString("");
+
+    // 重置选中物品的索引
+    _selectedItemIndex = -1;
+
+    // 移除背包网格背景图片
+    auto bagBackground = this->getChildByName("bagBackground");
+    if (bagBackground)
+    {
+        bagBackground->removeFromParent();
+    }
+
+    // 关闭背包界面
+    isOpen = false;
+}
+
 
 void Bag::updateItemInfo(cocos2d::Vec2 position)
 {
