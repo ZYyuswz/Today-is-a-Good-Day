@@ -2,7 +2,7 @@
 /*详见开发者手册*/
 #include "person.h"
 
-const int ONE_CELL = 10.0f;
+const int ONE_CELL = 1.0f;
 Size mapSize = getMap()->getContentSize(); // 瓦片地图的大小
 Size visibleSize = Director::getInstance()->getVisibleSize(); // 屏幕的大小
 
@@ -65,7 +65,7 @@ bool Move::canMove(float deltaX, float deltaY)
     cocos2d::Vec2 currentPosition = this->getPosition();
     cocos2d::Vec2 targetPosition = currentPosition + cocos2d::Vec2(deltaX, deltaY);
 
-    auto currentMap = getMap();
+    TMXTiledMap* currentMap = getMap();
     auto _wallLayer = currentMap->getLayer("Wall");
     auto _itemLayer = currentMap->getLayer("Item");
 
@@ -83,6 +83,11 @@ bool Move::canMove(float deltaX, float deltaY)
     }
 
     return true;
+}
+
+void Move::moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap)
+{
+
 }
 
 void Move::createAnimations()
@@ -145,8 +150,8 @@ void Move::PersonMove(float deltaX, float deltaY)
     {
         _sprite->runAction(cocos2d::Animate::create(_frontWalkAnimation));
     }
-    moveTileMap(newPosition, tileMap);
-    auto tileMap = TMXTiledMap::create("your_map.tmx");
+    moveTileMap(newPosition, getMap());
+
 }
 
 void Move::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
