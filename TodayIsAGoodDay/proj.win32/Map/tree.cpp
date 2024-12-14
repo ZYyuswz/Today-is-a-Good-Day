@@ -27,16 +27,12 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     const Size mapSize = tileMap->getMapSize();
     const Size tileSize = tileMap->getTileSize();
     Vec2 pixelPosition = getTilePixelPosition(tilePosition, tileSize, mapSize, TileCorner::BOTTOM_CENTER);
-
     // 将精灵的图像上下颠倒
     this->setFlippedY(true);
-
     // 设置精灵的锚点为底部中心
     this->setAnchorPoint(Vec2(0.5f, 0.0f));
-
     // 设置精灵的位置
     this->setPosition(pixelPosition);
-
     // 将精灵添加到物体层
     objectLayer->addChild(this);
 }
@@ -151,7 +147,7 @@ void Tree::updateSpriteBySeason() {
 }
 
 // 在瓦片地图上随机生成 num 个树
-void Tree::randomGenerate(int num, Stage stage, TMXTiledMap* tileMap, Layer* objectLayer) {
+void Tree::randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, Stage stage) {
     // 获取瓦片地图的 floor 层
     auto floorLayer = tileMap->getLayer("floor");
     if (!floorLayer) {

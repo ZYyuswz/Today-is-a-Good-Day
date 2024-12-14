@@ -10,13 +10,13 @@ Stone::Stone(TMXTiledMap* tileMap, Layer* objectLayer, const Vec2& tile, StoneTy
 	switch (type)
 	{
 		case StoneType::Stone:
-			this->setSpriteFrame("stone.png");
+			this->setSpriteFrame("stonee.png");
 			break;
 		case StoneType::Copper:
 			this->setSpriteFrame("copper.png");
 			break;
-		case StoneType::Iron:
-			this->setSpriteFrame("iron.png");
+		case StoneType::Silver:
+			this->setSpriteFrame("silver.png");
 			break;
 		case StoneType::Gold:
 			this->setSpriteFrame("gold.png");
@@ -31,6 +31,8 @@ Stone::Stone(TMXTiledMap* tileMap, Layer* objectLayer, const Vec2& tile, StoneTy
 	const Size mapSize = tileMap->getMapSize();
 	const Size tileSize = tileMap->getTileSize();
 	Vec2 pixelPosition = getTilePixelPosition(tilePosition, tileSize, mapSize, TileCorner::CENTER);
+	// 将精灵的图像上下颠倒
+	this->setFlippedY(false);
 	// 设置石头的位置
 	this->setPosition(pixelPosition);
 	// 设置石头的锚点为中心
@@ -67,7 +69,7 @@ void Stone::generateDrops() {
 	stoneDrop->generate();
 }
 
-void randomGenerate(int num, StoneType type, TMXTiledMap* tileMap, Layer* objectLayer) {
+void Stone::randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, StoneType type) {
 	// 获取瓦片地图的 floor 层
 	auto floorLayer = tileMap->getLayer("floor");
 	if (!floorLayer) {
