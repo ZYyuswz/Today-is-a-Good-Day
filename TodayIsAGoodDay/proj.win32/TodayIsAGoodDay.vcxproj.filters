@@ -134,8 +134,6 @@
       <Filter>win32\TotalTools</Filter>
     </ClInclude>
 
-    <ClInclude Include="Control\menu.h">
-
     <ClInclude Include="Control\Time.h">
 
       <Filter>Classes\Control</Filter>
