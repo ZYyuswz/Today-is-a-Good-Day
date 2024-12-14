@@ -111,6 +111,9 @@
     <ClCompile Include="totaltools.cpp">
       <Filter>win32\TotalTools</Filter>
     </ClCompile>
+    <ClCompile Include="Control\scene.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -132,14 +135,25 @@
     <ClInclude Include="Map\map.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="totaltools.h">
       <Filter>win32\TotalTools</Filter>
     </ClInclude>
     <ClInclude Include="Control\menu.h">
+=======
+    <ClInclude Include="Control\Time.h">
+>>>>>>> Stashed changes
       <Filter>Classes\Control</Filter>
     </ClInclude>
     <ClInclude Include="Control\GameMain.h">
       <Filter>Classes\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="totaltools.h" />
+    <ClInclude Include="Control\scene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Setting\setting.h">
+      <Filter>Classes\Setting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
