@@ -1,13 +1,16 @@
 #pragma once
 #include "object.h"
-#include "drop.h" // 假设掉落物的定义在这里
+#include "drop.h" 
 
 class Stone : public DeadObject {
 private:
     StoneType type; // 石头的种类
 public:
     // 构造函数
-    Stone(TMXTiledMap* tileMap, const Vec2& tile, Layer* objectLayer, StoneType ty);
+    Stone(TMXTiledMap* tileMap, Layer* objectLayer, const Vec2& tile,  StoneType ty);
+
+    // 在瓦片地图上随机生成 num 个石头
+    static void randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, StoneType type);
 
 protected:
 

@@ -105,7 +105,7 @@ StoneDrop::StoneDrop(const Vec2& position, Layer* targetLayer, StoneType type) :
 const std::unordered_map<StoneType, std::pair<std::string, std::string>> StoneDrop::stoneDropMap = {
     {StoneType::Stone, {"stone_drop", "stone_drop.png"}},
     {StoneType::Copper, {"copper_drop", "copper_drop.png"}},
-    {StoneType::Iron, {"iron_drop", "iron_drop.png"}},
+    {StoneType::Silver, {"silver_drop", "silver_drop.png"}},
     {StoneType::Gold, {"gold_drop", "gold_drop.png"}},
     {StoneType::Coal, {"coal_drop", "coal_drop.png"}}
 };

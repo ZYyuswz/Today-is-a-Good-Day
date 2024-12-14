@@ -34,7 +34,7 @@ enum class Stage {
 enum class StoneType {
     Stone,      // 石头
     Copper,     // 铜矿
-    Iron,       // 铁矿
+    Silver,      // 银矿
     Gold,       // 金矿
     Coal        // 煤炭
 };
