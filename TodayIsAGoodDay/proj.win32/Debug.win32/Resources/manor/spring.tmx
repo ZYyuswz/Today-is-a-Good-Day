@@ -1,44 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
  <tileset firstgid="1" name="spring_outdoorsTileSheet." tilewidth="16" tileheight="16" tilecount="1975" columns="25">
   <image source="spring_outdoorsTileSheet..png" width="400" height="1264"/>
  </tileset>
- <tileset firstgid="1976" name="spring_outdoorsTileSheet." tilewidth="16" tileheight="16" tilecount="1975" columns="25">
-  <image source="../../../../../mapeditor/Stardew valley/Maps-126/spring_outdoorsTileSheet..png" width="400" height="1264"/>
- </tileset>
- <layer id="7" name="wall" width="64" height="64">
+ <layer id="1" name="floor" width="64" height="64">
   <data encoding="base64" compression="zlib">
-   eJztmlEOhCAMBb3BXmrvfybjh4kxwq605RWYSfwgUn2DqCS6bXn4furt2cG/3p4d/Ovt2RnN/8jnvf1zfDXKLKrxyHYNTnpkyub8ROQ4ZHC3Pkus51PzNoMlexbnE0uW1nHLhNX/11zINtfveF3/J8eszle85//VObv7QcT9v7r/uW9lf+uxe4F/XO0o/vd3l9c6eAT/SPBXJ9CCvzqBjlHWP1Hgjz/+6hQ68Mcff3UKHfjjj786hY4R/CO/9Y7i79GnVId/W20v8PfpU6rDv622F/j79CnV4d9W24vV1z+R4I8//uoUOvDHH391Ch3444+/OoWON/9Qzrrt/QlnGw==
+   eJztz8ENACAMA7GwYUftiKzAB4FUR/I/VyspAGCUDgAAAAAAAADAXad7/VO/fv369evXr18/AAAAP9mp//3I
   </data>
  </layer>
- <layer id="1" name="plough" width="64" height="64">
+ <layer id="3" name="road" width="64" height="64">
   <data encoding="base64" compression="zlib">
-   eJztw0ENAAAMA6Hzr6YSJ2MfSFg1VVVVVVVVVVVVVVVVVVVV9fUB4nYApg==
+   eJzt0UsOgkAURNEe4a79sAlF12Ai4AKtuQkTBdv0Ocmdv8orpQ77rpRDOqZT6rtfX7Stc/Ze0pCu6dbYfv/3f//3f/9v8/+P7B3TlOb0bGw/AMC33HfL1e7TG+3///1rVjv77W95PwAAAAAAAAAAAPDuBcdrcEU=
   </data>
  </layer>
- <layer id="2" name="river" width="64" height="64">
+ <layer id="4" name="item" width="64" height="64">
   <data encoding="base64" compression="zlib">
-   eJzt00EKhDAUREE3ggPe/xpzRVeBEAaZhfrVroJemxfM/Jmm2czs4Vu6VZ+lqr+/h+rzVP8HV3zranfpv4u9d/DW5l/O7n+K9P4msXmU3N5L7R6ldo+S25vk9ia9HwAAAACAOt/1v72Vfv369evXr19/Wj8AAADH2ADwWGuM
+   eJzt2NENgzAMRVHoGl2je7T7b8AWFar4QA0QSIztp3ukfBMTxxgPAwAAAADgOXrvACpegrmkej8eonH1spfLvDsAmVHDUKNHT6fYFwLA7Gp94xscE+fyb56DeMxCphueoTrjAVDGP8k5zEPtfMbfeh+sjGq+30v8R8uLdX5Hj98a8dfHH7XWtvTpXucfpQcg/4mf+Nvjt7jPrfOHqPUaa5wTtpRqQLR8OTvDjNL7XHXHXNhb1jPKum/kVco58tCGcu1VyRmVOHr4AtgxKhU=
   </data>
  </layer>
- <layer id="3" name="lake" width="64" height="64">
+ <layer id="2" name="house" width="64" height="64">
   <data encoding="base64" compression="zlib">
-   eJztz7ENgDAMRUEPkMmBLRBrZAtgHdjAFIkihTvJnYv/IgAAAAAAAAAAAADaWkrEmtxWRq/sZ//Qduiflv78R3//HaPoz3/+3l8n7j/ftiu5e+J+AAAA2ngAbhgZ1A==
-  </data>
- </layer>
- <layer id="4" name="decoration" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJzt2U0OwUAYBuBZkjTpHYifOxA/x9C6RWvBHZBwAStcwQHE3jVcwrtowoqq6cx8M++TfEvMO38dU6WIXpJIqRQ1j/77ntufn7clQ7tz1EJo+3VYI/sGtf3QB1LHt4wjsp1QZ8EZfR4fMo/ziUi+0NexifyXRv2/IcHDo37QMaYHj/qD5Gg1lWqjEsy/NMA5OED2ISpD9jzA/EtkXhW5O7FSXVQP1Y/ttsuUHbLvi/wjZB6jJqhpIPnr5tNz/t3d01y2ST8fl22/xPOe7bUsfW6EbsbxK0XnOrO9Zon7FtXD5zOoa/uWxPMameXanLXJ572JqKpf9wieHd3m6vhcA3+X75IQ7z1MP/8530ki/mcgko/rmIh08WE/4Z15vb71L+9giaiqJwkNLNo=
-  </data>
- </layer>
- <layer id="5" name="house" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJzt1rOTnQEUxuEvy+DebWOjjo06NurYqGOjjo06NurYqMM1wiLczbN/w2bmZr45v5mnP293kiSKoiiKoiiK/q9KM0lSRjkVVFJFNTXUUsdHPvGZL3zlWybX1ze9ehsaGndkk6QZeeRTQCFFFNOcFrSkFRmy2Vxf3/Ra29CGtrSjPR3oSCc604WudKM7PehJrxTs721DH/rSj/4MYCCDGMwQhjKM4YxgJKNSsH+0DWMYyzjGM4GJTGIyU5jKNKYzg5nMSsH+2TbMYS7zmM8CFrKIxSxhKctYzgpWsioF+1fbsIa1rGM9G9jIJjazha1sYzs72MmuFOzfbcMe9rKP/RzgIIc4zBGOcozjnOAkp1Kw/7QNZzjLOc5zgYtc4jJXuMo1rnODm9xKwf7bNtzhLve4zwMe8ojHPOEpz3jOC17yKgX7X9vwhre84z0fKKWMciqopIpqaqilLgX7v9vwg5/84jd/qKehcV+Jv5A88imgkCKKS3J9fRRFURRFURRFURRFURRFURRFURRFURRFURRFURRFUfQv+wsU2Ww3
-  </data>
- </layer>
- <layer id="6" name="road" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJzt0s0JwkAUhdGpIFZj1CZitAbBn/S/9+4l2QTU8M6Bbz+XN639j33XWp8O6ZhO3a9f9F1D9p7TmC7pWmy/+7t/5ftX31/9/9+z95Ge6ZWmYvsBAABY57abbwuW3r+2LbDf/sr7AQAAAAAAAAAA+PQGbf05sw==
+   eJzt2jdMlGEAxvHvhIPNAnbU2UKvAjpY6UVRZ3sDC6OAHWyjFbsGNhQrCEQ3sWFDZgW7IrO9/S9xuEXPcIHXe33+yS8MEPI+vPcREs5xlFLeDXSbPoH/2bDhXy0Qf7aBeGalonndxiAWcYhHAhKRhGSkYDJSkYZ0TMFUC17zGWzIRBaykYNc5CEfBSjEHMxFEeZhPhZYsH8hGxZhMZZgKZZhOVZgJVZhNYpRgjVYi3UW7N/AhjKUowIbsQmbsQVbsQ3bUYkq7MBO7LJg/1427MN+HMBBHEI1DuMIjuIYjuMETuIUTluwv44NZ3AW9TiH87iAi7iEy2hAI66gCc1o8TwDoY6zHqWhppf0rutsaMUN3MQt3MYdtOEu7uE+HuAh2vEIHZ5ngN27sSdA9z9mwxN0ogtP8QzP8QIv8Qqv8QZv0Y136EEN36PW9Ag/es+GD/iIT/iML/iKb/iOH57nPMRxXBiAIATDjat86prpEX40iA2DMQRhCMdQDMNwjMBIjMJoRGAMxmJciOnT+994NkzARExCJKIQjRjEIg7xSEAikpCMFBS7+JvAZXpF75vGhumYgZmYhdnIQCaykI0c5CIP+ShAISrZXhXA+5VSSimllFJKKaWUUvbWhGYfWoydru9r/4uv6ejzU5ir+9fHP71/qadfTmIm3b/v/sf7934edP/25n3/v/sdqPu3tyCX4wT74Nb/d5VSSimllFJK+egnUed6yQ==
   </data>
  </layer>
 </map>
