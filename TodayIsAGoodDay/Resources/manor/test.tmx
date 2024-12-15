@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
+ <tileset firstgid="1" name="spring_outdoorsTileSheet." tilewidth="16" tileheight="16" tilecount="1975" columns="25">
+  <image source="spring_outdoorsTileSheet..png" width="400" height="1264"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztz8ENACAMA7EwYjftiKzAB4FUR/I/VyspAIBBOgAAAAAAAADAbad7/VO/fv369evXr18/AAAAP9n5UOhI
+  </data>
+ </layer>
+ <layer id="4" name="Tile Layer 4" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt0LEJACAMRcE4oftvIy6gFoEQuQO7X/gSAQAAAAAAAAAAAJBrjuof1Nr9txv8fCP9OZuu9OdsutKfs+lK/9sDAACAkwX6dAkR
+  </data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt0zVzVWEUhtEbIi3uUqPxELTAJQGC1rhLjbvUuEuNe5Ia95Aad0iN2+IPBGaYzM2c7Gdm9fud75xUKoqiKIqiKGqs5WanUnnkU0AhRRRTQl9K6Ud/BjCQQQzOTvf1/98oG0YzhrGUUc44xjOBCiYyiclMYSrTErB/ug0zmMksZjOHucxjPgtYyCIWs4SlLEvA/uU2rGAlq1jNGtayjvVsYCOb2MwWtrItAfu327CDnexiN3vYyz72c4CDHOIwRzjKsQTsP27DCU5yitOc4SznOM8FLnKJy1RSRXUC9l+x4SrXuM4NbnKL29zhLve4zwNqeEhtAvY/suExT3jKM57zgpe84jVveMs73vOBugTs/2jDJz7zha984zs/+MmvPztzUqkMmpFJFtk56b7+/2tuQwta0orWtKEt7WhPBzrSic50oSvdErC/uw096EkvetOHXPLIp4BCiiimhL6UJmD/EBuGMozhjGAkoxjNGMZSRjnjGM8EKhKwP4qiKIqiKIqiKIqiKIqSViVVf1GdtusavhoqMupXm+4jG7D3qb/vr0v3kQ1YvH+8f1Pe/y/vn+TvP/7/pv39Z9qXVY8/ZWek98YoiqIoiqIoiqKo8fcbqHyGxg==
+  </data>
+ </layer>
+ <layer id="3" name="Tile Layer 3" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt14ENgDAIBEB1JvefzQmsoWoI5W4C+gKt2wYAAAA9nXt2BQB12aFj1fM5itd/Z9VzQYQ5gG/NzlT1twKwDvsIiPJPkSOyr30jiOkwM958rO5tj3fYA3+SXw3ugl7M5bPRTMgvT7Xso/VWO19VcmZEfzBD35DpAvPTAkY=
+  </data>
+ </layer>
+</map>
