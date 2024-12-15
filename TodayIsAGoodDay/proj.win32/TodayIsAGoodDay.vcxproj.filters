@@ -111,6 +111,10 @@
       <Filter>Classes\Map</Filter>
     </ClCompile>
 
+    <ClCompile Include="Map\crops.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -147,12 +151,19 @@
     <ClInclude Include="Map\drop.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>
-    
+
+    <ClInclude Include="Map\plough.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\crops.h">
+      <Filter>Classes\Map</Filter>
+
     <ClInclude Include="Control\scene.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="Setting\setting.h">
       <Filter>Classes\Setting</Filter>
+
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

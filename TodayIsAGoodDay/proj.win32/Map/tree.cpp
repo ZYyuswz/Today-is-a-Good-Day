@@ -10,7 +10,6 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     this->tilePosition = tile;  // 初始化树的坐标
     this->stage = st;  // 初始化树的阶段
     this->growthDays = 0;  // 初始化生长天数
-    this->growthDaysThreshold = 5;  // 默认生长天数阈值
     this->health = (stage == Stage::Childhood) ? 10 : 100;  // 初始化血量
 
     // 加载纹理图集（只需要加载一次）
@@ -18,7 +17,7 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     //spriteFrameCache->addSpriteFramesWithFile("Tree/tree.plist");
 
     // 创建初始贴图
-    updateSpriteBySeason();
+    update();
     if (!this->getTexture()) {
         CCLOG("Failed to load tree sprite!");
     }
@@ -30,29 +29,30 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     // 将精灵的图像上下颠倒
     this->setFlippedY(true);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.5f, -0.01f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
     objectLayer->addChild(this);
 }
 
-
-// 树长大，替换贴图sprite
-void Tree::growToMature() {
-    if (this->getTexture()) {
-        updateSpriteBySeason();
-    }
-}
-
 // 播放被砍的动画 同时生成掉落物
 void Tree::deathAnimation() {
     // 动作序列
-    auto chopAction = Sequence::create(
-        RotateBy::create(1.0f, 90),
-        FadeOut::create(1.0f),
-        nullptr
-    );
+    Sequence *chopAction;
+    if (stage == Stage::Mature) {
+        chopAction = Sequence::create(
+            RotateBy::create(1.0f, 90),
+            FadeOut::create(1.0f),
+            nullptr
+        );
+    }
+    else {
+        chopAction = Sequence::create(
+            FadeOut::create(1.0f),
+            nullptr
+        );
+    }
     this->runAction(chopAction);
 
     // 产生掉落物
@@ -81,10 +81,13 @@ void Tree::generateDrops() {
 }
 
 // 更新树的贴图
-void Tree::updateSpriteBySeason() {
+void Tree::update() {
     // 获取当前季节
     Season current_season = GameTime::getInstance()->getSeason();
-
+    growthDays++;
+    if (stage == Stage::Childhood && growthDays >= TREE_GROWTH_THRESHOLD) {
+        stage = Stage::Mature;
+    }
     // 根据树种类和阶段，设置不同的贴图
     if (stage == Stage::Childhood) {
         // 树苗阶段的贴图在所有季节都是相同的
@@ -202,6 +205,23 @@ void Tree::randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, Sta
         if (--maxRetries <= 0) {
             CCLOG("Max retries reached, exiting tree generation.");
             break;
+        }
+    }
+}
+
+
+// 静态方法：遍历objectLayer的所有子节点并调用update
+void Tree::updateAll(Layer* objectLayer) {
+    if (!objectLayer) {
+        CCLOG("objectLayer is null!");
+        return;
+    }
+    // 遍历 ploughLayer 的所有子节点
+    for (auto child : objectLayer->getChildren()) {
+        // 检查子节点是否是 Tree 类的实例
+        Tree* tree = dynamic_cast<Tree*>(child);
+        if (tree) {
+            tree->update();  // 调用 update() 方法
         }
     }
 }
