@@ -10,21 +10,20 @@ private:
     TreeType type; // 树的种类
 public:
     // 构造函数
-    Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty,  Stage st);
+    Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st = Stage::Childhood);
 
     // 更新树的贴图
-    void updateSpriteBySeason();
+    void update();
 
     // 在瓦片地图上随机生成 num 个树苗
     static void randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, Stage stage);
 
-protected:
+    // 静态方法：遍历objectLayer的所有子节点并调用update
+    static void updateAll(Layer* objectLayer);
+
     // 死亡动画
     void deathAnimation() override;
 
     // 产生掉落物
     void generateDrops() override;
-
-    // 生长完成时的回调
-    void growToMature() override;
 };

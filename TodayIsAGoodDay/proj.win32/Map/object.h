@@ -42,7 +42,6 @@ public:
 class GrowObject : public MyObject {
 protected:
     int growthDays = 0;              // 生长天数
-    int growthDaysThreshold = 3;     // 生长天数阈值
     Stage stage = Stage::Childhood;  // 当前阶段
 
 public:
@@ -50,19 +49,7 @@ public:
     GrowObject(){}
 
     // 更新生长天数（增加一天，并可能改变阶段）
-    void updateStatus() {
-        if (stage == Stage::Mature) 
-            return;
-        growthDays++;
-        if (growthDays >= growthDaysThreshold) {
-            health = 100;
-            stage = Stage::Mature;
-            growToMature();  // 生长完成时的回调
-        }
-    }
-
-    // 生长完成时的回调
-    virtual void growToMature() = 0;
+    virtual void update() = 0;
 };
 
 

@@ -18,9 +18,10 @@ GameTime::GameTime() {
     day = 1;
     totalDays = 1;
     season = Season::Spring;
+    weather = Weather::Sunny;
 }
 
-// 更新一天的时间
+// 更新一天的时间 
 void GameTime::updateTime() {
     day++;
     totalDays++;
@@ -31,6 +32,7 @@ void GameTime::updateTime() {
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
     }
+    // 随机天气还没实现
 }
 
 // 获取当前年份
@@ -48,7 +50,13 @@ Season GameTime::getSeason() const {
     return season;
 }
 
+// 获取当前天气
+Weather GameTime::getWeather() const {
+    return weather;
+}
+
 // 获取总天数
 int GameTime::getTotalDays() const {
     return totalDays;
 }
+
