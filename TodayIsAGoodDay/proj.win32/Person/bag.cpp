@@ -23,12 +23,11 @@ struct item
 };
 
 
-class Bag : public Person
+class Bag : public Node
 {
 public:
     // 构造函数
-    Bag(const std::string& name, const int& sex, const std::string& farmName,
-        int level, int HP, int energy, int money);
+    Bag();
 
     //监听器，按E打开背包
     void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
@@ -60,12 +59,12 @@ private:
     int _selectedItemIndex;
 
     bool isOpen;
+
+    cocos2d::EventListenerKeyboard* _keyboardListener;  //键盘监听器
 };
 
 
-Bag::Bag(const std::string& name, const int& sex, const std::string& farmName,
-    int level, int HP, int energy, int money)
-    : Person(name, sex, farmName), _selectedItemIndex(-1)
+Bag::Bag(): _selectedItemIndex(-1)
 {
     // 创建一个标签用于显示物品信息
     _itemInfoLabel = cocos2d::Label::createWithSystemFont("", "Arial", 24);
