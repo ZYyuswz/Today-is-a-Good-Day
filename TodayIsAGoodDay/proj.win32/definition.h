@@ -1,4 +1,34 @@
+
 #pragma once
+
+//屏幕显示比例
+#define SMALL_WINDOW 1
+
+//图层显示关系宏定义
+#define FIRST 1
+
+//图片显示比例宏定义
+#define ROW_PICTURE 1.0f   //原图片大小
+
+//menu相关宏定义
+#define POS_NEW_X 4
+#define POS_NEW_Y 3
+#define POS_LOAD_X 12
+#define POS_LOAD_Y 3
+#define POS_COOP_X 20
+#define POS_COOP_Y 3
+#define POS_EXIT_X 28
+#define POS_EXIT_Y 3
+
+
+//beach场景相关宏定义
+// beach缩放比例
+// 小窗口下
+#define BEACH_SMALL_SCALE 3.5f
+//beach入口位置
+#define BEACH_ENTER_X 25
+#define BEACH_ENTER_Y 48
+
 
 // 定义每个季节的持续天数
 #define SEASON_LENGTH 28  // 每个季节持续28天
@@ -35,7 +65,7 @@ enum class Stage {
 enum class StoneType {
     Stone,      // 石头
     Copper,     // 铜矿
-    Silver,     // 银矿
+    Silver,      // 银矿
     Gold,       // 金矿
     Coal        // 煤炭
 };
@@ -49,6 +79,7 @@ enum TileCorner {
     CENTER,             // 中心
     BOTTOM_CENTER       // 下方中心
 };
+
 
 // 耕地状态
 enum class LandState {
@@ -69,3 +100,4 @@ enum class Weather {
 
 // 树生长天数阈值
 #define TREE_GROWTH_THRESHOLD 5
+

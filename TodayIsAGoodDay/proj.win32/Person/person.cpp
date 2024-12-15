@@ -1,2 +1,56 @@
-/* ----- è¯¥æ–‡ä»¶å¤¹ä¸»cpp ----- */
-/* è¯¦ç»†å†…å®¹å‚é˜…å¼€å‘è€…æ‰‹å†Œ */
+/* ----- ¸ÃÎÄ¼þ¼ÐÖ÷cpp ----- */
+/* ÏêÏ¸ÄÚÈÝ²ÎÔÄ¿ª·¢ÕßÊÖ²á */
+
+#include "person.h"
+
+/*¹ØÓÚÍ¼Æ¬£¬ÕâÀïÖ»¸ø³öÁËÒ»ÕÅ£¬Èç¹ûÒªÓÐÑ¡Ôñ½ÇÉ«¹¦ÄÜµÄ»°£¬ÄÇÃ´Í¼Æ¬Òª²»Ò»Ñù*/
+Person::Person(const std::string& name, const int& sex, const std::string& farmName,
+    Scene* currentScene,int level, int HP, int energy, int money)
+    : _name(name), _sex(sex), _level(level), _HP(HP),_money(money),_energy(energy),_farmName(farmName)
+{
+    auto characterLayer = Layer::create();
+    currentScene->addChild(characterLayer); // ½«ÈËÎï²ãÌí¼Óµ½µ±Ç°³¡¾°ÖÐ
+    // ´´½¨Ò»¸ö¾«Áé²¢Ìí¼Óµ½Person½ÚµãÖÐ
+    _sprite = cocos2d::Sprite::create("/person/person_front_1.png");
+    _sprite->setPosition(500, 500);
+    if (_sprite)
+    {
+        characterLayer->addChild(_sprite,3);
+    }  
+    init();
+}
+
+bool Person::init()
+{
+    if (!Node::init())
+    {
+        return false;
+    }
+    //³õÊ¼»¯¼üÅÌ¼àÌýÆ÷
+    _keyboardListener = cocos2d::EventListenerKeyboard::create();
+    _keyboardListener->onKeyPressed = CC_CALLBACK_2(Person::onKeyPressed, this);
+    _keyboardListener->onKeyReleased = CC_CALLBACK_2(Person::onKeyReleased, this);
+
+    // È·±£ÊÂ¼þ·Ö·¢Æ÷ÕýÈ·»ñÈ¡
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(_keyboardListener, this);
+    return true;
+}
+
+void Person::decreaseHP(const int attack)
+{
+    _HP -= attack;//¿ÛÑª
+    if (isDead()) {
+        dead();
+    }
+}
+
+void Person::dead()
+{
+    _HP /= 10;
+    _money /= 10;
+    _energy /= 10;
+ //   setPosition(HOSPITAL_X, HOSPITAL_Y);
+  //  Director::getInstance()->replaceScene(town); //ÇÐ»»³¡¾°ÎªÐ¡Õò
+}
+
+

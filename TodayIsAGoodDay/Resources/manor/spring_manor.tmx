@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="1">
+ <tileset firstgid="1" name="spring_outdoorsTileSheet." tilewidth="16" tileheight="16" tilecount="1975" columns="25">
+  <image source="spring_outdoorsTileSheet..png" width="400" height="1264"/>
+ </tileset>
+ <tileset firstgid="1976" name="spring_outdoorsTileSheet." tilewidth="16" tileheight="16" tilecount="1975" columns="25">
+  <image source="../../../../../mapeditor/Stardew valley/Maps-126/spring_outdoorsTileSheet..png" width="400" height="1264"/>
+ </tileset>
+ <tileset firstgid="3951" name="houses." tilewidth="16" tileheight="16" tilecount="459" columns="17">
+  <image source="houses..png" width="272" height="432"/>
+ </tileset>
+ <tileset firstgid="4410" name="Stable." tilewidth="16" tileheight="16" tilecount="24" columns="4">
+  <image source="Stable..png" width="64" height="96"/>
+ </tileset>
+ <tileset firstgid="4434" name="fall_beach." tilewidth="16" tileheight="16" tilecount="527" columns="17">
+  <image source="fall_beach..png" width="272" height="496"/>
+ </tileset>
+ <layer id="10" name="wall" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztmkEOgyAUBd32/mfoPRsWJC4UlX7+e8JM4gIjdKZaYxO3Tc/30x7PDv3t8ezQ3x7Pzlv7i2fU9mRdNUoX1ffhdg4qGS5uzXsyrgfn9qN9Eb6u13vlyukfZ9fmyl23nnPo1h71+76a69ZdiPZpPW84Msprv65re2Gkm/O9vTLabfX+rM/oZfX+DOhXG2hZud/9/j8a+umnX22hg3766Vdb6KCffvrVFjrop59+tUWbnvdHnq7tzB0/+vvXpr9vbhb0xxxzNo/+vrlZ0B9zzNm8N/Sv/PwzEvrpp19toYN++ulXW+ign3761RY67v63mnn7AZAbw8E=
+  </data>
+ </layer>
+ <layer id="1" name="floor" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt0LEJADAMBDHvP01GzArpzhA9qPd5xszMtuzUBzzuROpV3fUv6tbyB3Vj/Y+6qeivO6of1LfXv6jvLf9Q31j8or6l7K/vAAAAAAAA/vO6+k79+vXr169fv379AAAAbHIBe285aA==
+  </data>
+ </layer>
+ <layer id="2" name="river" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt00EKhDAUREE3ggPe/xpzRVeBEAaZhfrVroJemxfM/Jmm2czs4Vu6VZ+lqr+/h+rzVP8HV3zranfpv4u9d/DW5l/O7n+K9P4msXmU3N5L7R6ldo+S25vk9ia9HwAAAACAOt/1v72Vfv369evXr19/Wj8AAADH2ADwWGuM
+  </data>
+ </layer>
+ <layer id="3" name="lake" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztz7ENgDAMRUEPkMmBLRBrZAtgHdjAFIkihTvJnYv/IgAAAAAAAAAAAADaWkrEmtxWRq/sZ//Qduiflv78R3//HaPoz3/+3l8n7j/ftiu5e+J+AAAA2ngAbhgZ1A==
+  </data>
+ </layer>
+ <layer id="4" name="item" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztz7kNwgAQRNHN7MxVcFTB0QaUgVsEugC6ADJGgoAKbMl+Txppw/1VAAAATMG5qbpk12bsT4ZzaKuO7fe+pfuePWbUf0p7/+t/pvuVvWfU/2/RVS2zVbbuxv5meJs0b7Ndtp9hPwAAAAAAAAAAAADAVHwAHJQL4w==
+  </data>
+ </layer>
+ <layer id="6" name="decorate" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt2sENwjAMQFGOHFiQli1aDrADIMECnIAVGIAFkJiCJbA4wYkWxY7j/Cf5SuvYcaKKyUTfbWbwEJh5THO/wbeU/dXIb7USiwA9+0+dOsm7l1g6zl+7/zaS+1ZiN2INIs24k+RylrgUkJO3WeQJawMAsHTl3Hl7BlqHFDU9Gq3HSp6zlmgk2kA1GGovOR8kOom+wvwBwEqkc/7TPWheuZV+Px76/lb3vZRy7+XSe6N2c+o3SMp9lnvPgrkFHZHvoN7mVon3Ndjy1rM5eZ9Ntdeq9vxzGbvu3B1981qfSP+506Z9VtX43cP6/KffUSLuYUD52McAUtGaJ5Zzim/mun6tr/dvsIBnL545L28=
+  </data>
+ </layer>
+ <layer id="5" name="house" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztz7lSQlEUBdEbCgo+PsFUMNBPFhU1BQQllcEhBXFKHRBMncWOya1HXXpVdXCys0OQJEmSNK+2kxDKtEO7tEcV2qcDOkzS/vB/VdlXozodUYOadEwn1Ip8/yn72tShLvXojM7pgi4j399n34CuaEjXdEO3dEf3ke9/YN8jPdEzjeiFxjSh18j3v7HvnT7ok77om37ol6aR718qhJChLC3TCuUoT6uUFNL+MF1rke9fZ1+RSrQxs3WTeyvy/ZIkSZIkSZIkSZIkSZIkSdIi+wMNxTIK
+  </data>
+ </layer>
+ <layer id="7" name="house2" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztz8cRwlAQRMGfgtLBCeEkjDD5J8PcyAAdtrvq3WdaAwAAgOWtutbWaZO23dJr/m+Xz33ap6Hg/0M+H9MpnQv+v+TzmKZ0Lfj/ls/39Ehzwf/PfH6ld/oU/A8AAAAAAAAAAAAA/HwBK/0IHQ==
+  </data>
+ </layer>
+ <layer id="8" name="road" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt0ccNwgAQRFG3gFwEqQFSA6QGSAVRNXNEiANBwsj7nvTvO9qm6d6sbZp5WqRlWrVdX/Rbw+wdpXGapGmx/f7v/5X//7i/2v/X2btJ27RL+2L7D9l7TKd0TpeC++9V2w8AwHeug9fro77sf2fHp/0z+2vvBwAAAAAAAAAAAHjmBrCJR+Y=
+  </data>
+ </layer>
+ <layer id="9" name="road2" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztz8kNgDAUQ8HfQo5sgQqA/qvDVQBSZqR3t6sAAAAA4D+mVjWnJa1pSz3t6Whfr3vfmc9Xugf8DgAAAAAAAAAAAACjeQDLHAIt
+  </data>
+ </layer>
+</map>

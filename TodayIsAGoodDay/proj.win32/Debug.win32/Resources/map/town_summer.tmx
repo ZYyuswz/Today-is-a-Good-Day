@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
  <tileset firstgid="1" name="town_spring" tilewidth="16" tileheight="16" tilecount="4503" columns="57">
   <image source="town_spring.png" width="912" height="1264"/>
@@ -21,6 +22,7 @@
  <layer id="3" name="item" width="64" height="64">
   <data encoding="base64" compression="zlib">
    eJzt2kdMFFEAxvGHKMsuCkZFsB8U20GlGXtix1hi14OAJVEB0dh7QQVLouhBwJJYUDD2xN7AFvUkYI1Ks15sB2PX6N+DEQmss/PeNna+5Hchy9v5hp03b4c3rroQr7yFeI03eAs9CUUYwhGBSHTUN5SyRPsIEYNYjPf5+/NkLyFSsAbN6d8CIWiJVtX1vVc8EjANiZiOGdIN5JJG53RkYGuZ/jn0zsUljKNvNGIQi/E6+2diL/YhC9nYL91ALnl0zkcBbpfp/4nen/EFW+ibhnRkYKvO/oUoQjFKUIonOo+7BULQUufv/4mvSQgzLPAz/f15h2pcrwjDLfrmIR8FuK1RZQninAZ7yR13NGIQKzeM6EnnXuiNPmX6x9E7Hgkw1eA8wQwL/DSqLEPpPkyyfxrSkSE3jFhE58VYgqWm/79eRdbRfb1k/zzko0DyWI7T+QRO4pSD+quIL+fPDIvkeXxN5zd4i3dO6D9a53v2pHcv9JbsH+LLHIpWaO0rN5aepLrRZ86IZ+cOn9W7uIf7eOBhn92azA+14I8A1LYyX6xi/bMayUjBGqzFOqzXuX50dvrStx/6IwoDrPS/QMeLyEEuLuEyruCqm/ZfRt/lWIEkrLTS/wMdP+ITPuMLvuIbvivq34nrrzO6oKsDrsXT9D2DsziH81b6t2P92x4dEIowhCMCkVbWxrZkJp1nYTbmaOi/QHKt4Go5QOeDOITDHjYX/84zOj/HC7x0QP/WvEcbtHWRc92Y668JmqKZA9auE+g9EZMk+qu8BkfReTTGYGwl/VW+3zZ6b8eOcv2dNa9spHMqNmGzxr9/VZsDjRgxYsRdE+Xz/9dU5STZsf9VsxDXzGrGsvW+meUvRDb2+1t/3Tk79v9O9x+K+tuSYjqXoBRP8NTKOXhvx/6RFiE6Wuw3fmUJChAiGA3QEI0CHH8MzsxQ+g7DcIzASA/rb8SIESNGjBhRG1fcQ+jIyO4h7GYSortGPez8nHuhjmeRsnsI59Jpnkbzy/TXc6z2iOwewiN0OqrRMRf5P0dF0bqHsKo+71axh9BZ2cB3/o1Ilfjur2IPoUwmS/y/7Tq9b+CmomcfzviM75To//N3b+YWLxeYX6rq/GBEXfp7/0v1mFEYoGhce2SF979Uj5mElS7c3x1jzGu2Jc4F7kXOSCi9wxCOCES6wXmYUkOIqYhDvJW9hFqugXj6JmAaEjHdDfrvovNu7EGm5F7KTPruxT5kIdsN+j+k8yM8RqFk/0L6FqEYJSitoH/5+79qtt7/67B+rot6CJT8DhHIOr4+ghCMBhWs68vf/1Wz9f4/kM6DMBhDPHT/RDK9U3R0V/Ecq6IxHP18LIfuuR76t3d0fgFek+yl
+
   </data>
  </layer>
 </map>
