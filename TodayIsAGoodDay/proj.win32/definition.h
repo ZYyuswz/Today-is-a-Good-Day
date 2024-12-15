@@ -27,6 +27,7 @@ enum class TreeType {
 // 枚举表示GrowObject的阶段
 enum class Stage {
     Childhood, // 幼年阶段
+    Growth,    // 成长阶段
     Mature     // 成熟阶段
 };
 
@@ -34,17 +35,37 @@ enum class Stage {
 enum class StoneType {
     Stone,      // 石头
     Copper,     // 铜矿
-    Silver,      // 银矿
+    Silver,     // 银矿
     Gold,       // 金矿
     Coal        // 煤炭
 };
 
 // 定义角点枚举类型 -- 瓦片的四个角定义
 enum TileCorner {
-    TOP_LEFT,    // 左上角
-    BOTTOM_LEFT, // 左下角
-    TOP_RIGHT,   // 右上角
-    BOTTOM_RIGHT, // 右下角
-    CENTER, // 中心
-    BOTTOM_CENTER // 下方中心
+    TOP_LEFT,           // 左上角
+    BOTTOM_LEFT,        // 左下角
+    TOP_RIGHT,          // 右上角
+    BOTTOM_RIGHT,       // 右下角
+    CENTER,             // 中心
+    BOTTOM_CENTER       // 下方中心
 };
+
+// 耕地状态
+enum class LandState {
+    Tilled,             // 已耕地
+    Watered,            // 已浇水
+    Fertilized,         // 已施肥
+    FertilizedWatered,  // 施肥浇水
+};
+
+// 天气状态
+enum class Weather {
+    Sunny,   // 晴天
+    Rainy    // 雨天
+};
+
+// 耕地销毁的时间阈值
+#define LAND_DESTORY_THRESHOLD 3
+
+// 树生长天数阈值
+#define TREE_GROWTH_THRESHOLD 5
