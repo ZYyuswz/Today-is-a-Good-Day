@@ -165,10 +165,8 @@ void menu::onCreate(cocos2d::Ref* sender)
     Director::getInstance()->pushScene(this);
 
     //测试，应创建主场景，先用沙滩测试
-    auto beach_scene = beach::createScene();
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, beach_scene));
-
-
+    first_to_manor();
+    
 }
 
 //读档菜单回调函数
