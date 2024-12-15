@@ -44,9 +44,11 @@ Stone::Stone(TMXTiledMap* tileMap, Layer* objectLayer, const Vec2& tile, StoneTy
 // 死亡动画
 void Stone::deathAnimation(){
 	// 播放碎裂动画
-	auto fadeOut = FadeOut::create(1.0f);
-	// 产生掉落物
-	generateDrops();
+	auto chopAction = Sequence::create(
+		FadeOut::create(1.0f),
+		nullptr
+	);
+	this->runAction(chopAction);
 }
 
 void Stone::generateDrops() {

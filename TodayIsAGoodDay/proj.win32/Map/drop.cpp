@@ -24,7 +24,6 @@ void Drop::addDropItem(const std::string& itemType, const std::string& texturePa
 
 // 生成掉落物
 void Drop::generate() {
-    auto spriteFrameCache = SpriteFrameCache::getInstance();
     if (!targetLayer) {
         CCLOG("Drop object has no target layer!");
         return;
@@ -108,4 +107,41 @@ const std::unordered_map<StoneType, std::pair<std::string, std::string>> StoneDr
     {StoneType::Silver, {"silver_drop", "silver_drop.png"}},
     {StoneType::Gold, {"gold_drop", "gold_drop.png"}},
     {StoneType::Coal, {"coal_drop", "coal_drop.png"}}
+};
+
+
+// CropsDrop 构造函数
+CropsDrop::CropsDrop(const Vec2& position, Layer* targetLayer, CropsType type) : Drop(position, targetLayer) {
+    // 获取掉落物的类型和贴图路径
+    auto it = cropsDropMap.find(type);
+    if (it == cropsDropMap.end()) {
+        CCLOG("Invalid StoneType: %d", static_cast<int>(type));
+        return;
+    }
+    const std::string& itemType = it->second.first;
+    const std::string& texturePath = it->second.second;
+    // 随机生成掉落物数量
+    int count = generateRandomCount(2, 4);
+    // 添加随机数量的掉落物
+    for (int i = 0; i < count; i++) {
+        addDropItem(itemType, texturePath);
+    }
+}
+
+// 农作物类型到掉落物类型和贴图路径的映射表
+const std::unordered_map<CropsType, std::pair<std::string, std::string>> CropsDrop::cropsDropMap = {
+    // 春季作物
+    {CropsType::Carrot, {"carrot_drop", "carrot_drop.png"}},
+    {CropsType::Garlic, {"garlic_drop", "garlic_drop.png"}},
+    {CropsType::Potato, {"potato_drop", "potato_drop.png"}},
+    // 夏季作物
+    {CropsType::Corn, {"corn_drop", "corn_drop.png"}},
+    {CropsType::Melon, {"melon_drop", "melon_drop.png"}},
+    {CropsType::Tomato, {"tomato_drop", "tomato_drop.png"}},
+    // 秋季作物
+    {CropsType::Cabbage, {"cabbage_drop", "cabbage_drop.png"}},
+    {CropsType::Eggplant, {"eggplant_drop", "eggplant_drop.png"}},
+    {CropsType::Pumpkin, {"pumpkin_drop", "pumpkin_drop.png"}},
+    // 酸菜
+    {CropsType::Withered, {"withered_drop", "withered_drop.png"}}
 };

@@ -54,9 +54,6 @@ void Tree::deathAnimation() {
         );
     }
     this->runAction(chopAction);
-
-    // 产生掉落物
-    generateDrops();
 }
 
 // 生成掉落物

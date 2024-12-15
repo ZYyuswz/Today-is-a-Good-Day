@@ -69,3 +69,12 @@ public:
     // 构造函数
     StoneDrop(const Vec2& position, Layer* targetLayer, StoneType type);
 };
+
+class CropsDrop : public Drop {
+private:
+    // 农作物类型到掉落物类型和贴图路径的映射表
+    static const std::unordered_map<CropsType, std::pair<std::string, std::string>> cropsDropMap;
+public:
+    // 构造函数
+    CropsDrop(const Vec2& position, Layer* targetLayer, CropsType type);
+};
