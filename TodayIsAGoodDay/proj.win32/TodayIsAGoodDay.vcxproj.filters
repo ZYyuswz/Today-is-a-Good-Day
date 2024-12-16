@@ -99,16 +99,18 @@
     <ClCompile Include="totaltools.cpp">
       <Filter>win32\TotalTools</Filter>
     </ClCompile>
-
     <ClCompile Include="Control\scene.cpp">
       <Filter>Classes\Control</Filter>
     </ClCompile>
-
     <ClCompile Include="Control\Time.cpp">
       <Filter>Classes\Control</Filter>
     </ClCompile>
     <ClCompile Include="Map\drop.cpp">
       <Filter>Classes\Map</Filter>
+    </ClCompile>
+
+    <ClCompile Include="Control\global.cpp">
+      <Filter>Classes\Control</Filter>
     </ClCompile>
 
     <ClCompile Include="Map\crops.cpp">
@@ -133,13 +135,7 @@
     <ClInclude Include="Map\map.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>
-
-    <ClInclude Include="totaltools.h">
-      <Filter>win32\TotalTools</Filter>
-    </ClInclude>
-
     <ClInclude Include="Control\Time.h">
-
       <Filter>Classes\Control</Filter>
     </ClInclude>
     <ClInclude Include="Map\stone.h">
@@ -151,6 +147,7 @@
     <ClInclude Include="Map\drop.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>
+
     <ClInclude Include="Map\plough.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>
@@ -164,6 +161,10 @@
     <ClInclude Include="Setting\setting.h">
       <Filter>Classes\Setting</Filter>
 
+    </ClInclude>
+    <ClInclude Include="Tools\Totaltools\totaltools.h" />
+    <ClInclude Include="global.h">
+      <Filter>Classes\Control</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
