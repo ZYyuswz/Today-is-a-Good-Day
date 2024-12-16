@@ -5,7 +5,7 @@
 #include <random>
 #include <unordered_map>
 #include "definition.h"
-
+#include "map.h"
 USING_NS_CC;
 
 // 游戏开始需要创建掉落物层并加载掉落.plist
@@ -33,7 +33,7 @@ protected:
     float spreadRadius = 5.0f;               // 掉落物散开半径
     Layer* targetLayer;                      // 目标层
     int nextDropId = 0;                      // 用于生成唯一 ID
-
+    TMXTiledMap* tileMap;                    // 地图指针
     // 随机数生成器
     static std::mt19937 gen;
 
@@ -42,8 +42,7 @@ protected:
 
 public:
     // 构造函数
-    Drop(const Vec2& position, Layer* targetLayer);
-
+    Drop(const Vec2& position, Layer* targetLayer, TMXTiledMap* tileMap);
     // 添加掉落物
     void addDropItem(const std::string& itemType, const std::string& texturePath);
 
@@ -57,7 +56,7 @@ public:
 class TreeDrop : public Drop {
 public:
     // 构造函数
-    TreeDrop(const Vec2& position, Layer* targetLayer);
+    TreeDrop(const Vec2& position, Layer* targetLayer, TMXTiledMap* tileMap);
 };
 
 class StoneDrop : public Drop {
@@ -67,7 +66,7 @@ private:
 
 public:
     // 构造函数
-    StoneDrop(const Vec2& position, Layer* targetLayer, StoneType type);
+    StoneDrop(const Vec2& position, Layer* targetLayer, StoneType type, TMXTiledMap* tileMap);
 };
 
 class CropsDrop : public Drop {
@@ -76,5 +75,5 @@ private:
     static const std::unordered_map<CropsType, std::pair<std::string, std::string>> cropsDropMap;
 public:
     // 构造函数
-    CropsDrop(const Vec2& position, Layer* targetLayer, CropsType type);
+    CropsDrop(const Vec2& position, Layer* targetLayer, CropsType type, TMXTiledMap* tileMap);
 };

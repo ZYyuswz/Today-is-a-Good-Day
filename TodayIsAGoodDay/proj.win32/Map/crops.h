@@ -2,6 +2,7 @@
 #pragma once
 #include "object.h"
 #include "drop.h"
+#include "Map/plough.h"
 
 class Crops : public GrowObject {
 protected:
@@ -17,7 +18,7 @@ protected:
     TMXTiledMap* pMap;
     // 构造函数
     Crops(){}
-
+public:
     // 更新生长天数
     void grow();
         
@@ -29,6 +30,12 @@ protected:
 
     // 生长
     void update() override;
+
+    // 收获
+    void harvest();
+
+    // 扣血
+    virtual void reduceHealth(int damage);
 };
 
 // 酸菜类

@@ -2,6 +2,7 @@
 #pragma once
 #include "object.h"
 #include "drop.h"
+#include "Control\Time.h"
 
 USING_NS_CC;
 

@@ -1,11 +1,11 @@
 /* ----- 实现树的相关功能 ----- */
 
 #include "tree.h"
-#include "Control\Time.h"
-
+#include <iostream>
 // 构造函数
 Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st){
     // 基本项目的初始化
+    this->tileMap = tileMap;
     this->type = ty;  // 初始化树种类
     this->tilePosition = tile;  // 初始化树的坐标
     this->stage = st;  // 初始化树的阶段
@@ -73,7 +73,7 @@ void Tree::generateDrops() {
         scene->addChild(dropLayer);
     }
     // 创建掉落物
-    auto treeDrop = new TreeDrop(tilePosition, dropLayer);  // 使用树的瓦片坐标作为掉落物的生成位置
+    auto treeDrop = new TreeDrop(tilePosition, dropLayer, tileMap);  // 使用树的瓦片坐标作为掉落物的生成位置
     treeDrop->generate();                                     // 生成掉落物
 }
 

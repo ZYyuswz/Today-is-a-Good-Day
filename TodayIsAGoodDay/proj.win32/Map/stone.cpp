@@ -67,7 +67,7 @@ void Stone::generateDrops() {
 		scene->addChild(dropLayer);
 	}
 	// 创建掉落物
-	auto stoneDrop = new StoneDrop(tilePosition, dropLayer, type);  // 使用树的瓦片坐标作为掉落物的生成位置
+	auto stoneDrop = new StoneDrop(tilePosition, dropLayer, type, tileMap);  // 使用树的瓦片坐标作为掉落物的生成位置
 	stoneDrop->generate();
 }
 
