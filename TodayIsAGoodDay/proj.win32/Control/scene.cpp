@@ -11,6 +11,7 @@
 #include "totaltools.h"
 #include "scene.h"
 #include "./Setting/setting.h"
+#include "global.h"
 
 //切换场景调用函数
 //初始进入主场景
@@ -18,6 +19,9 @@ bool first_to_manor()
 {
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
+    leading_charactor->person_construction("zy", 1, "zyh", spring_scene);
+    auto playerControlLayer = PlayerControlLayer::create();
+    spring_scene->addChild(playerControlLayer);
 
     return true;
 }
@@ -144,5 +148,7 @@ bool spring_manor::init() {
 
 
     this->addChild(scene_spring);
+
+
     return true;
 }
