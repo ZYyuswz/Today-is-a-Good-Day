@@ -108,9 +108,15 @@
     <ClCompile Include="Map\drop.cpp">
       <Filter>Classes\Map</Filter>
     </ClCompile>
+
     <ClCompile Include="Control\global.cpp">
       <Filter>Classes\Control</Filter>
     </ClCompile>
+
+    <ClCompile Include="Map\crops.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -141,11 +147,20 @@
     <ClInclude Include="Map\drop.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>
+
+    <ClInclude Include="Map\plough.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\crops.h">
+      <Filter>Classes\Map</Filter>
+	</ClInclude>
+
     <ClInclude Include="Control\scene.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="Setting\setting.h">
       <Filter>Classes\Setting</Filter>
+
     </ClInclude>
     <ClInclude Include="Tools\Totaltools\totaltools.h" />
     <ClInclude Include="global.h">
