@@ -17,6 +17,7 @@ public:
     bool init() override;
     void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
     void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
+    void onMouseDown(Event* event); // 新增鼠标点击回调函数
     void update(float dt) override;
     void setPlayer(Person* player);
 
@@ -24,6 +25,7 @@ public:
 
 private:
     EventListenerKeyboard* _keyboardListener;
+    EventListenerMouse* _mouseListener; // 新增鼠标事件监听器
     Person* _player; // 指向要控制的主角
     bool _moveLeft;
     bool _moveRight;
