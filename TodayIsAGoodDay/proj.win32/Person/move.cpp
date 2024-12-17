@@ -5,20 +5,20 @@
 
 extern Person leading_charactor;
 
+//这两条应该是宏定义
+
 const int ONE_CELL = 1.0f;
+const float SCALE_WORLD_TO_TILE = 16 * 3.5;
 
-Vec2 Person::convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, TMXTiledMap* tileMap) {
-    // 获取瓦片的大小
-    cocos2d::Size tileSize = tileMap->getTileSize();
+//应使用宏定义替换数字，但屏幕尺寸无法在编译时获得（获得为0）
+const float HALF_TILED_WIDTH = 1024.0f / SCALE_WORLD_TO_TILE;
+const float HALF_TILED_HEIGHT = 576.0f / SCALE_WORLD_TO_TILE;
 
-    // 获取瓦片地图的大小
-    cocos2d::Size mapSize = tileMap->getMapSize();
-
-    // 计算瓦片坐标
-    int tileX = worldPosition.x / tileSize.width;
-    int tileY = (mapSize.height - 1) - (worldPosition.y / tileSize.height);
-
-    return cocos2d::Vec2(tileX, tileY);
+Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition,const Vec2& Tiledposition) {
+    Vec2 ScreenGap = worldPosition - Tiledposition;
+    Vec2 TiledGap = ScreenGap / SCALE_WORLD_TO_TILE;
+//    Vec2 TiledMiddle(32.0f, 32.0f);   
+    return TiledGap;
 }
 
 
@@ -32,7 +32,7 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
     auto _itemLayer = currentMap->getLayer("Item");
 
     // 将目标位置转换为瓦片坐标
-    cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap);
+    cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap->getPosition());
 
     // 获取目标位置的瓦片 GID
     int wallGID = _wallLayer->getTileGIDAt(tileCoord);
@@ -49,17 +49,8 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
 
 void Person::moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap)
 {
-   
-
-    // 获取屏幕中心的世界坐标
-    cocos2d::Size visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
-    cocos2d::Vec2 screenCenter = cocos2d::Vec2(visibleSize.width / 2, visibleSize.height / 2);
-
-    // 计算瓦片地图需要移动的距离
-    cocos2d::Vec2 offset = screenCenter - playerPosition;
-
     // 移动瓦片地图
-    tileMap->setPosition(tileMap->getPosition() + offset);
+    tileMap->setPosition(playerPosition);
 }
 
 Animation* Person::createAnimations(const std::string& direction)
@@ -83,11 +74,9 @@ Animation* Person::createAnimations(const std::string& direction)
         frames.pushBack(frame);
         */
     }
-    animation->setDelayPerUnit(0.1f);
+    animation->setDelayPerUnit(0.05f);
     animation->setRestoreOriginalFrame(true);
 
-    // 创建动画对象
-//    Animation* animation = Animation::createWithSpriteFrames(frames, 0.1f); // 每帧间隔0.1秒
     animation->setLoops(-1); // 设置为播放一次
 
     return animation;
@@ -157,7 +146,17 @@ void Person::PersonMove(float deltaX, float deltaY)
         }
     }
     
-    
+    auto currentScene = Director::getInstance()->getRunningScene();
+    auto children = currentScene->getChildren();
+    TMXTiledMap* currentMap;
+    for (auto child : children) {
+        currentMap = dynamic_cast<TMXTiledMap*>(child);
+        if (currentMap) {
+            CCLOG("Tile map found!");
+            break;
+        }
+    }
+    /*
     //找到当前地图
     TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
     if (currentMap)
@@ -168,31 +167,42 @@ void Person::PersonMove(float deltaX, float deltaY)
     {
         CCLOG("No map found for the current scene.");
     }
+    */
     
-    Size mapSize = currentMap->getContentSize(); // 瓦片地图的大小
-    Size visibleSize = Director::getInstance()->getVisibleSize(); // 屏幕的大小
-
-    float minX = 0;
-    float maxX = mapSize.width - visibleSize.width;
-    float minY = 0;
-    float maxY = mapSize.height - visibleSize.height;
-    
-
-    // 计算新的位置
-    cocos2d::Vec2 newPosition = this->getPosition()+ cocos2d::Vec2(deltaX, deltaY);
-    
-
     //判断是否可以移动
 //    if (!canMove(deltaX, deltaY,currentTiledMap))
 //        return;
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 screenRightUp = Vec2(visibleSize.width, visibleSize.height);
+  
+    Vec2 newPlayerPosition = _sprite->getPosition() + cocos2d::Vec2(deltaX, deltaY);
 
-    // 使用动作来平滑移动精灵
-//    auto moveAction = cocos2d::MoveBy::create(0.4f, newPosition); // 0.1秒内移动到新位置
-//    _sprite->runAction(moveAction);
+    //人物新位置的瓦片坐标
+    Vec2 PositionMiddle = convertWorldToTileCoord(newPlayerPosition, currentMap->getPosition());
+
+    // 计算新的瓦片地图的位置
+    cocos2d::Vec2 newTiledPosition = currentMap->getPosition()- cocos2d::Vec2(deltaX, deltaY);
+    
+    Vec2 PositionLeftDown = PositionMiddle - Vec2(HALF_TILED_WIDTH, HALF_TILED_HEIGHT);//左下角的坐标
+    Vec2 PositionRightUp = PositionMiddle + Vec2(HALF_TILED_WIDTH, HALF_TILED_HEIGHT);//右上角的坐标
+
+    //如果水平方向达到极限，竖直方向移动仍需移动摄像头
+    if ((PositionLeftDown.x<0 && deltaY==0) || (PositionLeftDown.y<0 && deltaX==0) ||
+        (PositionRightUp.x>64 && deltaY== 0 )||( PositionRightUp.y>64 && deltaX==0)) {
+        // 使用动作来平滑移动精灵
+        auto moveAction = cocos2d::MoveTo::create(0.2f, newPlayerPosition); // 0.1秒内移动到新位置
+        _sprite->runAction(moveAction);
+//        _sprite->setPosition(newPlayerPosition);
+    }
+    else {
+        moveTileMap(newTiledPosition, currentMap);
+    }
+   
+    
 
    
     
-//        moveTileMap(newPosition, currentMap);
+        
 
 }
 

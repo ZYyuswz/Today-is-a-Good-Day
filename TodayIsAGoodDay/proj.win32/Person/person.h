@@ -83,7 +83,7 @@ public:
     void createAnimate();
 
     // 辅助方法：将世界坐标转换为瓦片坐标
-    cocos2d::Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, TMXTiledMap* tileMap);
+//    cocos2d::Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, TMXTiledMap* tileMap);
 
     // 辅助方法：将瓦片坐标转换为世界坐标
     cocos2d::Vec2 convertTileCoordToWorld(const cocos2d::Vec2& tileCoord, TMXTiledMap* tileMap);
