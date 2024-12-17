@@ -44,9 +44,11 @@ Stone::Stone(TMXTiledMap* tileMap, Layer* objectLayer, const Vec2& tile, StoneTy
 // 死亡动画
 void Stone::deathAnimation(){
 	// 播放碎裂动画
-	auto fadeOut = FadeOut::create(1.0f);
-	// 产生掉落物
-	generateDrops();
+	auto chopAction = Sequence::create(
+		FadeOut::create(1.0f),
+		nullptr
+	);
+	this->runAction(chopAction);
 }
 
 void Stone::generateDrops() {
@@ -65,7 +67,7 @@ void Stone::generateDrops() {
 		scene->addChild(dropLayer);
 	}
 	// 创建掉落物
-	auto stoneDrop = new StoneDrop(tilePosition, dropLayer, type);  // 使用树的瓦片坐标作为掉落物的生成位置
+	auto stoneDrop = new StoneDrop(tilePosition, dropLayer, type, tileMap);  // 使用树的瓦片坐标作为掉落物的生成位置
 	stoneDrop->generate();
 }
 

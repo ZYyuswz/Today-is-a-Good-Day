@@ -113,3 +113,20 @@ enum class Weather {
 // 树生长天数阈值
 #define TREE_GROWTH_THRESHOLD 5
 
+// 定义农作物的种类枚举
+enum class CropsType {
+    // 春季
+    Carrot,     // 胡萝卜
+    Garlic,     // 大蒜
+    Potato,     // 土豆
+    // 夏季
+    Corn,       // 玉米
+    Melon,      // 甜瓜
+    Tomato,     // 西红柿
+    // 秋季
+    Cabbage,    // 小白菜
+    Eggplant,   // 茄子
+    Pumpkin,    // 南瓜
+    // 酸菜
+    Withered
+};
