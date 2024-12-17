@@ -1,53 +1,29 @@
 /* ----- 实现树的相关功能 ----- */
 #pragma once
+#include "object.h"
+#include "drop.h"
 
-#include <string>
-#include "cocos2d.h" 
 USING_NS_CC;
 
-class Tree {
-public:
-    // 枚举表示树的阶段
-    enum class TreeStage {
-        Sapling,  // 树苗
-        Mature    // 大树
-    };
-    // 这个放到宏定义？
-    // 枚举表示树的种类
-    enum class TreeType {
-        Oak,  // 橡树
-        Pine  // 松树
-    };
-
-protected: // 派生类需要访问这些成员
-    int growthDays;              // 生长天数
-    int health;                  // 树的当前血量
-    int growthDays_threshold;    // 生长天数
-    TreeStage stage;             // 当前阶段
-    TreeType type;               // 树的种类
-    cocos2d::Sprite* sprite;     // 树的贴图
-
+class Tree : public GrowObject {
+private:
+    TreeType type; // 树的种类
 public:
     // 构造函数
-    Tree(TreeType type, TreeStage st = TreeStage::Sapling);
+    Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st = Stage::Childhood);
 
-    // 初始化函数
-    virtual void init();
+    // 更新树的贴图
+    void update();
 
-    // 更新生长天数（增加一天，并可能改变阶段）
-    void incrementGrowth();
+    // 在瓦片地图上随机生成 num 个树苗
+    static void randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, Stage stage);
 
-    virtual void growToMature();
+    // 静态方法：遍历objectLayer的所有子节点并调用update
+    static void updateAll(Layer* objectLayer);
 
-    // 播放被砍的动画
-    void playChopAnimation();
+    // 死亡动画
+    void deathAnimation() override;
 
-    // 减少血量
-    void reduceHealth(int damage);
-
-    // 判断树是否存活
-    bool isAlive() const;
-
-    // 析构函数
-    ~Tree();
+    // 产生掉落物
+    void generateDrops() override;
 };

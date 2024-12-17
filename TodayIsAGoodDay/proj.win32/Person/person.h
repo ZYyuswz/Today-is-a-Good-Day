@@ -36,8 +36,7 @@ protected:
 
 public:
     // 构造函数
-    Person(const std::string& name, const int& sex, const std::string& farmName, Scene* currentScene,
-        int level = 0, int HP = 0, int energy = 0, int money = 0);
+    Person();
     ~Person() { _sprite->setPosition(200, 200); }
     // 初始化函数
     virtual bool init();
@@ -101,6 +100,11 @@ public:
     // 键盘事件处理函数
     void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
     void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+
+    //初始化
+    void person_construction(const std::string& name, const int& sex, const std::string& farmName, Scene* currentScene,
+        int level = 0, int HP = 0, int energy = 0, int money = 0);
+
 };
 
 

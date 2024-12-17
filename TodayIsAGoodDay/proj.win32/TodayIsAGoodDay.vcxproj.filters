@@ -31,9 +31,6 @@
     <Filter Include="Classes\Cooperation">
       <UniqueIdentifier>{af47008e-1e6e-4491-a966-83b2b1280b00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Tools">
-      <UniqueIdentifier>{04b64301-bca4-4979-a9bc-9500500e773f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="win32\TotalTools">
       <UniqueIdentifier>{1292c293-2bbc-4946-ba1a-5ffb45d3511c}</UniqueIdentifier>
     </Filter>
@@ -60,9 +57,6 @@
     <ClCompile Include=".\Cooperation\cooperation.cpp">
       <Filter>Classes\Cooperation</Filter>
     </ClCompile>
-    <ClCompile Include=".\Control\daytime.cpp">
-      <Filter>Classes\Control</Filter>
-    </ClCompile>
     <ClCompile Include=".\Map\house.cpp">
       <Filter>Classes\Map</Filter>
     </ClCompile>
@@ -84,9 +78,6 @@
     <ClCompile Include=".\Map\plough.cpp">
       <Filter>Classes\Map</Filter>
     </ClCompile>
-    <ClCompile Include=".\Control\season.cpp">
-      <Filter>Classes\Control</Filter>
-    </ClCompile>
     <ClCompile Include=".\Setting\setting.cpp">
       <Filter>Classes\Setting</Filter>
     </ClCompile>
@@ -105,11 +96,23 @@
     <ClCompile Include="Map\tree.cpp">
       <Filter>Classes\Map</Filter>
     </ClCompile>
-    <ClCompile Include=".\Control\weather.cpp">
-      <Filter>Classes\Control</Filter>
-    </ClCompile>
     <ClCompile Include="totaltools.cpp">
       <Filter>win32\TotalTools</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\scene.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Time.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Map\drop.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Map\crops.cpp">
+      <Filter>Classes\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\global.cpp">
+      <Filter>Classes\Control</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +125,6 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Tools\Totaltools\totaltools.h">
-      <Filter>win32\TotalTools</Filter>
-    </ClInclude>
     <ClInclude Include="definition.h" />
     <ClInclude Include="Map\tree.h">
       <Filter>Classes\Map</Filter>
@@ -132,14 +132,33 @@
     <ClInclude Include="Map\map.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>
-    <ClInclude Include="totaltools.h">
-      <Filter>win32\TotalTools</Filter>
-    </ClInclude>
-    <ClInclude Include="Control\menu.h">
+    <ClInclude Include="Control\Time.h">
       <Filter>Classes\Control</Filter>
     </ClInclude>
-    <ClInclude Include="Control\GameMain.h">
-      <Filter>Classes\Control</Filter>
+    <ClInclude Include="Map\stone.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\object.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\drop.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\plough.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Map\crops.h">
+      <Filter>Classes\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\scene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Setting\setting.h">
+      <Filter>Classes\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\Totaltools\totaltools.h" />
+    <ClInclude Include="global.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

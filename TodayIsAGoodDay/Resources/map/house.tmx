@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
+ <tileset firstgid="1" name="farmhouse_tiles." tilewidth="16" tileheight="16" tilecount="240" columns="12">
+  <image source="farmhouse_tiles..png" width="192" height="320"/>
+ </tileset>
+ <layer id="1" name="floor" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzt0sEKgCAMgGF9qK4FHfNe94LqpFC9Py1oMJYWsYEXhe8Q2H7DrDHGFlEaK3dfcobc/dx3oLWk/fpDy54bUCn1cR7qEvg+JO1fsx0Ra1COkfZ7MBB8Pjcw0v4IpluqQU2MtO9BuGGfN9AMFrCSd7S+35N+SNjADg6jd/9vza9/QaP/tv7uK55OZ3wp3w==
+  </data>
+ </layer>
+ <layer id="2" name="wall" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzt1TkKwkAUgOGJoo24N8a1cQGxyin0Fl7DzsIraGu0dTmjv+RZziTwBkSZBx8Zwjx+UsWYMLaJUELZoWJRRU3Zr6OBAVpoooOunF3a2W7aU/Rj9KU/lOcYEzm7jMTUU7+II06e+3MsciyR4oIrzlhlu3ttPyl4944HnrjJu0TZ3yh2P7MO/dD/0X785f4OM2O2Nu//U5Rz5+DhG/55XlruG+Y=
+  </data>
+ </layer>
+ <layer id="4" name="bed" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMFhBLBDHDaD9mUCcNYD27wXi/QNo/0kgPj2A9o8C2gEAP6UEnw==
+  </data>
+ </layer>
+</map>
