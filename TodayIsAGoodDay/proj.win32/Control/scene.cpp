@@ -122,12 +122,12 @@ bool spring_manor::init() {
     if (visiablemood == SMALL_WINDOW)
     {
         //设置图缩放比例
-        scene_spring->setScale(1.0f);
+        scene_spring->setScale(SRING_MANOR_SMALL_SCALE);
 
         //获取当前屏幕大小
         Size screensize = Director::getInstance()->getVisibleSize();
         //设置进入的瓦片地图坐标
-        Vec2 entrence = Vec2(BEACH_ENTER_X, BEACH_ENTER_Y);
+        Vec2 entrence = Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y);
         // 获取地图的尺寸  
         Size mapSize = scene_spring->getMapSize();
         Size tileSize = scene_spring->getTileSize();
@@ -138,14 +138,16 @@ bool spring_manor::init() {
         Vec2 point_row;
 
         point_row.x = (screensize.width / 2) - screen_enterence.x;
-        point_row.y = (screensize.height) - screen_enterence.y;
+        point_row.y = (screensize.height / 2) - screen_enterence.y;
 
         scene_spring->setAnchorPoint(Vec2(0, 0));
-        scene_spring->setPosition(Vec2(0,0));
+        scene_spring->setPosition(point_row);
 
 
     }
 
+    //将地图和场景关联
+    MapManager::getInstance()->registerSceneMap(this, scene_spring);
 
     this->addChild(scene_spring);
 

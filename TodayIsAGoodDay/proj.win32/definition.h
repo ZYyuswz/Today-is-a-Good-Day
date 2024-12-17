@@ -29,6 +29,13 @@
 #define BEACH_ENTER_X 25
 #define BEACH_ENTER_Y 48
 
+//庄园场景相关宏定义
+//缩放比例
+//小窗口下
+#define SRING_MANOR_SMALL_SCALE 3.5f
+#define SPRING_MANOR_ENTER_X 44
+#define SPRING_MANOR_ENTER_Y 40
+
 
 // 定义每个季节的持续天数
 #define SEASON_LENGTH 28  // 每个季节持续28天
