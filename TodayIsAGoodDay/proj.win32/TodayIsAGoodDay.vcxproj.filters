@@ -157,8 +157,8 @@
       <Filter>Classes\Setting</Filter>
     </ClInclude>
     <ClInclude Include="Tools\Totaltools\totaltools.h" />
-    <ClInclude Include="global.h">
-      <Filter>Classes</Filter>
+    <ClInclude Include="Person\person.h">
+      <Filter>Classes\Person</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

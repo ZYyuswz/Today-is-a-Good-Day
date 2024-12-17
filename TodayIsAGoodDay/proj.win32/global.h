@@ -4,7 +4,7 @@
 
 //创建唯一主人公
 
-extern Person* leading_charactor;
+extern Person leading_charactor;
 
 
 //控制主角层

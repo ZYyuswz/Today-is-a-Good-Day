@@ -1,8 +1,10 @@
 /* ----- 实现主人公移动功能 ----- */
 /*详见开发者手册*/
 #include "person.h"
+#include "global.h"
 
 extern Person leading_charactor;
+
 const int ONE_CELL = 1.0f;
 
 Vec2 Person::convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, TMXTiledMap* tileMap) {
@@ -92,7 +94,7 @@ Animation* Person::createAnimations(const std::string& direction)
    
 }
 
-void Person::createAnimations()
+void Person::createAnimate()
 {
     _frontWalkAnimation = createAnimations("front");
     _backWalkAnimation = createAnimations("back");
@@ -108,112 +110,113 @@ void Person::createAnimations()
 void Person::PersonMove(float deltaX, float deltaY)
 {
     static int i = 0;
+    createAnimate();
     // 根据移动方向切换动画
     if (i++) {
         if (deltaX > 0)
         {
-            _sprite->runAction(Sequence::create(_rightWalkAnimate->clone(), NULL));
+            _sprite->stopAllActions();
+            _sprite->runAction(_rightWalkAnimate->clone());
         }
         else if (deltaX < 0)
         {
-            _sprite->runAction(Sequence::create(_leftWalkAnimate->clone(), NULL));
+            _sprite->stopAllActions();
+            _sprite->runAction(_leftWalkAnimate->clone());
         }
         else if (deltaY > 0)
         {
-            _sprite->runAction(Sequence::create(_backWalkAnimate->clone(), NULL));
+            _sprite->stopAllActions();
+            _sprite->runAction(_backWalkAnimate->clone());
         }
         else if (deltaY < 0)
         {
-            _sprite->runAction(Sequence::create(_frontWalkAnimate->clone(), NULL));
+            _sprite->stopAllActions();
+            _sprite->runAction(_frontWalkAnimate->clone());
         }
     }
     else {
         if (deltaX > 0)
         {
-
-            _sprite->runAction(Sequence::create(_rightWalkAnimate, NULL));
+            _sprite->stopAllActions();
+            _sprite->runAction(_rightWalkAnimate);
         }
         else if (deltaX < 0)
         {
-            _sprite->runAction(Sequence::create(_leftWalkAnimate, _leftWalkAnimate,nullptr));
+            _sprite->stopAllActions();
+            _sprite->runAction(_leftWalkAnimate);
         }
         else if (deltaY > 0)
         {
-            _sprite->runAction(Sequence::create(_backWalkAnimate, NULL));
+            _sprite->stopAllActions();
+            _sprite->runAction(_backWalkAnimate);
         }
         else if (deltaY < 0)
         {
-            _sprite->runAction(Sequence::create(_frontWalkAnimate, NULL));
+            _sprite->stopAllActions();
+            _sprite->runAction(_frontWalkAnimate);
         }
     }
-   
-    /*
-    auto currentScene = Director::getInstance()->getRunningScene();
-//    auto children = currentScene->getChildren();
-    TMXTiledMap* currentTiledMap= currentScene->getChildByName< TMXTiledMap* >("spring");
-    /*
-    for (auto child : children) {
-        currentTiledMap = dynamic_cast<TMXTiledMap*>(child);
-        if (currentTiledMap) {
-            CCLOG("Tile map found!");
-            break;
-        }
+    
+    
+    //找到当前地图
+    TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
+    if (currentMap)
+    {
+        CCLOG("Current map name: %s", currentMap->getMapSize().width);
     }
-    */
-    /*
-    Size mapSize = currentTiledMap->getContentSize(); // 瓦片地图的大小
+    else
+    {
+        CCLOG("No map found for the current scene.");
+    }
+    
+    Size mapSize = currentMap->getContentSize(); // 瓦片地图的大小
     Size visibleSize = Director::getInstance()->getVisibleSize(); // 屏幕的大小
 
     float minX = 0;
     float maxX = mapSize.width - visibleSize.width;
     float minY = 0;
     float maxY = mapSize.height - visibleSize.height;
-    */
+    
 
     // 计算新的位置
     cocos2d::Vec2 newPosition = this->getPosition()+ cocos2d::Vec2(deltaX, deltaY);
-
+    
 
     //判断是否可以移动
 //    if (!canMove(deltaX, deltaY,currentTiledMap))
 //        return;
 
     // 使用动作来平滑移动精灵
-    auto moveAction = cocos2d::MoveBy::create(0.4f, newPosition); // 0.1秒内移动到新位置
-    _sprite->runAction(moveAction);
+//    auto moveAction = cocos2d::MoveBy::create(0.4f, newPosition); // 0.1秒内移动到新位置
+//    _sprite->runAction(moveAction);
 
    
     
-    
-//    moveTileMap(newPosition, currentTiledMap);
+//        moveTileMap(newPosition, currentMap);
 
 }
 
 
-
-void Person::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+void Person::PersonStop(float deltaX, float deltaY)
 {
-    float moveDistance = ONE_CELL; // 每次移动的距离
+    _sprite->stopAllActions();
 
-    switch (keyCode)
+    if (deltaX > 0)
     {
-    case cocos2d::EventKeyboard::KeyCode::KEY_W:
-        PersonMove(0, moveDistance); // 向上移动
-        break;
-    case cocos2d::EventKeyboard::KeyCode::KEY_A:
-        PersonMove(-moveDistance, 0); // 向左移动
-        break;
-    case cocos2d::EventKeyboard::KeyCode::KEY_S:
-        PersonMove(0, -moveDistance); // 向下移动
-        break;
-    case cocos2d::EventKeyboard::KeyCode::KEY_D:
-        PersonMove(moveDistance, 0); // 向右移动
-        break;
-    default:
-        break;
+        _sprite->setTexture("/person/person_right_1.png");
+    }
+    else if (deltaX < 0)
+    {
+        _sprite->setTexture("/person/person_left_1.png");
+    }
+    else if (deltaY > 0)
+    {
+        _sprite->setTexture("/person/person_back_1.png");
+    }
+    else if (deltaY < 0)
+    {
+        _sprite->setTexture("/person/person_front_1.png");
     }
 }
-void Person::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
-{
-    
-}
+
+

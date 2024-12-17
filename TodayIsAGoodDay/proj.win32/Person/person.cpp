@@ -32,7 +32,8 @@ void Person::person_construction(const std::string& name, const int& sex, const 
         characterLayer->addChild(_sprite, 3);
     }
     init();
-
+    createAnimate();
+//    _sprite->runAction(_leftWalkAnimate);
 }
 bool Person::init()
 {
@@ -40,13 +41,7 @@ bool Person::init()
     {
         return false;
     }
-    //初始化键盘监听器
-    _keyboardListener = cocos2d::EventListenerKeyboard::create();
-    _keyboardListener->onKeyPressed = CC_CALLBACK_2(Person::onKeyPressed, this);
-    _keyboardListener->onKeyReleased = CC_CALLBACK_2(Person::onKeyReleased, this);
-
-    // 确保事件分发器正确获取
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(_keyboardListener, this);
+    
     return true;
 }
 
