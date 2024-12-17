@@ -114,7 +114,7 @@
     <ClCompile Include="Control\global.cpp">
       <Filter>Classes\Control</Filter>
     </ClCompile>
-  </ItemGroup>
+  </ItemGroup> 
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>win32</Filter>
