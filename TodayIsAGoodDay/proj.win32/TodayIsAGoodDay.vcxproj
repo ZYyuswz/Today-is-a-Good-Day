@@ -192,6 +192,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="Map\stone.h" />
     <ClInclude Include="Map\tree.h" />
     <ClInclude Include="Person\person.h" />
+    <ClInclude Include="tool.h" />
     <ClInclude Include="Tools\Totaltools\totaltools.h" />
     <ClInclude Include="Setting\setting.h" />
   </ItemGroup>

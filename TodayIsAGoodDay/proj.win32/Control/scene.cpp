@@ -19,7 +19,7 @@ bool first_to_manor()
 {
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
-    leading_charactor->person_construction("zy", 1, "zyh", spring_scene);
+    leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
     auto playerControlLayer = PlayerControlLayer::create();
     spring_scene->addChild(playerControlLayer);
 
@@ -98,13 +98,14 @@ bool beach::init() {
 //庄园春天初始化
 Scene* spring_manor::createScene()
 {
+    /*
     //创建场景
     auto scene_spring = Scene::create();
     //添加层
     auto layer = spring_manor::create();
     scene_spring->addChild(layer);
-
-    return scene_spring;
+    */
+    return spring_manor::create();
 }
 
 bool spring_manor::init() {

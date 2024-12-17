@@ -160,6 +160,9 @@
     <ClInclude Include="Person\person.h">
       <Filter>Classes\Person</Filter>
     </ClInclude>
+    <ClInclude Include="tool.h">
+      <Filter>Classes\Person</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
