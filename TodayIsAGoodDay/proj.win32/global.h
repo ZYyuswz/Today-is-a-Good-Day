@@ -6,6 +6,7 @@
 
 extern Person* leading_charactor;
 
+
 //控制主角层
 
 // 专门负责主角移动和键盘输入的层
@@ -31,3 +32,46 @@ private:
     float _playerSpeed;
 
 };
+
+
+
+//场景管理
+//获取当前场景和地图
+#ifndef __MAP_MANAGER_H__
+#define __MAP_MANAGER_H__
+
+/**
+ * MapManager 类：管理场景和地图的映射关系
+ */
+class MapManager
+{
+public:
+    // 获取单例实例
+    static MapManager* getInstance();
+
+    // 注册场景和地图的映射关系
+    void registerSceneMap(Scene* scene, TMXTiledMap* map);
+
+    // 获取当前场景的地图
+    TMXTiledMap* getCurrentMap();
+
+private:
+    // 构造函数和析构函数
+    MapManager();
+    ~MapManager();
+
+    // 场景切换事件回调
+    void onSceneChange(EventCustom* event);
+
+private:
+    // 单例实例
+    static MapManager* _instance;
+
+    // 当前场景
+    Scene* _currentScene;
+
+    // 场景和地图的映射关系
+    std::unordered_map<Scene*, TMXTiledMap*> _sceneMap;
+};
+
+#endif // __MAP_MANAGER_H__

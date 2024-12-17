@@ -1,4 +1,5 @@
 ﻿#include "ui/CocosGUI.h"
+#include"cocos2d.h"
 
 #include "menu.h"
 #include "definition.h"
@@ -8,7 +9,7 @@
 #include "./Person/person.h"
 #include"global.h"
 
-
+USING_NS_CC;
 //创建主人公
 Person* leading_charactor = new Person();
 
@@ -130,3 +131,68 @@ void PlayerControlLayer::onExit()
     }
     Layer::onExit();
 }
+
+
+
+MapManager* MapManager::_instance = nullptr;
+
+MapManager::MapManager() : _currentScene(nullptr)
+{
+    // 监听场景切换完成事件
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(Director::EVENT_AFTER_SET_NEXT_SCENE, CC_CALLBACK_1(MapManager::onSceneChange, this));
+}
+
+MapManager::~MapManager()
+{
+    // 移除事件监听
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(Director::EVENT_AFTER_SET_NEXT_SCENE);
+}
+
+MapManager* MapManager::getInstance()
+{
+    if (!_instance)
+    {
+        _instance = new MapManager();
+    }
+    return _instance;
+}
+
+void MapManager::registerSceneMap(Scene* scene, TMXTiledMap* map)
+{
+    _sceneMap[scene] = map;
+}
+
+TMXTiledMap* MapManager::getCurrentMap()
+{
+    auto currentScene = Director::getInstance()->getRunningScene();
+    if (currentScene)
+    {
+        auto it = _sceneMap.find(currentScene);
+        if (it != _sceneMap.end())
+        {
+            return it->second;
+        }
+    }
+    return nullptr;
+}
+
+void MapManager::onSceneChange(EventCustom* event)
+{
+    // 更新当前场景
+    _currentScene = Director::getInstance()->getRunningScene();
+}
+
+
+/*
+   使用以下方法在别的cpp中找到当前场景下的地图
+   TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
+    if (currentMap)
+    {
+        CCLOG("Current map name: %s", currentMap->getMapSize().width);
+    }
+    else
+    {
+        CCLOG("No map found for the current scene.");
+    } 
+
+*/
