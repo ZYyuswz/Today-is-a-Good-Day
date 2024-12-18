@@ -49,8 +49,8 @@ bool first_to_manor() {
     auto playerControlLayer = PlayerControlLayer::create();
     playerControlLayer->setPlayer(&leading_charactor);
     spring_scene->addChild(playerControlLayer);
-    GameTime* gametime = GameTime::getInstance();
-    if(gametime->getWeather()==Weather::Rainy)spring_scene->addChild(RainLayer(),RAINLAYER); //下雨场景实现示例
+    // GameTime* gametime = GameTime::getInstance();
+    //if(gametime->getWeather()==Weather::Rainy)spring_scene->addChild(RainLayer(),RAINLAYER); //下雨场景实现示例
     return true;
 }
 

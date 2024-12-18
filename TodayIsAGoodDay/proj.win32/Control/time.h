@@ -7,7 +7,7 @@ private:
     int year;        // 当前年份
     int day;         // 当前天数
     Season season;   // 当前季节 
-    Weather weather; // 当前天气 随机天气还没实现
+    Weather weather; // 当前天气
     int totalDays;   // 总天数
 
     // 单例模式：私有构造函数
