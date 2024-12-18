@@ -2,7 +2,7 @@
 /*详见开发者手册*/
 #include "person.h"
 #include "global.h"
-
+#include "totaltools.h"
 extern Person leading_charactor;
 
 //这两条应该是宏定义
@@ -14,13 +14,14 @@ const float SCALE_WORLD_TO_TILE = 16 * 3.5;
 const float HALF_TILED_WIDTH = 1024.0f / SCALE_WORLD_TO_TILE;
 const float HALF_TILED_HEIGHT = 576.0f / SCALE_WORLD_TO_TILE;
 
+/*
 Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition,const Vec2& Tiledposition) {
     Vec2 ScreenGap = worldPosition - Tiledposition;
     Vec2 TiledGap = ScreenGap / SCALE_WORLD_TO_TILE;
 //    Vec2 TiledMiddle(32.0f, 32.0f);   
     return TiledGap;
 }
-
+*/
 
 bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
 {
@@ -34,9 +35,12 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
     // 将目标位置转换为瓦片坐标
     cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap->getPosition());
 
+    int wallGID = 0, itemGID = 0;
     // 获取目标位置的瓦片 GID
-    int wallGID = _wallLayer->getTileGIDAt(tileCoord);
-    int itemGID = _itemLayer->getTileGIDAt(tileCoord);
+    if (_wallLayer != nullptr)
+        wallGID = _wallLayer->getTileGIDAt(tileCoord);
+    if (_itemLayer != nullptr)
+        itemGID = _itemLayer->getTileGIDAt(tileCoord);
 
     // 如果目标位置是 wall 或 item，则不能移动
     if (wallGID != 0 || itemGID != 0)
@@ -46,6 +50,8 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
 
     return true;
 }
+
+
 
 void Person::moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap)
 {
@@ -197,12 +203,6 @@ void Person::PersonMove(float deltaX, float deltaY)
     else {
         moveTileMap(newTiledPosition, currentMap);
     }
-   
-    
-
-   
-    
-        
 
 }
 
