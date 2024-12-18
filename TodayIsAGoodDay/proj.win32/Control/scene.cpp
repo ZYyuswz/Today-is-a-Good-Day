@@ -22,7 +22,7 @@ bool first_to_manor()
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
     leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
     auto playerControlLayer = PlayerControlLayer::create();
-    playerControlLayer->setPlayer(leading_charactor);
+    playerControlLayer->setPlayer(&leading_charactor);
     spring_scene->addChild(playerControlLayer);
 
     return true;
@@ -38,7 +38,7 @@ bool manor_to_towm()
         auto town_scene = spring_town::createScene();
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
         auto playerControlLayer = PlayerControlLayer::create();
-        playerControlLayer->setPlayer(leading_charactor);
+        playerControlLayer->setPlayer(&leading_charactor);
         town_scene->addChild(playerControlLayer);
 
         return true;
