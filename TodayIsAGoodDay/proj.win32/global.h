@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "./Person/person.h"
+
+#include"Person/person.h"
 
 //创建唯一主人公
 
@@ -56,6 +57,7 @@ public:
 
     // 获取当前场景的地图
     TMXTiledMap* getCurrentMap();
+    Scene* getCurrentScene();
 
 private:
     // 构造函数和析构函数
