@@ -43,3 +43,19 @@ Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledpositio
 
     return Vec2(tileX, tileY);
 }
+
+/*工具：随机生成一组伯努利分布的离散变量
+* 传入参数：
+* double p 生成1的概率
+* 返回值：
+* 随机生成的一个bool值
+*/
+bool random_bernoulli(double p) {
+	// 创建一个随机数生成器
+	static std::random_device rd;  // 用于获取随机种子
+	static std::mt19937 gen(rd()); // 使用Mersenne Twister算法生成随机数
+	std::bernoulli_distribution dist(p); // 创建一个伯努利分布，概率为p
+
+	// 返回一个服从伯努利分布的随机数
+	return dist(gen);
+}

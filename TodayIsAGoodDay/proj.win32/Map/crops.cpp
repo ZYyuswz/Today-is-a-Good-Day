@@ -6,7 +6,7 @@ void Crops::update() {
     Season current_season = GameTime::getInstance()->getSeason();
     // 如果当前季节与作物季节不匹配
     if (current_season != cropsSeason) {
-        // 获取 ObjectLayer
+        // 获取 ObjectLayer 改
         auto objectLayer = dynamic_cast<Layer*>(Director::getInstance()->getRunningScene()->getChildByName("ObjectLayer"));
         if (!objectLayer) {
             CCLOG("ObjectLayer not found in the scene!");
@@ -21,7 +21,7 @@ void Crops::update() {
         return; // 提前返回，避免继续执行生长逻辑
     }
     // 如果季节匹配，且耕地浇水，继续生长 
-    // 获取 ObjectLayer
+    // 获取 ploughLayer 改
     auto ploughLayer = dynamic_cast<Layer*>(Director::getInstance()->getRunningScene()->getChildByName("PloughLayer"));
     if (!ploughLayer) {
         CCLOG("PloughLayer not found in the scene!");
@@ -49,21 +49,37 @@ void Crops::update() {
         if (isFertilized) {
             // 如果施肥，生长天数增加 2
             growthDays += 2;
-            CCLOG("Crop grows faster due to fertilization! Growth days += 2.");
+            // CCLOG("Crop grows faster due to fertilization! Growth days += 2.");
         }
         else {
             // 如果只浇水，生长天数增加 1
             growthDays++;
-            CCLOG("Crop grows normally. Growth days += 1.");
+            // CCLOG("Crop grows normally. Growth days += 1.");
         }
         // 检查是否需要更新阶段
         for (size_t i = 0; i < growthStageThreshold.size(); ++i) {
             if (growthDays >= growthStageThreshold[i]) {
                 stage = static_cast<Stage>(i + 1);  // 更新阶段
                 this->setSpriteFrame(stageImages[i]);
-                CCLOG("Crop stage updated to stage %d.", stage);
+                // CCLOG("Crop stage updated to stage %d.", stage);
                 break;
             }
+        }
+    }
+}
+
+// 静态方法：遍历objectLayer的所有子节点并调用update
+void Crops::updateAll(Layer* objectLayer) {
+    if (!objectLayer) {
+        CCLOG("objectLayer is null!");
+        return;
+    }
+    // 遍历 objectLayer 的所有子节点
+    for (auto child : objectLayer->getChildren()) {
+        // 检查子节点是否是 Crop 类的实例
+        Crops* crops = dynamic_cast<Crops*>(child);
+        if (crops) {
+            crops->update();  // 调用 update() 方法
         }
     }
 }

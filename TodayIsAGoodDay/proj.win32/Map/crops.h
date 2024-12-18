@@ -36,6 +36,9 @@ public:
 
     // 扣血
     virtual void reduceHealth(int damage);
+
+    // 静态方法：遍历objectLayer的所有子节点并调用update
+    static void updateAll(Layer* objectLayer);
 };
 
 // 酸菜类
