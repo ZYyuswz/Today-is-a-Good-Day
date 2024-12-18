@@ -12,8 +12,67 @@ const int INIT_MONEY = 100;
 const int INIT_PX = 0;
 const int INIT_PY = 0;
 
+const int AXE = 100;//斧头，砍树用
+const int HAMMER = 101;//榔头，凿石头
+const int DRAFT = 102; //锄头，锄地用
+const int KETTLE = 103;//水壶，浇花
+const int FISHING_POLE = 104;//钓鱼竿
 
-class Person : public cocos2d::Node
+const int BAG_LEFT_LOCATION = 500;
+const int BAG_UP_LOCATION = 1000;
+const int BAG_RIGHT_LOCATION = 1500;
+const int BAG_CELL = 100;
+
+struct item
+{
+    std::string name;
+    int num;
+    item(const std::string itemName, const int itemNum = 1) :name(itemName), num(itemNum) {}
+};
+
+
+class Bag : public Node
+{
+public:
+    // 构造函数
+    Bag();
+
+    //监听器，按E打开背包
+    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+
+    // 添加工具或材料
+    void addItem(const item& MyItem);
+
+    // 移除工具或材料
+    void removeItem(const item& MyItem);
+
+    // 显示背包内容
+    void displayBag();
+
+    //关闭背包
+    void closeBag();
+
+    // 更新物品信息
+    void updateItemInfo(cocos2d::Vec2 position);
+
+private:
+    //物品列表
+    std::vector<item> _items;
+
+    //物品精灵列表
+    std::vector<cocos2d::Sprite*> _itemSprites;
+
+    //物品标签，只有一个，根据鼠标移动显示
+    cocos2d::Label* _itemInfoLabel;
+    int _selectedItemIndex;
+
+    bool isOpen;
+
+    cocos2d::EventListenerKeyboard* _keyboardListener;  //键盘监听器
+};
+
+
+class Person// : public cocos2d::Node
 {
 protected:
     std::string _name;
@@ -24,8 +83,7 @@ protected:
     int _HP;                                                // 玩家生命值
     int _money;
     int experience_all;
-
-    cocos2d::Sprite* _sprite;   //人物精灵
+    
 
     //移动动画
     cocos2d::Animation* _frontWalkAnimation;
@@ -40,7 +98,10 @@ protected:
 
     cocos2d::EventListenerKeyboard* _keyboardListener;  //键盘监听器
 
-public:
+public:    
+    Sprite* _sprite;   //人物精灵
+    Bag MyBag;
+
     // 构造函数
     Person();
     //   ~Person() { _sprite->setPosition(200, 200); }
@@ -111,5 +172,6 @@ public:
         int level = 0, int HP = 0, int energy = 0, int money = 0);
 
     Vec2 getTiledPosition();
-
+    Vec2 getWorldPosition();
 };
+

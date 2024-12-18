@@ -11,6 +11,17 @@
 //图片显示比例宏定义
 #define ROW_PICTURE 1.0f   //原图片大小
 
+// 人物
+// 人物移动像素点
+#define MOVE_DISTANCE 2.0f
+enum class DIRECTION {
+    LEFT,  //左
+    RIGHT,  //右
+    UP,    //上
+    DOWN   //下
+};
+
+
 //menu相关宏定义
 #define POS_NEW_X 4
 #define POS_NEW_Y 3
