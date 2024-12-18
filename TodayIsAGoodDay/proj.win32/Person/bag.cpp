@@ -3,9 +3,10 @@
 #include <string>
 #include "person.h"
 #include <iostream>
+#include "definition.h"
 
 const int AXE = 100;//斧头，砍树用
-const int hammer = 101;//榔头，凿石头
+const int HAMMER = 101;//榔头，凿石头
 const int DRAFT = 102; //锄头，锄地用
 const int KETTLE = 103;//水壶，浇花
 const int FISHING_POLE = 104;//钓鱼竿

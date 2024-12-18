@@ -52,9 +52,6 @@ bool first_to_manor()
 {
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
-    TMXTiledMap* map = getMapFromScene(spring_scene);
-    
-
     leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
     auto playerControlLayer = PlayerControlLayer::create();
     playerControlLayer->setPlayer(&leading_charactor);
@@ -155,6 +152,7 @@ bool beach::init() {
 Scene* spring_manor::createScene()
 {
     return spring_manor::create();
+
     /*
     //创建场景
     auto scene_spring = Scene::create();
@@ -164,6 +162,7 @@ Scene* spring_manor::createScene()
 
     return scene_spring;
     */
+
 }
 
 bool spring_manor::init() {

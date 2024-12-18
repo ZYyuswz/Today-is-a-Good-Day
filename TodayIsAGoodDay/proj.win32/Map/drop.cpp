@@ -10,7 +10,8 @@ int Drop::generateRandomCount(int min, int max) {
 }
 
 // 构造函数
-Drop::Drop(const Vec2& position, Layer* targetLayer) : dropPosition(position), targetLayer(targetLayer) {}
+Drop::Drop(const Vec2& position, Layer* targetLayer, TMXTiledMap* tileMap)
+    : dropPosition(position), targetLayer(targetLayer) ,tileMap(tileMap){}
 
 // 添加掉落物
 void Drop::addDropItem(const std::string& itemType, const std::string& texturePath) {
@@ -24,7 +25,6 @@ void Drop::addDropItem(const std::string& itemType, const std::string& texturePa
 
 // 生成掉落物
 void Drop::generate() {
-    auto spriteFrameCache = SpriteFrameCache::getInstance();
     if (!targetLayer) {
         CCLOG("Drop object has no target layer!");
         return;
@@ -42,8 +42,12 @@ void Drop::generate() {
         Vec2 offset(dist(gen), dist(gen));
         // 设置图片
         dropSprite->setSpriteFrame(item.texturePath);
+        // 获取像素坐标
+        const Size mapSize = tileMap->getMapSize();
+        const Size tileSize = tileMap->getTileSize();
+        Vec2 pixelPosition = getTilePixelPosition(dropPosition, tileSize, mapSize, TileCorner::CENTER);
         // 设置掉落位置
-        dropSprite->setPosition(dropPosition + offset);
+        dropSprite->setPosition(pixelPosition + offset);
         // 使用 ID 设置标记
         dropSprite->setTag(item.id);
         // 将掉落物添加到目标层
@@ -68,23 +72,25 @@ void Drop::removeDropItemById(int id) {
 }
 
 // TreeDrop 构造函数
-TreeDrop::TreeDrop(const Vec2& position, Layer* targetLayer) : Drop(position, targetLayer) {
+TreeDrop::TreeDrop(const Vec2& position, Layer* targetLayer, TMXTiledMap* tileMap)
+    : Drop(position, targetLayer, tileMap) {
     // 随机生成 1 到 5 个 wood
     int woodCount = generateRandomCount(1, 5);
     // 随机生成 0 到 1 个 树苗
-    int saplingCount = generateRandomCount(0, 1);
+    int seedCount = generateRandomCount(0, 1);
     // 添加随机数量的 wood 掉落物
     for (int i = 0; i < woodCount; i++) {
-        addDropItem("wood", "wood.png");
+        addDropItem("wood_drop", "wood_drop.png");
     }
-    // 添加随机数量的 树苗 掉落物
-    for (int i = 0; i < saplingCount; i++) {
-        addDropItem("sapling", "sapling.png");
+    // 添加随机数量的种子掉落物
+    for (int i = 0; i < seedCount; i++) {
+        addDropItem("seed_drop", "seed_drop.png");
     }
 }
 
 // StoneDrop 构造函数
-StoneDrop::StoneDrop(const Vec2& position, Layer* targetLayer, StoneType type) : Drop(position, targetLayer) {
+StoneDrop::StoneDrop(const Vec2& position, Layer* targetLayer, StoneType type, TMXTiledMap* tileMap) 
+    : Drop(position, targetLayer, tileMap) {
     // 获取掉落物的类型和贴图路径
     auto it = stoneDropMap.find(type);
     if (it == stoneDropMap.end()) {
@@ -108,4 +114,42 @@ const std::unordered_map<StoneType, std::pair<std::string, std::string>> StoneDr
     {StoneType::Silver, {"silver_drop", "silver_drop.png"}},
     {StoneType::Gold, {"gold_drop", "gold_drop.png"}},
     {StoneType::Coal, {"coal_drop", "coal_drop.png"}}
+};
+
+
+// CropsDrop 构造函数
+CropsDrop::CropsDrop(const Vec2& position, Layer* targetLayer, CropsType type, TMXTiledMap* tileMap) 
+    : Drop(position, targetLayer, tileMap) {
+    // 获取掉落物的类型和贴图路径
+    auto it = cropsDropMap.find(type);
+    if (it == cropsDropMap.end()) {
+        CCLOG("Invalid StoneType: %d", static_cast<int>(type));
+        return;
+    }
+    const std::string& itemType = it->second.first;
+    const std::string& texturePath = it->second.second;
+    // 随机生成掉落物数量
+    int count = generateRandomCount(2, 4);
+    // 添加随机数量的掉落物
+    for (int i = 0; i < count; i++) {
+        addDropItem(itemType, texturePath);
+    }
+}
+
+// 农作物类型到掉落物类型和贴图路径的映射表
+const std::unordered_map<CropsType, std::pair<std::string, std::string>> CropsDrop::cropsDropMap = {
+    // 春季作物
+    {CropsType::Carrot, {"carrot_drop", "carrot_drop.png"}},
+    {CropsType::Garlic, {"garlic_drop", "garlic_drop.png"}},
+    {CropsType::Potato, {"potato_drop", "potato_drop.png"}},
+    // 夏季作物
+    {CropsType::Corn, {"corn_drop", "corn_drop.png"}},
+    {CropsType::Melon, {"melon_drop", "melon_drop.png"}},
+    {CropsType::Tomato, {"tomato_drop", "tomato_drop.png"}},
+    // 秋季作物
+    {CropsType::Cabbage, {"cabbage_drop", "cabbage_drop.png"}},
+    {CropsType::Eggplant, {"eggplant_drop", "eggplant_drop.png"}},
+    {CropsType::Pumpkin, {"pumpkin_drop", "pumpkin_drop.png"}},
+    // 酸菜
+    {CropsType::Withered, {"", ""}}
 };

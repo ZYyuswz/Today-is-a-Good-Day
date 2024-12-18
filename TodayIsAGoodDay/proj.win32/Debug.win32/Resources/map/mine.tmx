@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="1">
+ <tileset firstgid="1" name="mine." tilewidth="16" tileheight="16" tilecount="288" columns="16">
+  <image source="mine..png" width="256" height="288"/>
+ </tileset>
+ <layer id="1" name="floor" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztlM0NwjAMhRPKArRMAEzd9g5puQMT8DsBMAFwARbgRWBRRWnsIiSQwNJ3cZL3HMetUt8X+Yf9zQ/7p+ref8kbmBqywFrobrRegrFwL1EwnilTA+XP4AKuTL2kWQS8bb4FItB+5HLGX2ucAZHm/cmb+uXbE4MEdIX378A3BonQv2Q0e6APBmAk8JfOi80PG2hOwBTM3ujfRHMOFmDZ0N83L1JNd+azGj3SrM7xCqzBJlAb1ycT0PNF9Vvdgh3Yv+jtarp6of22RwdwBCfF/1u4MI4ed0bab4m3T/Mfz7gB46SY5w==
+  </data>
+ </layer>
+ <layer id="5" name="unwalk_floor" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFa9BoWoOZA2w/OliJRo8k+9HtpKcbcNk1UPEwFMFKHOxRMAoGO6A0vR6ngpnkugGb3fRyAz67cZk5WjYgAAD6PBDY
+  </data>
+ </layer>
+ <layer id="3" name="exit" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAEZ7GIjYJRMApGwSgYBaNgFAwXAAAuZQDO
+  </data>
+ </layer>
+ <layer id="4" name="entrance" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMAqGN1g30A4YBYMOAABypwCv
+  </data>
+ </layer>
+ <layer id="2" name="wall" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJy9lLtKA0EUhqdR8QFUfAAVH0AtY+MNtfSGoCKIiqA23lBDQKOdCmqr26S3SZ8mlilNyjyK35CzMJkkczHggY8Zdv75/50zy2aUUhmYhTmYV41agC3YlvV2aP0i9EAv9MESLEO/jPZ66rlj+MyIfg3WJX8DjuX5qZWr9aui34QBGIQhuIN7GDbm5rr2PLE8V0S/DweSfwhZeZ6z8vOwK/ojGIFRGINXeINxY26uZ2Wv6bkn+gu4lPwreJLnL1b+O5yL/homYBKm4AZujdFe157PlucZPMCjaq4P+ITEyi900IdUO8+8Z499fp8+pHIRfolq7X+3ZZ7J52efv9BB982xqozVxtxZSYBfO62rX/UATVovEdovFdb/mPwkwC+tkgrrf0y+eX5f/yv8LrnTaU0NKo1Xaqki9/+X8xc92tCKyTfvtKz836uv9LdfNvKZ112eJdV8p928g52d8uPwLEbqY7Ndnq49um/pP8RFTUZXdifPkD3/xS9o4ZPI
+  </data>
+ </layer>
+</map>
