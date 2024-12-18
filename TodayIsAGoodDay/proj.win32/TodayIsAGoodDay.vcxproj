@@ -157,10 +157,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include=".\Cooperation\cooperation.cpp" />
     <ClCompile Include=".\Control\GameMain.cpp" />
     <ClCompile Include=".\Map\house.cpp" />
-
+    <ClCompile Include="Control\global.cpp" />
     <ClCompile Include="Control\scene.cpp" />
     <ClCompile Include="Control\Time.cpp" />
-
     <ClCompile Include="main.cpp" />
     <ClCompile Include=".\Map\map.cpp" />
     <ClCompile Include=".\Control\menu.cpp" />
@@ -181,10 +180,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
-
     <ClInclude Include="Control\scene.h" />
     <ClInclude Include="Control\Time.h" />
-
     <ClInclude Include="definition.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Map\crops.h" />
@@ -194,11 +191,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="Map\plough.h" />
     <ClInclude Include="Map\stone.h" />
     <ClInclude Include="Map\tree.h" />
-
+    <ClInclude Include="Person\person.h" />
+    <ClInclude Include="tool.h" />
     <ClInclude Include="Tools\Totaltools\totaltools.h" />
-
     <ClInclude Include="Setting\setting.h" />
-
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">

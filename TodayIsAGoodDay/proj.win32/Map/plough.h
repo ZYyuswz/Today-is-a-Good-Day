@@ -23,6 +23,9 @@ public:
     void restore();
     // 删除耕地
     void destroy();
+    // 获取瓦片坐标
+    Vec2 getTilePosition() const { return tilePosition; }
+    LandState getState() const { return state; }
     // 静态方法：遍历ploughLayer的所有子节点并调用update()
     static void updateAll(Layer* ploughLayer);
 };

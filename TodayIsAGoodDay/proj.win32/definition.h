@@ -29,6 +29,18 @@
 #define BEACH_ENTER_X 25
 #define BEACH_ENTER_Y 48
 
+//庄园场景相关宏定义
+//缩放比例
+//小窗口下
+#define SRING_MANOR_SMALL_SCALE 3.5f
+#define SPRING_MANOR_ENTER_X 44
+#define SPRING_MANOR_ENTER_Y 40
+
+//小镇场景相关宏定义
+#define TOWN_SMALL_SCALE 3.5f
+#define MANOR_TO_TOWN_X 0
+#define MANOR_TO_TOWN_Y 27
+
 
 // 定义每个季节的持续天数
 #define SEASON_LENGTH 28  // 每个季节持续28天
@@ -101,3 +113,20 @@ enum class Weather {
 // 树生长天数阈值
 #define TREE_GROWTH_THRESHOLD 5
 
+// 定义农作物的种类枚举
+enum class CropsType {
+    // 春季
+    Carrot,     // 胡萝卜
+    Garlic,     // 大蒜
+    Potato,     // 土豆
+    // 夏季
+    Corn,       // 玉米
+    Melon,      // 甜瓜
+    Tomato,     // 西红柿
+    // 秋季
+    Cabbage,    // 小白菜
+    Eggplant,   // 茄子
+    Pumpkin,    // 南瓜
+    // 酸菜
+    Withered
+};
