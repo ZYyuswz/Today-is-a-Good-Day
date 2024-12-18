@@ -25,27 +25,21 @@ Vec2 tile_change_screen(Size mapsize, Size tilesize, Vec2 original,float scale =
 
 //工具：将鼠标点击的位置转化成瓦片坐标
 /* 传入参数：
-*  const Vec2& mousePos：鼠标点击位置的屏幕像素坐标
-*  const Vec2& mapCenter： 屏幕中心位置的瓦片坐标
-*  float scale： 缩放比例
+*  const Vec2& worldPosition：鼠标点击位置的屏幕像素坐标
+*  const Vec2& Tiledposition： 屏幕锚点的像素坐标
 * 返回值：
 * vec2类型：瓦片坐标
 */
-Vec2 screenToTileCoords(const Vec2& mousePos, const Vec2& mapCenter, float scale)
-{
-	// 先计算鼠标点击坐标相对于屏幕中心坐标的位置
-	Vec2 delta_pixel = (mousePos - mapCenter * TILESIZE) / scale;// 考虑缩放比例
-	// 计算瓦片坐标
-	int tileX = mapCenter.x + static_cast<int>(delta_pixel.x / TILESIZE);
-	int tileY = mapCenter.y + static_cast<int>(delta_pixel.y / TILESIZE);
-	// 检查余数，向上取整
-	if (static_cast<int>(delta_pixel.x) % static_cast<int>(TILESIZE) != 0)
-	{
-		tileX += 1; // 向上取整
-	}
-	if (static_cast<int>(delta_pixel.y) % static_cast<int>(TILESIZE) != 0)
-	{
-		tileY += 1; // 向上取整
-	}
-	return Vec2(tileX, tileY);
+Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledposition) {
+    // 计算屏幕坐标与瓦片地图位置的差值
+    Vec2 ScreenGap = worldPosition - Tiledposition;
+
+    // 将差值转换为瓦片坐标
+    Vec2 TiledGap = ScreenGap / (BEACH_SMALL_SCALE * TILESIZE);
+
+    // 将结果转换为 int
+    int tileX = static_cast<int>(TiledGap.x);
+    int tileY = static_cast<int>(TiledGap.y);
+
+    return Vec2(tileX, tileY);
 }

@@ -31,9 +31,6 @@
     <Filter Include="Classes\Cooperation">
       <UniqueIdentifier>{af47008e-1e6e-4491-a966-83b2b1280b00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="win32\TotalTools">
-      <UniqueIdentifier>{1292c293-2bbc-4946-ba1a-5ffb45d3511c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,9 +93,6 @@
     <ClCompile Include="Map\tree.cpp">
       <Filter>Classes\Map</Filter>
     </ClCompile>
-    <ClCompile Include="totaltools.cpp">
-      <Filter>win32\TotalTools</Filter>
-    </ClCompile>
     <ClCompile Include="Control\scene.cpp">
       <Filter>Classes\Control</Filter>
     </ClCompile>
@@ -114,7 +108,10 @@
     <ClCompile Include="Control\global.cpp">
       <Filter>Classes\Control</Filter>
     </ClCompile>
-  </ItemGroup> 
+    <ClCompile Include="totaltools.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>win32</Filter>
@@ -125,7 +122,6 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="definition.h" />
     <ClInclude Include="Map\tree.h">
       <Filter>Classes\Map</Filter>
     </ClInclude>
@@ -156,12 +152,21 @@
     <ClInclude Include="Setting\setting.h">
       <Filter>Classes\Setting</Filter>
     </ClInclude>
-    <ClInclude Include="Tools\Totaltools\totaltools.h" />
-    <ClInclude Include="Person\person.h">
-      <Filter>Classes\Person</Filter>
+    <ClInclude Include="Control\GameMain.h">
+      <Filter>Classes\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\menu.h">
+      <Filter>Classes\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="definition.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="totaltools.h">
+      <Filter>win32</Filter>
     </ClInclude>
     <ClInclude Include="tool.h">
       <Filter>Classes\Person</Filter>
+
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

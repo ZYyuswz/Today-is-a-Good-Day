@@ -29,7 +29,7 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     // 将精灵的图像上下颠倒
     this->setFlippedY(true);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, -0.01f));
+    this->setAnchorPoint(Vec2(0.44f, -0.01f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层

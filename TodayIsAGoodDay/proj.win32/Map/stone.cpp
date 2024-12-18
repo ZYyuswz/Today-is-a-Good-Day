@@ -36,8 +36,8 @@ Stone::Stone(TMXTiledMap* tileMap, Layer* objectLayer, const Vec2& tile, StoneTy
 	// 设置石头的位置
 	this->setPosition(pixelPosition);
 	// 设置石头的锚点为中心
-	this->setAnchorPoint(Vec2(0.5f, 0.5f));
-	// 将石头添加到物体层
+	this->setAnchorPoint(Vec2(0.42f, 0.5f));
+	// 将石头添加到物品层
 	objectLayer->addChild(this);
 }
 
