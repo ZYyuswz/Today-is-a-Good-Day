@@ -27,7 +27,7 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     const Size tileSize = tileMap->getTileSize();
     Vec2 pixelPosition = getTilePixelPosition(tilePosition, tileSize, mapSize, TileCorner::BOTTOM_CENTER);
     // 将精灵的图像上下颠倒
-    this->setFlippedY(true);
+    this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
     this->setAnchorPoint(Vec2(0.44f, -0.01f));
     // 设置精灵的位置
@@ -215,7 +215,7 @@ void Tree::updateAll(Layer* objectLayer) {
         CCLOG("objectLayer is null!");
         return;
     }
-    // 遍历 ploughLayer 的所有子节点
+    // 遍历 objectLayer 的所有子节点
     for (auto child : objectLayer->getChildren()) {
         // 检查子节点是否是 Tree 类的实例
         Tree* tree = dynamic_cast<Tree*>(child);
