@@ -42,12 +42,14 @@ void Person::person_construction(const std::string& name, const int& sex, const 
 }
 bool Person::init()
 {
+    /*
     if (!Node::init())
     {
         return false;
     }
-
+    */
     return true;
+    
 }
 
 void Person::decreaseHP(const int attack)
@@ -72,6 +74,11 @@ Vec2 Person::getTiledPosition()
     Vec2 PersonWP = _sprite->getPosition();
     Vec2 MapTP = MapManager::getInstance()->getCurrentMap()->getPosition();
     return convertWorldToTileCoord(PersonWP, MapTP);
+}
+
+Vec2 Person::getWorldPosition()
+{
+    return _sprite->getPosition();
 }
 
 void Person::levelUP()

@@ -14,6 +14,7 @@ USING_NS_CC;
 Person leading_charactor;
 const float MOVE_DISTANCE = 56.0f;
 
+
 bool PlayerControlLayer::init() {
     if (!Layer::init())
     {
@@ -53,7 +54,8 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
-            leading_charactor.PersonMove(-MOVE_DISTANCE, 0);
+           leading_charactor.PersonMove(-MOVE_DISTANCE, 0);
+//            leading_charactor.MyBag.displayBag();
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = true;
@@ -113,7 +115,7 @@ void PlayerControlLayer::onMouseDown(Event* event)
         Vec2 mousePos = Vec2(mouseEvent->getCursorX(), mouseEvent->getCursorY());
 
         // 获取主角当前位置
-        Vec2 playerPos = _player->getPosition();
+        Vec2 playerPos = _player->getWorldPosition();
 
         /*
         * 鼠标如果也想移动人物
@@ -140,7 +142,7 @@ void PlayerControlLayer::onMouseDown(Event* event)
 void PlayerControlLayer::update(float dt) {
     float moveDistance = 1; // 每次移动的距离
     if (_player == nullptr) return;
-    Vec2 playerPos = _player->getPosition();
+    Vec2 playerPos = _player->getWorldPosition();
     Vec2 moveDir = Vec2::ZERO;
     if (_moveLeft) {
         moveDir.x -= 1.0f;
@@ -162,7 +164,7 @@ void PlayerControlLayer::update(float dt) {
     if (moveDir != Vec2::ZERO) {
         moveDir.normalize(); // 单位化方向向量
         playerPos += moveDir * _playerSpeed * dt;
-        _player->setPosition(playerPos);
+        _player->_sprite->setPosition(playerPos);
     }
 }
 
