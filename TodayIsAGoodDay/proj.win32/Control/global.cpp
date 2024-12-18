@@ -11,8 +11,8 @@
 
 USING_NS_CC;
 //创建主人公
-Person* leading_charactor = new Person();
-
+Person leading_charactor;
+const float MOVE_DISTANCE = 56.0f;
 
 bool PlayerControlLayer::init() {
     if (!Layer::init())
@@ -53,19 +53,19 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
-            _player->PersonMove(-1, 0);
+            leading_charactor.PersonMove(-MOVE_DISTANCE, 0);
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = true;
-            _player->PersonMove(-1, 0);
+            leading_charactor.PersonMove(MOVE_DISTANCE, 0);
             break;
         case EventKeyboard::KeyCode::KEY_W:
             _moveUp = true;
-            _player->PersonMove(-1, 0);
+            leading_charactor.PersonMove(0, MOVE_DISTANCE);
             break;
         case EventKeyboard::KeyCode::KEY_S:
             _moveDown = true;
-            _player->PersonMove(-1, 0);
+            leading_charactor.PersonMove(0, -MOVE_DISTANCE);
             break;
         default:
             break;
@@ -80,15 +80,19 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = false;
+            leading_charactor.PersonStop(-10, 0);
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = false;
+            leading_charactor.PersonStop(10, 0);
             break;
         case EventKeyboard::KeyCode::KEY_W:
             _moveUp = false;
+            leading_charactor.PersonStop(0, 10);
             break;
         case EventKeyboard::KeyCode::KEY_S:
             _moveDown = false;
+            leading_charactor.PersonStop(0, -10);
             break;
         default:
             break;
