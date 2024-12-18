@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
+ <tileset firstgid="1" name="mine." tilewidth="16" tileheight="16" tilecount="288" columns="16">
+  <image source="mine..png" width="256" height="288"/>
+ </tileset>
+ <layer id="1" name="floor" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzllFsOgjAQRVtxA4IrUFcN/Cviv7oCnytQV6D+qBvwNtCkNrQzNUQ/mOSEpI97ytAgxGctrOevS3nzP/oLg675lTMVVf9zxhkKB5lnzpVpzpei+v7c9Yo54UyJM+jxB3iCF8Of1l6XW433QAT69Zirr3qPlNgDIkn7tdvsl50XgwQMme8/gDcGCdNfEpkjMAYTMGP4Q+7LNCBzCVZg3aI/JHMDtmAX6G+6L9xM+85njjydad7jPTiAo+dsVJ8KT55vrTr3CZzBpSW/nddUZs+v4Abugv63uPLMTDOPsz4Eqr7Z05V6AyQMqMs=
+  </data>
+ </layer>
+ <layer id="3" name="exit" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAEZ7GIjYJRMApGwSgYBaNgFAwXAAAuZQDO
+  </data>
+ </layer>
+ <layer id="4" name="entrance" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMAqGN1g30A4YBYMOAABypwCv
+  </data>
+ </layer>
+ <layer id="2" name="wall" width="32" height="18">
+  <data encoding="base64" compression="zlib">
+   eJy9lLtKA0EUhqdR8QFUfAAVH0AtY+MNtfSGoCKIiqA23lBDQKOdCmqr26S3SZ8mlilNyjyK35CzMJkkczHggY8Zdv75/50zy2aUUhmYhTmYV41agC3YlvV2aP0i9EAv9MESLEO/jPZ66rlj+MyIfg3WJX8DjuX5qZWr9aui34QBGIQhuIN7GDbm5rr2PLE8V0S/DweSfwhZeZ6z8vOwK/ojGIFRGINXeINxY26uZ2Wv6bkn+gu4lPwreJLnL1b+O5yL/homYBKm4AZujdFe157PlucZPMCjaq4P+ITEyi900IdUO8+8Z499fp8+pHIRfolq7X+3ZZ7J52efv9BB982xqozVxtxZSYBfO62rX/UATVovEdovFdb/mPwkwC+tkgrrf0y+eX5f/yv8LrnTaU0NKo1Xaqki9/+X8xc92tCKyTfvtKz836uv9LdfNvKZ112eJdV8p928g52d8uPwLEbqY7Ndnq49um/pP8RFTUZXdifPkD3/xS9o4ZPI
+  </data>
+ </layer>
+</map>

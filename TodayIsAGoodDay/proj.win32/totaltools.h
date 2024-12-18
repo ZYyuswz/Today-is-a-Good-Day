@@ -5,4 +5,4 @@ USING_NS_CC;
 
 Vec2 tile_change_screen(Size mapsize, Size tilesize, Vec2 original, float scale);
 
-Vec2 screenToTileCoords(const Vec2& mousePos, const Vec2& mapCenter, float scale);
+Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledposition);

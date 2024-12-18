@@ -139,7 +139,7 @@ Withered::Withered(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -174,7 +174,7 @@ Carrot::Carrot(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st){
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -208,7 +208,7 @@ Garlic::Garlic(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -242,7 +242,7 @@ Potato::Potato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -276,7 +276,7 @@ Corn::Corn(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -310,7 +310,7 @@ Melon::Melon(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -344,7 +344,7 @@ Tomato::Tomato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -378,7 +378,7 @@ Cabbage::Cabbage(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) 
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -412,7 +412,7 @@ Eggplant::Eggplant(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -446,7 +446,7 @@ Pumpkin::Pumpkin(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) 
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
