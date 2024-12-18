@@ -1,5 +1,6 @@
 #include "Time.h"
 #include <iostream>
+#include "totaltools.h"
 
 // 单例模式：静态成员变量初始化
 GameTime* GameTime::instance = nullptr;
@@ -32,7 +33,10 @@ void GameTime::updateTime() {
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
     }
-    // 随机天气还没实现
+    // 随机天气
+    bool weather_condition = random_bernoulli(0.4);
+    if (weather_condition)weather = Weather::Rainy;
+    else weather = Weather::Sunny;
 }
 
 // 获取当前年份

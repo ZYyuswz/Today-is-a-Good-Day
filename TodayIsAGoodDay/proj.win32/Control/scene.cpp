@@ -13,18 +13,44 @@
 #include "./Setting/setting.h"
 #include "global.h"
 #include "time.h"
+//下雨场景添加
+auto RainLayer() {
+    // 添加雨水粒子效果
+    auto rainParticle = ParticleRain::create();
+    Size screensize = Director::getInstance()->getVisibleSize();
+    rainParticle->setPosition(Vec2(screensize.width / 2, screensize.height)); // 设置粒子系统的位置
+    rainParticle->setLife(10.0f); // 设置雨滴的生命周期
+    rainParticle->setSpeed(400.0f); // 设置雨滴的速度
+    rainParticle->setAngle(-90.0f); // 设置雨滴的角度
+    rainParticle->setStartColor(Color4F(0.5f, 0.5f, 1.0f, 1.0f)); // 设置雨滴的颜色
+    rainParticle->setEndColor(Color4F(0.5f, 0.5f, 1.0f, 0.8f)); // 设置雨滴的透明度
+    rainParticle->setTotalParticles(2000); // 设置雨滴的数量
 
+    // 设置雨滴的大小
+    rainParticle->setStartSize(18.0f); // 设置雨滴的初始大小为 18 像素
+    rainParticle->setStartSizeVar(5.0f); // 设置雨滴大小的变化范围为 5 像素
+    rainParticle->setEndSize(10.0f); // 设置雨滴的结束大小为 10 像素
+    rainParticle->setEndSizeVar(2.0f); // 设置雨滴结束大小的变化范围为 2 像素
+
+    // 检查纹理是否正确加载
+    if (rainParticle->getTexture() == nullptr) {
+        CCLOG("Error: Particle texture is missing!");
+    }
+    else {
+        CCLOG("Particle texture loaded successfully!");
+    }
+    return rainParticle;
+}
 //切换场景调用函数
-//初始进入主场景
-bool first_to_manor()
-{
+bool first_to_manor() {
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
     leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
     auto playerControlLayer = PlayerControlLayer::create();
-    playerControlLayer->setPlayer(leading_charactor);
+    playerControlLayer->setPlayer(&leading_charactor);
     spring_scene->addChild(playerControlLayer);
-
+    GameTime* gametime = GameTime::getInstance();
+    if(gametime->getWeather()==Weather::Rainy)spring_scene->addChild(RainLayer(),RAINLAYER); //下雨场景实现示例
     return true;
 }
 
@@ -38,7 +64,7 @@ bool manor_to_towm()
         auto town_scene = spring_town::createScene();
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
         auto playerControlLayer = PlayerControlLayer::create();
-        playerControlLayer->setPlayer(leading_charactor);
+        playerControlLayer->setPlayer(&leading_charactor);
         town_scene->addChild(playerControlLayer);
 
         return true;
