@@ -1,7 +1,7 @@
 /* ----- 对整个项目均适用的工具集 ----- */
 
 #include "totaltools.h"
-
+#include "global.h"
 USING_NS_CC;
 
 //工具：瓦片地图坐标转换成屏幕像素坐标
@@ -42,4 +42,25 @@ Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledpositio
     int tileY = static_cast<int>(TiledGap.y);
 
     return Vec2(tileX, tileY);
+}
+
+//工具：切换场景时移除人物
+void people_remove_change()
+{
+    auto nowScene = Director::getInstance()->getRunningScene();
+    nowScene->removeChildByName("_sprite");
+}
+
+//工具：切换场景时添加人物
+/* 传入参数：
+*  const Vec2 change_vec2 切换后人物位置
+*/
+void people_change_scene(const Vec2 change_Vec2)
+{
+    auto characterLayer = Layer::create();
+    auto nowTiledMap = MapManager::getInstance()->getCurrentMap();
+    auto nowScene = Director::getInstance()->getRunningScene();
+    nowScene->addChild(characterLayer); // 将人物层添加到当前场景中  
+    characterLayer->addChild(leading_charactor._sprite);
+    leading_charactor._sprite->setPosition(change_Vec2);
 }

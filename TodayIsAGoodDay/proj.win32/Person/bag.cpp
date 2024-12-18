@@ -4,6 +4,8 @@
 #include "person.h"
 #include <iostream>
 #include "definition.h"
+#include "global.h"
+
 
 Bag::Bag(): _selectedItemIndex(-1)
 {
@@ -80,10 +82,11 @@ void Bag::displayBag()
     
 
     // 显示背包网格背景图片
-    auto bagBackground = cocos2d::Sprite::create("BagBackground.png"); // 假设网格背景图片名为 "bag_grid.png"
-    bagBackground->setPosition(cocos2d::Vec2(BAG_LEFT_LOCATION + (BAG_RIGHT_LOCATION - BAG_LEFT_LOCATION) / 2,
-        BAG_UP_LOCATION - (BAG_UP_LOCATION - BAG_CELL) / 2));
-    this->addChild(bagBackground);
+    auto bagBackground = cocos2d::Sprite::create("bag/BagBackground.png"); //创建精灵
+    bagBackground->setAnchorPoint(Vec2(0.5f,0.5f));//设置锚点位于中心
+    bagBackground->setPosition(1024.0f,576.0f);
+    bagBackground->setScale(0.4f);
+    MapManager::getInstance()->getCurrentMap()->addChild(bagBackground);
 
     // 显示背包格的图片和物品图案
     int x = BAG_LEFT_LOCATION;
