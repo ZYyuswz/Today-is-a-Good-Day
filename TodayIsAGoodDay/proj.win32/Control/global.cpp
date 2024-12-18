@@ -8,11 +8,13 @@
 #include "./Setting/setting.h"
 #include"Person/person.h"
 #include"global.h"
+#include "controler.h"
 
 USING_NS_CC;
 //创建主人公
 
 Person leading_charactor ;
+
 
 bool PlayerControlLayer::init() {
     if (!Layer::init())
@@ -54,19 +56,33 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
-
-            _player->PersonMove(-MOVE_DISTANCE, 0);
+            _isRunning = true;
+            _currentDirection = "moveLeft"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveLeft"
+            );
+            
+           
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = true;
+            control_personmove(DIRECTION::LEFT);
             _player->PersonMove(MOVE_DISTANCE, 0);
             break;
         case EventKeyboard::KeyCode::KEY_W:
             _moveUp = true;
+            control_personmove(DIRECTION::LEFT);
             _player->PersonMove(0, MOVE_DISTANCE);
             break;
         case EventKeyboard::KeyCode::KEY_S:
             _moveDown = true;
+            control_personmove(DIRECTION::LEFT);
             _player->PersonMove(0, -MOVE_DISTANCE);
             break;
         default:
@@ -82,6 +98,9 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = false;
+            _isRunning = true;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveLeft", this);
             leading_charactor.PersonStop(-10, 0);
             break;
         case EventKeyboard::KeyCode::KEY_D:
@@ -139,6 +158,7 @@ void PlayerControlLayer::onMouseDown(Event* event)
     }
 }
 
+//帧更新，暂时未启用
 void PlayerControlLayer::update(float dt) {
     float moveDistance = 1; // 每次移动的距离
     if (_player == nullptr) return;
@@ -168,6 +188,33 @@ void PlayerControlLayer::update(float dt) {
     }
 }
 
+//人物移动
+void PlayerControlLayer::movePlayer(float dt)
+{
+    if (_player == nullptr || !_isRunning) return;
+
+  
+
+    // 根据方向信息设置移动方向
+    if (_currentDirection == "moveLeft")
+    {
+        _player->PersonMove(-MOVE_DISTANCE, 0);
+       
+    }
+    else if (_currentDirection == "moveRight")
+    {
+       
+    }
+    else if (_currentDirection == "moveUp")
+    {
+       
+    }
+    else if (_currentDirection == "moveDown")
+    {
+       
+    }
+
+}
 
 void PlayerControlLayer::onExit()
 {
@@ -185,7 +232,7 @@ void PlayerControlLayer::onExit()
 }
 
 
-
+/* ---------- 地图管理层得到当前场景和地图 ----------*/
 MapManager* MapManager::_instance = nullptr;
 
 MapManager::MapManager() : _currentScene(nullptr)
@@ -213,19 +260,28 @@ void MapManager::registerSceneMap(Scene* scene, TMXTiledMap* map)
 {
     _sceneMap[scene] = map;
 }
-
+//得到当前地图
 TMXTiledMap* MapManager::getCurrentMap()
 {
     auto currentScene = Director::getInstance()->getRunningScene();
-    if (currentScene)
-    {
-        auto it = _sceneMap.find(currentScene);
-        if (it != _sceneMap.end())
-        {
-            return it->second;
+    auto children = currentScene->getChildren();
+    TMXTiledMap* currentTiledMap;
+    
+    for (auto child : children) {
+        currentTiledMap = dynamic_cast<TMXTiledMap*>(child);
+        if (currentTiledMap) {
+            CCLOG("Tile map found!");
+            break;
         }
     }
-    return nullptr;
+    return currentTiledMap;
+}
+
+//得到当前场景
+Scene* MapManager::getCurrentScene()
+{
+    auto currentScene = Director::getInstance()->getRunningScene();
+    return currentScene;
 }
 
 void MapManager::onSceneChange(EventCustom* event)
