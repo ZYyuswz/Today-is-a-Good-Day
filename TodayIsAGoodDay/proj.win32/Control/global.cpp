@@ -6,12 +6,13 @@
 #include "totaltools.h"
 #include "scene.h"
 #include "./Setting/setting.h"
-#include "./Person/person.h"
+#include"Person/person.h"
 #include"global.h"
 
 USING_NS_CC;
 //创建主人公
-Person* leading_charactor = new Person();
+Person leading_charactor ;
+
 
 
 bool PlayerControlLayer::init() {
@@ -45,27 +46,28 @@ bool PlayerControlLayer::init() {
 }
 
 void PlayerControlLayer::setPlayer(Person* player) {
-    _player = player;
+    this->_player = player;
 }
+
 
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
-            _player->PersonMove(-1, 0);
+            _player->PersonMove(-MOVE_DISTANCE, 0);
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = true;
-            _player->PersonMove(-1, 0);
+            _player->PersonMove(MOVE_DISTANCE, 0);
             break;
         case EventKeyboard::KeyCode::KEY_W:
             _moveUp = true;
-            _player->PersonMove(-1, 0);
+            _player->PersonMove(0, MOVE_DISTANCE);
             break;
         case EventKeyboard::KeyCode::KEY_S:
             _moveDown = true;
-            _player->PersonMove(-1, 0);
+            _player->PersonMove(0, -MOVE_DISTANCE);
             break;
         default:
             break;

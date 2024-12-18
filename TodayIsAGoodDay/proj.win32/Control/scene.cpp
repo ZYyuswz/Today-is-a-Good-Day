@@ -14,15 +14,50 @@
 #include "global.h"
 #include "time.h"
 
+TMXTiledMap* getMapFromScene(Scene* currentScene)
+{
+    if (!currentScene)
+    {
+        CCLOG("Scene is null!");
+        return nullptr;
+    }
+
+    // 获取场景的第一个子节点（假设是层）
+    Node* layer = currentScene->getChildren().at(0);
+    if (!layer)
+    {
+        CCLOG("Layer not found in the scene!");
+        return nullptr;
+    }
+
+    // 遍历层的子节点，查找地图
+    auto children = layer->getChildren();
+    for (auto& child : children)
+    {
+        TMXTiledMap* map = dynamic_cast<TMXTiledMap*>(child);
+        if (map)
+        {
+            return map; // 找到地图，返回
+        }
+    }
+
+    // 如果没有找到地图，返回 nullptr
+    CCLOG("No TMXTiledMap found in the layer!");
+    return nullptr;
+    //spring_scene->getChildByName("scene_spring")
+}
 //切换场景调用函数
 //初始进入主场景
 bool first_to_manor()
 {
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
-    leading_charactor->person_construction("zy", 1, "zyh", spring_scene);
+    TMXTiledMap* map = getMapFromScene(spring_scene);
+    
+
+    leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
     auto playerControlLayer = PlayerControlLayer::create();
-    playerControlLayer->setPlayer(leading_charactor);
+    playerControlLayer->setPlayer(&leading_charactor);
     spring_scene->addChild(playerControlLayer);
 
     return true;
@@ -38,7 +73,7 @@ bool manor_to_towm()
         auto town_scene = spring_town::createScene();
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
         auto playerControlLayer = PlayerControlLayer::create();
-        playerControlLayer->setPlayer(leading_charactor);
+        playerControlLayer->setPlayer(&leading_charactor);
         town_scene->addChild(playerControlLayer);
 
         return true;
@@ -116,8 +151,11 @@ bool beach::init() {
 
 //庄园春天场景
 //庄园春天初始化
+
 Scene* spring_manor::createScene()
 {
+    return spring_manor::create();
+    /*
     //创建场景
     auto scene_spring = Scene::create();
     //添加层
@@ -125,6 +163,7 @@ Scene* spring_manor::createScene()
     scene_spring->addChild(layer);
 
     return scene_spring;
+    */
 }
 
 bool spring_manor::init() {
@@ -167,7 +206,7 @@ bool spring_manor::init() {
     }
 
     //将地图和场景关联
-    MapManager::getInstance()->registerSceneMap(this, scene_spring);
+    //MapManager::getInstance()->registerSceneMap(this, scene_spring);
 
     this->addChild(scene_spring);
 
