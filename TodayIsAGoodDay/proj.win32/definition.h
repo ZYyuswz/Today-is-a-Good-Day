@@ -1,6 +1,6 @@
 
 #pragma once
-
+#include <map>
 //屏幕显示比例
 #define SMALL_WINDOW 1
 
@@ -82,6 +82,13 @@ enum class StoneType {
     Gold,       // 金矿
     Coal        // 煤炭
 };
+
+// 矿洞中生成石头的数量
+#define STONE_GENERATE_NUM 20
+
+// 定义每种 StoneType 的权重（概率）
+extern std::map<StoneType, int> stoneTypeWeights;
+
 
 // 定义角点枚举类型 -- 瓦片的四个角定义
 enum TileCorner {

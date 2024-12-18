@@ -11,6 +11,8 @@ public:
 
     // 在瓦片地图上随机生成 num 个石头
     static void randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, StoneType type);
+    // 在矿洞里随机生成 num 个石头
+    static void randomGenerateInMine(TMXTiledMap* tileMap, Layer* objectLayer);
 
 protected:
 
@@ -20,3 +22,4 @@ protected:
     // 产生掉落物
     void generateDrops() override;
 };
+
