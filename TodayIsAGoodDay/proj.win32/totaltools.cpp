@@ -52,13 +52,14 @@ Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledpositio
 * 随机生成的一个bool值
 */
 bool random_bernoulli(double p) {
-	// 创建一个随机数生成器
-	static std::random_device rd;  // 用于获取随机种子
-	static std::mt19937 gen(rd()); // 使用Mersenne Twister算法生成随机数
-	std::bernoulli_distribution dist(p); // 创建一个伯努利分布，概率为p
+    // 创建一个随机数生成器
+    static std::random_device rd;  // 用于获取随机种子
+    static std::mt19937 gen(rd()); // 使用Mersenne Twister算法生成随机数
+    std::bernoulli_distribution dist(p); // 创建一个伯努利分布，概率为p
 
-	// 返回一个服从伯努利分布的随机数
-	return dist(gen);
+    // 返回一个服从伯努利分布的随机数
+    return dist(gen);
+}
 
 //工具：切换场景时移除人物
 void people_remove_change()
