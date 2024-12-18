@@ -182,8 +182,10 @@ void Tree::randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, Sta
         auto existingSprites = objectLayer->getChildren();
         // 遍历物体层的所有物体，看他的坐标和现在坐标是否相等
         for (auto sprite : existingSprites) {
-            if (sprite->getPosition() == Vec2(tileX * tileSize.width, tileY * tileSize.height)) {
-                isValidTile = false;  // 该位置已有精灵，无法生成树苗
+            // 强制转换为 MyObject 类型
+            auto myObject = dynamic_cast<MyObject*>(sprite);
+            if (myObject && myObject->getTilePosition() == Vec2(tileX, tileY)) {
+                isValidTile = false;  // 该位置已有精灵，无法生成
                 break;
             }
         }
