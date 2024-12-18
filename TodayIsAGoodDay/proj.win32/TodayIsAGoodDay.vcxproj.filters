@@ -111,6 +111,9 @@
     <ClCompile Include="totaltools.cpp">
       <Filter>win32</Filter>
     </ClCompile>
+    <ClCompile Include="Control\controler.cpp">
+      <Filter>Classes\Control</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -164,9 +167,14 @@
     <ClInclude Include="totaltools.h">
       <Filter>win32</Filter>
     </ClInclude>
-    <ClInclude Include="tool.h">
+    <ClInclude Include="Person\person.h">
       <Filter>Classes\Person</Filter>
-
+    </ClInclude>
+    <ClInclude Include="Person\tool.h">
+      <Filter>Classes\Person</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\controler.h">
+      <Filter>Classes\Control</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

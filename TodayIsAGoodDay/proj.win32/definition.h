@@ -1,6 +1,6 @@
 
 #pragma once
-
+#include <map>
 //屏幕显示比例
 #define SMALL_WINDOW 1
 
@@ -10,6 +10,17 @@
 
 //图片显示比例宏定义
 #define ROW_PICTURE 1.0f   //原图片大小
+
+// 人物
+// 人物移动像素点
+#define MOVE_DISTANCE 2.0f
+enum class DIRECTION {
+    LEFT,  //左
+    RIGHT,  //右
+    UP,    //上
+    DOWN   //下
+};
+
 
 //menu相关宏定义
 #define POS_NEW_X 4
@@ -82,6 +93,13 @@ enum class StoneType {
     Gold,       // 金矿
     Coal        // 煤炭
 };
+
+// 矿洞中生成石头的数量
+#define STONE_GENERATE_NUM 20
+
+// 定义每种 StoneType 的权重（概率）
+extern std::map<StoneType, int> stoneTypeWeights;
+
 
 // 定义角点枚举类型 -- 瓦片的四个角定义
 enum TileCorner {
