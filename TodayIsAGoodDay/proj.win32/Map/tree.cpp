@@ -1,11 +1,11 @@
 /* ----- 实现树的相关功能 ----- */
 
 #include "tree.h"
-#include "Control\Time.h"
-
+#include <iostream>
 // 构造函数
 Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st){
     // 基本项目的初始化
+    this->tileMap = tileMap;
     this->type = ty;  // 初始化树种类
     this->tilePosition = tile;  // 初始化树的坐标
     this->stage = st;  // 初始化树的阶段
@@ -29,7 +29,7 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     // 将精灵的图像上下颠倒
     this->setFlippedY(true);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, -0.01f));
+    this->setAnchorPoint(Vec2(0.44f, -0.01f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -54,9 +54,6 @@ void Tree::deathAnimation() {
         );
     }
     this->runAction(chopAction);
-
-    // 产生掉落物
-    generateDrops();
 }
 
 // 生成掉落物
@@ -76,7 +73,7 @@ void Tree::generateDrops() {
         scene->addChild(dropLayer);
     }
     // 创建掉落物
-    auto treeDrop = new TreeDrop(tilePosition, dropLayer);  // 使用树的瓦片坐标作为掉落物的生成位置
+    auto treeDrop = new TreeDrop(tilePosition, dropLayer, tileMap);  // 使用树的瓦片坐标作为掉落物的生成位置
     treeDrop->generate();                                     // 生成掉落物
 }
 
@@ -185,8 +182,10 @@ void Tree::randomGenerate(TMXTiledMap* tileMap, Layer* objectLayer, int num, Sta
         auto existingSprites = objectLayer->getChildren();
         // 遍历物体层的所有物体，看他的坐标和现在坐标是否相等
         for (auto sprite : existingSprites) {
-            if (sprite->getPosition() == Vec2(tileX * tileSize.width, tileY * tileSize.height)) {
-                isValidTile = false;  // 该位置已有精灵，无法生成树苗
+            // 强制转换为 MyObject 类型
+            auto myObject = dynamic_cast<MyObject*>(sprite);
+            if (myObject && myObject->getTilePosition() == Vec2(tileX, tileY)) {
+                isValidTile = false;  // 该位置已有精灵，无法生成
                 break;
             }
         }

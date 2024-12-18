@@ -35,6 +35,11 @@ bool PlayerControlLayer::init() {
     // 3. 添加监听器到事件分发器
     _eventDispatcher->addEventListenerWithSceneGraphPriority(_keyboardListener, this);
 
+    // 创建鼠标事件监听器
+    _mouseListener = EventListenerMouse::create();
+    _mouseListener->onMouseDown = CC_CALLBACK_1(PlayerControlLayer::onMouseDown, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(_mouseListener, this);
+
     //this->scheduleUpdate();
     return true;
 }
@@ -96,6 +101,42 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
     event->stopPropagation();
 }
 
+//鼠标监听器
+void PlayerControlLayer::onMouseDown(Event* event)
+{
+    if (_player == nullptr) return;
+
+    // 获取鼠标点击的位置
+    EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
+    if (mouseEvent)
+    {
+        Vec2 mousePos = Vec2(mouseEvent->getCursorX(), mouseEvent->getCursorY());
+
+        // 获取主角当前位置
+        Vec2 playerPos = _player->getPosition();
+
+        /*
+        * 鼠标如果也想移动人物
+        // 计算移动方向
+        Vec2 moveDir = mousePos - playerPos;
+        moveDir.normalize(); // 单位化方向向量
+
+        // 更新主角的移动状态
+        _moveLeft = moveDir.x < 0;
+        _moveRight = moveDir.x > 0;
+        _moveUp = moveDir.y > 0;
+        _moveDown = moveDir.y < 0;
+        */
+
+        //鼠标点击之后调用函数
+
+
+        //测试用例
+        manor_to_towm();
+
+    }
+}
+
 void PlayerControlLayer::update(float dt) {
     float moveDistance = 1; // 每次移动的距离
     if (_player == nullptr) return;
@@ -132,6 +173,11 @@ void PlayerControlLayer::onExit()
     {
         _eventDispatcher->removeEventListener(_keyboardListener);
         _keyboardListener = nullptr;
+    }
+    if (_mouseListener != nullptr)
+    {
+        _eventDispatcher->removeEventListener(_mouseListener);
+        _mouseListener = nullptr;
     }
     Layer::onExit();
 }

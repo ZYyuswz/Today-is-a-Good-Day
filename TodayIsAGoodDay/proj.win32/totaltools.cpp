@@ -1,6 +1,5 @@
 /* ----- 对整个项目均适用的工具集 ----- */
 
-#include "cocos2d.h"
 #include "totaltools.h"
 
 USING_NS_CC;
@@ -21,4 +20,26 @@ Vec2 tile_change_screen(Size mapsize, Size tilesize, Vec2 original,float scale =
 	Vec2 screenpos = Vec2(x, y);
 	screenpos = screenpos * scale;
 	return screenpos;
+}
+
+
+//工具：将鼠标点击的位置转化成瓦片坐标
+/* 传入参数：
+*  const Vec2& worldPosition：鼠标点击位置的屏幕像素坐标
+*  const Vec2& Tiledposition： 屏幕锚点的像素坐标
+* 返回值：
+* vec2类型：瓦片坐标
+*/
+Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledposition) {
+    // 计算屏幕坐标与瓦片地图位置的差值
+    Vec2 ScreenGap = worldPosition - Tiledposition;
+
+    // 将差值转换为瓦片坐标
+    Vec2 TiledGap = ScreenGap / (BEACH_SMALL_SCALE * TILESIZE);
+
+    // 将结果转换为 int
+    int tileX = static_cast<int>(TiledGap.x);
+    int tileY = static_cast<int>(TiledGap.y);
+
+    return Vec2(tileX, tileY);
 }

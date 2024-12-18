@@ -9,8 +9,8 @@ const int WOMAN = 0;
 
 const int MIN_OF_ENERGY = 0;
 const int INIT_MONEY = 100;
-const int INIT_PX=0;
-const int INIT_PY=0;
+const int INIT_PX = 0;
+const int INIT_PY = 0;
 
 
 class Person : public cocos2d::Node
@@ -23,6 +23,7 @@ protected:
     int _energy;
     int _HP;                                                // 玩家生命值
     int _money;
+    int experience_all;
 
     cocos2d::Sprite* _sprite;   //人物精灵
 
@@ -42,8 +43,8 @@ protected:
 public:
     // 构造函数
     Person();
- //   ~Person() { _sprite->setPosition(200, 200); }
-    // 初始化函数
+    //   ~Person() { _sprite->setPosition(200, 200); }
+       // 初始化函数
     virtual bool init();
 
     // 获取和设置属性
@@ -76,6 +77,7 @@ public:
     //死了，对尸体进行处理
     void dead();
 
+    void levelUP();
 
     /*以下为move功能相关函数*/
     // 创建动画
@@ -86,7 +88,7 @@ public:
 //    cocos2d::Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, TMXTiledMap* tileMap);
 
     // 辅助方法：将瓦片坐标转换为世界坐标
-    cocos2d::Vec2 convertTileCoordToWorld(const cocos2d::Vec2& tileCoord, TMXTiledMap* tileMap);
+ //   cocos2d::Vec2 convertTileCoordToWorld(const cocos2d::Vec2& tileCoord, TMXTiledMap* tileMap);
 
     // 辅助方法：移动瓦片地图
     void moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap);
@@ -104,16 +106,10 @@ public:
     //判断是否可以移动
     bool canMove(float deltaX, float deltaY, TMXTiledMap* currentMap);
 
-    // 键盘事件处理函数
-//    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-//    void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-
     //初始化
     void person_construction(const std::string& name, const int& sex, const std::string& farmName, Scene* currentScene,
         int level = 0, int HP = 0, int energy = 0, int money = 0);
 
+    Vec2 getTiledPosition();
+
 };
-
-
-
-

@@ -1,11 +1,12 @@
 
 #pragma once
-
+#include <map>
 //屏幕显示比例
 #define SMALL_WINDOW 1
 
 //图层显示关系宏定义
 #define FIRST 1
+#define OBJECT 2
 
 //图片显示比例宏定义
 #define ROW_PICTURE 1.0f   //原图片大小
@@ -35,6 +36,11 @@
 #define SRING_MANOR_SMALL_SCALE 3.5f
 #define SPRING_MANOR_ENTER_X 44
 #define SPRING_MANOR_ENTER_Y 40
+
+//小镇场景相关宏定义
+#define TOWN_SMALL_SCALE 3.5f
+#define MANOR_TO_TOWN_X 0
+#define MANOR_TO_TOWN_Y 27
 
 
 // 定义每个季节的持续天数
@@ -77,6 +83,13 @@ enum class StoneType {
     Coal        // 煤炭
 };
 
+// 矿洞中生成石头的数量
+#define STONE_GENERATE_NUM 20
+
+// 定义每种 StoneType 的权重（概率）
+extern std::map<StoneType, int> stoneTypeWeights;
+
+
 // 定义角点枚举类型 -- 瓦片的四个角定义
 enum TileCorner {
     TOP_LEFT,           // 左上角
@@ -108,3 +121,20 @@ enum class Weather {
 // 树生长天数阈值
 #define TREE_GROWTH_THRESHOLD 5
 
+// 定义农作物的种类枚举
+enum class CropsType {
+    // 春季
+    Carrot,     // 胡萝卜
+    Garlic,     // 大蒜
+    Potato,     // 土豆
+    // 夏季
+    Corn,       // 玉米
+    Melon,      // 甜瓜
+    Tomato,     // 西红柿
+    // 秋季
+    Cabbage,    // 小白菜
+    Eggplant,   // 茄子
+    Pumpkin,    // 南瓜
+    // 酸菜
+    Withered
+};
