@@ -32,12 +32,17 @@ protected:
     cocos2d::Animation* _leftWalkAnimation;
     cocos2d::Animation* _rightWalkAnimation;
 
+    cocos2d::Animate* _frontWalkAnimate;
+    cocos2d::Animate* _backWalkAnimate;
+    cocos2d::Animate* _leftWalkAnimate;
+    cocos2d::Animate* _rightWalkAnimate;
+
     cocos2d::EventListenerKeyboard* _keyboardListener;  //键盘监听器
 
 public:
     // 构造函数
     Person();
-    ~Person() { _sprite->setPosition(200, 200); }
+ //   ~Person() { _sprite->setPosition(200, 200); }
     // 初始化函数
     virtual bool init();
 
@@ -74,10 +79,11 @@ public:
 
     /*以下为move功能相关函数*/
     // 创建动画
-    void createAnimations();
+    Animation* createAnimations(const std::string& direction);
+    void createAnimate();
 
     // 辅助方法：将世界坐标转换为瓦片坐标
-    cocos2d::Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, TMXTiledMap* tileMap);
+//    cocos2d::Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, TMXTiledMap* tileMap);
 
     // 辅助方法：将瓦片坐标转换为世界坐标
     cocos2d::Vec2 convertTileCoordToWorld(const cocos2d::Vec2& tileCoord, TMXTiledMap* tileMap);
@@ -93,13 +99,14 @@ public:
 
     // 移动函数
     void PersonMove(float deltaX, float deltaY);
+    void PersonStop(float deltaX, float deltaY);
 
     //判断是否可以移动
     bool canMove(float deltaX, float deltaY, TMXTiledMap* currentMap);
 
     // 键盘事件处理函数
-    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-    void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+//    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+//    void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
     //初始化
     void person_construction(const std::string& name, const int& sex, const std::string& farmName, Scene* currentScene,
