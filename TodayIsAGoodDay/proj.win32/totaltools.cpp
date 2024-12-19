@@ -107,9 +107,34 @@ void people_change_scene(const Vec2 change_Vec2)
         leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
         newCharacterLayer->addChild(leading_charactor._sprite);
         leading_charactor._sprite->setPosition(change_Vec2);
-
-   
-    
-
 }
 
+/*工具：返回鼠标点击坐标的精灵的指针，如果没有为nullptr
+* 传入参数：
+* Vec2 tilePosition：鼠标点击的坐标
+* 返回值：
+* MyObject*：基类指针
+*/
+MyObject* getSpriteOnMap(Vec2 tilePosition) {
+    //得到当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--getSpriteOnMap");
+        return;
+    }
+    // 获取 objectLayer
+    auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
+    if (!objectLayer) {
+        CCLOG("ObjectLayer not found in the map!--getSpriteOnMap");
+        return;
+    }
+    // 遍历 ObjectLayer 的子节点
+    for (auto child : objectLayer->getChildren()) {
+        // 检查子节点是否是 MyObject 类的实例
+        MyObject* myObject = dynamic_cast<MyObject*>(child);
+        if (myObject && myObject->getTilePosition() == tilePosition) {
+            return myObject;
+        }
+    }
+    return nullptr;
+}
