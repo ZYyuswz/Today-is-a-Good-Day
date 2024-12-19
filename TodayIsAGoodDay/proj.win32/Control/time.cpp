@@ -1,5 +1,8 @@
 #include "Time.h"
 
+#include <iostream>
+#include "totaltools.h"
+
 // 单例模式：静态成员变量初始化
 GameTime* GameTime::instance = nullptr;
 
@@ -36,7 +39,6 @@ void GameTime::updateDay() {
         if (season == Season::Winter)
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
-    }
 
     // 随机生成天气
     bool weather_condition = random_bernoulli(0.8);
@@ -131,6 +133,7 @@ void GameTime::stopAutoUpdate() {
         this // 表示定时器的目标对象
     );
     CCLOG("Auto update stopped.");  // 输出停止日志
+
 }
 
 // 获取当前年份

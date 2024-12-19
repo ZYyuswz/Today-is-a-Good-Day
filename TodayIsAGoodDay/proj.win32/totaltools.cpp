@@ -1,7 +1,11 @@
 /* ----- 对整个项目均适用的工具集 ----- */
 
 #include "totaltools.h"
+
 #include "global.h"
+
+#include <random>
+
 USING_NS_CC;
 
 //工具：瓦片地图坐标转换成屏幕像素坐标
@@ -64,6 +68,7 @@ bool random_bernoulli(double p) {
 //工具：切换场景时移除人物
 void people_remove_change()
 {
+
     auto nowScene = Director::getInstance()->getRunningScene();
     nowScene->removeChildByName("_sprite");
 }
@@ -82,3 +87,4 @@ void people_change_scene(const Vec2 change_Vec2)
     leading_charactor._sprite->setPosition(change_Vec2);
 
 }
+

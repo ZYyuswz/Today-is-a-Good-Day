@@ -6,10 +6,14 @@
 
 //图层显示关系宏定义
 #define FIRST 1
+
 #define OBJECT 3
 #define PLOUGH 2
 #define DROP 4
 #define PERSON_LAYER 5
+#define OBJECT 2
+#define RAINLAYER 100
+#define BAGLAYER  101 
 
 //图片显示比例宏定义
 #define ROW_PICTURE 1.0f   //原图片大小
