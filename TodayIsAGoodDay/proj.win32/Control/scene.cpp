@@ -48,7 +48,6 @@ bool manor_to_towm()
         
         CCLOG("after");
        
-        auto now= Director::getInstance()->getRunningScene();
         /*
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
         auto playerControlLayer = PlayerControlLayer::create();

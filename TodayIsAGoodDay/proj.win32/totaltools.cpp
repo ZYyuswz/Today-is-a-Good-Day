@@ -120,13 +120,13 @@ MyObject* getSpriteOnMap(Vec2 tilePosition) {
     auto map = MapManager::getInstance()->getCurrentMap();
     if (!map) {
         CCLOG("Map not found in the scene!--getSpriteOnMap");
-        return;
+        return nullptr;
     }
     // 获取 objectLayer
     auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
     if (!objectLayer) {
         CCLOG("ObjectLayer not found in the map!--getSpriteOnMap");
-        return;
+        return nullptr;
     }
     // 遍历 ObjectLayer 的子节点
     for (auto child : objectLayer->getChildren()) {
