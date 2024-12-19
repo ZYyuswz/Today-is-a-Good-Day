@@ -3,7 +3,7 @@
  <tileset firstgid="1" name="spring_beach.zh-CN." tilewidth="16" tileheight="16" tilecount="527" columns="17">
   <image source="spring_beach.zh-CN..png" width="272" height="496"/>
  </tileset>
- <layer id="5" name="sea" width="64" height="64" visible="0">
+ <layer id="5" name="water" width="64" height="64">
   <data encoding="base64" compression="zlib">
    eJztlEsOgzAMBXPAnKBnoNx/2VUkhOpgE5wPnpHeEuEZqqYEAAAAAAAAAAAAAAAAAACwPpuwKEj+URpE998Pi+7/r8Hbe1j8WzcjPf1nbHL2j9KhvDcnuUHvFp5I78xJ16Dse3jWq1sP77O/pcHTe7qJpXWuTHP73ec8Gli8a/drfDTP3Wnb+h8ieVq+X+3mVm9tix7uXj5eTSxdVnD08l/dXdPiyvst7trfRQR3bY/RNzG26j4T3DDav2z0LSPdaTD+FsYYY4z57AcySipq
   </data>
@@ -23,12 +23,12 @@
    eJztmc1OFTEUx3tZKq8gXGejrryyAjZg9BHwGfx6AVEXd8uX+BVNBD/R6EJlAQs2fixMfAMXvAAhd01CCAv+9U5jbc6ddjodOtXzS37hztzSntPTdoaQCSFGYRuehpfgZThi3JfXWX6dWZTtbaj+lG1tTNWH2SbTvh/VPre1axWzLUbTC3AMzsArJWMxr13yPw87+bhZPrZ+j7rWY9DzbOftOlr7Qf2YOTyBT+FVeA1ehzfgTaIP2xyq9qrPMszBebhAfPcRfjLyMOeOil+xAldzTd7DD47jS6h1oGJQ46g+bejz9Ez7fZMv8Gv++RachbfhHXjXYRwXXMeX6HMg1/qY55iu86Sj12kRLnmOXRU1B765+6LX6Tl8YWl/piXEWXiu1b+ews9peLFVPZZO9S5qZxx5TsDJAPkyzHHzGa7HDiIi3+D32EEwDMMwDMMwDMMwDMMwDJMk9+AyvA8fwIfwUdSImsFjIV7FjiEmnP//nf/P2AFEZof4f2kP994Jf1Nin8j/sOL/kOWaavqcnBwS09IRItdTrT/fF1lmPDUnx80uPDDuUWveh22Pfuo+b8x1Z+Yu2QyUf8+znz0huqhLN0wUfXb7/ToRqv5bFfpBXbovRf/h+xq+gWsl+5Dt34rBdR4Edeb5UPWcpNhwaEPt6TKEqr/v+i/ihyh+bpStNUWo/V9H/XVwvnaJe0E4MfT7GfeX1D3p8IB7ddMj8q9jzTWVLSL/KmdualDrv+491ySo9R9q/9dFqPdlCbX+m7z/bc/VsrU7TKz+vyyxld27qZ3/tvq7/E1p2zNNPv9DvVcX0eTzP9R7dREpr/8QpFz/FN65qxD6/E8NW/2bvHdDYDv///X6S4r2M8MwcTgClPirRw==
   </data>
  </layer>
- <layer id="6" name="house" width="64" height="64" visible="0">
+ <layer id="6" name="house" width="64" height="64">
   <data encoding="base64" compression="zlib">
    eJzt2TVSBFEYReHumUFSbAPYBrAd4RLiEuIS4hLiEuISMoaEjCEhY0gIhyWQdFe9uafel/83fpZlTn4EEEQIYXfPcbwIooghjoSr1zhfEimkkUHW3XOcz+bBAy98ttsHOVsRe4tRglKU5dj+cvZWoBJVqM6x/TXsrUUd6tGQY/uVUkoppZRSSimllFJKKaXU/2q0LasJzWhBK9rQjg50osvgP6dutvWgF33oxwAGMYRhjBi8f5RtYxjHBCYxhWnMYBZzBu+fZ9sCFrGEZaxgFWtYx4bB+zfZtoVt7GAXe9jHAQ5xZPD+Y7ad4BRnOMcFLnGFa9wYvP+WbX4EEEQIYdzhHg94NHj/E9siiCKGOBJ4xgte8Wbw/ne2JZFCGhlk8YFPfOHb4P0/f9s8lmXDAy98yEM+ClDocftKpZRSSimllFJKKaWUUn/9ApzFTkQ=
   </data>
  </layer>
- <layer id="7" name="item" width="64" height="64" visible="0">
+ <layer id="7" name="item" width="64" height="64">
   <data encoding="base64" compression="zlib">
    eJzt190NgjAUhmHYg8QVnMCfa8dRd9IJFCZQnEBxGI8hJl5o2tJq28P7JOeG9KIfHPpTFAAAAAAAAAAAAAAAAAAAQLO2jD2D8HaSaW+Zq1OYv5ZMjcJcGGYmvbB664eq7J99G2vzDD2XtUajMa01F4+cTbhpeBua467kO5tyuORcy9iN1DajdxOyF+eSeyG1TCx/Sv9byj71us86l6KD1FGqthyvZZ17OUmdpdrYE/Hg05NXqZtUF2oyFlzO0TZjtfVkzkx7y2Tk32qaYP5f7GnPf7TyvC+b5hXqfumyfvzzTmuaV4z7paY7bY5nuZBn9zHumw+m+SpD
   </data>
