@@ -77,13 +77,13 @@ void GameTime::updateDay() {
     // 3. plough
     Plough::updateAll(ploughLayer);
     
-    //// test
-    //auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
-    //tree2->reduceHealth(100);
-    //auto Pumpkin1 = new Pumpkin(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y - 7), Stage::Mature);
-    //Pumpkin1->harvest();
-    //auto stone1 = new Stone(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-8), StoneType::Gold);
-    //stone1->reduceHealth(100);
+    // test
+    auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
+    tree2->reduceHealth(100);
+    auto Pumpkin1 = new Pumpkin(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y - 7), Stage::Mature);
+    Pumpkin1->harvest();
+    auto stone1 = new Stone(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-8), StoneType::Gold);
+    stone1->reduceHealth(100);
 }
 
 // 每隔 1 秒（UPDATE_INTERVAL 定义为 1.0f）调用一次updateTime()方法游戏时间增加10分钟
@@ -162,3 +162,7 @@ int GameTime::getTotalDays() const {
 void GameTime::printTime() const {
     CCLOG("Day:%d, TotalDays:%d, Hour:%d, Minute:%d",day,totalDays,time[0], time[1]);
 } 
+
+std::vector<int> GameTime::getTime() const {
+    return { time[0], time[1] };  // 返回一个 std::vector
+}

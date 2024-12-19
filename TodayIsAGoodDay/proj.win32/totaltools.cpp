@@ -94,13 +94,13 @@ MyObject* getSpriteOnMap(Vec2 tilePosition) {
     auto map = MapManager::getInstance()->getCurrentMap();
     if (!map) {
         CCLOG("Map not found in the scene!--getSpriteOnMap");
-        return;
+        return nullptr;
     }
     // 获取 objectLayer
     auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
     if (!objectLayer) {
         CCLOG("ObjectLayer not found in the map!--getSpriteOnMap");
-        return;
+        return nullptr;
     }
     // 遍历 ObjectLayer 的子节点
     for (auto child : objectLayer->getChildren()) {
@@ -111,4 +111,36 @@ MyObject* getSpriteOnMap(Vec2 tilePosition) {
         }
     }
     return nullptr;
+}
+
+std::vector<Dropper*>* getDrops(Vec2 personPosition) {
+    auto pickDrops = new std::vector<Dropper*>();  // 创建一个新的 vector
+    // 获取当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--getDrops");
+        return nullptr;
+    }
+    // 获取 dropLayer
+    auto dropLayer = dynamic_cast<Layer*>(map->getChildByName("DropLayer"));
+    if (!dropLayer) {
+        CCLOG("DropLayer not found in the map!--getDrops");
+        return nullptr;
+    }
+    // 遍历 dropLayer 的子节点
+    for (auto child : dropLayer->getChildren()) {
+        // 转换为 Dropper 类
+        Dropper* drop = dynamic_cast<Dropper*>(child);
+        if (drop) {
+            Vec2 dropPosition = drop->getTilePosition();
+            double delta_x = dropPosition.x - personPosition.x;
+            double delta_y = dropPosition.y - personPosition.y;
+            // 在拾取半径内的需要添加
+            if (abs(delta_x) <= PICK_RADIUS && abs(delta_y) <= PICK_RADIUS) {
+                pickDrops->push_back(drop);
+                dropLayer->removeChild(drop, false);  // 移除节点但不销毁
+            }
+        }
+    }
+    return pickDrops;
 }

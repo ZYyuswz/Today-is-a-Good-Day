@@ -60,4 +60,7 @@ public:
 
     // 打印时间，调试用
     void printTime() const;
+
+    // 返回时间：小时+分钟
+    std::vector<int> getTime() const;
 };
