@@ -19,4 +19,6 @@ void people_remove_change();
 
 void people_change_scene(const Vec2 change_Vec2);
 
+std::vector<Dropper*>* getDrops(Vec2 personPosition);
+
 
