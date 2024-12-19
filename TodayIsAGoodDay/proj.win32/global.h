@@ -60,7 +60,12 @@ public:
 
     // 获取当前场景的地图
     TMXTiledMap* getCurrentMap();
+    //获取当前场景
     Scene* getCurrentScene();
+    //获取当前地图大小
+    Size getCurrentMapSize();
+    //获取当前瓦片大小
+    Size getCurrentTileSize();
 
 private:
     // 构造函数和析构函数

@@ -6,7 +6,10 @@
 
 //图层显示关系宏定义
 #define FIRST 1
-#define OBJECT 2
+#define OBJECT 3
+#define PLOUGH 2
+#define DROP 4
+#define PERSON_LAYER 5
 
 //图片显示比例宏定义
 #define ROW_PICTURE 1.0f   //原图片大小
@@ -21,6 +24,10 @@ enum class DIRECTION {
     DOWN   //下
 };
 
+//场景相关宏定义
+#define OBJECT_LAYER "ObjectLayer"
+#define PLOUGH_LAYER "PloughLayer"
+#define DROP_LAYER "DropLayer"
 
 //menu相关宏定义
 #define POS_NEW_X 4
@@ -52,6 +59,16 @@ enum class DIRECTION {
 #define TOWN_SMALL_SCALE 3.5f
 #define MANOR_TO_TOWN_X 0
 #define MANOR_TO_TOWN_Y 27
+
+//矿洞场景相关宏定义
+#define MINE_SMALL_SCALE 4.0f
+#define MANOR_TO_MINE_X 0
+#define MANOR_TO_MINE_Y 0
+
+//家场景相关宏定义
+#define HOME_SMALL_SCALE 4.0f
+#define MANOR_TO_HOME_X 0
+#define MANOR_TO_HOME_Y 0
 
 
 // 定义每个季节的持续天数

@@ -12,24 +12,13 @@
 USING_NS_CC;
 
 
-//总控人物移动
-//按下移动，松开不移动
-void control_personmove(DIRECTION dir)
+//总控鼠标按键
+//按下时的调用
+void control_mouseclick()
 {
-	if (dir == DIRECTION::LEFT) {
 
-	}
-	else if (dir == DIRECTION::RIGHT)
-	{
-
-	}
-	else if (dir == DIRECTION::UP) {
-
-	}
-	else if (dir == DIRECTION::DOWN) {
-
-	}
 }
+
 
 
 
@@ -37,7 +26,10 @@ void control_personmove(DIRECTION dir)
 
 //总控场景切换
 //当人物移动到场景某位置时自动切换场景
+void control_changescene()
+{
 
+}
 
 
 //总控背包
