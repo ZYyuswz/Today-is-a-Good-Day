@@ -9,7 +9,6 @@ class Time;  // 前向声明 Time 类
 // 抽象类
 class MyObject : public Sprite {
 protected:
-    TMXTiledMap* tileMap;
     Vec2 tilePosition;  // 物体的瓦片坐标
     int health = 10;         // 物体的血量
 public:
@@ -36,10 +35,11 @@ public:
             auto removeAction = CallFunc::create([this]() {
                 this->removeFromParent();  // 移除对象
                 });
-
+            auto delay = DelayTime::create(1.0f);  // 延迟1秒
             // 按顺序执行动作
             this->runAction(Sequence::create(
                 deathAnim,
+                delay,
                 generateDropsAction,
                 removeAction,
                 nullptr
