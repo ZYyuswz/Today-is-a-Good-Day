@@ -13,20 +13,19 @@
 #include "./Setting/setting.h"
 #include "global.h"
 #include "time.h"
+
 #include "Map/stone.h"
 
-
 //切换场景调用函数
-//初始进入主场景
-bool first_to_manor()
-{
+bool first_to_manor() {
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
     leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
     auto playerControlLayer = PlayerControlLayer::create();
     playerControlLayer->setPlayer(&leading_charactor);
     spring_scene->addChild(playerControlLayer);
-
+    // GameTime* gametime = GameTime::getInstance();
+    //if(gametime->getWeather()==Weather::Rainy)spring_scene->addChild(RainLayer(),RAINLAYER); //下雨场景实现示例
     return true;
 }
 
@@ -41,6 +40,7 @@ bool manor_to_towm()
     if (season == Season::Spring || season == Season::Summer)
     {
         auto town_scene = spring_town::createScene();
+
         CCLOG("before");
         //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
         //Director::getInstance()->replaceScene(town_scene);
@@ -50,6 +50,11 @@ bool manor_to_towm()
        
         auto now= Director::getInstance()->getRunningScene();
         /*
+        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
+        auto playerControlLayer = PlayerControlLayer::create();
+        playerControlLayer->setPlayer(&leading_charactor);
+
+        town_scene->addChild(playerControlLayer);
         Size mapsize = MapManager::getInstance()->getCurrentMapSize();
         Size tilesize = MapManager::getInstance()->getCurrentTileSize();
 
@@ -88,6 +93,7 @@ bool manor_to_towm()
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
         auto playerControlLayer = PlayerControlLayer::create();
         playerControlLayer->setPlayer(&leading_charactor);
+
         town_scene->addChild(playerControlLayer);
         Size mapsize = MapManager::getInstance()->getCurrentMapSize();
         Size tilesize = MapManager::getInstance()->getCurrentTileSize();

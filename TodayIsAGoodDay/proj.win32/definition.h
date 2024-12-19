@@ -6,10 +6,14 @@
 
 //图层显示关系宏定义
 #define FIRST 1
+
 #define OBJECT 3
 #define PLOUGH 2
 #define DROP 4
 #define PERSON_LAYER 5
+#define OBJECT 2
+#define RAINLAYER 100
+#define BAGLAYER  101 
 
 //图片显示比例宏定义
 #define ROW_PICTURE 1.0f   //原图片大小
@@ -114,6 +118,8 @@ enum class StoneType {
     Coal        // 煤炭
 };
 
+#define DROPS_SCALE 0.6f
+
 // 矿洞中生成石头的数量
 #define STONE_GENERATE_NUM 20
 
@@ -147,7 +153,7 @@ enum class Weather {
 };
 
 // 耕地销毁的时间阈值
-#define LAND_DESTORY_THRESHOLD 3
+#define LAND_DESTORY_THRESHOLD 5
 
 // 树生长天数阈值
 #define TREE_GROWTH_THRESHOLD 5
