@@ -33,23 +33,36 @@ bool first_to_manor()
 bool manor_to_towm()
 {
     auto currentScene = Director::getInstance()->getRunningScene();
-    Director::getInstance()->pushScene(currentScene);
+    /* 移除人物 */
+    //people_remove_change();
+    /*end*/
+
     Season season = GameTime::getInstance()->getSeason();
     if (season == Season::Spring || season == Season::Summer)
     {
         auto town_scene = spring_town::createScene();
-        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
-        auto playerControlLayer = PlayerControlLayer::create();
-        playerControlLayer->setPlayer(&leading_charactor);
-        town_scene->addChild(playerControlLayer);
+        CCLOG("before");
+        //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
+        //Director::getInstance()->replaceScene(town_scene);
+        Director::getInstance()->pushScene(town_scene);
+        
+        CCLOG("after");
+       
+        auto now= Director::getInstance()->getRunningScene();
+        /*
         Size mapsize = MapManager::getInstance()->getCurrentMapSize();
         Size tilesize = MapManager::getInstance()->getCurrentTileSize();
 
         Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
-
         //加入人物在场景里
-        leading_charactor.person_scene_construction();
-        leading_charactor._sprite->setPosition(pos_player);
+        people_change_scene(pos_player);
+        auto playerControlLayer = PlayerControlLayer::create();
+        playerControlLayer->setPlayer(&leading_charactor);
+        town_scene->addChild(playerControlLayer);
+        */
+      
+        
+
         return true;
     }
     else if (season == Season::Winter)
@@ -88,7 +101,11 @@ bool manor_to_towm()
     }
     return false;
 }
-
+/*test*/
+void test()
+{
+    auto now = Director::getInstance()->getRunningScene();
+}
 bool change_to_beach()
 {
     auto currentScene = Director::getInstance()->getRunningScene();

@@ -9,6 +9,7 @@
 #include"Person/person.h"
 #include"global.h"
 #include "controler.h"
+#include "Map/tree.h"
 
 USING_NS_CC;
 //创建主人公
@@ -275,8 +276,13 @@ void PlayerControlLayer::onMouseDown(Event* event)
 
         //测试用例
         //manor_to_towm();
+        //test();
         //change_to_mine();
-
+        auto map = MapManager::getInstance()->getCurrentMap();
+        auto objectLayer = dynamic_cast<Layer*>(map->getChildByName(OBJECT_LAYER));
+        auto tree1 = new Tree(map, objectLayer, Vec2(40, 44), TreeType::Maple, Stage::Mature);
+        //Tree::randomGenerate(map, objectLayer, 30, Stage::Mature);
+        manor_change_map();
     }
 }
 

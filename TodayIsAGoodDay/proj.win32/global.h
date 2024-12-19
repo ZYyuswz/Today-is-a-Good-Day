@@ -7,6 +7,8 @@
 
 extern Person leading_charactor;
 
+//实现庄园地图切换
+void manor_change_map();
 
 //控制主角层
 

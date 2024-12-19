@@ -7,6 +7,7 @@
 bool first_to_manor();    //初始进入主场景
 bool manor_to_towm();     //从庄园去小镇
 bool change_to_mine();    //进入矿洞
+void test();
 
 
 /*--------------------沙滩场景--------------------*/
