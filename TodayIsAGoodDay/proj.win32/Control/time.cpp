@@ -1,5 +1,8 @@
 #include "Time.h"
 
+#include <iostream>
+#include "totaltools.h"
+
 // 单例模式：静态成员变量初始化
 GameTime* GameTime::instance = nullptr;
 
@@ -37,7 +40,6 @@ void GameTime::updateDay() {
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
     }
-
     // 随机生成天气
     bool weather_condition = random_bernoulli(0.8);
     if (weather_condition)
@@ -76,18 +78,19 @@ void GameTime::updateDay() {
     Crops::updateAll(objectLayer);
     // 3. plough
     Plough::updateAll(ploughLayer);
-    
-    // test
-    auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
-    tree2->reduceHealth(100);
-    auto Pumpkin1 = new Pumpkin(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y - 7), Stage::Mature);
-    Pumpkin1->harvest();
-    auto stone1 = new Stone(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-8), StoneType::Gold);
-    stone1->reduceHealth(100);
+
+    //// test
+    //auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
+    //tree2->reduceHealth(100);
+    //auto Pumpkin1 = new Pumpkin(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y - 7), Stage::Mature);
+    //Pumpkin1->harvest();
+    //auto stone1 = new Stone(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-8), StoneType::Gold);
+    //stone1->reduceHealth(100);
+
 }
 
 // 每隔 1 秒（UPDATE_INTERVAL 定义为 1.0f）调用一次updateTime()方法游戏时间增加10分钟
-void GameTime::updateTime() {
+void GameTime::updateTime(){
     // 增加十分钟
     time[1] += 10;
 
@@ -131,6 +134,7 @@ void GameTime::stopAutoUpdate() {
         this // 表示定时器的目标对象
     );
     CCLOG("Auto update stopped.");  // 输出停止日志
+
 }
 
 // 获取当前年份

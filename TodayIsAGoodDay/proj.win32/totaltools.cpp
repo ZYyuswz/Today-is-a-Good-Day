@@ -1,7 +1,11 @@
 /* ----- 对整个项目均适用的工具集 ----- */
 
 #include "totaltools.h"
+
 #include "global.h"
+
+#include <random>
+
 USING_NS_CC;
 
 //工具：瓦片地图坐标转换成屏幕像素坐标
@@ -44,7 +48,6 @@ Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledpositio
     return Vec2(tileX, tileY);
 }
 
-
 /*工具：随机生成一组伯努利分布的离散变量
 * 传入参数：
 * double p 生成1的概率
@@ -59,13 +62,30 @@ bool random_bernoulli(double p) {
 
     // 返回一个服从伯努利分布的随机数
     return dist(gen);
+
 }
 
 //工具：切换场景时移除人物
 void people_remove_change()
 {
-    auto nowScene = Director::getInstance()->getRunningScene();
-    nowScene->removeChildByName("_sprite");
+
+    auto currentScene = Director::getInstance()->getRunningScene();
+    // 获取当前场景中的人物层
+    Layer* currentCharacterLayer = nullptr;
+    for (auto child : currentScene->getChildren()) {
+        currentCharacterLayer = dynamic_cast<Layer*>(child);
+        if (currentCharacterLayer) {
+            break;
+        }
+    }
+    
+    if (currentCharacterLayer) {
+        // 手动调用 onExit()
+        currentCharacterLayer->onExit();
+        currentScene->removeChild(currentCharacterLayer);
+    }
+
+    leading_charactor._sprite->retain();
 }
 
 //工具：切换场景时添加人物
@@ -74,13 +94,19 @@ void people_remove_change()
 */
 void people_change_scene(const Vec2 change_Vec2)
 {
-    auto characterLayer = Layer::create();
+
+    auto newCharacterLayer = Layer::create();
     auto nowTiledMap = MapManager::getInstance()->getCurrentMap();
     auto nowScene = Director::getInstance()->getRunningScene();
-    nowScene->addChild(characterLayer); // 将人物层添加到当前场景中  
-    characterLayer->addChild(leading_charactor._sprite);
-    leading_charactor._sprite->setPosition(change_Vec2);
+    nowScene->addChild(newCharacterLayer); // 将人物层添加到当前场景中
+//    leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
+    
 
+        // 如果精灵不在运行中，可能需要重新初始化或重新添加
+        leading_charactor._sprite->release();
+        leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
+        newCharacterLayer->addChild(leading_charactor._sprite);
+        leading_charactor._sprite->setPosition(change_Vec2);
 }
 
 /*工具：返回鼠标点击坐标的精灵的指针，如果没有为nullptr
@@ -144,3 +170,4 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
     }
     return pickDrops;
 }
+

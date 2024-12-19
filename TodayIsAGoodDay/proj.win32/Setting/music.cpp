@@ -5,7 +5,8 @@
 #include "cocos2d.h"
 #include <functional>
 #include "ui/CocosGUI.h"
-
+#include "setting.h"
+#include "Time.h"
 using namespace std;
 using namespace CocosDenshion;
 using namespace cocos2d;
@@ -24,10 +25,10 @@ int preload_BGM() {
 
     return 0;
 }
-void play_BGM(bool flag)
+void play_BGM(Weather current_weather)
 {
     SimpleAudioEngine::getInstance()->playBackgroundMusic("setting/BGM.mp3", true);
-    if (flag)SimpleAudioEngine::getInstance()->playEffect("setting/Rain_BGM.mp3", true); // 使用 playEffect 播放音效
+    if (current_weather == Weather::Rainy)SimpleAudioEngine::getInstance()->playEffect("setting/Rain_BGM.mp3", true); // 使用 playEffect 播放音效
 }
 
 // 播放或暂停背景音乐和音效
@@ -92,6 +93,7 @@ MenuItemToggle* createVolumeButton() {
     volumeButton->setPosition(Vec2(0, 0));
     return volumeButton;
 }
+
 
 // 创建音量调整进度条
 ui::Slider* createVolumeSlider() {

@@ -85,7 +85,7 @@ Animation* Person::createAnimations(const std::string& direction)
         frames.pushBack(frame);
         */
     }
-    animation->setDelayPerUnit(0.05f);
+    animation->setDelayPerUnit(0.1f);
     animation->setRestoreOriginalFrame(true);
 
     animation->setLoops(-1); // 设置为播放一次
@@ -115,22 +115,26 @@ void Person::PersonMove(float deltaX, float deltaY)
     if (i++) {
         if (deltaX > 0)
         {
-            _sprite->stopAllActions();
+//            _sprite->stopAllActions();
+            if(_sprite->getNumberOfRunningActions() == 0)
             _sprite->runAction(_rightWalkAnimate->clone());
         }
         else if (deltaX < 0)
         {
-            _sprite->stopAllActions();
+//            _sprite->stopAllActions();
+            if (_sprite->getNumberOfRunningActions() == 0)
             _sprite->runAction(_leftWalkAnimate->clone());
         }
         else if (deltaY > 0)
         {
-            _sprite->stopAllActions();
+//            _sprite->stopAllActions();
+            if (_sprite->getNumberOfRunningActions() == 0)
             _sprite->runAction(_backWalkAnimate->clone());
         }
         else if (deltaY < 0)
         {
-            _sprite->stopAllActions();
+//            _sprite->stopAllActions();
+            if (_sprite->getNumberOfRunningActions() == 0)
             _sprite->runAction(_frontWalkAnimate->clone());
         }
     }

@@ -7,6 +7,8 @@
 
 extern Person leading_charactor;
 
+//实现庄园地图切换
+void manor_change_map();
 
 //控制主角层
 
@@ -60,7 +62,12 @@ public:
 
     // 获取当前场景的地图
     TMXTiledMap* getCurrentMap();
+    //获取当前场景
     Scene* getCurrentScene();
+    //获取当前地图大小
+    Size getCurrentMapSize();
+    //获取当前瓦片大小
+    Size getCurrentTileSize();
 
 private:
     // 构造函数和析构函数
