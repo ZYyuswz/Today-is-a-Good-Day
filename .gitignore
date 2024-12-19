@@ -43,3 +43,4 @@ __pycache__/
 
 # C++ 文件
 *.dSYM/
+TodayIsAGoodDay/proj.win32/.vs/TodayIsAGoodDay/v17/Browse.VC.db
