@@ -1,4 +1,3 @@
-
 #pragma once
 #include <map>
 //屏幕显示比例
@@ -174,4 +173,17 @@ enum class CropsType {
     Pumpkin,    // 南瓜
     // 酸菜
     Withered
+};
+
+//待添加完善
+std::map<std::string, int> itemPrices = {
+    /*工具全部价格为0*/
+    {"hammer",0},
+    {"axe",0},
+    {"draft",0},
+    {"kettle",0},
+    {"fishing_pole",0},
+
+    //物品有价格,必须是双斜杠，否则会报错
+    {"carrat_drop",30},
 };

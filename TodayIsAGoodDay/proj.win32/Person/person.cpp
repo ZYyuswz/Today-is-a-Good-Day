@@ -3,6 +3,9 @@
 
 #include "person.h"
 #include "global.h"
+#include "totaltools.h"
+#include <vector>
+#include "Map/drop.h"
 
 Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, const Vec2& Tiledposition);
 
@@ -26,7 +29,7 @@ void Person::person_construction(const std::string& name, const int& sex, const 
     _money = money;
     _energy = energy;
 
-    auto newCharacterLayer = CharacterLayer::create();
+    auto newCharacterLayer = Layer::create();
     currentScene->addChild(newCharacterLayer); // 将人物层添加到当前场景中
     // 创建一个精灵并添加到Person节点中
     _sprite = cocos2d::Sprite::create("/person/person_front_1.png");
@@ -71,6 +74,12 @@ void Person::dead()
      //  Director::getInstance()->replaceScene(town); //切换场景为小镇
 }
 
+void Person::moneyUP(int deltaMoney)
+{
+    _money += deltaMoney;
+    //预留函数接口
+}
+
 Vec2 Person::getTiledPosition()
 {
     Vec2 PersonWP = _sprite->getPosition();
@@ -89,4 +98,16 @@ void Person::levelUP()
         experience_all -= 1000;
         _level++;
     }
+}
+
+void Person::collectItems()
+{
+    Vec2 currentPosition = _sprite->getPosition();
+    auto currentTiledMap = MapManager::getInstance()->getCurrentMap();
+    Vec2 currentTiledPosition = convertWorldToTileCoord(currentPosition, currentTiledMap->getPosition());
+    std::vector <DropItem>* dropVector = getDrops(currentTiledPosition);
+    for (int i = 0; i < dropVector->size(); i++) {
+        MyBag.addItem((*dropVector)[i].type);
+    }
+    delete dropVector;
 }

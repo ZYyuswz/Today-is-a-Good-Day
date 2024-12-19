@@ -75,15 +75,7 @@ Animation* Person::createAnimations(const std::string& direction)
     for (int i = 1; i <= 4; i++) {
         std::string frameName = "/person/person_" + direction + "_" + std::to_string(i) + ".png";
         animation->addSpriteFrameWithFile(frameName);
-
-        /*
-        SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frameName);
-        if (frame == nullptr) {
-            // 如果缓存中没有，则从文件加载
-            frame = SpriteFrame::create(frameName, Rect(0, 0, 64, 96)); // 假设图片大小为64x64
-        }
-        frames.pushBack(frame);
-        */
+        
     }
     animation->setDelayPerUnit(0.1f);
     animation->setRestoreOriginalFrame(true);
