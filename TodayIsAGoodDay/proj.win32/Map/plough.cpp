@@ -1,6 +1,9 @@
 /* ----- 耕地类 实现每一格方块属性和功能 ----- */
 #include "plough.h"
 
+// 定义静态成员变量
+std::vector<Node*> Plough::nodesToRemove;  // 使用std::list，避免迭代器失效的问题
+
 // 构造函数
 Plough::Plough(TMXTiledMap* tileMap, Layer* ploughLayer,const Vec2 tile, LandState state){
     this->state = state;
@@ -25,16 +28,9 @@ Plough::Plough(TMXTiledMap* tileMap, Layer* ploughLayer,const Vec2 tile, LandSta
     this->setAnchorPoint(Vec2(0.5f, 0.5f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
-    // 将精灵添加到物体层
+    // 将精灵添加到ploughLayer层
     ploughLayer->addChild(this);
 }
-
-
-// 删除耕地
-void Plough::destroy() {
-    this->removeFromParent();  // 从父节点中移除当前节点
-}
-
 
 // 浇水
 void Plough::water() {
@@ -83,16 +79,27 @@ void Plough::update(){
         if (current_weather == Weather::Sunny) {  // 晴天
             non_watered_count++;
             if (non_watered_count >= LAND_DESTORY_THRESHOLD) {
-                destroy();  // 如果超过阈值，删除耕地
+                nodesToRemove.push_back(this);  // 记录需要移除的对象
             }
         }
-        else if (current_weather == Weather::Rainy) {  // 雨天
+        else {  // 雨天
             water();  // 自动浇水
         }
     }
     else if (state == LandState::Watered) {
         if (current_weather == Weather::Sunny) {  // 晴天
             restore();  // 恢复为已耕地状态
+        }
+    }
+    else if (state == LandState::Fertilized) {
+        if (current_weather == Weather::Sunny) {  // 晴天
+            non_watered_count++;
+            if (non_watered_count >= LAND_DESTORY_THRESHOLD) {
+                nodesToRemove.push_back(this);  // 记录需要移除的对象
+            }
+        }
+        else {  // 雨天
+            water();  // 自动浇水
         }
     }
     else if (state == LandState::FertilizedWatered) {
@@ -117,4 +124,11 @@ void Plough::updateAll(Layer* ploughLayer) {
             plough->update();  // 调用 update() 方法
         }
     }
+    // 遍历结束后统一移除对象
+    for (auto it = nodesToRemove.begin(); it != nodesToRemove.end(); ) {
+        (*it)->removeFromParent();  // 移除节点
+        it = nodesToRemove.erase(it);  // 会删除当前元素，并返回一个指向被删除元素之后元素的迭代器
+    }
+    // 清空 nodesToRemove
+    nodesToRemove.clear();
 }

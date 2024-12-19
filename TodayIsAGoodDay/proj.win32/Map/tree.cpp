@@ -5,7 +5,6 @@
 // 构造函数
 Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st){
     // 基本项目的初始化
-    this->tileMap = tileMap;
     this->type = ty;  // 初始化树种类
     this->tilePosition = tile;  // 初始化树的坐标
     this->stage = st;  // 初始化树的阶段
@@ -27,7 +26,7 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     const Size tileSize = tileMap->getTileSize();
     Vec2 pixelPosition = getTilePixelPosition(tilePosition, tileSize, mapSize, TileCorner::BOTTOM_CENTER);
     // 将精灵的图像上下颠倒
-    this->setFlippedY(true);
+    this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
     this->setAnchorPoint(Vec2(0.44f, -0.01f));
     // 设置精灵的位置
@@ -58,22 +57,20 @@ void Tree::deathAnimation() {
 
 // 生成掉落物
 void Tree::generateDrops() {
-    // 获取当前运行的场景
-    auto scene = Director::getInstance()->getRunningScene();
-    if (!scene) {
-        CCLOG("No running scene found!");
+    // 获取当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--Tree::generateDrops");
         return;
     }
-    // 检查场景中是否存在掉落物层，并确保它是 Layer 类型
-    auto dropLayer = dynamic_cast<Layer*>(scene->getChildByName("DropLayer"));
+    // 获取 ObjectLayer
+    auto dropLayer = dynamic_cast<Layer*>(map->getChildByName("DropLayer"));
     if (!dropLayer) {
-        // 如果不存在，创建一个新的掉落物层
-        dropLayer = Layer::create();
-        dropLayer->setName("DropLayer");
-        scene->addChild(dropLayer);
+        CCLOG("ObjectLayer not found in the map!--Tree::generateDrops");
+        return;
     }
     // 创建掉落物
-    auto treeDrop = new TreeDrop(tilePosition, dropLayer, tileMap);  // 使用树的瓦片坐标作为掉落物的生成位置
+    auto treeDrop = new TreeDrop(tilePosition, dropLayer, map);  // 使用树的瓦片坐标作为掉落物的生成位置
     treeDrop->generate();                                     // 生成掉落物
 }
 
@@ -215,7 +212,7 @@ void Tree::updateAll(Layer* objectLayer) {
         CCLOG("objectLayer is null!");
         return;
     }
-    // 遍历 ploughLayer 的所有子节点
+    // 遍历 objectLayer 的所有子节点
     for (auto child : objectLayer->getChildren()) {
         // 检查子节点是否是 Tree 类的实例
         Tree* tree = dynamic_cast<Tree*>(child);

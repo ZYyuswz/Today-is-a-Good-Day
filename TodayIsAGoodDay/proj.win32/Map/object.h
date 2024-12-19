@@ -1,14 +1,14 @@
 #pragma once
-#include "cocos2d.h"
 #include "map.h"
 #include "definition.h"
-#include "Control/Time.h"
 
 USING_NS_CC;
 
+class Time;  // 前向声明 Time 类
+
+// 抽象类
 class MyObject : public Sprite {
 protected:
-    TMXTiledMap* tileMap;
     Vec2 tilePosition;  // 物体的瓦片坐标
     int health = 10;         // 物体的血量
 public:
@@ -35,10 +35,11 @@ public:
             auto removeAction = CallFunc::create([this]() {
                 this->removeFromParent();  // 移除对象
                 });
-
+            auto delay = DelayTime::create(1.0f);  // 延迟1秒
             // 按顺序执行动作
             this->runAction(Sequence::create(
                 deathAnim,
+                delay,
                 generateDropsAction,
                 removeAction,
                 nullptr
@@ -55,6 +56,7 @@ public:
 
 // 需要注意每日更新活物的状态时候，需要getRunningScene()
 // 所以要依此把所有场景变成RunningScene然后依此更新所有内容
+// 抽象类
 class GrowObject : public MyObject {
 protected:
     int growthDays = 0;              // 生长天数
@@ -68,7 +70,7 @@ public:
     virtual void update() = 0;
 };
 
-
+// 抽象类
 class DeadObject : public MyObject {
 public:
     // 构造函数

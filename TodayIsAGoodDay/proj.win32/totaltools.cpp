@@ -2,6 +2,10 @@
 
 #include "totaltools.h"
 
+#include "global.h"
+
+#include <random>
+
 USING_NS_CC;
 
 //工具：瓦片地图坐标转换成屏幕像素坐标
@@ -42,12 +46,29 @@ Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledpositio
     int tileY = static_cast<int>(TiledGap.y);
 
     return Vec2(tileX, tileY);
+}
+
+/*工具：随机生成一组伯努利分布的离散变量
+* 传入参数：
+* double p 生成1的概率
+* 返回值：
+* 随机生成的一个bool值
+*/
+bool random_bernoulli(double p) {
+    // 创建一个随机数生成器
+    static std::random_device rd;  // 用于获取随机种子
+    static std::mt19937 gen(rd()); // 使用Mersenne Twister算法生成随机数
+    std::bernoulli_distribution dist(p); // 创建一个伯努利分布，概率为p
+
+    // 返回一个服从伯努利分布的随机数
+    return dist(gen);
 
 }
 
 //工具：切换场景时移除人物
 void people_remove_change()
 {
+
     auto currentScene = Director::getInstance()->getRunningScene();
     // 获取当前场景中的人物层
     Layer* currentCharacterLayer = nullptr;
@@ -67,13 +88,13 @@ void people_remove_change()
     leading_charactor._sprite->retain();
 }
 
-
 //工具：切换场景时添加人物
 /* 传入参数：
 *  const Vec2 change_vec2 切换后人物位置
 */
 void people_change_scene(const Vec2 change_Vec2)
 {
+
     auto newCharacterLayer = Layer::create();
     auto nowTiledMap = MapManager::getInstance()->getCurrentMap();
     auto nowScene = Director::getInstance()->getRunningScene();
@@ -91,3 +112,4 @@ void people_change_scene(const Vec2 change_Vec2)
     
 
 }
+

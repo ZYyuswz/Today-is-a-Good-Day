@@ -26,29 +26,34 @@ Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition,const Vec2& Tile
 bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
 {
     // 计算目标位置
-    cocos2d::Vec2 currentPosition = this->getPosition();
+    cocos2d::Vec2 currentPosition = _sprite->getPosition();
     cocos2d::Vec2 targetPosition = currentPosition + cocos2d::Vec2(deltaX, deltaY);
 
-    auto _wallLayer = currentMap->getLayer("Wall");
-    auto _itemLayer = currentMap->getLayer("Item");
+    auto _floorLayer = currentMap->getLayer("floor");
+    
+//    auto _wallLayer = currentMap->getLayer("Wall");
+//    auto _itemLayer = currentMap->getLayer("Item");
 
     // 将目标位置转换为瓦片坐标
     cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap->getPosition());
+    int floorGID = _floorLayer->getTileGIDAt(tileCoord);
 
+    /*
     int wallGID = 0, itemGID = 0;
     // 获取目标位置的瓦片 GID
     if (_wallLayer != nullptr)
         wallGID = _wallLayer->getTileGIDAt(tileCoord);
     if (_itemLayer != nullptr)
         itemGID = _itemLayer->getTileGIDAt(tileCoord);
+    */
 
     // 如果目标位置是 wall 或 item，则不能移动
-    if (wallGID != 0 || itemGID != 0)
+    if (floorGID != 0)
     {
-        return false;
+        return true;
     }
 
-    return true;
+    return false;
 }
 
 
@@ -180,8 +185,8 @@ void Person::PersonMove(float deltaX, float deltaY)
     */
     
     //判断是否可以移动
-//    if (!canMove(deltaX, deltaY,currentTiledMap))
-//        return;
+    if (!canMove(deltaX, deltaY,currentMap))
+        return;
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 screenRightUp = Vec2(visibleSize.width, visibleSize.height);
   
