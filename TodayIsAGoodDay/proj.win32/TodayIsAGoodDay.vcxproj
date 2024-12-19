@@ -157,6 +157,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include=".\Cooperation\cooperation.cpp" />
     <ClCompile Include=".\Control\GameMain.cpp" />
     <ClCompile Include=".\Map\house.cpp" />
+    <ClCompile Include="Control\controler.cpp" />
     <ClCompile Include="Control\global.cpp" />
     <ClCompile Include="Control\scene.cpp" />
     <ClCompile Include="Control\Time.cpp" />
@@ -180,6 +181,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="Control\controler.h" />
+    <ClInclude Include="Control\GameMain.h" />
+    <ClInclude Include="Control\menu.h" />
     <ClInclude Include="Control\scene.h" />
     <ClInclude Include="Control\Time.h" />
     <ClInclude Include="definition.h" />
@@ -192,8 +196,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="Map\stone.h" />
     <ClInclude Include="Map\tree.h" />
     <ClInclude Include="Person\person.h" />
-    <ClInclude Include="tool.h" />
-    <ClInclude Include="Tools\Totaltools\totaltools.h" />
+    <ClInclude Include="Person\tool.h" />
+    <ClInclude Include="totaltools.h" />
     <ClInclude Include="Setting\setting.h" />
   </ItemGroup>
   <ItemGroup>

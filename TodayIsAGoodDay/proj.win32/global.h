@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "./Person/person.h"
+
+#include"Person/person.h"
 
 //创建唯一主人公
 
@@ -20,7 +21,7 @@ public:
     void onMouseDown(Event* event); // 新增鼠标点击回调函数
     void update(float dt) override;
     void setPlayer(Person* player);
-
+    void movePlayer(float dt);
     void onExit() override; // 添加 override 关键字
 
 private:
@@ -32,6 +33,9 @@ private:
     bool _moveUp;
     bool _moveDown;
     float _playerSpeed;
+    // 移动标志位
+    bool _isRunning;
+    std::string _currentDirection; // 定义 _currentDirection 变量
 
 };
 
@@ -56,6 +60,12 @@ public:
 
     // 获取当前场景的地图
     TMXTiledMap* getCurrentMap();
+    //获取当前场景
+    Scene* getCurrentScene();
+    //获取当前地图大小
+    Size getCurrentMapSize();
+    //获取当前瓦片大小
+    Size getCurrentTileSize();
 
 private:
     // 构造函数和析构函数

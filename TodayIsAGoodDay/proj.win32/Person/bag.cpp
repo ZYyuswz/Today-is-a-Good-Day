@@ -4,65 +4,7 @@
 #include "person.h"
 #include <iostream>
 #include "definition.h"
-
-const int AXE = 100;//斧头，砍树用
-const int HAMMER = 101;//榔头，凿石头
-const int DRAFT = 102; //锄头，锄地用
-const int KETTLE = 103;//水壶，浇花
-const int FISHING_POLE = 104;//钓鱼竿
-
-const int BAG_LEFT_LOCATION = 500;
-const int BAG_UP_LOCATION = 1000;
-const int BAG_RIGHT_LOCATION = 1500;
-const int BAG_CELL = 100;
-
-struct item
-{
-    std::string name;
-    int num;
-    item(const std::string itemName, const int itemNum = 1) :name(itemName), num(itemNum) {}
-};
-
-
-class Bag : public Node
-{
-public:
-    // 构造函数
-    Bag();
-
-    //监听器，按E打开背包
-    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-
-    // 添加工具或材料
-    void addItem(const item& MyItem);
-
-    // 移除工具或材料
-    void removeItem(const item& MyItem);
-
-    // 显示背包内容
-    void displayBag();
-
-    //关闭背包
-    void closeBag();
-
-    // 更新物品信息
-    void updateItemInfo(cocos2d::Vec2 position);
-
-private:
-    //物品列表
-    std::vector<item> _items;
-
-    //物品精灵列表
-    std::vector<cocos2d::Sprite*> _itemSprites;
-
-    //物品标签，只有一个，根据鼠标移动显示
-    cocos2d::Label* _itemInfoLabel;
-    int _selectedItemIndex;
-
-    bool isOpen;
-
-    cocos2d::EventListenerKeyboard* _keyboardListener;  //键盘监听器
-};
+#include "global.h"
 
 
 Bag::Bag(): _selectedItemIndex(-1)
@@ -71,29 +13,8 @@ Bag::Bag(): _selectedItemIndex(-1)
     _itemInfoLabel = cocos2d::Label::createWithSystemFont("", "Arial", 24);
     _itemInfoLabel->setPosition(cocos2d::Vec2(400, 50));
     this->addChild(_itemInfoLabel);
-
-    //初始化键盘监听器
-    _keyboardListener->onKeyPressed = CC_CALLBACK_2(Bag::onKeyPressed, this);
-
-    // 创建鼠标监听器
-    auto mouseListener = cocos2d::EventListenerMouse::create();
-
-    //监听鼠标移动
-    mouseListener->onMouseMove = [this](cocos2d::Event* event) {
-        cocos2d::EventMouse* mouseEvent = dynamic_cast<cocos2d::EventMouse*>(event);
-        cocos2d::Vec2 mousePosition = mouseEvent->getLocation();
-        updateItemInfo(mousePosition);
-        };
-
-    mouseListener->onMouseDown = [this](cocos2d::Event* event) {
-        cocos2d::EventMouse* mouseEvent = dynamic_cast<cocos2d::EventMouse*>(event);
-        cocos2d::Vec2 mousePosition = mouseEvent->getLocation();
-        updateItemInfo(mousePosition);
-        };
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
+  
 }
-
-
 
 //按键函数
 void Bag::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
@@ -151,18 +72,21 @@ void Bag::removeItem(const item& MyItem)
 
 void Bag::displayBag()
 {
+    
     // 清除之前的物品精灵
     for (auto sprite : _itemSprites)
     {
         sprite->removeFromParent();
     }
     _itemSprites.clear();
+    
 
     // 显示背包网格背景图片
-    auto bagBackground = cocos2d::Sprite::create("bag_grid.png"); // 假设网格背景图片名为 "bag_grid.png"
-    bagBackground->setPosition(cocos2d::Vec2(BAG_LEFT_LOCATION + (BAG_RIGHT_LOCATION - BAG_LEFT_LOCATION) / 2,
-        BAG_UP_LOCATION - (BAG_UP_LOCATION - BAG_CELL) / 2));
-    this->addChild(bagBackground);
+    auto bagBackground = cocos2d::Sprite::create("bag/BagBackground.png"); //创建精灵
+    bagBackground->setAnchorPoint(Vec2(0.5f,0.5f));//设置锚点位于中心
+    bagBackground->setPosition(1024.0f,576.0f);
+    bagBackground->setScale(0.4f);
+    MapManager::getInstance()->getCurrentMap()->addChild(bagBackground);
 
     // 显示背包格的图片和物品图案
     int x = BAG_LEFT_LOCATION;

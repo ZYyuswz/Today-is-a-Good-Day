@@ -1,38 +1,43 @@
 #include "Crops.h"
 
+// 定义静态成员变量
+std::vector<Node*> Crops::nodesToRemove;
+
 // 生长
 void Crops::update() {
     // 获取当前季节
     Season current_season = GameTime::getInstance()->getSeason();
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if(!map) {
+        CCLOG("Map not found in the scene!--crops");
+        return;
+    }
+    // 获取 ObjectLayer
+    auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
+    if (!objectLayer) {
+        CCLOG("ObjectLayer not found in the map!--crops");
+        return;
+    }
     // 如果当前季节与作物季节不匹配
     if (current_season != cropsSeason) {
-        // 获取 ObjectLayer
-        auto objectLayer = dynamic_cast<Layer*>(Director::getInstance()->getRunningScene()->getChildByName("ObjectLayer"));
-        if (!objectLayer) {
-            CCLOG("ObjectLayer not found in the scene!");
-            return;
-        }
-        // 销毁变成酸菜
-        auto temp = new Withered(pMap, objectLayer, tilePosition, Stage::Childhood);
-        if (temp) {
-            objectLayer->addChild(temp); // 确保酸菜对象被添加到层中
-        }
-        this->removeFromParent(); // 移除当前对象
+        nodesToRemove.push_back(this);  // 记录需要移除的对象，等迭代结束再移除，避免迭代器被删除
         return; // 提前返回，避免继续执行生长逻辑
     }
     // 如果季节匹配，且耕地浇水，继续生长 
-    // 获取 ObjectLayer
-    auto ploughLayer = dynamic_cast<Layer*>(Director::getInstance()->getRunningScene()->getChildByName("PloughLayer"));
+    // 获取 ploughLayer
+    auto ploughLayer = dynamic_cast<Layer*>(map->getChildByName("PloughLayer"));
     if (!ploughLayer) {
-        CCLOG("PloughLayer not found in the scene!");
+        CCLOG("PloughLayer not found in the map!--crops");
         return;
     }
     // 遍历 PloughLayer 的子节点，找到坐标为 tilePosition 的耕地
     bool isWatered = false;
     bool isFertilized = false;
+    bool findPlough = false;
     for (auto child : ploughLayer->getChildren()) {
         auto plough = dynamic_cast<Plough*>(child);  // 假设 Plough 是耕地对象的类
         if (plough && plough->getTilePosition() == tilePosition) {
+            findPlough = true;
             // 检查耕地状态
             LandState landState = plough->getState();
             if (landState == LandState::Watered || landState == LandState::FertilizedWatered) {
@@ -44,36 +49,101 @@ void Crops::update() {
             break;
         }
     }
+    // 没找到下面的耕地就删除精灵
+    if (!findPlough) {
+        nodesToRemove.push_back(this);  // 记录需要移除的对象，等迭代结束再移除，避免迭代器被删除
+        return;
+    }
     // 如果耕地已浇水，作物继续生长
     if (isWatered) {
+        CCLOG("isWatered");
         if (isFertilized) {
             // 如果施肥，生长天数增加 2
             growthDays += 2;
-            CCLOG("Crop grows faster due to fertilization! Growth days += 2.");
+            // CCLOG("Crop grows faster due to fertilization! Growth days += 2.");
         }
         else {
             // 如果只浇水，生长天数增加 1
             growthDays++;
-            CCLOG("Crop grows normally. Growth days += 1.");
+            // CCLOG("Crop grows normally. Growth days += 1.");
         }
         // 检查是否需要更新阶段
-        for (size_t i = 0; i < growthStageThreshold.size(); ++i) {
-            if (growthDays >= growthStageThreshold[i]) {
-                stage = static_cast<Stage>(i + 1);  // 更新阶段
-                this->setSpriteFrame(stageImages[i]);
-                CCLOG("Crop stage updated to stage %d.", stage);
-                break;
+        if (stage == Stage::Mature)
+            return;
+        else if (stage == Stage::Childhood) {
+            if (growthDays >= growthStageThreshold[1]) {
+                stage = Stage::Growth;  // 更新阶段
+                this->setSpriteFrame(stageImages[1]);
+            }
+        }
+        else if (stage == Stage::Growth) {
+            if (growthDays >= growthStageThreshold[2]) {
+                stage = Stage::Mature;  // 更新阶段
+                this->setSpriteFrame(stageImages[2]);
             }
         }
     }
 }
 
+// 静态方法：遍历objectLayer的所有子节点并调用update
+void Crops::updateAll(Layer* objectLayer) {
+    if (!objectLayer) {
+        CCLOG("objectLayer is null!");
+        return;
+    }
+    // 遍历 objectLayer 的所有子节点
+    for (auto child : objectLayer->getChildren()) {
+        // 检查子节点是否是 Crop 类的实例
+        Crops* crops = dynamic_cast<Crops*>(child);
+        if (crops) {
+            crops->update();  // 调用 update() 方法
+        }
+    }
+    // 遍历结束后统一移除对象
+    for (auto it = nodesToRemove.begin(); it != nodesToRemove.end(); ) {
+        Vec2 tilePosition = dynamic_cast<Crops*>(*it)->tilePosition;
+        (*it)->removeFromParent();  // 移除节点
+        it = nodesToRemove.erase(it);  // 会删除当前元素，并返回一个指向被删除元素之后元素的迭代器
+        auto map = MapManager::getInstance()->getCurrentMap();
+        if (!map) {
+            CCLOG("Map not found in the scene!--crops");
+            return;
+        }
+        // 获取 ObjectLayer
+        auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
+        if (!objectLayer) {
+            CCLOG("ObjectLayer not found in the map!--crops");
+            return;
+        }
+        // 销毁变成酸菜
+        auto temp = new Withered(map, objectLayer, tilePosition, Stage::Childhood);
+    }
+    // 清空 nodesToRemove
+    nodesToRemove.clear();
+
+}
+
 // 收获
 void Crops::harvest() {
     if (stage == Stage::Mature) {
-        deathAnimation();// 死亡动画
-        this->removeFromParent(); // 移除
-        generateDrops(); // 产生掉落物
+        auto deathAnim = CallFunc::create([this]() {
+            deathAnimation();  // 播放死亡动画
+            });
+        auto generateDropsAction = CallFunc::create([this]() {
+            generateDrops();   // 产生掉落物
+            });
+        auto removeAction = CallFunc::create([this]() {
+            this->removeFromParent();  // 移除对象
+            });
+        auto delay = DelayTime::create(1.0f);  // 延迟1秒
+        // 按顺序执行动作
+        this->runAction(Sequence::create(
+            deathAnim,
+            delay,
+            generateDropsAction,
+            removeAction,
+            nullptr
+        ));
     }
 }
 
@@ -81,10 +151,6 @@ void Crops::harvest() {
 void Crops::reduceHealth(int damage) {
     health -= damage;
     if (health <= 0) {
-        // 物体被摧毁
-        deathAnimation();// 死亡动画
-        // 生产掉落物
-        generateDrops();
         this->removeFromParent(); // 移除
     }
 }
@@ -104,23 +170,23 @@ void Crops::generateDrops() {
     // 酸菜直接返回
     if (type == CropsType::Withered)
         return;
-    // 获取当前运行的场景
-    auto scene = Director::getInstance()->getRunningScene();
-    if (!scene) {
-        CCLOG("No running scene found!");
+    // 获取当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--crops--generateDrops");
         return;
     }
-    // 检查场景中是否存在掉落物层，并确保它是 Layer 类型
-    auto dropLayer = dynamic_cast<Layer*>(scene->getChildByName("DropLayer"));
+    // 获取 dropLayer
+    auto dropLayer = dynamic_cast<Layer*>(map->getChildByName("DropLayer"));
     if (!dropLayer) {
         // 如果不存在，创建一个新的掉落物层
         dropLayer = Layer::create();
         dropLayer->setName("DropLayer");
-        scene->addChild(dropLayer);
+        map->addChild(dropLayer);
     }
     // 创建掉落物
-    auto cropsDrop = new CropsDrop(tilePosition, dropLayer, type, tileMap);  // 使用树的瓦片坐标作为掉落物的生成位置
-    cropsDrop->generate();                                          // 生成掉落物
+    auto cropsDrop = new CropsDrop(tilePosition, dropLayer, type, map);  // 使用树的瓦片坐标作为掉落物的生成位置
+    cropsDrop->generate(); // 生成掉落物
 }
 
 // 酸菜
@@ -139,7 +205,7 @@ Withered::Withered(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -152,7 +218,6 @@ Carrot::Carrot(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st){
     this->stage = st;
     this->cropsSeason = Season::Spring;
     this->type = CropsType::Carrot;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "carrot_1.png";  // 阶段 1 图片路径
     stageImages[1] = "carrot_2.png";  // 阶段 2 图片路径
     stageImages[2] = "carrot_3.png";  // 阶段 3 图片路径
@@ -174,7 +239,7 @@ Carrot::Carrot(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st){
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -186,7 +251,6 @@ Garlic::Garlic(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     this->stage = st;
     this->cropsSeason = Season::Spring;
     this->type = CropsType::Garlic;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "garlic_1.png";  // 阶段 1 图片路径
     stageImages[1] = "garlic_2.png";  // 阶段 2 图片路径
     stageImages[2] = "garlic_3.png";  // 阶段 3 图片路径
@@ -208,7 +272,7 @@ Garlic::Garlic(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -220,7 +284,6 @@ Potato::Potato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     this->stage = st;
     this->cropsSeason = Season::Spring;
     this->type = CropsType::Potato;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "potato_1.png";  // 阶段 1 图片路径
     stageImages[1] = "potato_2.png";  // 阶段 2 图片路径
     stageImages[2] = "potato_3.png";  // 阶段 3 图片路径
@@ -242,7 +305,7 @@ Potato::Potato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -254,7 +317,6 @@ Corn::Corn(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     this->stage = st;
     this->cropsSeason = Season::Summer;
     this->type = CropsType::Corn;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "corn_1.png";  // 阶段 1 图片路径
     stageImages[1] = "corn_2.png";  // 阶段 2 图片路径
     stageImages[2] = "corn_3.png";  // 阶段 3 图片路径
@@ -276,7 +338,7 @@ Corn::Corn(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -288,7 +350,6 @@ Melon::Melon(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     this->stage = st;
     this->cropsSeason = Season::Summer;
     this->type = CropsType::Melon;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "melon_1.png";  // 阶段 1 图片路径
     stageImages[1] = "melon_2.png";  // 阶段 2 图片路径
     stageImages[2] = "melon_3.png";  // 阶段 3 图片路径
@@ -310,7 +371,7 @@ Melon::Melon(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -322,7 +383,6 @@ Tomato::Tomato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     this->stage = st;
     this->cropsSeason = Season::Summer;
     this->type = CropsType::Tomato;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "tomato_1.png";  // 阶段 1 图片路径
     stageImages[1] = "tomato_2.png";  // 阶段 2 图片路径
     stageImages[2] = "tomato_3.png";  // 阶段 3 图片路径
@@ -344,7 +404,7 @@ Tomato::Tomato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -356,7 +416,6 @@ Cabbage::Cabbage(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) 
     this->stage = st;
     this->cropsSeason = Season::Autumn;
     this->type = CropsType::Cabbage;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "cabbage_1.png";  // 阶段 1 图片路径
     stageImages[1] = "cabbage_2.png";  // 阶段 2 图片路径
     stageImages[2] = "cabbage_3.png";  // 阶段 3 图片路径
@@ -378,7 +437,7 @@ Cabbage::Cabbage(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) 
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -390,7 +449,6 @@ Eggplant::Eggplant(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st
     this->stage = st;
     this->cropsSeason = Season::Autumn;
     this->type = CropsType::Eggplant;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "eggplant_1.png";  // 阶段 1 图片路径
     stageImages[1] = "eggplant_2.png";  // 阶段 2 图片路径
     stageImages[2] = "eggplant_3.png";  // 阶段 3 图片路径
@@ -412,7 +470,7 @@ Eggplant::Eggplant(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
@@ -424,7 +482,6 @@ Pumpkin::Pumpkin(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) 
     this->stage = st;
     this->cropsSeason = Season::Autumn;
     this->type = CropsType::Pumpkin;  // 设置作物类型
-    this->pMap = tileMap;
     stageImages[0] = "pumpkin_1.png";  // 阶段 1 图片路径
     stageImages[1] = "pumpkin_2.png";  // 阶段 2 图片路径
     stageImages[2] = "pumpkin_3.png";  // 阶段 3 图片路径
@@ -446,7 +503,7 @@ Pumpkin::Pumpkin(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) 
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.0f));
+    this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层

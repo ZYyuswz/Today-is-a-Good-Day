@@ -6,13 +6,16 @@
 #include "totaltools.h"
 #include "scene.h"
 #include "./Setting/setting.h"
-#include "./Person/person.h"
+#include"Person/person.h"
 #include"global.h"
+#include "controler.h"
 
 USING_NS_CC;
 //创建主人公
-Person leading_charactor;
-const float MOVE_DISTANCE = 56.0f;
+
+Person leading_charactor ;
+
+
 
 bool PlayerControlLayer::init() {
     if (!Layer::init())
@@ -45,27 +48,114 @@ bool PlayerControlLayer::init() {
 }
 
 void PlayerControlLayer::setPlayer(Person* player) {
-    _player = player;
+    this->_player = player;
 }
+
 
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
-            leading_charactor.PersonMove(-MOVE_DISTANCE, 0);
+
+            _isRunning = true;
+            _currentDirection = "moveLeft"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveLeft"
+            );
+            
+           
+
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = true;
-            leading_charactor.PersonMove(MOVE_DISTANCE, 0);
+            _isRunning = true;
+            _currentDirection = "moveRight"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveRight"
+            );
+
             break;
         case EventKeyboard::KeyCode::KEY_W:
             _moveUp = true;
-            leading_charactor.PersonMove(0, MOVE_DISTANCE);
+            _isRunning = true;
+            _currentDirection = "moveUp"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveUp"
+            );
+
             break;
         case EventKeyboard::KeyCode::KEY_S:
             _moveDown = true;
-            leading_charactor.PersonMove(0, -MOVE_DISTANCE);
+            _isRunning = true;
+            _currentDirection = "moveDown"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveDown"
+            );
+
+            break;
+        case EventKeyboard::KeyCode::KEY_E:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_0:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_1:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_2:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_3:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_4:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_5:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_6:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_7:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_8:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_9:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_EQUAL:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_MINUS:
+
             break;
         default:
             break;
@@ -80,19 +170,71 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = false;
+            _isRunning = false;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveLeft", this);
             leading_charactor.PersonStop(-10, 0);
+
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = false;
+            _isRunning = false;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveRight", this);
             leading_charactor.PersonStop(10, 0);
             break;
         case EventKeyboard::KeyCode::KEY_W:
             _moveUp = false;
+            _isRunning = false;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveUp", this);
             leading_charactor.PersonStop(0, 10);
             break;
         case EventKeyboard::KeyCode::KEY_S:
             _moveDown = false;
+            _isRunning = false;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveDown", this);
             leading_charactor.PersonStop(0, -10);
+            break;
+        case EventKeyboard::KeyCode::KEY_E:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_0:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_1:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_2:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_3:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_4:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_5:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_6:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_7:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_8:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_9:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_EQUAL:
+
+            break;
+        case EventKeyboard::KeyCode::KEY_MINUS:
+
             break;
         default:
             break;
@@ -113,7 +255,7 @@ void PlayerControlLayer::onMouseDown(Event* event)
         Vec2 mousePos = Vec2(mouseEvent->getCursorX(), mouseEvent->getCursorY());
 
         // 获取主角当前位置
-        Vec2 playerPos = _player->getPosition();
+        Vec2 playerPos = _player->getWorldPosition();
 
         /*
         * 鼠标如果也想移动人物
@@ -132,15 +274,17 @@ void PlayerControlLayer::onMouseDown(Event* event)
 
 
         //测试用例
-        manor_to_towm();
+        //manor_to_towm();
+        //change_to_mine();
 
     }
 }
 
+//帧更新，暂时未启用
 void PlayerControlLayer::update(float dt) {
     float moveDistance = 1; // 每次移动的距离
     if (_player == nullptr) return;
-    Vec2 playerPos = _player->getPosition();
+    Vec2 playerPos = _player->getWorldPosition();
     Vec2 moveDir = Vec2::ZERO;
     if (_moveLeft) {
         moveDir.x -= 1.0f;
@@ -162,10 +306,37 @@ void PlayerControlLayer::update(float dt) {
     if (moveDir != Vec2::ZERO) {
         moveDir.normalize(); // 单位化方向向量
         playerPos += moveDir * _playerSpeed * dt;
-        _player->setPosition(playerPos);
+        _player->_sprite->setPosition(playerPos);
     }
 }
 
+//人物移动
+void PlayerControlLayer::movePlayer(float dt)
+{
+    if (_player == nullptr || !_isRunning) return;
+
+  
+
+    // 根据方向信息设置移动方向
+    if (_currentDirection == "moveLeft")
+    {
+        _player->PersonMove(-MOVE_DISTANCE, 0);
+       
+    }
+    else if (_currentDirection == "moveRight")
+    {
+        _player->PersonMove(MOVE_DISTANCE, 0);
+    }
+    else if (_currentDirection == "moveUp")
+    {
+        _player->PersonMove(0, MOVE_DISTANCE);
+    }
+    else if (_currentDirection == "moveDown")
+    {
+        _player->PersonMove(0, -MOVE_DISTANCE);
+    }
+
+}
 
 void PlayerControlLayer::onExit()
 {
@@ -183,7 +354,7 @@ void PlayerControlLayer::onExit()
 }
 
 
-
+/* ---------- 地图管理层得到当前场景和地图 ----------*/
 MapManager* MapManager::_instance = nullptr;
 
 MapManager::MapManager() : _currentScene(nullptr)
@@ -211,19 +382,28 @@ void MapManager::registerSceneMap(Scene* scene, TMXTiledMap* map)
 {
     _sceneMap[scene] = map;
 }
-
+//得到当前地图
 TMXTiledMap* MapManager::getCurrentMap()
 {
     auto currentScene = Director::getInstance()->getRunningScene();
-    if (currentScene)
-    {
-        auto it = _sceneMap.find(currentScene);
-        if (it != _sceneMap.end())
-        {
-            return it->second;
+    auto children = currentScene->getChildren();
+    TMXTiledMap* currentTiledMap;
+    
+    for (auto child : children) {
+        currentTiledMap = dynamic_cast<TMXTiledMap*>(child);
+        if (currentTiledMap) {
+            CCLOG("Tile map found!");
+            break;
         }
     }
-    return nullptr;
+    return currentTiledMap;
+}
+
+//得到当前场景
+Scene* MapManager::getCurrentScene()
+{
+    auto currentScene = Director::getInstance()->getRunningScene();
+    return currentScene;
 }
 
 void MapManager::onSceneChange(EventCustom* event)
@@ -232,6 +412,39 @@ void MapManager::onSceneChange(EventCustom* event)
     _currentScene = Director::getInstance()->getRunningScene();
 }
 
+Size MapManager::getCurrentMapSize()
+{
+    auto currentScene = Director::getInstance()->getRunningScene();
+    auto children = currentScene->getChildren();
+    TMXTiledMap* currentTiledMap;
+
+    for (auto child : children) {
+        currentTiledMap = dynamic_cast<TMXTiledMap*>(child);
+        if (currentTiledMap) {
+            CCLOG("Tile map found!");
+            break;
+        }
+    }
+    Size mapSize = currentTiledMap->getMapSize();
+    return mapSize;
+}
+
+Size MapManager::getCurrentTileSize()
+{
+    auto currentScene = Director::getInstance()->getRunningScene();
+    auto children = currentScene->getChildren();
+    TMXTiledMap* currentTiledMap;
+
+    for (auto child : children) {
+        currentTiledMap = dynamic_cast<TMXTiledMap*>(child);
+        if (currentTiledMap) {
+            CCLOG("Tile map found!");
+            break;
+        }
+    }
+    Size mapSize = currentTiledMap->getTileSize();
+    return mapSize;
+}
 
 /*
    使用以下方法在别的cpp中找到当前场景下的地图

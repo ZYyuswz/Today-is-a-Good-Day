@@ -1,16 +1,37 @@
 
 #pragma once
-
+#include <map>
 //屏幕显示比例
 #define SMALL_WINDOW 1
 
 //图层显示关系宏定义
 #define FIRST 1
+
+#define OBJECT 3
+#define PLOUGH 2
+#define DROP 4
+#define PERSON_LAYER 5
 #define OBJECT 2
 #define RAINLAYER 100
 #define BAGLAYER  101 
+
 //图片显示比例宏定义
 #define ROW_PICTURE 1.0f   //原图片大小
+
+// 人物
+// 人物移动像素点
+#define MOVE_DISTANCE 2.0f
+enum class DIRECTION {
+    LEFT,  //左
+    RIGHT,  //右
+    UP,    //上
+    DOWN   //下
+};
+
+//场景相关宏定义
+#define OBJECT_LAYER "ObjectLayer"
+#define PLOUGH_LAYER "PloughLayer"
+#define DROP_LAYER "DropLayer"
 
 //menu相关宏定义
 #define POS_NEW_X 4
@@ -43,9 +64,22 @@
 #define MANOR_TO_TOWN_X 0
 #define MANOR_TO_TOWN_Y 27
 
+//矿洞场景相关宏定义
+#define MINE_SMALL_SCALE 4.0f
+#define MANOR_TO_MINE_X 0
+#define MANOR_TO_MINE_Y 0
+
+//家场景相关宏定义
+#define HOME_SMALL_SCALE 4.0f
+#define MANOR_TO_HOME_X 0
+#define MANOR_TO_HOME_Y 0
+
 
 // 定义每个季节的持续天数
 #define SEASON_LENGTH 28  // 每个季节持续28天
+
+// 更新时间的间隔为 1 秒
+#define UPDATE_INTERVAL 0.01f  
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16
@@ -84,6 +118,15 @@ enum class StoneType {
     Coal        // 煤炭
 };
 
+#define DROPS_SCALE 0.6f
+
+// 矿洞中生成石头的数量
+#define STONE_GENERATE_NUM 20
+
+// 定义每种 StoneType 的权重（概率）
+extern std::map<StoneType, int> stoneTypeWeights;
+
+
 // 定义角点枚举类型 -- 瓦片的四个角定义
 enum TileCorner {
     TOP_LEFT,           // 左上角
@@ -110,7 +153,7 @@ enum class Weather {
 };
 
 // 耕地销毁的时间阈值
-#define LAND_DESTORY_THRESHOLD 3
+#define LAND_DESTORY_THRESHOLD 5
 
 // 树生长天数阈值
 #define TREE_GROWTH_THRESHOLD 5

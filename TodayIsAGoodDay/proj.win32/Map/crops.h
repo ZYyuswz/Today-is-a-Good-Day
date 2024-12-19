@@ -3,6 +3,7 @@
 #include "object.h"
 #include "drop.h"
 #include "Map/plough.h"
+#include "global.h"
 
 class Crops : public GrowObject {
 protected:
@@ -14,10 +15,10 @@ protected:
     std::string stageImages[3];  
     // 生长阶段阈值
     std::vector<int> growthStageThreshold;
-    // 地图指针
-    TMXTiledMap* pMap;
     // 构造函数
     Crops(){}
+    // 静态成员变量，用于记录需要移除的对象
+    static std::vector<Node*> nodesToRemove;  
 public:
     // 更新生长天数
     void grow();
@@ -36,6 +37,9 @@ public:
 
     // 扣血
     virtual void reduceHealth(int damage);
+
+    // 静态方法：遍历objectLayer的所有子节点并调用update
+    static void updateAll(Layer* objectLayer);
 };
 
 // 酸菜类
