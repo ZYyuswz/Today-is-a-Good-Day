@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "definition.h"
 #include "global.h"
-#include "Control/Time.h"
+#include "Map/object.h"
 
 USING_NS_CC;
 
