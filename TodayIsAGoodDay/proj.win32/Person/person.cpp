@@ -5,6 +5,8 @@
 #include "global.h"
 
 Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, const Vec2& Tiledposition);
+
+
 /*关于图片，这里只给出了一张，如果要有选择角色功能的话，那么图片要不一样*/
 Person::Person()
 
@@ -24,8 +26,8 @@ void Person::person_construction(const std::string& name, const int& sex, const 
     _money = money;
     _energy = energy;
 
-    auto characterLayer = Layer::create();
-    currentScene->addChild(characterLayer); // 将人物层添加到当前场景中
+    auto newCharacterLayer = CharacterLayer::create();
+    currentScene->addChild(newCharacterLayer); // 将人物层添加到当前场景中
     // 创建一个精灵并添加到Person节点中
     _sprite = cocos2d::Sprite::create("/person/person_front_1.png");
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -34,7 +36,7 @@ void Person::person_construction(const std::string& name, const int& sex, const 
 
     if (_sprite)
     {
-        characterLayer->addChild(_sprite, 3);
+        newCharacterLayer->addChild(_sprite);
     }
     init();
     createAnimate();

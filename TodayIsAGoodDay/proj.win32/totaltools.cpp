@@ -42,4 +42,52 @@ Vec2 convertWorldToTileCoord(const Vec2& worldPosition, const Vec2& Tiledpositio
     int tileY = static_cast<int>(TiledGap.y);
 
     return Vec2(tileX, tileY);
+
+}
+
+//工具：切换场景时移除人物
+void people_remove_change()
+{
+    auto currentScene = Director::getInstance()->getRunningScene();
+    // 获取当前场景中的人物层
+    Layer* currentCharacterLayer = nullptr;
+    for (auto child : currentScene->getChildren()) {
+        currentCharacterLayer = dynamic_cast<Layer*>(child);
+        if (currentCharacterLayer) {
+            break;
+        }
+    }
+    
+    if (currentCharacterLayer) {
+        // 手动调用 onExit()
+        currentCharacterLayer->onExit();
+        currentScene->removeChild(currentCharacterLayer);
+    }
+
+    leading_charactor._sprite->retain();
+}
+
+
+//工具：切换场景时添加人物
+/* 传入参数：
+*  const Vec2 change_vec2 切换后人物位置
+*/
+void people_change_scene(const Vec2 change_Vec2)
+{
+    auto newCharacterLayer = Layer::create();
+    auto nowTiledMap = MapManager::getInstance()->getCurrentMap();
+    auto nowScene = Director::getInstance()->getRunningScene();
+    nowScene->addChild(newCharacterLayer); // 将人物层添加到当前场景中
+//    leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
+    
+
+        // 如果精灵不在运行中，可能需要重新初始化或重新添加
+        leading_charactor._sprite->release();
+        leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
+        newCharacterLayer->addChild(leading_charactor._sprite);
+        leading_charactor._sprite->setPosition(change_Vec2);
+
+   
+    
+
 }
