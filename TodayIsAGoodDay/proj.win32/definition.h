@@ -114,6 +114,8 @@ enum class StoneType {
     Coal        // 煤炭
 };
 
+#define DROPS_SCALE 0.6f
+
 // 矿洞中生成石头的数量
 #define STONE_GENERATE_NUM 20
 
@@ -147,7 +149,7 @@ enum class Weather {
 };
 
 // 耕地销毁的时间阈值
-#define LAND_DESTORY_THRESHOLD 3
+#define LAND_DESTORY_THRESHOLD 5
 
 // 树生长天数阈值
 #define TREE_GROWTH_THRESHOLD 5

@@ -52,22 +52,22 @@ void Stone::deathAnimation(){
 }
 
 void Stone::generateDrops() {
-	// 获取当前运行的场景
-	auto scene = Director::getInstance()->getRunningScene();
-	if (!scene) {
-		CCLOG("No running scene found!");
+	// 获取当前地图
+	auto map = MapManager::getInstance()->getCurrentMap();
+	if (!map) {
+		CCLOG("Map not found in the scene!--crops--generateDrops");
 		return;
 	}
-	// 检查场景中是否存在掉落物层，并确保它是 Layer 类型
-	auto dropLayer = dynamic_cast<Layer*>(scene->getChildByName("DropLayer"));
+	// 获取 dropLayer
+	auto dropLayer = dynamic_cast<Layer*>(map->getChildByName("DropLayer"));
 	if (!dropLayer) {
 		// 如果不存在，创建一个新的掉落物层
 		dropLayer = Layer::create();
 		dropLayer->setName("DropLayer");
-		scene->addChild(dropLayer);
+		map->addChild(dropLayer);
 	}
 	// 创建掉落物
-	auto stoneDrop = new StoneDrop(tilePosition, dropLayer, type, tileMap);  // 使用树的瓦片坐标作为掉落物的生成位置
+	auto stoneDrop = new StoneDrop(tilePosition, dropLayer, type, map);  // 使用树的瓦片坐标作为掉落物的生成位置
 	stoneDrop->generate();
 }
 

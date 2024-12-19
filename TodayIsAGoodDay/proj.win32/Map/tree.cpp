@@ -5,7 +5,6 @@
 // 构造函数
 Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st){
     // 基本项目的初始化
-    this->tileMap = tileMap;
     this->type = ty;  // 初始化树种类
     this->tilePosition = tile;  // 初始化树的坐标
     this->stage = st;  // 初始化树的阶段
@@ -58,22 +57,20 @@ void Tree::deathAnimation() {
 
 // 生成掉落物
 void Tree::generateDrops() {
-    // 获取当前运行的场景
-    auto scene = Director::getInstance()->getRunningScene();
-    if (!scene) {
-        CCLOG("No running scene found!");
+    // 获取当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--Tree::generateDrops");
         return;
     }
-    // 检查场景中是否存在掉落物层，并确保它是 Layer 类型
-    auto dropLayer = dynamic_cast<Layer*>(scene->getChildByName("DropLayer"));
+    // 获取 ObjectLayer
+    auto dropLayer = dynamic_cast<Layer*>(map->getChildByName("DropLayer"));
     if (!dropLayer) {
-        // 如果不存在，创建一个新的掉落物层
-        dropLayer = Layer::create();
-        dropLayer->setName("DropLayer");
-        scene->addChild(dropLayer);
+        CCLOG("ObjectLayer not found in the map!--Tree::generateDrops");
+        return;
     }
     // 创建掉落物
-    auto treeDrop = new TreeDrop(tilePosition, dropLayer, tileMap);  // 使用树的瓦片坐标作为掉落物的生成位置
+    auto treeDrop = new TreeDrop(tilePosition, dropLayer, map);  // 使用树的瓦片坐标作为掉落物的生成位置
     treeDrop->generate();                                     // 生成掉落物
 }
 

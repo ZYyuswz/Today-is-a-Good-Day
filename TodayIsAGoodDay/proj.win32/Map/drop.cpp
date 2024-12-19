@@ -42,6 +42,7 @@ void Drop::generate() {
         Vec2 offset(dist(gen), dist(gen));
         // 设置图片
         dropSprite->setSpriteFrame(item.texturePath);
+        dropSprite->setScale(DROPS_SCALE);
         // 获取像素坐标
         const Size mapSize = tileMap->getMapSize();
         const Size tileSize = tileMap->getTileSize();
@@ -151,5 +152,5 @@ const std::unordered_map<CropsType, std::pair<std::string, std::string>> CropsDr
     {CropsType::Eggplant, {"eggplant_drop", "eggplant_drop.png"}},
     {CropsType::Pumpkin, {"pumpkin_drop", "pumpkin_drop.png"}},
     // 酸菜
-    {CropsType::Withered, {"", ""}}
+    {CropsType::Withered, {"",""}}
 };

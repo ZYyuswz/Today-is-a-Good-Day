@@ -7,7 +7,7 @@
 #include "Map/tree.h"
 #include "Map/crops.h"
 #include "Map/plough.h"
-
+#include "Map/stone.h"
 
 USING_NS_CC;
 

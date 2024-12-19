@@ -1,6 +1,7 @@
 #pragma once
 #include "object.h"
 #include "drop.h" 
+#include "Control\Time.h"
 
 class Stone : public DeadObject {
 private:
