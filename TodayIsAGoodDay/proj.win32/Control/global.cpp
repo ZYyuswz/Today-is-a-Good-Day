@@ -27,7 +27,6 @@ bool PlayerControlLayer::init() {
     _moveRight = false;
     _moveUp = false;
     _moveDown = false;
-
     _playerSpeed = 100.0f;
     // 1. 创建键盘事件监听器
     _keyboardListener = EventListenerKeyboard::create();
@@ -278,11 +277,9 @@ void PlayerControlLayer::onMouseDown(Event* event)
         //manor_to_towm();
         //test();
         //change_to_mine();
-        auto map = MapManager::getInstance()->getCurrentMap();
-        auto objectLayer = dynamic_cast<Layer*>(map->getChildByName(OBJECT_LAYER));
-        auto tree1 = new Tree(map, objectLayer, Vec2(40, 44), TreeType::Maple, Stage::Mature);
-        //Tree::randomGenerate(map, objectLayer, 30, Stage::Mature);
-        manor_change_map();
+        
+       
+        //manor_change_map();
     }
 }
 

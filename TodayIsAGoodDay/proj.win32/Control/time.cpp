@@ -39,57 +39,56 @@ void GameTime::updateDay() {
         if (season == Season::Winter)
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
+    }
+        // 随机生成天气
+        bool weather_condition = random_bernoulli(0.8);
+        if (weather_condition)
+            weather = Weather::Rainy;
+        else
+            weather = Weather::Sunny;
+        CCLOG("Weather changed to: %d", static_cast<int>(weather));  // 输出天气切换日志
 
-    // 随机生成天气
-    bool weather_condition = random_bernoulli(0.8);
-    if (weather_condition)
-        weather = Weather::Rainy;
-    else
-        weather = Weather::Sunny;
-    CCLOG("Weather changed to: %d", static_cast<int>(weather));  // 输出天气切换日志
-
-    //// 获取当前地图
-    auto map = MapManager::getInstance()->getCurrentMap();
-    if (!map) {
-        CCLOG("Map not found in the scene!--Tree::generateDrops");
-        return;
-    }
-    // 获取 ObjectLayer
-    auto dropLayer = dynamic_cast<Layer*>(map->getChildByName("DropLayer"));
-    if (!dropLayer) {
-        CCLOG("ObjectLayer not found in the map!--Time");
-        return;
-    }
-    // 获取 PloughLayer
-    auto ploughLayer = dynamic_cast<Layer*>(map->getChildByName("PloughLayer"));
-    if (!ploughLayer) {
-        CCLOG("PloughLayer not found in the map!--Time");
-        return;
-    }
-    // 获取 PloughLayer
-    auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
-    if (!objectLayer) {
-        CCLOG("ObjectLayer not found in the map!--Time");
-        return;
-    }
-    // 1.tree
-    Tree::updateAll(objectLayer);
-    // 2.crops
-    Crops::updateAll(objectLayer);
-    // 3. plough
-    Plough::updateAll(ploughLayer);
-
-    //// test
-    //auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
-    //tree2->reduceHealth(100);
-    //auto Pumpkin1 = new Pumpkin(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y - 7), Stage::Mature);
-    //Pumpkin1->harvest();
-    //auto stone1 = new Stone(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-8), StoneType::Gold);
-    //stone1->reduceHealth(100);
+        //// 获取当前地图
+        auto map = MapManager::getInstance()->getCurrentMap();
+        if (!map) {
+            CCLOG("Map not found in the scene!--Tree::generateDrops");
+            return;
+        }
+        // 获取 ObjectLayer
+        auto dropLayer = dynamic_cast<Layer*>(map->getChildByName("DropLayer"));
+        if (!dropLayer) {
+            CCLOG("ObjectLayer not found in the map!--Time");
+            return;
+        }
+        // 获取 PloughLayer
+        auto ploughLayer = dynamic_cast<Layer*>(map->getChildByName("PloughLayer"));
+        if (!ploughLayer) {
+            CCLOG("PloughLayer not found in the map!--Time");
+            return;
+        }
+        // 获取 PloughLayer
+        auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
+        if (!objectLayer) {
+            CCLOG("ObjectLayer not found in the map!--Time");
+            return;
+        }
+        // 1.tree
+        Tree::updateAll(objectLayer);
+        // 2.crops
+        Crops::updateAll(objectLayer);
+        // 3. plough
+        Plough::updateAll(ploughLayer);
+        //// test
+        //auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
+        //tree2->reduceHealth(100);
+        //auto Pumpkin1 = new Pumpkin(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y - 7), Stage::Mature);
+        //Pumpkin1->harvest();
+        //auto stone1 = new Stone(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-8), StoneType::Gold);
+        //stone1->reduceHealth(100);
 }
 
 // 每隔 1 秒（UPDATE_INTERVAL 定义为 1.0f）调用一次updateTime()方法游戏时间增加10分钟
-void GameTime::updateTime() {
+void GameTime::updateTime(){
     // 增加十分钟
     time[1] += 10;
 
