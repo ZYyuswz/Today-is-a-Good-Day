@@ -1,5 +1,4 @@
 #include "Time.h"
-#include <iostream>
 
 // 单例模式：静态成员变量初始化
 GameTime* GameTime::instance = nullptr;
@@ -19,12 +18,18 @@ GameTime::GameTime() {
     totalDays = 1;
     season = Season::Spring;
     weather = Weather::Sunny;
+    // 使用系统时间初始化游戏时间
+    time[0] = 6;  // 初始时间为早上 6 点
+    time[1] = 0;  // 初始分钟为 0
 }
 
 // 更新一天的时间 
-void GameTime::updateTime() {
+void GameTime::updateDay() {
+    // 更新时间
     day++;
     totalDays++;
+    time[0] = 6;  // 早上 6 点
+    time[1] = 0;  //  0
     // 切换季节
     if (day > SEASON_LENGTH) {
         day = 1;
@@ -32,7 +37,76 @@ void GameTime::updateTime() {
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
     }
-    // 随机天气还没实现
+
+    // 随机生成天气
+    bool weather_condition = random_bernoulli(0.4);
+    if (weather_condition)
+        weather = Weather::Rainy;
+    else
+        weather = Weather::Sunny;
+    CCLOG("Weather changed to: %d", static_cast<int>(weather));  // 输出天气切换日志
+
+
+    // 更新状态
+    // 获取当前运行的场景
+    auto currentScene = Director::getInstance()->getRunningScene();
+    // 获取瓦片地图
+    auto map = dynamic_cast<TMXTiledMap*>(currentScene->getChildByName("map"));
+    // 获取对象层
+    auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
+    // 1.tree
+    Tree::updateAll(objectLayer);
+    // 2. plough
+    Plough::updateAll(objectLayer);
+    // 3.crops
+    Crops::updateAll(objectLayer);
+}
+
+// 每隔 1 秒（UPDATE_INTERVAL 定义为 1.0f）调用一次updateTime()方法游戏时间增加10分钟
+void GameTime::updateTime() {
+    // 增加十分钟
+    time[1] += 10;
+
+    // 如果分钟达到 60，则增加小时
+    if (time[1] >= 60) {
+        time[0] += time[1] / 60;  // 增加小时
+        time[1] %= 60;            // 分钟归零
+
+        // 如果小时达到 24，取模
+        if (time[0] >= 24) {
+            time[0] %= 24;        // 小时归零
+        }
+    }
+
+    // 特殊逻辑：如果时间达到 2:00，则送回家并更新天数
+    if (time[0] == 2) {
+        // 送回家
+        updateDay();
+    }
+    printTime();
+}
+
+void GameTime::startAutoUpdate() {
+    // 使用 Cocos2d-x 的定时器，每隔 UPDATE_INTERVAL 秒调用一次 updateTime 方法
+    cocos2d::Director::getInstance()->getScheduler()->schedule(
+        [this](float delta) {
+            this->updateTime();
+        },
+        this, // 定时器的目标对象
+        UPDATE_INTERVAL, // 定时器的时间间隔
+        false,// false 表示定时器立即启动
+        "GameTimeUpdate"  // 使用标签 "GameTimeUpdate" 标识定时器
+    );
+    CCLOG("Auto update started.");  // 输出启动日志
+}
+
+void GameTime::stopAutoUpdate() {
+    // 停止定时器
+    cocos2d::Director::getInstance()->getScheduler()->unschedule(
+        "GameTimeUpdate",  // 使用相同的标签 "GameTimeUpdate" 停止定时器
+        this // 表示定时器的目标对象
+    );
+    CCLOG("Auto update stopped.");  // 输出停止日志
 }
 
 // 获取当前年份
@@ -60,3 +134,7 @@ int GameTime::getTotalDays() const {
     return totalDays;
 }
 
+// 打印时间，调试用
+void GameTime::printTime() const {
+    CCLOG("Day:%d, TotalDays:%d, Hour:%d, Minute:%d",day,totalDays,time[0], time[1]);
+}
