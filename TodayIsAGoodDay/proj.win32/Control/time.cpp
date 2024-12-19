@@ -78,7 +78,7 @@ void GameTime::updateDay() {
     Crops::updateAll(objectLayer);
     // 3. plough
     Plough::updateAll(ploughLayer);
-    
+
     //// test
     //auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
     //tree2->reduceHealth(100);
@@ -166,3 +166,7 @@ int GameTime::getTotalDays() const {
 void GameTime::printTime() const {
     CCLOG("Day:%d, TotalDays:%d, Hour:%d, Minute:%d",day,totalDays,time[0], time[1]);
 } 
+
+std::vector<int> GameTime::getTime() const {
+    return { time[0], time[1] };  // 返回一个 std::vector
+}

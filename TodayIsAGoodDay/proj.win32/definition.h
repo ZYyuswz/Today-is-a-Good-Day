@@ -177,3 +177,6 @@ enum class CropsType {
     // 酸菜
     Withered
 };
+
+// 人物拾取半径
+#define PICK_RADIUS 2.0
