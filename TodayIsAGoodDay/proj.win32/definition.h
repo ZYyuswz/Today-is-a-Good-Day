@@ -11,7 +11,6 @@
 #define PLOUGH 2
 #define DROP 4
 #define PERSON_LAYER 5
-#define OBJECT 2
 #define RAINLAYER 100
 #define BAGLAYER  101 
 #define SETTING_LAYER 102
@@ -33,6 +32,8 @@ enum class DIRECTION {
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
 #define DROP_LAYER "DropLayer"
+
+/* 全局层相关宏定义 */
 
 //menu相关宏定义
 #define POS_NEW_X 4

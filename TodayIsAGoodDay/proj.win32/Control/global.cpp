@@ -276,7 +276,7 @@ void PlayerControlLayer::onMouseDown(Event* event)
         //测试用例
         //manor_to_towm();
         //test();
-        //change_to_mine();
+        change_to_mine();
         
        
         //manor_change_map();
