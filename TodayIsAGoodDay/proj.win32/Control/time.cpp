@@ -39,7 +39,7 @@ void GameTime::updateDay() {
         if (season == Season::Winter)
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
-
+    }
     // 随机生成天气
     bool weather_condition = random_bernoulli(0.8);
     if (weather_condition)
@@ -48,13 +48,13 @@ void GameTime::updateDay() {
         weather = Weather::Sunny;
     CCLOG("Weather changed to: %d", static_cast<int>(weather));  // 输出天气切换日志
 
-    //// 获取当前地图
+    // 获取当前地图
     auto map = MapManager::getInstance()->getCurrentMap();
     if (!map) {
-        CCLOG("Map not found in the scene!--Tree::generateDrops");
+        CCLOG("Map not found in the scene!--Time");
         return;
     }
-    // 获取 ObjectLayer
+    // 获取 dropLayer
     auto dropLayer = dynamic_cast<Layer*>(map->getChildByName("DropLayer"));
     if (!dropLayer) {
         CCLOG("ObjectLayer not found in the map!--Time");
@@ -66,7 +66,7 @@ void GameTime::updateDay() {
         CCLOG("PloughLayer not found in the map!--Time");
         return;
     }
-    // 获取 PloughLayer
+    // 获取 objectLaye
     auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
     if (!objectLayer) {
         CCLOG("ObjectLayer not found in the map!--Time");
@@ -78,7 +78,7 @@ void GameTime::updateDay() {
     Crops::updateAll(objectLayer);
     // 3. plough
     Plough::updateAll(ploughLayer);
-
+    
     //// test
     //auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
     //tree2->reduceHealth(100);
@@ -86,10 +86,11 @@ void GameTime::updateDay() {
     //Pumpkin1->harvest();
     //auto stone1 = new Stone(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-8), StoneType::Gold);
     //stone1->reduceHealth(100);
+
 }
 
 // 每隔 1 秒（UPDATE_INTERVAL 定义为 1.0f）调用一次updateTime()方法游戏时间增加10分钟
-void GameTime::updateTime() {
+void GameTime::updateTime(){
     // 增加十分钟
     time[1] += 10;
 
@@ -164,4 +165,4 @@ int GameTime::getTotalDays() const {
 // 打印时间，调试用
 void GameTime::printTime() const {
     CCLOG("Day:%d, TotalDays:%d, Hour:%d, Minute:%d",day,totalDays,time[0], time[1]);
-}
+} 

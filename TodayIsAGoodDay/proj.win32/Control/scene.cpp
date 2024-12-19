@@ -320,7 +320,9 @@ bool spring_manor::init() {
     scene_spring->addChild(dropLayer);
 
     this->addChild(scene_spring);
-
+    // 添加全局层
+    auto globalLayer = GlobalLayer::create();
+    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
 
     return true;
 }

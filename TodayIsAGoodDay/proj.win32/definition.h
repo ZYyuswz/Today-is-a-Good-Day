@@ -14,6 +14,7 @@
 #define OBJECT 2
 #define RAINLAYER 100
 #define BAGLAYER  101 
+#define SETTING_LAYER 102
 
 //图片显示比例宏定义
 #define ROW_PICTURE 1.0f   //原图片大小
