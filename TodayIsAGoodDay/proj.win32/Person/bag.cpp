@@ -23,6 +23,7 @@ Bag::Bag(): _selectedItemIndex(-1)
     _items.push_back(item("draft"));
     _items.push_back(item("kettle"));
     _items.push_back(item("fishing_pole"));
+    _items.push_back(item("seed_carrot"));
 }
 
 //°´¼üº¯Êý
