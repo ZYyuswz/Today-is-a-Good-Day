@@ -68,6 +68,8 @@ public:
 
     // 更新生长天数（增加一天，并可能改变阶段）
     virtual void update() = 0;
+
+    Stage getStage() { return stage; }
 };
 
 // 抽象类
