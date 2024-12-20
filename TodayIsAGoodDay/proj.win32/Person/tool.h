@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cocos2d.h"
-
+#include "person.h"
 USING_NS_CC;
 
 //tool是可以手持的
