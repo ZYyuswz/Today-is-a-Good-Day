@@ -9,15 +9,15 @@
 #include"Person/person.h"
 #include"global.h"
 #include "Time.h"
-#include "Map/tree.h"
 
 USING_NS_CC;
 
 
 //总控鼠标按键
 //按下时的调用
-void control_mouseclick(Vec2 mouse_pos)
+void control_mouseclick()
 {
+
 	//鼠标瓦片坐标
 	Vec2 mouse_tile_pos;
 	TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
@@ -172,6 +172,7 @@ void control_mouseclick(Vec2 mouse_pos)
 		
 
 	}
+
 
 }
 

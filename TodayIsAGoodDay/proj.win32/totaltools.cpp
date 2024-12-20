@@ -213,7 +213,6 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
 }
 
 
-
 /*工具：降低人物下方树的透明度并且将这些树储存在一个全局数组里
 * 传入参数：
 * Vec2 tilePosition：人物坐标
@@ -302,6 +301,19 @@ bool is_have_object(Vec2 tilePosition)
         }
     }
     return false;
+
+
+}
+
+//判断是否为5种工具
+bool isFiveTool(const std::string& name)
+{
+    if (name == "axe" || name == "hammer" || name == "draft" || name == "kettle" || name == "fishing_pole")
+        return true;
+    else
+        return false;
+
+
 }
 
 /*工具：收获当前坐标的作物，如果作物没成熟或者没有就什么都不干
@@ -332,4 +344,5 @@ void harvest(Vec2 tilePosition) {
             }
         }
     }
+
 }
