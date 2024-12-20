@@ -70,6 +70,7 @@ enum class DIRECTION {
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
 #define DROP_LAYER "DropLayer"
+#define CROPS_LAYER "CropsLayer"
 #define PLAYER_CONTROLER "Player_cintrol_layer"
 /* 全局层相关宏定义 */
 
@@ -161,7 +162,7 @@ enum class StoneType {
     Gold,       // 金矿
     Coal        // 煤炭
 };
-
+// 掉落物缩小比例
 #define DROPS_SCALE 0.6f
 
 // 矿洞中生成石头的数量
