@@ -25,7 +25,10 @@ int gamemain()
     spriteFrameCache->addSpriteFramesWithFile("Crops/crops.plist");
     spriteFrameCache->addSpriteFramesWithFile("Drops/drops_1.plist");
 
-   
+    // 启动自动更新
+    GameTime::getInstance()->startAutoUpdate();
+
+    
 
     //运行第一幕场景，即欢迎页面
     // run

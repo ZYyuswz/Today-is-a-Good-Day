@@ -138,6 +138,7 @@ public:
     Tool* getTool() { return currentTool; }
     Sprite* getSprite()const { return _sprite; }
 
+    int toolLevel() { return _level > 50 ? 2 : 1; }
     //ПлбЊ
     void Person::decreaseHP(const int attack);
 

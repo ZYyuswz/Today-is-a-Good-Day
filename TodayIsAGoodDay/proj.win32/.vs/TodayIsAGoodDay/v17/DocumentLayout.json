@@ -3,40 +3,8 @@
   "WorkspaceRootPath": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:totaltools.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:totaltools.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\definition.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:definition.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\stone.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:Map\\stone.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:Map\\tree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:Control\\scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\global.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:Control\\global.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\tree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:Map\\tree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\move.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -45,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\bag.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:Person\\bag.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -57,6 +29,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:Map\\map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\definition.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:definition.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:totaltools.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\person.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -77,6 +57,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{76A39BB2-9B84-4C65-98A5-654D86B86F2A}|TodayIsAGoodDay.vcxproj|solutionrelative:Control\\menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:totaltools.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -107,208 +91,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "totaltools.h",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.h",
-              "RelativeDocumentMoniker": "totaltools.h",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.h",
-              "RelativeToolTip": "totaltools.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-20T12:18:09.83Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "definition.h",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\definition.h",
-              "RelativeDocumentMoniker": "definition.h",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\definition.h",
-              "RelativeToolTip": "definition.h",
-              "ViewState": "AQIAALAAAAAAAAAAAAAAAHsAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-20T12:08:43.563Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "stone.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\stone.cpp",
-              "RelativeDocumentMoniker": "Map\\stone.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\stone.cpp",
-              "RelativeToolTip": "Map\\stone.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-20T11:49:55.365Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "tree.h",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\tree.h",
-              "RelativeDocumentMoniker": "Map\\tree.h",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\tree.h",
-              "RelativeToolTip": "Map\\tree.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-20T11:27:40.517Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "tree.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\tree.cpp",
-              "RelativeDocumentMoniker": "Map\\tree.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\tree.cpp",
-              "RelativeToolTip": "Map\\tree.cpp",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAC8AAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-20T10:37:56.318Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "scene.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\scene.cpp",
-              "RelativeDocumentMoniker": "Control\\scene.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\scene.cpp",
-              "RelativeToolTip": "Control\\scene.cpp",
-              "ViewState": "AQIAAHQBAAAAAAAAAAAAAHkBAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-20T10:12:22.83Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "global.cpp",
               "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\global.cpp",
               "RelativeDocumentMoniker": "Control\\global.cpp",
               "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\global.cpp",
               "RelativeToolTip": "Control\\global.cpp",
-              "ViewState": "AQIAAAIBAAAAAAAAAAAAABoBAAAAAAAA",
+              "ViewState": "AQIAAAIBAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-18T05:36:36.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "main.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.cpp",
-              "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.cpp",
-              "RelativeToolTip": "main.cpp",
-              "ViewState": "AQIAAA8AAAAAAAAAAADwvyUAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-18T05:36:27.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "totaltools.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.cpp",
-              "RelativeDocumentMoniker": "totaltools.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.cpp",
-              "RelativeToolTip": "totaltools.cpp",
-              "ViewState": "AQIAAH8AAAAAAAAAAAAwwJUAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-18T05:36:27.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "move.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\move.cpp",
-              "RelativeDocumentMoniker": "Person\\move.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\move.cpp",
-              "RelativeToolTip": "Person\\move.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-18T05:36:27.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "map.h",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.h",
-              "RelativeDocumentMoniker": "Map\\map.h",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.h",
-              "RelativeToolTip": "Map\\map.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-18T05:36:27.074Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "main.h",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.h",
-              "RelativeDocumentMoniker": "main.h",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.h",
-              "RelativeToolTip": "main.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-18T05:36:27.073Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "person.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\person.cpp",
-              "RelativeDocumentMoniker": "Person\\person.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\person.cpp",
-              "RelativeToolTip": "Person\\person.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-18T05:36:27.106Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "menu.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\menu.cpp",
-              "RelativeDocumentMoniker": "Control\\menu.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\menu.cpp",
-              "RelativeToolTip": "Control\\menu.cpp",
-              "ViewState": "AQIAABsAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-18T05:36:27.107Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "GameMain.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\GameMain.cpp",
-              "RelativeDocumentMoniker": "Control\\GameMain.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\GameMain.cpp",
-              "RelativeToolTip": "Control\\GameMain.cpp",
-              "ViewState": "AQIAAAMAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-18T05:36:27.107Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "map.cpp",
-              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.cpp",
-              "RelativeDocumentMoniker": "Map\\map.cpp",
-              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.cpp",
-              "RelativeToolTip": "Map\\map.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-18T05:36:27.108Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 2,
               "Title": "bag.cpp",
               "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\bag.cpp",
               "RelativeDocumentMoniker": "Person\\bag.cpp",
@@ -320,7 +115,140 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 1,
+              "Title": "move.cpp",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\move.cpp",
+              "RelativeDocumentMoniker": "Person\\move.cpp",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\move.cpp",
+              "RelativeToolTip": "Person\\move.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-18T05:36:27.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main.cpp",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AQIAAA8AAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-18T05:36:27.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "main.h",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.h",
+              "RelativeDocumentMoniker": "main.h",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\main.h",
+              "RelativeToolTip": "main.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-18T05:36:27.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "map.h",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.h",
+              "RelativeDocumentMoniker": "Map\\map.h",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.h",
+              "RelativeToolTip": "Map\\map.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-18T05:36:27.074Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "totaltools.h",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.h",
+              "RelativeDocumentMoniker": "totaltools.h",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.h",
+              "RelativeToolTip": "totaltools.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-18T05:36:27.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "totaltools.cpp",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.cpp",
+              "RelativeDocumentMoniker": "totaltools.cpp",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\totaltools.cpp",
+              "RelativeToolTip": "totaltools.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-18T05:36:27.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "person.cpp",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\person.cpp",
+              "RelativeDocumentMoniker": "Person\\person.cpp",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\person.cpp",
+              "RelativeToolTip": "Person\\person.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-18T05:36:27.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "menu.cpp",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\menu.cpp",
+              "RelativeDocumentMoniker": "Control\\menu.cpp",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\menu.cpp",
+              "RelativeToolTip": "Control\\menu.cpp",
+              "ViewState": "AQIAABsAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-18T05:36:27.107Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GameMain.cpp",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\GameMain.cpp",
+              "RelativeDocumentMoniker": "Control\\GameMain.cpp",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Control\\GameMain.cpp",
+              "RelativeToolTip": "Control\\GameMain.cpp",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-18T05:36:27.107Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "map.cpp",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.cpp",
+              "RelativeDocumentMoniker": "Map\\map.cpp",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Map\\map.cpp",
+              "RelativeToolTip": "Map\\map.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-18T05:36:27.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "definition.h",
+              "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\definition.h",
+              "RelativeDocumentMoniker": "definition.h",
+              "ToolTip": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\definition.h",
+              "RelativeToolTip": "definition.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-18T05:36:27.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "action.cpp",
               "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Person\\action.cpp",
               "RelativeDocumentMoniker": "Person\\action.cpp",
@@ -332,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 11,
               "Title": "store.cpp",
               "DocumentMoniker": "G:\\cocos\\Today-is-a-Good-Day\\TodayIsAGoodDay\\proj.win32\\Store\\store.cpp",
               "RelativeDocumentMoniker": "Store\\store.cpp",

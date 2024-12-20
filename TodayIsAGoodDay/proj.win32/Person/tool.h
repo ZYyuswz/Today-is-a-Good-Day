@@ -15,7 +15,7 @@ protected:
 public:
     cocos2d::Sprite* _toolsprite;
     Tool(){}
-    Tool(const std::string& name, int level = 1, int attackPower = 0):_name(name),_level(level),_attackPower(attackPower){}
+    Tool(const std::string& name, int level = -1, int attackPower = 0):_name(name),_level(level),_attackPower(attackPower){}
 //    virtual ~Tool();
 
     bool init(const std::string& name, int level = 1, int attackPower = 0);

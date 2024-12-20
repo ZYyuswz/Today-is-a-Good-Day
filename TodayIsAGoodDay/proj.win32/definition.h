@@ -21,13 +21,14 @@
 
 // 人物
 // 人物移动像素点
-#define MOVE_DISTANCE 10.0f
+#define MOVE_DISTANCE 2.0f
 enum class DIRECTION {
     LEFT,  //左
     RIGHT,  //右
     UP,    //上
     DOWN   //下
 };
+
 //人物最远鼠标点击距离
 #define MAX_PERSON_LENTH 4
 
@@ -115,16 +116,12 @@ enum class DIRECTION {
 #define MANOR_TO_HOME_X 0
 #define MANOR_TO_HOME_Y 0
 
-//扣血相关宏定义
-#define ATTACK_LEVEL_ONE 25
-#define ATTACK_LEVEL_TWO 50
-
 
 // 定义每个季节的持续天数
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.1f 
+#define UPDATE_INTERVAL 0.01f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16
@@ -163,12 +160,7 @@ enum class StoneType {
     Coal        // 煤炭
 };
 
-// 掉落物缩小比例
 #define DROPS_SCALE 0.6f
-
-// 树遮挡的判定范围
-#define TREE_BLOCK_X 1
-#define TREE_BLOCK_Y 6
 
 // 矿洞中生成石头的数量
 #define STONE_GENERATE_NUM 20
