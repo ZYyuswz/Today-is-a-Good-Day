@@ -7,6 +7,7 @@
 #include "editor-support/cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include"menu.h"
+#include "Time.h"
 
 
 //本游戏总控函数
@@ -23,6 +24,9 @@ int gamemain()
     spriteFrameCache->addSpriteFramesWithFile("Plough/plough.plist");
     spriteFrameCache->addSpriteFramesWithFile("Crops/crops.plist");
     spriteFrameCache->addSpriteFramesWithFile("Drops/drops_1.plist");
+
+    // 启动自动更新
+    GameTime::getInstance()->startAutoUpdate();
 
     //运行第一幕场景，即欢迎页面
     // run
