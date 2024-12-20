@@ -9,8 +9,8 @@
 #define OBJECT 3
 #define PLOUGH 2
 #define DROP 4
-#define PERSON_LAYER 5
-#define OBJECT 2
+#define PERSON_LAYER 10
+
 #define RAINLAYER 100
 #define BAGLAYER  101 
 
