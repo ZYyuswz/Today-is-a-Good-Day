@@ -20,7 +20,7 @@
 
 // 人物
 // 人物移动像素点
-#define MOVE_DISTANCE 2.0f
+#define MOVE_DISTANCE 10.0f
 enum class DIRECTION {
     LEFT,  //左
     RIGHT,  //右
@@ -129,7 +129,12 @@ enum class StoneType {
     Coal        // 煤炭
 };
 
+// 掉落物缩小比例
 #define DROPS_SCALE 0.6f
+
+// 树遮挡的判定范围
+#define TREE_BLOCK_X 1
+#define TREE_BLOCK_Y 6
 
 // 矿洞中生成石头的数量
 #define STONE_GENERATE_NUM 20
