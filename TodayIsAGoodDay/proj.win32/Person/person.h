@@ -1,5 +1,9 @@
 #pragma once
 #include "cocos2d.h"
+#include "Map/drop.h"
+#include <map>
+#include <string>
+#include "person/tool.h"
 
 USING_NS_CC;
 
@@ -18,16 +22,16 @@ const int DRAFT = 102; //锄头，锄地用
 const int KETTLE = 103;//水壶，浇花
 const int FISHING_POLE = 104;//钓鱼竿
 
-const int BAG_LEFT_LOCATION = 500;
-const int BAG_UP_LOCATION = 1000;
-const int BAG_RIGHT_LOCATION = 1500;
-const int BAG_CELL = 100;
+
 
 struct item
 {
     std::string name;
     int num;
-    item(const std::string itemName, const int itemNum = 1) :name(itemName), num(itemNum) {}
+    int value; //tools的value为0
+    bool isTool;
+    item(const std::string itemName,const int itemNum = 1) 
+        :name(itemName),value(itemPrices.find(itemName)->second),num(itemNum) {}
 };
 
 
@@ -38,7 +42,7 @@ public:
     Bag();
 
     //监听器，按E打开背包
-    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+    void changeBag();
 
     // 添加工具或材料
     void addItem(const item& MyItem);
@@ -55,6 +59,7 @@ public:
     // 更新物品信息
     void updateItemInfo(cocos2d::Vec2 position);
 
+    std::vector<item> getItems() { return _items; };
 private:
     //物品列表
     std::vector<item> _items;
@@ -96,9 +101,11 @@ protected:
     cocos2d::Animate* _leftWalkAnimate;
     cocos2d::Animate* _rightWalkAnimate;
 
-    cocos2d::EventListenerKeyboard* _keyboardListener;  //键盘监听器
+    Tool* currentTool;
 
-public:    
+public: 
+    friend Tool;
+    friend Bag;
     Sprite* _sprite;   //人物精灵
     Bag MyBag;
 
@@ -127,6 +134,8 @@ public:
     int getHP() const { return _HP; }
     void setHP(int HP) { _HP = HP; }
 
+    void setTool(Tool* newTool) { currentTool = newTool; }
+    Tool* getTool() { return currentTool; }
     Sprite* getSprite()const { return _sprite; }
 
     //扣血
@@ -140,17 +149,16 @@ public:
 
     void levelUP();
 
+    void moneyUP(int deltaMoney);
+
     /*以下为move功能相关函数*/
     // 创建动画
     Animation* createAnimations(const std::string& direction);
     void createAnimate();
 
-    // 辅助方法：将世界坐标转换为瓦片坐标
-//    cocos2d::Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, TMXTiledMap* tileMap);
+    void collectItems();
 
-    // 辅助方法：将瓦片坐标转换为世界坐标
- //   cocos2d::Vec2 convertTileCoordToWorld(const cocos2d::Vec2& tileCoord, TMXTiledMap* tileMap);
-
+    void Person::useTools();
     // 辅助方法：移动瓦片地图
     void moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap);
 

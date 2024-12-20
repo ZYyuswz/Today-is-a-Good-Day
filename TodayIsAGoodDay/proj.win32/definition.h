@@ -1,4 +1,3 @@
-
 #pragma once
 #include <map>
 //屏幕显示比例
@@ -10,8 +9,8 @@
 #define OBJECT 3
 #define PLOUGH 2
 #define DROP 4
-#define PERSON_LAYER 5
-#define OBJECT 2
+#define PERSON_LAYER 10
+
 #define RAINLAYER 100
 #define BAGLAYER  101 
 #define SETTING_LAYER 102
@@ -21,18 +20,57 @@
 
 // 人物
 // 人物移动像素点
-#define MOVE_DISTANCE 2.0f
+#define MOVE_DISTANCE 10.0f
 enum class DIRECTION {
     LEFT,  //左
     RIGHT,  //右
     UP,    //上
     DOWN   //下
 };
+//人物最远鼠标点击距离
+#define MAX_PERSON_LENTH 4
+
+//工具宏定义
+#define TOOL_HAMMER "hammer" //锤子
+#define TOOL_AXE "axe"   //斧子 
+#define TOOL_DRAFT "draft"  //锄头
+#define TOOL_KETTLE "kettle"  //水壶
+#define TOOL_FISHING_POLE "fishing_pole"   //钓鱼竿
+
+#define SEED_CARROT "carrot"   //胡萝卜
+#define SEED_GARLIC "garlic"   //大蒜
+#define SEED_POTATO "potato"   //土豆
+#define SEED_CORN  "corn"      //玉米类
+#define SEED_MELON "melon"  //瓜
+#define SEED_CABBAGE "cabbage"   //白菜
+#define SEED_TOMATO "tomato"    //西红柿
+#define SEED_PUMPIN "pumpkin"   //南瓜
+#define SEED_EGGPLANT "eggplant"  //茄子
+
+#define SEED_TREE "tree"  //树苗
+
+
+#define SEED_TREE_OAK "oak"  //橡树
+#define SEED_TREE_PINE "pine" //松树
+#define SEED_TREE_MAPLE "maple"  //枫树
+
+
 
 //场景相关宏定义
+#define SCENE_MANOR "scene_manor"
+#define SCENE_SPRING_TOWN "spring_town"
+#define SCENE_SUMMER_TOWN "summer_town"
+#define SCENE_AUTUMN_TOWN "autumn_town"
+#define SCENE_WINTER_TOWN "winter_town"
+#define SCENE_BEACH "scene_beach"
+#define SCENE_HOME "scene_home"
+#define SCENE_MINE "scene_mine"
+
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
 #define DROP_LAYER "DropLayer"
+#define PLAYER_CONTROLER "Player_cintrol_layer"
+/* 全局层相关宏定义 */
 
 //menu相关宏定义
 #define POS_NEW_X 4
@@ -66,21 +104,25 @@ enum class DIRECTION {
 #define MANOR_TO_TOWN_Y 27
 
 //矿洞场景相关宏定义
-#define MINE_SMALL_SCALE 4.0f
+#define MINE_SMALL_SCALE 3.5f
 #define MANOR_TO_MINE_X 0
 #define MANOR_TO_MINE_Y 0
 
 //家场景相关宏定义
-#define HOME_SMALL_SCALE 4.0f
+#define HOME_SMALL_SCALE 3.5f
 #define MANOR_TO_HOME_X 0
 #define MANOR_TO_HOME_Y 0
+
+//扣血相关宏定义
+#define ATTACK_LEVEL_ONE 25
+#define ATTACK_LEVEL_TWO 50
 
 
 // 定义每个季节的持续天数
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.01f  
+#define UPDATE_INTERVAL 0.1f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16
@@ -119,7 +161,12 @@ enum class StoneType {
     Coal        // 煤炭
 };
 
+// 掉落物缩小比例
 #define DROPS_SCALE 0.6f
+
+// 树遮挡的判定范围
+#define TREE_BLOCK_X 1
+#define TREE_BLOCK_Y 6
 
 // 矿洞中生成石头的数量
 #define STONE_GENERATE_NUM 20
@@ -176,3 +223,21 @@ enum class CropsType {
     // 酸菜
     Withered
 };
+
+
+//待添加完善
+const std::map<std::string, int> itemPrices = {
+    /*工具全部价格为0*/
+    {"hammer",0},
+    {"axe",0},
+    {"draft",0},
+    {"kettle",0},
+    {"fishing_pole",0},
+
+    //物品有价格,必须是双斜杠，否则会报错
+    {"carrat_drop",30},
+};
+
+// 人物拾取半径
+#define PICK_RADIUS 2.0
+

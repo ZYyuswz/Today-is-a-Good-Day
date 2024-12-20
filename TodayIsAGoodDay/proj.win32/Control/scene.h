@@ -7,6 +7,19 @@
 bool first_to_manor();    //初始进入主场景
 bool manor_to_towm();     //从庄园去小镇
 bool change_to_mine();    //进入矿洞
+//切换到沙滩场景
+bool change_to_beach();
+
+//切换到家的场景
+bool change_to_home();
+
+/* 返回场景调用 */
+// 小镇返回庄园
+bool back_to_manor_from_town();
+
+//强制返回庄园
+void force_back_to_manor();
+
 void test();
 
 
@@ -26,6 +39,12 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(beach);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
 };
 
 
@@ -45,6 +64,12 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(spring_manor);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
 };
 
 /*--------------------小镇场景--------------------*/
@@ -63,6 +88,14 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(spring_town);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
+
+
 };
 
 
@@ -80,6 +113,12 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(autumn_town);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
 };
 
 //小镇冬天场景
@@ -96,6 +135,12 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(winter_town);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
 };
 
 
@@ -113,6 +158,12 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(scene_mine);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
 };
 
 
@@ -130,6 +181,12 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(scene_home);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
 };
 
 /* ---------- 商店场景 ---------- */
@@ -146,4 +203,10 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(scene_store);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
 };

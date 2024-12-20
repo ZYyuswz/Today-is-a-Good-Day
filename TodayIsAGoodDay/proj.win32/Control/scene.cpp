@@ -18,16 +18,20 @@
 
 //切换场景调用函数
 bool first_to_manor() {
+    // 启动自动更新
+    GameTime::getInstance()->startAutoUpdate();
+
+
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
-    leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
-    auto playerControlLayer = PlayerControlLayer::create();
-    playerControlLayer->setPlayer(&leading_charactor);
-    spring_scene->addChild(playerControlLayer);
+    //leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
+   
     // GameTime* gametime = GameTime::getInstance();
     //if(gametime->getWeather()==Weather::Rainy)spring_scene->addChild(RainLayer(),RAINLAYER); //下雨场景实现示例
     return true;
 }
+
+/* ---------- 进入调用 ---------- */
 
 bool manor_to_towm()
 {
@@ -47,40 +51,19 @@ bool manor_to_towm()
         Director::getInstance()->pushScene(town_scene);
         
         CCLOG("after");
-       
-        auto now= Director::getInstance()->getRunningScene();
-        /*
-        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
-        auto playerControlLayer = PlayerControlLayer::create();
-        playerControlLayer->setPlayer(&leading_charactor);
-
-        town_scene->addChild(playerControlLayer);
-        Size mapsize = MapManager::getInstance()->getCurrentMapSize();
-        Size tilesize = MapManager::getInstance()->getCurrentTileSize();
-
-        Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
-        //加入人物在场景里
-        people_change_scene(pos_player);
-        auto playerControlLayer = PlayerControlLayer::create();
-        playerControlLayer->setPlayer(&leading_charactor);
-        town_scene->addChild(playerControlLayer);
-        */
-      
-        
 
         return true;
     }
     else if (season == Season::Winter)
     {
         auto town_scene = winter_town::createScene();
-        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
-        auto playerControlLayer = PlayerControlLayer::create();
-        playerControlLayer->setPlayer(&leading_charactor);
-        town_scene->addChild(playerControlLayer);
-        Size mapsize = MapManager::getInstance()->getCurrentMapSize();
-        Size tilesize = MapManager::getInstance()->getCurrentTileSize();
+        CCLOG("before");
+        //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
+        //Director::getInstance()->replaceScene(town_scene);
+        Director::getInstance()->pushScene(town_scene);
 
-        Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
+        CCLOG("after");
+
 
         //加入人物在场景里
         //leading_charactor.person_scene_construction();
@@ -90,73 +73,66 @@ bool manor_to_towm()
     else if (season == Season::Autumn)
     {
         auto town_scene = autumn_town::createScene();
-        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
-        auto playerControlLayer = PlayerControlLayer::create();
-        playerControlLayer->setPlayer(&leading_charactor);
+        CCLOG("before");
+        //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
+        //Director::getInstance()->replaceScene(town_scene);
+        Director::getInstance()->pushScene(town_scene);
 
-        town_scene->addChild(playerControlLayer);
-        Size mapsize = MapManager::getInstance()->getCurrentMapSize();
-        Size tilesize = MapManager::getInstance()->getCurrentTileSize();
+        CCLOG("after");
 
-        Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
-
-        //加入人物在场景里
-        //leading_charactor.person_scene_construction();
-        //leading_charactor._sprite->setPosition(pos_player);
         return true;
     }
     return false;
 }
+
+
 /*test*/
 void test()
 {
     auto now = Director::getInstance()->getRunningScene();
 }
+
+//切换到沙滩场景
 bool change_to_beach()
 {
-    auto currentScene = Director::getInstance()->getRunningScene();
-    Director::getInstance()->pushScene(currentScene);
+  
     auto beach_scene = beach::createScene();
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, beach_scene));
-    auto playerControlLayer = PlayerControlLayer::create();
-    playerControlLayer->setPlayer(&leading_charactor);
-    beach_scene->addChild(playerControlLayer);
-    Size mapsize = MapManager::getInstance()->getCurrentMapSize();
-    Size tilesize = MapManager::getInstance()->getCurrentTileSize();
+    CCLOG("before");
+    //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
+    //Director::getInstance()->replaceScene(town_scene);
+    Director::getInstance()->pushScene(TransitionFade::create(1.0f, beach_scene));
 
-    Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
+    CCLOG("after");
 
-    //加入人物在场景里
-    //leading_charactor.person_scene_construction();
-    //leading_charactor._sprite->setPosition(pos_player);
     return true;
 
 }
 
+//切换到矿洞场景
 bool change_to_mine()
 {
-    auto currentScene = Director::getInstance()->getRunningScene();
-    Director::getInstance()->pushScene(currentScene);
     auto mine_scene = scene_mine::createScene();
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, mine_scene));
-    auto playerControlLayer = PlayerControlLayer::create();
-    playerControlLayer->setPlayer(&leading_charactor);
-    mine_scene->addChild(playerControlLayer);
-    Size mapsize = MapManager::getInstance()->getCurrentMapSize();
-    Size tilesize = MapManager::getInstance()->getCurrentTileSize();
+    CCLOG("before");
+    //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
+    //Director::getInstance()->replaceScene(town_scene);
+    Director::getInstance()->pushScene(TransitionFade::create(1.0f, mine_scene));
 
-    Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
+    CCLOG("after");
 
-    //加入人物在场景里
-    //leading_charactor.person_scene_construction();
-    //leading_charactor._sprite->setPosition(pos_player);
-
+  
     return true;
 }
 
 //切换到家的场景
 bool change_to_home()
 {
+    auto home_scene = scene_home::createScene();
+    CCLOG("before");
+    //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
+    //Director::getInstance()->replaceScene(town_scene);
+    Director::getInstance()->pushScene(TransitionFade::create(1.0f, home_scene));
+
+    CCLOG("after");
 
     return true;
 }
@@ -164,11 +140,37 @@ bool change_to_home()
 //切换到商店场景
 bool change_to_store()
 {
-
+    
     return true;
 }
 
+/* ---------- 退出调用 ---------- */
 
+//小镇返回庄园
+bool back_to_manor_from_town()
+{
+    Director::getInstance()->popScene();
+    return true;
+}
+//矿洞返回庄园
+bool back_to_manor_from_mine()
+{
+    Director::getInstance()->popScene();
+    return true;
+}
+//家返回庄园
+bool back_to_manor_from_home()
+{
+    Director::getInstance()->popScene();
+    return true;
+}
+
+//强制返回庄园
+void force_back_to_manor() {
+    Director::getInstance()->popToRootScene();
+}
+
+/* ---------- 场景初始化 ---------- */
 
 /*--------------------沙滩场景--------------------*/
 //沙滩场景初始化
@@ -239,9 +241,51 @@ bool beach::init() {
     scene_beach->addChild(dropLayer);
 
 
+
     this->addChild(scene_beach);
+
+    // 添加全局层
+    auto globalLayer = GlobalLayer::create();
+    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
+
+    //设置名字
+    this->setName(SCENE_BEACH);
+
+
     return true;
 }
+
+
+void beach::onEnter()
+{
+    Scene::onEnter(); // 调用父类的 onEnter
+
+    CCLOG("MyScene onEnter");
+    std::string player_name = leading_charactor.getname();
+    std::string farm_name = leading_charactor.getFarmName();
+    int sex = leading_charactor.getSex();
+    leading_charactor.person_construction(player_name, sex, farm_name, this);
+
+    auto playerControlLayer = PlayerControlLayer::create();
+    playerControlLayer->setPlayer(&leading_charactor);
+    playerControlLayer->setName(PLAYER_CONTROLER);
+    this->addChild(playerControlLayer);
+
+}
+
+void beach::onExit()
+{
+    Scene::onExit(); // 调用父类的 onExit
+
+    CCLOG("MyScene onExit");
+    // 在这里添加自定义逻辑
+    this->removeChildByName(PLAYER_CONTROLER);
+
+    /* 移除人物 */
+    people_remove_change();
+
+}
+
 
 /*--------------------庄园场景--------------------*/
 
@@ -320,12 +364,52 @@ bool spring_manor::init() {
     scene_spring->addChild(dropLayer);
 
     this->addChild(scene_spring);
+
     // 添加全局层
     auto globalLayer = GlobalLayer::create();
     this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
 
+    //auto playerControlLayer = PlayerControlLayer::create();
+    //playerControlLayer->setPlayer(&leading_charactor);
+    //this->addChild(playerControlLayer);
+
+    //设置名字
+    this->setName(SCENE_MANOR);
+
     return true;
 }
+
+void spring_manor::onEnter ()
+{
+    Scene::onEnter(); // 调用父类的 onEnter
+
+    CCLOG("MyScene onEnter");
+    std::string player_name = leading_charactor.getname();
+    std::string farm_name = leading_charactor.getFarmName();
+    int sex = leading_charactor.getSex();
+    leading_charactor.person_construction(player_name, sex, farm_name, this);
+
+    auto playerControlLayer = PlayerControlLayer::create();
+    playerControlLayer->setPlayer(&leading_charactor);
+    playerControlLayer->setName(PLAYER_CONTROLER);
+    this->addChild(playerControlLayer);
+
+}
+
+void spring_manor::onExit()
+{
+    Scene::onExit(); // 调用父类的 onExit
+
+    CCLOG("MyScene onExit");
+    // 在这里添加自定义逻辑
+    this->removeChildByName(PLAYER_CONTROLER);
+
+    /* 移除人物 */
+    people_remove_change();
+
+}
+
+
 
 /*--------------------小镇场景--------------------*/
 
@@ -401,12 +485,57 @@ bool spring_town::init() {
     dropLayer->setLocalZOrder(DROP);   // 设置层级
     scene_spring->addChild(dropLayer);
 
+    Size mapsize = MapManager::getInstance()->getCurrentMapSize();
+    Size tilesize = MapManager::getInstance()->getCurrentTileSize();
 
+    Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
+   
     this->addChild(scene_spring);
 
+  
+
+    // 添加全局层
+    auto globalLayer = GlobalLayer::create();
+    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
+
+    //设置名字
+    this->setName(SCENE_SPRING_TOWN);
 
     return true;
 }
+
+
+void spring_town::onEnter()
+{
+    Scene::onEnter(); // 调用父类的 onEnter
+
+    CCLOG("MyScene onEnter");
+    std::string player_name = leading_charactor.getname();
+    std::string farm_name = leading_charactor.getFarmName();
+    int sex = leading_charactor.getSex();
+    leading_charactor.person_construction(player_name, sex, farm_name, this);
+
+    auto playerControlLayer = PlayerControlLayer::create();
+    playerControlLayer->setPlayer(&leading_charactor);
+    playerControlLayer->setName(PLAYER_CONTROLER);
+    this->addChild(playerControlLayer);
+
+}
+
+void spring_town::onExit()
+{
+    Scene::onExit(); // 调用父类的 onExit
+
+    CCLOG("MyScene onExit");
+    // 在这里添加自定义逻辑
+    this->removeChildByName(PLAYER_CONTROLER);
+
+    /* 移除人物 */
+    people_remove_change();
+
+}
+
+
 
 //秋天场景
 Scene* autumn_town::createScene()
@@ -480,9 +609,48 @@ bool autumn_town::init() {
 
     this->addChild(scene_spring);
 
+    // 添加全局层
+    auto globalLayer = GlobalLayer::create();
+    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
+
+    //设置名字
+    this->setName(SCENE_AUTUMN_TOWN);
 
     return true;
 }
+
+
+void autumn_town::onEnter()
+{
+    Scene::onEnter(); // 调用父类的 onEnter
+
+    CCLOG("MyScene onEnter");
+    std::string player_name = leading_charactor.getname();
+    std::string farm_name = leading_charactor.getFarmName();
+    int sex = leading_charactor.getSex();
+    leading_charactor.person_construction(player_name, sex, farm_name, this);
+
+    auto playerControlLayer = PlayerControlLayer::create();
+    playerControlLayer->setPlayer(&leading_charactor);
+    playerControlLayer->setName(PLAYER_CONTROLER);
+    this->addChild(playerControlLayer);
+
+}
+
+void autumn_town::onExit()
+{
+    Scene::onExit(); // 调用父类的 onExit
+
+    CCLOG("MyScene onExit");
+    // 在这里添加自定义逻辑
+    this->removeChildByName(PLAYER_CONTROLER);
+
+    /* 移除人物 */
+    people_remove_change();
+
+}
+
+
 
 //冬天场景
 Scene* winter_town::createScene()
@@ -556,9 +724,49 @@ bool winter_town::init() {
 
     this->addChild(scene_winter);
 
+    // 添加全局层
+    auto globalLayer = GlobalLayer::create();
+    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
+
+    //设置名字
+    this->setName(SCENE_WINTER_TOWN);
+
 
     return true;
 }
+
+
+void winter_town::onEnter()
+{
+    Scene::onEnter(); // 调用父类的 onEnter
+
+    CCLOG("MyScene onEnter");
+    std::string player_name = leading_charactor.getname();
+    std::string farm_name = leading_charactor.getFarmName();
+    int sex = leading_charactor.getSex();
+    leading_charactor.person_construction(player_name, sex, farm_name, this);
+
+    auto playerControlLayer = PlayerControlLayer::create();
+    playerControlLayer->setPlayer(&leading_charactor);
+    playerControlLayer->setName(PLAYER_CONTROLER);
+    this->addChild(playerControlLayer);
+
+}
+
+void winter_town::onExit()
+{
+    Scene::onExit(); // 调用父类的 onExit
+
+    CCLOG("MyScene onExit");
+    // 在这里添加自定义逻辑
+    this->removeChildByName(PLAYER_CONTROLER);
+
+    /* 移除人物 */
+    people_remove_change();
+
+}
+
+
 
 /* ---------- 矿洞场景 ---------- */
 Scene* scene_mine::createScene()
@@ -634,8 +842,51 @@ bool scene_mine::init() {
 
     Stone::randomGenerateInMine(mine, objectLayer);
 
+    // 添加全局层
+    auto globalLayer = GlobalLayer::create();
+    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
+
+    //设置名字
+    this->setName(SCENE_MINE);
+
+
     return true;
 }
+
+void scene_mine::onEnter()
+{
+    Scene::onEnter(); // 调用父类的 onEnter
+
+    CCLOG("MyScene onEnter");
+    std::string player_name = leading_charactor.getname();
+    std::string farm_name = leading_charactor.getFarmName();
+    int sex = leading_charactor.getSex();
+    leading_charactor.person_construction(player_name, sex, farm_name, this);
+
+    auto playerControlLayer = PlayerControlLayer::create();
+    playerControlLayer->setPlayer(&leading_charactor);
+    playerControlLayer->setName(PLAYER_CONTROLER);
+    this->addChild(playerControlLayer);
+
+}
+
+void scene_mine::onExit()
+{
+    Scene::onExit(); // 调用父类的 onExit
+
+    CCLOG("MyScene onExit");
+    // 在这里添加自定义逻辑
+    this->removeChildByName(PLAYER_CONTROLER);
+
+    /* 移除人物 */
+    people_remove_change();
+
+}
+
+
+
+
+
 
 //家的场景
 Scene* scene_home::createScene()
@@ -710,6 +961,45 @@ bool scene_home::init() {
 
     this->addChild(home);
 
+    // 添加全局层
+    auto globalLayer = GlobalLayer::create();
+    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
+
+    //设置名字
+    this->setName(SCENE_HOME);
+
     return true;
 }
+
+void scene_home::onEnter()
+{
+    Scene::onEnter(); // 调用父类的 onEnter
+
+    CCLOG("MyScene onEnter");
+    std::string player_name = leading_charactor.getname();
+    std::string farm_name = leading_charactor.getFarmName();
+    int sex = leading_charactor.getSex();
+    leading_charactor.person_construction(player_name, sex, farm_name, this);
+
+    auto playerControlLayer = PlayerControlLayer::create();
+    playerControlLayer->setPlayer(&leading_charactor);
+    playerControlLayer->setName(PLAYER_CONTROLER);
+    this->addChild(playerControlLayer);
+
+}
+
+void scene_home::onExit()
+{
+    Scene::onExit(); // 调用父类的 onExit
+
+    CCLOG("MyScene onExit");
+    // 在这里添加自定义逻辑
+    this->removeChildByName(PLAYER_CONTROLER);
+
+    /* 移除人物 */
+    people_remove_change();
+
+}
+
+
 //商店场景

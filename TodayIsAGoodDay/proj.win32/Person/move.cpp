@@ -31,28 +31,14 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
 
     auto _floorLayer = currentMap->getLayer("floor");
     
-//    auto _wallLayer = currentMap->getLayer("Wall");
-//    auto _itemLayer = currentMap->getLayer("Item");
-
     // 将目标位置转换为瓦片坐标
     cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap->getPosition());
-    int floorGID = _floorLayer->getTileGIDAt(tileCoord);
-
-    /*
-    int wallGID = 0, itemGID = 0;
-    // 获取目标位置的瓦片 GID
-    if (_wallLayer != nullptr)
-        wallGID = _wallLayer->getTileGIDAt(tileCoord);
-    if (_itemLayer != nullptr)
-        itemGID = _itemLayer->getTileGIDAt(tileCoord);
-    */
-
-    // 如果目标位置是 wall 或 item，则不能移动
+    int floorGID = _floorLayer->getTileGIDAt(tileCoord);    
+    
     if (floorGID != 0)
     {
         return true;
     }
-
     return false;
 }
 
@@ -75,15 +61,7 @@ Animation* Person::createAnimations(const std::string& direction)
     for (int i = 1; i <= 4; i++) {
         std::string frameName = "/person/person_" + direction + "_" + std::to_string(i) + ".png";
         animation->addSpriteFrameWithFile(frameName);
-
-        /*
-        SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frameName);
-        if (frame == nullptr) {
-            // 如果缓存中没有，则从文件加载
-            frame = SpriteFrame::create(frameName, Rect(0, 0, 64, 96)); // 假设图片大小为64x64
-        }
-        frames.pushBack(frame);
-        */
+        
     }
     animation->setDelayPerUnit(0.1f);
     animation->setRestoreOriginalFrame(true);
@@ -109,58 +87,34 @@ void Person::createAnimate()
 
 void Person::PersonMove(float deltaX, float deltaY)
 {
-    static int i = 0;
     createAnimate();
     // 根据移动方向切换动画
-    if (i++) {
-        if (deltaX > 0)
-        {
-//            _sprite->stopAllActions();
-            if(_sprite->getNumberOfRunningActions() == 0)
-            _sprite->runAction(_rightWalkAnimate->clone());
-        }
-        else if (deltaX < 0)
-        {
-//            _sprite->stopAllActions();
-            if (_sprite->getNumberOfRunningActions() == 0)
-            _sprite->runAction(_leftWalkAnimate->clone());
-        }
-        else if (deltaY > 0)
-        {
-//            _sprite->stopAllActions();
-            if (_sprite->getNumberOfRunningActions() == 0)
-            _sprite->runAction(_backWalkAnimate->clone());
-        }
-        else if (deltaY < 0)
-        {
-//            _sprite->stopAllActions();
-            if (_sprite->getNumberOfRunningActions() == 0)
-            _sprite->runAction(_frontWalkAnimate->clone());
-        }
-    }
-    else {
-        if (deltaX > 0)
-        {
-            _sprite->stopAllActions();
-            _sprite->runAction(_rightWalkAnimate);
-        }
-        else if (deltaX < 0)
-        {
-            _sprite->stopAllActions();
-            _sprite->runAction(_leftWalkAnimate);
-        }
-        else if (deltaY > 0)
-        {
-            _sprite->stopAllActions();
-            _sprite->runAction(_backWalkAnimate);
-        }
-        else if (deltaY < 0)
-        {
-            _sprite->stopAllActions();
-            _sprite->runAction(_frontWalkAnimate);
-        }
-    }
     
+    if (deltaX > 0)
+    {
+        //            _sprite->stopAllActions();
+        if (_sprite->getNumberOfRunningActions() == 0)
+            _sprite->runAction(_rightWalkAnimate);
+    }
+    else if (deltaX < 0)
+    {
+        //            _sprite->stopAllActions();
+        if (_sprite->getNumberOfRunningActions() == 0)
+            _sprite->runAction(_leftWalkAnimate);
+    }
+    else if (deltaY > 0)
+    {
+        //            _sprite->stopAllActions();
+        if (_sprite->getNumberOfRunningActions() == 0)
+            _sprite->runAction(_backWalkAnimate);
+    }
+    else if (deltaY < 0)
+    {
+        //            _sprite->stopAllActions();
+        if (_sprite->getNumberOfRunningActions() == 0)
+            _sprite->runAction(_frontWalkAnimate);
+    }
+           
     auto currentScene = Director::getInstance()->getRunningScene();
     auto children = currentScene->getChildren();
     TMXTiledMap* currentMap;
@@ -171,19 +125,10 @@ void Person::PersonMove(float deltaX, float deltaY)
             break;
         }
     }
-    /*
-    //找到当前地图
-    TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
-    if (currentMap)
-    {
-        CCLOG("Current map name: %s", currentMap->getMapSize().width);
-    }
-    else
-    {
-        CCLOG("No map found for the current scene.");
-    }
-    */
-    
+ 
+    //没用，只是调试一下
+    Vec2 hello = convertWorldToTileCoord(_sprite->getPosition(), currentMap->getPosition());
+
     //判断是否可以移动
     if (!canMove(deltaX, deltaY,currentMap))
         return;

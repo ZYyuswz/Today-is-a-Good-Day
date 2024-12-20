@@ -162,7 +162,7 @@ bool menu::init()
 void menu::onCreate(cocos2d::Ref* sender)
 {
     //仅用于测试场景
-    Director::getInstance()->pushScene(this);
+    //Director::getInstance()->pushScene(this);
 
     //测试，应创建主场景，先用沙滩测试
     first_to_manor();
