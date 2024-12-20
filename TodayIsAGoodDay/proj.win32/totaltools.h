@@ -4,6 +4,7 @@
 #include "global.h"
 #include "map/object.h"
 #include "map/drop.h"
+#include "Map/plough.h"
 
 USING_NS_CC;
 
@@ -20,5 +21,7 @@ void people_remove_change();
 void people_change_scene(const Vec2 change_Vec2);
 
 std::vector<Dropper*>* getDrops(Vec2 personPosition);
+
+bool is_have_plough(Vec2 tilePosition);
 
 
