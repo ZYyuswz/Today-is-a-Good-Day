@@ -9,15 +9,15 @@
 #include"Person/person.h"
 #include"global.h"
 #include "Time.h"
+#include "Map/tree.h"
 
 USING_NS_CC;
 
 
 //总控鼠标按键
 //按下时的调用
-void control_mouseclick()
+void control_mouseclick(Vec2 mouse_pos)
 {
-
 	//鼠标瓦片坐标
 	Vec2 mouse_tile_pos;
 	TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
@@ -34,7 +34,7 @@ void control_mouseclick()
 
 	//得到人所在瓦片地图位置
 	Vec2 person_tile_pos = leading_charactor.getTiledPosition();
-	
+
 	//判断点击位置和人物距离是不是合法
 	if (abs(person_tile_pos.x - mouse_tile_pos.x) < MAX_PERSON_LENTH && abs(person_tile_pos.y - mouse_tile_pos.y) < MAX_PERSON_LENTH)
 	{
@@ -168,11 +168,10 @@ void control_mouseclick()
 
 
 		}
-		
-		
+
+
 
 	}
-
 
 }
 
@@ -203,8 +202,8 @@ void control_changescene()
 		if (player_pos.x < 4 && player_pos.y > 24 && player_pos.y < 30) {
 			//回小镇
 			back_to_manor_from_town();
-			
-		}   
+
+		}
 		else if (player_pos.x > 25 && player_pos.x < 35 && player_pos.y > 0 && player_pos.y < 6)
 		{
 			//去沙滩
@@ -250,8 +249,8 @@ void manor_change_map()
 			scene_spring->addChild(layer);
 		}
 
-		
-		
+
+
 		int visiablemood = get_window_size();
 		if (visiablemood == SMALL_WINDOW)
 		{
@@ -279,7 +278,7 @@ void manor_change_map()
 
 
 		}
-		
+
 		// 添加新地图到场景中
 		// 删除旧地图（可选）
 		oldMap->removeFromParentAndCleanup(true);  // 删除旧地图并清理内存
