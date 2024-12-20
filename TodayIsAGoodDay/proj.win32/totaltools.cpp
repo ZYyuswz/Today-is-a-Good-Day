@@ -171,3 +171,10 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
     return pickDrops;
 }
 
+bool isFiveTool(const std::string& name)
+{
+    if (name == "axe" || name == "hammer" || name == "draft" || name == "kettle" || name == "fishing_pole")
+        return true;
+    else
+        return false;
+}

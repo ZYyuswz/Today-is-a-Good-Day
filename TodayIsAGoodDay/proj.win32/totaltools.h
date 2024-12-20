@@ -21,4 +21,4 @@ void people_change_scene(const Vec2 change_Vec2);
 
 std::vector<Dropper*>* getDrops(Vec2 personPosition);
 
-
+bool isFiveTool(const std::string& name);
