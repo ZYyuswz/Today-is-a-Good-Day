@@ -27,4 +27,8 @@ public:
 
     // 产生掉落物
     void generateDrops() override;
+
+    void reduceOpacity();
+
+    void restoreOpacity();
 };

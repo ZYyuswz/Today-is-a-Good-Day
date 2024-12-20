@@ -199,8 +199,12 @@ const std::map<std::string, int> itemPrices = {
 
     //物品有价格,必须是双斜杠，否则会报错
     {"carrat_drop",30},
+    {"Carrot_Seeds",20}
 };
 
 // 人物拾取半径
 #define PICK_RADIUS 2.0
 
+// 树遮挡的判定范围
+#define TREE_BLOCK_X 1
+#define TREE_BLOCK_Y 6

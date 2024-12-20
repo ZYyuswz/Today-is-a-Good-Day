@@ -23,7 +23,7 @@ Bag::Bag(): _selectedItemIndex(-1)
     _items.push_back(item("draft"));
     _items.push_back(item("kettle"));
     _items.push_back(item("fishing_pole"));
-//    _items.push_back(item("Carrot_Seeds"));
+//    _items.push_back(item("Carrot_Seeds",10));
 }
 
 //按键函数
@@ -97,7 +97,7 @@ void Bag::displayBag()
     bagBackground->setName("bagBackground");
     Director::getInstance()->getRunningScene()->addChild(bagBackground);
 
-    /*
+    
     // 显示背包格的图片和物品图案
     int x = BAG_LEFT_LOCATION;
     int y = BAG_UP_LOCATION;
@@ -120,7 +120,7 @@ void Bag::displayBag()
             y -= BAG_CELL;
         }
     }
-    */
+    
 }
 
 void Bag::closeBag()
