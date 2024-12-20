@@ -18,6 +18,10 @@
 
 //切换场景调用函数
 bool first_to_manor() {
+    // 启动自动更新
+    GameTime::getInstance()->startAutoUpdate();
+
+
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
     //leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
