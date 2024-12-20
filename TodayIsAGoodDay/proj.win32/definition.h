@@ -1,4 +1,3 @@
-
 #pragma once
 #include <map>
 //屏幕显示比例
@@ -11,6 +10,7 @@
 #define PLOUGH 2
 #define DROP 4
 #define PERSON_LAYER 10
+
 #define RAINLAYER 100
 #define BAGLAYER  101 
 #define SETTING_LAYER 102
@@ -187,5 +187,20 @@ enum class CropsType {
     Withered
 };
 
+
+//待添加完善
+const std::map<std::string, int> itemPrices = {
+    /*工具全部价格为0*/
+    {"hammer",0},
+    {"axe",0},
+    {"draft",0},
+    {"kettle",0},
+    {"fishing_pole",0},
+
+    //物品有价格,必须是双斜杠，否则会报错
+    {"carrat_drop",30},
+};
+
 // 人物拾取半径
 #define PICK_RADIUS 2.0
+
