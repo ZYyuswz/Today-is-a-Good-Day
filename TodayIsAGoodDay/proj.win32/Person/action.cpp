@@ -3,6 +3,8 @@
 
 void Person::useTools()
 {
+	if (currentTool == nullptr)
+		return;
 	auto currentScene = Director::getInstance()->getRunningScene();
 	currentScene->removeChildByName("tool");
 	currentTool->_toolsprite = Sprite::create("/tool/" + currentTool->getName() + 

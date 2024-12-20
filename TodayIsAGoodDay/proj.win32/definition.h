@@ -109,7 +109,7 @@ enum class DIRECTION {
 #define MANOR_TO_MINE_Y 0
 
 //家场景相关宏定义
-#define HOME_SMALL_SCALE 4.0f
+#define HOME_SMALL_SCALE 3.5f
 #define MANOR_TO_HOME_X 0
 #define MANOR_TO_HOME_Y 0
 

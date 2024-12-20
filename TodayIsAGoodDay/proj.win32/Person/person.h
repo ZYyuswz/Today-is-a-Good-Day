@@ -30,7 +30,7 @@ struct item
     int num;
     int value; //toolsµÄvalueÎª0
     bool isTool;
-    item(const std::string itemName, const int itemValue = 0,const int itemNum = 1) 
+    item(const std::string itemName,const int itemNum = 1) 
         :name(itemName),value(itemPrices.find(itemName)->second),num(itemNum) {}
 };
 
