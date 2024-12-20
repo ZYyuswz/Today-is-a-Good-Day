@@ -2,8 +2,12 @@
 #include "cocos2d.h"
 #include "definition.h"
 #include "global.h"
-#include "map/object.h"
-#include "map/drop.h"
+
+#include "Map/object.h"
+#include "Map/drop.h"
+#include "Map/tree.h"
+#include "Map/plough.h"
+
 
 USING_NS_CC;
 
@@ -21,4 +25,12 @@ void people_change_scene(const Vec2 change_Vec2);
 
 std::vector<Dropper*>* getDrops(Vec2 personPosition);
 
+std::vector<Tree*> tree_block;
 
+void treeBlock(Vec2 personPosition);
+
+void updateTreeBlock(Vec2 personPosition);
+
+bool is_have_plough(Vec2 tilePosition);
+
+bool is_have_object(Vec2 tilePosition);
