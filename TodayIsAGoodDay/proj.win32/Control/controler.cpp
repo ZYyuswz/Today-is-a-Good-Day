@@ -9,14 +9,139 @@
 #include"Person/person.h"
 #include"global.h"
 #include "Time.h"
+#include "Map/tree.h"
 
 USING_NS_CC;
 
 
 //总控鼠标按键
 //按下时的调用
-void control_mouseclick()
+void control_mouseclick(Vec2 mouse_pos)
 {
+	//鼠标瓦片坐标
+	Vec2 mouse_tile_pos;
+	TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
+	if (currentMap)
+	{
+		CCLOG("Current map name: %s", currentMap->getMapSize().width);
+	}
+	else
+	{
+		CCLOG("No map found for the current scene.");
+	}
+	Vec2 map_position = currentMap->getPosition();
+	mouse_tile_pos = convertWorldToTileCoord(mouse_pos, map_position);
+
+	//得到人所在瓦片地图位置
+	Vec2 person_tile_pos = leading_charactor.getTiledPosition();
+	
+	//判断点击位置和人物距离是不是合法
+	if (abs(person_tile_pos.x - mouse_tile_pos.x) < MAX_PERSON_LENTH && abs(person_tile_pos.y - mouse_tile_pos.y) < MAX_PERSON_LENTH)
+	{
+		//如果合法
+		//判断当前点击处有无精灵
+		// 
+		auto thing_on_map = getSpriteOnMap(mouse_tile_pos);
+
+
+		//得到现在人手上的工具
+		std::string person_tool = leading_charactor.getTool()->getName();
+
+
+		if (thing_on_map) {
+			//判断人手上拿的是否合法
+			if (person_tool == TOOL_AXE) {
+				//如果手上是斧子
+				//判断手上斧子的等级对应的扣血量
+				int blood = ATTACK_LEVEL_ONE;
+
+				auto have_tree = dynamic_cast<Tree*>(thing_on_map);
+				if (have_tree) {
+					//人物动画
+					leading_charactor.useTools();
+					have_tree->reduceHealth(blood);
+				}
+			}
+			else if (person_tool == TOOL_HAMMER) {
+				//if hammer
+				int blood = ATTACK_LEVEL_ONE;
+
+				auto have_stone = dynamic_cast<Stone*>(thing_on_map);
+				if (have_stone) {
+					//人物动画
+					leading_charactor.useTools();
+					have_stone->reduceHealth(blood);
+				}
+			}
+			else if (person_tool == TOOL_FISHING_POLE) {
+				//IF fishingpole
+
+			}
+			else if (person_tool == TOOL_KETTLE) {
+				//if kattle
+
+			}
+		}
+		else {
+			
+			bool is_plough = is_have_plough(mouse_tile_pos);
+			if (is_plough) {
+				if (person_tool == SEED_CABBAGE) {
+
+				}
+				else if (person_tool == SEED_CARROT) {
+
+				}
+				else if (person_tool == SEED_CORN) {
+
+				}
+				else if (person_tool == SEED_EGGPLANT) {
+
+				}
+				else if (person_tool == SEED_GARLIC) {
+
+				}
+				else if (person_tool == SEED_MELON) {
+
+				}
+				else if (person_tool == SEED_POTATO) {
+
+				}
+				else if (person_tool == SEED_PUMPIN) {
+
+				}
+				else if (person_tool == SEED_TOMATO) {
+
+				}
+			}
+			else if (!is_plough) {
+				if (person_tool == SEED_TREE) {
+
+					auto put_tree = currentMap->getChildByName(OBJECT_LAYER);
+					auto put_tree_layer = dynamic_cast<Layer*>(put_tree);
+					auto tree1 = new Tree(currentMap, put_tree_layer, mouse_tile_pos, TreeType::Maple, Stage::Mature);
+				}
+				else if (person_tool == TOOL_DRAFT) {
+					//如果手上是锄头
+					
+					leading_charactor.useTools();
+					auto put_plough = currentMap->getChildByName(PLOUGH_LAYER);
+					auto put_plough_layer = dynamic_cast<Layer*>(put_plough);
+					auto plough1 = new Plough(currentMap, put_plough_layer, mouse_tile_pos, LandState::Tilled);
+
+				}
+			}
+			
+			auto put_tree = currentMap->getChildByName(OBJECT_LAYER);
+			auto put_tree_layer = dynamic_cast<Layer*>(put_tree);
+			auto tree1 = new Tree(currentMap, put_tree_layer, mouse_tile_pos, TreeType::Maple, Stage::Mature);
+		}
+
+		
+
+		
+
+	}
 
 }
 

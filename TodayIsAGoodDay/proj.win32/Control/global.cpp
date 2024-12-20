@@ -231,16 +231,30 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_E:
-            
+            leading_charactor.MyBag.changeBag();
             break;
         case EventKeyboard::KeyCode::KEY_0:
-           
+            leading_charactor.useTools();
             break;
         case EventKeyboard::KeyCode::KEY_1:
-
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[0].name;
+            Tool* changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
             break;
         case EventKeyboard::KeyCode::KEY_2:
-
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[1].name;
+            Tool* changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
             break;
         case EventKeyboard::KeyCode::KEY_3:
 
@@ -305,14 +319,7 @@ void PlayerControlLayer::onMouseDown(Event* event)
 
         //鼠标点击之后调用函数
 
-
-        //测试用例
-        //manor_to_towm();
-        //test();
-        change_to_mine();
-        
-       
-        //manor_change_map();
+        control_mouseclick(mousePos);
     }
 }
 
