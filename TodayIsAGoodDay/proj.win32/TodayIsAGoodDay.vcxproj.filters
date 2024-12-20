@@ -176,6 +176,9 @@
     <ClInclude Include="Control\controler.h">
       <Filter>Classes\Control</Filter>
     </ClInclude>
+    <ClInclude Include="Cooperation\cooperation.h">
+      <Filter>Classes\Cooperation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

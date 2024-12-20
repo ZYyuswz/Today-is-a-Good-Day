@@ -8,6 +8,7 @@
 #include "Map/crops.h"
 #include "Map/plough.h"
 #include "Map/stone.h"
+#include "scene.h"
 
 USING_NS_CC;
 
@@ -62,4 +63,7 @@ public:
 
     // 打印时间，调试用
     void printTime() const;
+
+    // 返回时间：小时+分钟
+    std::vector<int> getTime() const;
 };

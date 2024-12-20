@@ -28,7 +28,6 @@ bool PlayerControlLayer::init() {
     _moveRight = false;
     _moveUp = false;
     _moveDown = false;
-
     _playerSpeed = 100.0f;
     // 1. 创建键盘事件监听器
     _keyboardListener = EventListenerKeyboard::create();
@@ -205,7 +204,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             // 取消调度任务
             Director::getInstance()->getScheduler()->unschedule("moveLeft", this);
             leading_charactor.PersonStop(-10, 0);
-
+            control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = false;
@@ -213,6 +212,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             // 取消调度任务
             Director::getInstance()->getScheduler()->unschedule("moveRight", this);
             leading_charactor.PersonStop(10, 0);
+            control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_W:
             _moveUp = false;
@@ -220,6 +220,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             // 取消调度任务
             Director::getInstance()->getScheduler()->unschedule("moveUp", this);
             leading_charactor.PersonStop(0, 10);
+            control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_S:
             _moveDown = false;
@@ -227,6 +228,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             // 取消调度任务
             Director::getInstance()->getScheduler()->unschedule("moveDown", this);
             leading_charactor.PersonStop(0, -10);
+            control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_E:
             
@@ -307,12 +309,10 @@ void PlayerControlLayer::onMouseDown(Event* event)
         //测试用例
         //manor_to_towm();
         //test();
-        //change_to_mine();
-        auto map = MapManager::getInstance()->getCurrentMap();
-        auto objectLayer = dynamic_cast<Layer*>(map->getChildByName(OBJECT_LAYER));
-        auto tree1 = new Tree(map, objectLayer, Vec2(40, 44), TreeType::Maple, Stage::Mature);
-        //Tree::randomGenerate(map, objectLayer, 30, Stage::Mature);
-        manor_change_map();
+        change_to_mine();
+        
+       
+        //manor_change_map();
     }
 }
 
@@ -495,3 +495,4 @@ Size MapManager::getCurrentTileSize()
     } 
 
 */
+

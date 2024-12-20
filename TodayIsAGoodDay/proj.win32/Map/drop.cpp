@@ -1,5 +1,9 @@
 #include "drop.h"
 
+// 构造函数
+Drop::Drop(const Vec2& position, Layer* targetLayer, TMXTiledMap* tileMap)
+    : dropPosition(position), targetLayer(targetLayer), tileMap(tileMap) {}
+
 // 静态成员初始化
 std::mt19937 Drop::gen = std::mt19937(std::random_device{}());
 
@@ -8,10 +12,6 @@ int Drop::generateRandomCount(int min, int max) {
     std::uniform_int_distribution<> dist(min, max);
     return dist(gen);
 }
-
-// 构造函数
-Drop::Drop(const Vec2& position, Layer* targetLayer, TMXTiledMap* tileMap)
-    : dropPosition(position), targetLayer(targetLayer) ,tileMap(tileMap){}
 
 // 添加掉落物
 void Drop::addDropItem(const std::string& itemType, const std::string& texturePath) {
@@ -33,7 +33,7 @@ void Drop::generate() {
     std::uniform_real_distribution<float> dist(-spreadRadius, spreadRadius);
 
     for (const auto& item : dropItems) {
-        auto dropSprite = Sprite::create();
+        auto dropSprite = new Dropper(dropPosition);
         if (!dropSprite) {
             CCLOG("Failed to load drop sprite texture: %s", item.texturePath.c_str());
             continue;
@@ -47,10 +47,14 @@ void Drop::generate() {
         const Size mapSize = tileMap->getMapSize();
         const Size tileSize = tileMap->getTileSize();
         Vec2 pixelPosition = getTilePixelPosition(dropPosition, tileSize, mapSize, TileCorner::CENTER);
+        // 设置锚点
+        dropSprite->setAnchorPoint(Vec2(0.5, 0.5));
         // 设置掉落位置
         dropSprite->setPosition(pixelPosition + offset);
         // 使用 ID 设置标记
         dropSprite->setTag(item.id);
+        // 将精灵的图像上下颠倒
+        dropSprite->setFlippedY(false);
         // 将掉落物添加到目标层
         targetLayer->addChild(dropSprite);
     }
