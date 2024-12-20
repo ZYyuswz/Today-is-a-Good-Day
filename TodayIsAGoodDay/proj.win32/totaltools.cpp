@@ -154,13 +154,13 @@ bool is_have_plough(Vec2 tilePosition)
     auto map = MapManager::getInstance()->getCurrentMap();
     if (!map) {
         CCLOG("Map not found in the scene!--getSpriteOnMap");
-        return nullptr;
+        return false;
     }
     // 获取 ploughLayer
     auto ploughLayer = dynamic_cast<Layer*>(map->getChildByName(PLOUGH_LAYER));
     if (!ploughLayer) {
         CCLOG("PloughLayer not found in the map!--getSpriteOnMap");
-        return nullptr;
+        return false;
     }
     // 遍历 PloughLayer 的子节点
     for (auto child : ploughLayer->getChildren()) {
@@ -172,6 +172,7 @@ bool is_have_plough(Vec2 tilePosition)
     }
     return false;
 }
+
 
 /*工具：返回可拾取掉落物的vector容器
 * 传入参数：
@@ -220,7 +221,7 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
 * std::vector<Dropper*>*：储存掉落物指针vector指针
 */
 // 储存目前被遮挡的树，树不遮挡人之后需要调用restoreOpacity()
-// std::vector<Tree*> tree_block; 这个已经在.h里声明了
+std::vector<Tree*> tree_block;
 // PS:逻辑是你每次移动时候要调用，treeBlock函数，然后再调用updateTreeBlock去还原没有遮挡的树
 void treeBlock(Vec2 personPosition) {
     // 获取当前地图
@@ -284,13 +285,13 @@ bool is_have_object(Vec2 tilePosition)
     auto map = MapManager::getInstance()->getCurrentMap();
     if (!map) {
         CCLOG("Map not found in the scene!--is_have_object");
-        return;
+        return false;
     }
     // 获取 objectLayer
     auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
     if (!objectLayer) {
         CCLOG("ObjectLayer not found in the map!--is_have_object");
-        return;
+        return false;
     }
     // 遍历 ObjectLayer 的子节点
     for (auto child : objectLayer->getChildren()) {
