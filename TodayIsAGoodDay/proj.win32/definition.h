@@ -27,6 +27,34 @@ enum class DIRECTION {
     UP,    //上
     DOWN   //下
 };
+//人物最远鼠标点击距离
+#define MAX_PERSON_LENTH 4
+
+//工具宏定义
+#define TOOL_HAMMER "hammer" //锤子
+#define TOOL_AXE "axe"   //斧子 
+#define TOOL_DRAFT "draft"  //锄头
+#define TOOL_KETTLE "kettle"  //水壶
+#define TOOL_FISHING_POLE "fishing_pole"   //钓鱼竿
+
+#define SEED_CARROT "carrot"   //胡萝卜
+#define SEED_GARLIC "garlic"   //大蒜
+#define SEED_POTATO "potato"   //土豆
+#define SEED_CORN  "corn"      //玉米类
+#define SEED_MELON "melon"  //瓜
+#define SEED_CABBAGE "cabbage"   //白菜
+#define SEED_TOMATO "tomato"    //西红柿
+#define SEED_PUMPIN "pumpkin"   //南瓜
+#define SEED_EGGPLANT "eggplant"  //茄子
+
+#define SEED_TREE "tree"  //树苗
+
+
+#define SEED_TREE_OAK "oak"  //橡树
+#define SEED_TREE_PINE "pine" //松树
+#define SEED_TREE_MAPLE "maple"  //枫树
+
+
 
 //场景相关宏定义
 #define SCENE_MANOR "scene_manor"
@@ -76,7 +104,7 @@ enum class DIRECTION {
 #define MANOR_TO_TOWN_Y 27
 
 //矿洞场景相关宏定义
-#define MINE_SMALL_SCALE 4.0f
+#define MINE_SMALL_SCALE 3.5f
 #define MANOR_TO_MINE_X 0
 #define MANOR_TO_MINE_Y 0
 
@@ -85,12 +113,16 @@ enum class DIRECTION {
 #define MANOR_TO_HOME_X 0
 #define MANOR_TO_HOME_Y 0
 
+//扣血相关宏定义
+#define ATTACK_LEVEL_ONE 25
+#define ATTACK_LEVEL_TWO 50
+
 
 // 定义每个季节的持续天数
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.01f 
+#define UPDATE_INTERVAL 0.1f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16

@@ -6,6 +6,8 @@
 
 #include <random>
 
+
+
 USING_NS_CC;
 
 //工具：瓦片地图坐标转换成屏幕像素坐标
@@ -139,6 +141,37 @@ MyObject* getSpriteOnMap(Vec2 tilePosition) {
     return nullptr;
 }
 
+
+/*工具：返回鼠标点击坐标上有没有耕地，如果没有为false
+* 传入参数：
+* Vec2 tilePosition：鼠标点击的坐标
+* 返回值：
+* bool类型：有无耕地
+*/
+bool is_have_plough(Vec2 tilePosition)
+{
+    //得到当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--getSpriteOnMap");
+        return nullptr;
+    }
+    // 获取 ploughLayer
+    auto ploughLayer = dynamic_cast<Layer*>(map->getChildByName(PLOUGH_LAYER));
+    if (!ploughLayer) {
+        CCLOG("PloughLayer not found in the map!--getSpriteOnMap");
+        return nullptr;
+    }
+    // 遍历 PloughLayer 的子节点
+    for (auto child : ploughLayer->getChildren()) {
+        // 检查子节点是否是 MyObject 类的实例
+        Plough* myObject = dynamic_cast<Plough*>(child);
+        if (myObject && myObject->getTilePosition() == tilePosition) {
+            return true;
+        }
+    }
+    return false;
+}
 
 /*工具：返回可拾取掉落物的vector容器
 * 传入参数：
