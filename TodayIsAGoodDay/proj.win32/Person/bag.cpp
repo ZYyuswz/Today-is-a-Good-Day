@@ -7,6 +7,7 @@
 #include "global.h"
 
 
+
 const int BAG_LEFT_LOCATION = 500;
 const int BAG_UP_LOCATION = 1000;
 const int BAG_RIGHT_LOCATION = 1500;
@@ -16,25 +17,23 @@ Bag::Bag(): _selectedItemIndex(-1)
 {
     // 创建一个标签用于显示物品信息
     _itemInfoLabel = cocos2d::Label::createWithSystemFont("", "Arial", 24);
-    
+    isOpen = false;
   
 }
 
 //按键函数
-void Bag::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
+void Bag::changeBag()
 {
-    if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_E)
+    isOpen = !isOpen;
+    if (isOpen)
     {
-        isOpen = !isOpen;
-        if (isOpen)
-        {
-            displayBag();
-        }
-        else
-        {
-            closeBag();
-        }
+        displayBag();
     }
+    else
+    {
+        closeBag();
+    }
+
 }
 
 
@@ -88,9 +87,10 @@ void Bag::displayBag()
     // 显示背包网格背景图片
     auto bagBackground = cocos2d::Sprite::create("bag/BagBackground.png"); //创建精灵
     bagBackground->setAnchorPoint(Vec2(0.5f,0.5f));//设置锚点位于中心
-    bagBackground->setPosition(700.0f,650.0f);
-    bagBackground->setScale(0.4f);
-    MapManager::getInstance()->getCurrentMap()->addChild(bagBackground);
+    bagBackground->setPosition(1024.0f,576.0f);
+    bagBackground->setScale(1.2f);
+    bagBackground->setName("bagBackground");
+    Director::getInstance()->getRunningScene()->addChild(bagBackground);
 
     // 显示背包格的图片和物品图案
     int x = BAG_LEFT_LOCATION;
@@ -121,13 +121,14 @@ void Bag::closeBag()
     _itemSprites.clear();
 
     // 清除物品信息标签
-    _itemInfoLabel->setString("");
+//    _itemInfoLabel->setString("");
 
     // 重置选中物品的索引
     _selectedItemIndex = -1;
 
+    auto currentScene = Director::getInstance()->getRunningScene();
     // 移除背包网格背景图片
-    auto bagBackground = this->getChildByName("bagBackground");
+    auto bagBackground = currentScene->getChildByName("bagBackground");
     if (bagBackground)
     {
         bagBackground->removeFromParent();

@@ -4,22 +4,25 @@
 
 USING_NS_CC;
 
+//tool是可以手持的
 class Tool : public cocos2d::Node {
 protected:
     std::string _name;
     int _level;
     int _attackPower;
-    cocos2d::Sprite* _sprite;
+    
 
 public:
-    Tool(const std::string& name, int level, int attackPower);
-    virtual ~Tool();
+    cocos2d::Sprite* _toolsprite;
 
-    virtual bool init();
-    CREATE_FUNC(Tool);
+    Tool(const std::string& name, int level, int attackPower):_name(name),_level(level),_attackPower(attackPower){}
+//    virtual ~Tool();
+
+ //   virtual bool init();
+ //   CREATE_FUNC(Tool);
 
     // 获取和设置属性
-    std::string getName() const { return _name; }
+    const std::string& getName() const { return _name; }
     void setName(const std::string& name) { _name = name; }
 
     int getLevel() const { return _level; }
@@ -29,8 +32,8 @@ public:
     void setAttackPower(int attackPower) { _attackPower = attackPower; }
 
     // 使用工具
-    virtual void use();
+//    virtual void use();
 
     // 升级工具
-    virtual void upgrade();
+//    virtual void upgrade();
 };

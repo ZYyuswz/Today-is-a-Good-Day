@@ -43,7 +43,7 @@ void Person::person_construction(const std::string& name, const int& sex, const 
     }
     init();
     createAnimate();
-    //    _sprite->runAction(_leftWalkAnimate);
+    
 }
 bool Person::init()
 {
@@ -105,7 +105,7 @@ void Person::collectItems()
     Vec2 currentPosition = _sprite->getPosition();
     auto currentTiledMap = MapManager::getInstance()->getCurrentMap();
     Vec2 currentTiledPosition = convertWorldToTileCoord(currentPosition, currentTiledMap->getPosition());
-    std::vector <DropItem>* dropVector = getDrops(currentTiledPosition);
+    std::vector <DropItem>* dropVector;//= getDrops(currentTiledPosition);
     for (int i = 0; i < dropVector->size(); i++) {
         MyBag.addItem((*dropVector)[i].type);
     }

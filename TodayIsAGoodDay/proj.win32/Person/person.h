@@ -3,6 +3,7 @@
 #include "Map/drop.h"
 #include <map>
 #include <string>
+#include "person/tool.h"
 
 USING_NS_CC;
 
@@ -40,7 +41,7 @@ public:
     Bag();
 
     //监听器，按E打开背包
-    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+    void changeBag();
 
     // 添加工具或材料
     void addItem(const item& MyItem);
@@ -98,9 +99,10 @@ protected:
     cocos2d::Animate* _leftWalkAnimate;
     cocos2d::Animate* _rightWalkAnimate;
 
-    cocos2d::EventListenerKeyboard* _keyboardListener;  //键盘监听器
+    Tool* currentTool;
 
-public:    
+public: 
+    friend Tool;
     Sprite* _sprite;   //人物精灵
     Bag MyBag;
 
@@ -129,6 +131,7 @@ public:
     int getHP() const { return _HP; }
     void setHP(int HP) { _HP = HP; }
 
+    void setTool(Tool* newTool) { currentTool = newTool; }
     Sprite* getSprite()const { return _sprite; }
 
     //扣血
@@ -151,6 +154,7 @@ public:
 
     void collectItems();
 
+    void Person::useTools();
     // 辅助方法：移动瓦片地图
     void moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap);
 

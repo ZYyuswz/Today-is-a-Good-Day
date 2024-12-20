@@ -14,4 +14,5 @@ void Person::useTools()
 	auto rotateClockwise = RotateBy::create(0.5f, 90.0f); // 顺时针旋转 90 度，耗时 0.5 秒
 	auto useSequence = Sequence::create(rotateCounterClockwise, pause, rotateClockwise, nullptr);
 	currentTool->_toolsprite->runAction(useSequence);
+	currentTool->_toolsprite->release();
 }

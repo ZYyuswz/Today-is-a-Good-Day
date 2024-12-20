@@ -176,7 +176,7 @@ enum class CropsType {
 };
 
 //待添加完善
-std::map<std::string, int> itemPrices = {
+const std::map<std::string, int> itemPrices = {
     /*工具全部价格为0*/
     {"hammer",0},
     {"axe",0},
