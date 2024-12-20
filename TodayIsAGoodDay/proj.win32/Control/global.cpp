@@ -18,6 +18,9 @@ USING_NS_CC;
 Person leading_charactor ;
 Tool axe("axe", 1, 100);
 
+/*联网socket初始化*/
+// 初始化全局变量
+SOCKET global_socket = INVALID_SOCKET;
 
 bool PlayerControlLayer::init() {
     if (!Layer::init())
