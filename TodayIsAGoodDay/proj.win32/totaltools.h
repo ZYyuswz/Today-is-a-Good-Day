@@ -25,8 +25,6 @@ void people_change_scene(const Vec2 change_Vec2);
 
 std::vector<Dropper*>* getDrops(Vec2 personPosition);
 
-std::vector<Tree*> tree_block;
-
 void treeBlock(Vec2 personPosition);
 
 void updateTreeBlock(Vec2 personPosition);
