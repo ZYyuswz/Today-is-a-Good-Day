@@ -105,7 +105,7 @@ void people_change_scene(const Vec2 change_Vec2)
         // 如果精灵不在运行中，可能需要重新初始化或重新添加
         leading_charactor._sprite->release();
         leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
-        newCharacterLayer->addChild(leading_charactor._sprite);
+        newCharacterLayer->addChild(leading_charactor._sprite,PERSON_LAYER);
         leading_charactor._sprite->setPosition(change_Vec2);
 }
 

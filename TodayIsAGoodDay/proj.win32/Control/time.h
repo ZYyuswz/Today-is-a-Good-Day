@@ -8,6 +8,7 @@
 #include "Map/crops.h"
 #include "Map/plough.h"
 #include "Map/stone.h"
+#include "scene.h"
 
 USING_NS_CC;
 

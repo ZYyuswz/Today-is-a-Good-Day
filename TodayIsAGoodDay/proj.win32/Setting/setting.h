@@ -22,6 +22,14 @@ public:
     // 设置图标的点击回调
     void onSettingsClicked(cocos2d::Event* event);
 
+    // 更新时间的函数
+    void updateTimeDisplay(float dt);
+
+
     // 使用 CREATE_FUNC 宏
     CREATE_FUNC(GlobalLayer);
+
+private:
+    cocos2d::Label* _timeLabel; // 用于显示时间的文本框
+    cocos2d::Label* _timeLabell; // 用于显示时间的文本框
 };
