@@ -12,10 +12,10 @@ void Crops::update() {
         CCLOG("Map not found in the scene!--crops");
         return;
     }
-    // 获取 ObjectLayer
-    auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
-    if (!objectLayer) {
-        CCLOG("ObjectLayer not found in the map!--crops");
+    // 获取 cropsLayer
+    auto cropsLayer = dynamic_cast<Layer*>(map->getChildByName("cropsLayer"));
+    if (!cropsLayer) {
+        CCLOG("cropsLayer not found in the map!--crops");
         return;
     }
     // 如果当前季节与作物季节不匹配
@@ -85,14 +85,14 @@ void Crops::update() {
     }
 }
 
-// 静态方法：遍历objectLayer的所有子节点并调用update
-void Crops::updateAll(Layer* objectLayer) {
-    if (!objectLayer) {
-        CCLOG("objectLayer is null!");
+// 静态方法：遍历cropsLayer的所有子节点并调用update
+void Crops::updateAll(Layer* cropsLayer) {
+    if (!cropsLayer) {
+        CCLOG("cropsLayer is null!");
         return;
     }
-    // 遍历 objectLayer 的所有子节点
-    for (auto child : objectLayer->getChildren()) {
+    // 遍历 cropsLayer 的所有子节点
+    for (auto child : cropsLayer->getChildren()) {
         // 检查子节点是否是 Crop 类的实例
         Crops* crops = dynamic_cast<Crops*>(child);
         if (crops) {
@@ -109,14 +109,14 @@ void Crops::updateAll(Layer* objectLayer) {
             CCLOG("Map not found in the scene!--crops");
             return;
         }
-        // 获取 ObjectLayer
-        auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
-        if (!objectLayer) {
-            CCLOG("ObjectLayer not found in the map!--crops");
+        // 获取 cropsLayer
+        auto cropsLayer = dynamic_cast<Layer*>(map->getChildByName("cropsLayer"));
+        if (!cropsLayer) {
+            CCLOG("cropsLayer not found in the map!--crops");
             return;
         }
         // 销毁变成酸菜
-        auto temp = new Withered(map, objectLayer, tilePosition, Stage::Childhood);
+        auto temp = new Withered(map, cropsLayer, tilePosition, Stage::Childhood);
     }
     // 清空 nodesToRemove
     nodesToRemove.clear();
@@ -190,7 +190,7 @@ void Crops::generateDrops() {
 }
 
 // 酸菜
-Withered::Withered(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st){
+Withered::Withered(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st){
     this->tilePosition = tile;
     this->stage = st;
     type = CropsType::Withered;  // 设置作物类型
@@ -209,11 +209,11 @@ Withered::Withered(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
 // 胡萝卜类
-Carrot::Carrot(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st){
+Carrot::Carrot(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st){
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Spring;
@@ -243,10 +243,10 @@ Carrot::Carrot(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st){
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
-Garlic::Garlic(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
+Garlic::Garlic(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Spring;
@@ -276,10 +276,10 @@ Garlic::Garlic(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
-Potato::Potato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
+Potato::Potato(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Spring;
@@ -309,10 +309,10 @@ Potato::Potato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
-Corn::Corn(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
+Corn::Corn(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Summer;
@@ -342,10 +342,10 @@ Corn::Corn(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
-Melon::Melon(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
+Melon::Melon(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Summer;
@@ -375,10 +375,10 @@ Melon::Melon(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
-Tomato::Tomato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
+Tomato::Tomato(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Summer;
@@ -408,10 +408,10 @@ Tomato::Tomato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
-Cabbage::Cabbage(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
+Cabbage::Cabbage(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Autumn;
@@ -441,10 +441,10 @@ Cabbage::Cabbage(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) 
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
-Eggplant::Eggplant(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
+Eggplant::Eggplant(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Autumn;
@@ -474,10 +474,10 @@ Eggplant::Eggplant(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
 
-Pumpkin::Pumpkin(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) {
+Pumpkin::Pumpkin(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     this->tilePosition = tile;
     this->stage = st;
     this->cropsSeason = Season::Autumn;
@@ -507,5 +507,5 @@ Pumpkin::Pumpkin(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st) 
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到物体层
-    objectLayer->addChild(this);
+    cropsLayer->addChild(this);
 }
