@@ -39,6 +39,8 @@ void GameTime::updateDay() {
         if (season == Season::Winter)
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
+        force_back_to_manor();
+        manor_change_map();
     }
     // 随机生成天气
     bool weather_condition = random_bernoulli(0.8);
