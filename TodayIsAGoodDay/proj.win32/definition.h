@@ -28,7 +28,6 @@ enum class DIRECTION {
     UP,    //上
     DOWN   //下
 };
-
 //人物最远鼠标点击距离
 #define MAX_PERSON_LENTH 4
 
@@ -70,7 +69,6 @@ enum class DIRECTION {
 
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
-#define CROPS_LAYER "CropsLayer"
 #define DROP_LAYER "DropLayer"
 #define PLAYER_CONTROLER "Player_cintrol_layer"
 /* 全局层相关宏定义 */
@@ -112,9 +110,13 @@ enum class DIRECTION {
 #define MANOR_TO_MINE_Y 0
 
 //家场景相关宏定义
-#define HOME_SMALL_SCALE 3.5f
+#define HOME_SMALL_SCALE 4.0f
 #define MANOR_TO_HOME_X 0
 #define MANOR_TO_HOME_Y 0
+
+//扣血相关宏定义
+#define ATTACK_LEVEL_ONE 25
+#define ATTACK_LEVEL_TWO 50
 
 
 // 定义每个季节的持续天数
@@ -235,3 +237,6 @@ const std::map<std::string, int> itemPrices = {
 // 人物拾取半径
 #define PICK_RADIUS 2.0
 
+// 树遮挡的判定范围
+#define TREE_BLOCK_X 1
+#define TREE_BLOCK_Y 6
