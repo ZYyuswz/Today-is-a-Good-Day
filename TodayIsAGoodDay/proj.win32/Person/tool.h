@@ -14,13 +14,14 @@ protected:
 
 public:
     cocos2d::Sprite* _toolsprite;
-
-    Tool(const std::string& name, int level, int attackPower):_name(name),_level(level),_attackPower(attackPower){}
+    Tool(){}
+    Tool(const std::string& name, int level = 1, int attackPower = 0):_name(name),_level(level),_attackPower(attackPower){}
 //    virtual ~Tool();
 
- //   virtual bool init();
+    bool init(const std::string& name, int level = 1, int attackPower = 0);
  //   CREATE_FUNC(Tool);
 
+    
     // 获取和设置属性
     const std::string& getName() const { return _name; }
     void setName(const std::string& name) { _name = name; }

@@ -42,6 +42,7 @@ void Person::person_construction(const std::string& name, const int& sex, const 
         newCharacterLayer->addChild(_sprite);
     }
     init();
+    
     createAnimate();
     
 }

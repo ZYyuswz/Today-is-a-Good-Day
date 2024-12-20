@@ -29,6 +29,7 @@ struct item
     std::string name;
     int num;
     int value; //tools的value为0
+    bool isTool;
     item(const std::string itemName, const int itemValue = 0,const int itemNum = 1) 
         :name(itemName),value(itemPrices.find(itemName)->second),num(itemNum) {}
 };
@@ -58,6 +59,7 @@ public:
     // 更新物品信息
     void updateItemInfo(cocos2d::Vec2 position);
 
+    std::vector<item> getItems() { return _items; };
 private:
     //物品列表
     std::vector<item> _items;
@@ -103,6 +105,7 @@ protected:
 
 public: 
     friend Tool;
+    friend Bag;
     Sprite* _sprite;   //人物精灵
     Bag MyBag;
 
@@ -132,6 +135,7 @@ public:
     void setHP(int HP) { _HP = HP; }
 
     void setTool(Tool* newTool) { currentTool = newTool; }
+    Tool* getTool() { return currentTool; }
     Sprite* getSprite()const { return _sprite; }
 
     //扣血

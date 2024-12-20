@@ -18,7 +18,11 @@ Bag::Bag(): _selectedItemIndex(-1)
     // 创建一个标签用于显示物品信息
     _itemInfoLabel = cocos2d::Label::createWithSystemFont("", "Arial", 24);
     isOpen = false;
-  
+    _items.push_back(item("axe"));
+    _items.push_back(item("hammer"));
+    _items.push_back(item("draft"));
+    _items.push_back(item("kettle"));
+    _items.push_back(item("fishing_pole"));
 }
 
 //按键函数
