@@ -8,22 +8,22 @@
 #include "map.h"
 USING_NS_CC;
 
-// 游戏开始需要创建掉落物层并加载掉落.plist
-//auto dropLayer = Layer::create();
-//dropLayer->setName("DropLayer");
-//this->addChild(dropLayer);
-
-// 加载纹理图集
-//auto spriteFrameCache = SpriteFrameCache::getInstance();
-//spriteFrameCache->addSpriteFramesWithFile("Drop/drop.plist");
-
-
-// 掉落物类型结构
+// 掉落物组类型结构
 struct DropItem {
     std::string type;        // 掉落物的类型
     int id;                  // 唯一标识符
     std::string texturePath; // 掉落物的贴图路径
     Vec2 position;           // 掉落物的当前坐标
+};
+
+// 掉落物类型结构
+class Dropper : public Sprite{
+public:
+    std::string type;
+    Vec2 tilePosition;
+    Dropper(Vec2 tile) :tilePosition(tile){}
+    // 获取掉落物的瓦片坐标
+    Vec2 getTilePosition() { return tilePosition; }
 };
 
 class Drop {
@@ -43,6 +43,7 @@ protected:
 public:
     // 构造函数
     Drop(const Vec2& position, Layer* targetLayer, TMXTiledMap* tileMap);
+
     // 添加掉落物
     void addDropItem(const std::string& itemType, const std::string& texturePath);
 

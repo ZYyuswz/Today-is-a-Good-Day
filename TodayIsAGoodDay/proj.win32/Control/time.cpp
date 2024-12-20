@@ -39,8 +39,10 @@ void GameTime::updateDay() {
         if (season == Season::Winter)
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
+
         force_back_to_manor();
         manor_change_map();
+
     }
     // 随机生成天气
     bool weather_condition = random_bernoulli(0.8);
@@ -80,7 +82,7 @@ void GameTime::updateDay() {
     Crops::updateAll(objectLayer);
     // 3. plough
     Plough::updateAll(ploughLayer);
-    
+
     //// test
     //auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
     //tree2->reduceHealth(100);
