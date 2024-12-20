@@ -355,6 +355,9 @@ bool spring_manor::init() {
     ploughLayer->setLocalZOrder(PLOUGH);   // 设置层级
     scene_spring->addChild(ploughLayer);
     auto dropLayer = Layer::create();
+    auto cropsLayer = Layer::create();
+    cropsLayer->setName(CROPS_LAYER);
+    cropsLayer->setLocalZOrder(CROPS);
     dropLayer->setName(DROP_LAYER);  // 设置名字
     dropLayer->setLocalZOrder(DROP);   // 设置层级
     scene_spring->addChild(dropLayer);
