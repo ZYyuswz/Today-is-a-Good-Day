@@ -5,7 +5,7 @@
 #include <iostream>
 #include "definition.h"
 #include "global.h"
-
+#include "totaltools.h"
 
 
 const int BAG_LEFT_LOCATION = 500;
@@ -23,6 +23,7 @@ Bag::Bag(): _selectedItemIndex(-1)
     _items.push_back(item("draft"));
     _items.push_back(item("kettle"));
     _items.push_back(item("fishing_pole"));
+//    _items.push_back(item("Carrot_Seeds"));
 }
 
 //按键函数
@@ -92,16 +93,22 @@ void Bag::displayBag()
     auto bagBackground = cocos2d::Sprite::create("bag/BagBackground.png"); //创建精灵
     bagBackground->setAnchorPoint(Vec2(0.5f,0.5f));//设置锚点位于中心
     bagBackground->setPosition(1024.0f,576.0f);
-    bagBackground->setScale(1.2f);
+    bagBackground->setScale(1.5f);
     bagBackground->setName("bagBackground");
     Director::getInstance()->getRunningScene()->addChild(bagBackground);
 
+    /*
     // 显示背包格的图片和物品图案
     int x = BAG_LEFT_LOCATION;
     int y = BAG_UP_LOCATION;
     for (const auto& item : _items)
     {
-        auto itemSprite = cocos2d::Sprite::create("bag/"+ item.name + ".png"); // 假设每个物品都有一个对应的图片
+        Sprite* itemSprite;
+        if(isFiveTool(item.name))
+            itemSprite = cocos2d::Sprite::create("tool/" + item.name +
+            std::to_string(leading_charactor.toolLevel()) + ".png");
+        else
+            itemSprite = cocos2d::Sprite::create(item.name + ".png"); // 假设每个物品都有一个对应的图片
         itemSprite->setPosition(cocos2d::Vec2(x, y));
         this->addChild(itemSprite);
         _itemSprites.push_back(itemSprite);
@@ -113,6 +120,7 @@ void Bag::displayBag()
             y -= BAG_CELL;
         }
     }
+    */
 }
 
 void Bag::closeBag()
