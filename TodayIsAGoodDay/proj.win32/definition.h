@@ -6,9 +6,10 @@
 //图层显示关系宏定义
 #define FIRST 1
 
-#define OBJECT 3
-#define PLOUGH 2
-#define DROP 4
+#define OBJECT 2
+#define PLOUGH 3
+#define CROPS 4 
+#define DROP 5
 #define PERSON_LAYER 10
 
 #define RAINLAYER 100
@@ -28,6 +29,35 @@ enum class DIRECTION {
     DOWN   //下
 };
 
+//人物最远鼠标点击距离
+#define MAX_PERSON_LENTH 4
+
+//工具宏定义
+#define TOOL_HAMMER "hammer" //锤子
+#define TOOL_AXE "axe"   //斧子 
+#define TOOL_DRAFT "draft"  //锄头
+#define TOOL_KETTLE "kettle"  //水壶
+#define TOOL_FISHING_POLE "fishing_pole"   //钓鱼竿
+
+#define SEED_CARROT "seed_carrot"   //胡萝卜
+#define SEED_GARLIC "seed_garlic"   //大蒜
+#define SEED_POTATO "seed_potato"   //土豆
+#define SEED_CORN  "seed_corn"      //玉米类
+#define SEED_MELON "seed_melon"  //瓜
+#define SEED_CABBAGE "seed_cabbage"   //白菜
+#define SEED_TOMATO "seed_tomato"    //西红柿
+#define SEED_PUMPIN "seed_pumpkin"   //南瓜
+#define SEED_EGGPLANT "seed_eggplant"  //茄子
+
+#define SEED_TREE "seed_tree"  //树苗
+
+
+#define SEED_TREE_OAK "oak"  //橡树
+#define SEED_TREE_PINE "pine" //松树
+#define SEED_TREE_MAPLE "maple"  //枫树
+
+
+
 //场景相关宏定义
 #define SCENE_MANOR "scene_manor"
 #define SCENE_SPRING_TOWN "spring_town"
@@ -40,6 +70,7 @@ enum class DIRECTION {
 
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
+#define CROPS_LAYER "CropsLayer"
 #define DROP_LAYER "DropLayer"
 #define PLAYER_CONTROLER "Player_cintrol_layer"
 /* 全局层相关宏定义 */

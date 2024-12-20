@@ -302,6 +302,7 @@ bool is_have_object(Vec2 tilePosition)
     }
     return false;
 
+
 }
 
 //判断是否为5种工具
@@ -311,5 +312,37 @@ bool isFiveTool(const std::string& name)
         return true;
     else
         return false;
+
+
+}
+
+/*工具：收获当前坐标的作物，如果作物没成熟或者没有就什么都不干
+* 传入参数：
+* Vec2 tilePosition：某个位置
+*/
+void harvest(Vec2 tilePosition) {
+    // 获取当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--harvest");
+        return;
+    }
+    // 获取 cropsLayer
+    auto cropsLayer = dynamic_cast<Layer*>(map->getChildByName("CropsLayer"));
+    if (!cropsLayer) {
+        CCLOG("CropsLayer not found in the map!--harvest");
+        return;
+    }
+    // 遍历 CropsLayer 的子节点
+    for (auto child : cropsLayer->getChildren()) {
+        // 检查子节点是否是 Crops 类的实例
+        Crops* crop = dynamic_cast<Crops*>(child);
+        if (crop && crop->getTilePosition() == tilePosition) {
+            // 检查是否成熟
+            if (crop->getStage() == Stage::Mature) {
+                crop->harvest();
+            }
+        }
+    }
 
 }
