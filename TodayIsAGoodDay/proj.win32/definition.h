@@ -10,7 +10,7 @@
 #define OBJECT 3
 #define PLOUGH 2
 #define DROP 4
-#define PERSON_LAYER 5
+#define PERSON_LAYER 10
 #define RAINLAYER 100
 #define BAGLAYER  101 
 #define SETTING_LAYER 102
@@ -29,10 +29,19 @@ enum class DIRECTION {
 };
 
 //场景相关宏定义
+#define SCENE_MANOR "scene_manor"
+#define SCENE_SPRING_TOWN "spring_town"
+#define SCENE_SUMMER_TOWN "summer_town"
+#define SCENE_AUTUMN_TOWN "autumn_town"
+#define SCENE_WINTER_TOWN "winter_town"
+#define SCENE_BEACH "scene_beach"
+#define SCENE_HOME "scene_home"
+#define SCENE_MINE "scene_mine"
+
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
 #define DROP_LAYER "DropLayer"
-
+#define PLAYER_CONTROLER "Player_cintrol_layer"
 /* 全局层相关宏定义 */
 
 //menu相关宏定义
@@ -81,7 +90,7 @@ enum class DIRECTION {
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.01f  
+#define UPDATE_INTERVAL 0.01f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16

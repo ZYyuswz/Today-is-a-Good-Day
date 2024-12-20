@@ -39,6 +39,8 @@ void GameTime::updateDay() {
         if (season == Season::Winter)
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
+        force_back_to_manor();
+        manor_change_map();
     }
     // 随机生成天气
     bool weather_condition = random_bernoulli(0.8);
@@ -166,3 +168,7 @@ int GameTime::getTotalDays() const {
 void GameTime::printTime() const {
     CCLOG("Day:%d, TotalDays:%d, Hour:%d, Minute:%d",day,totalDays,time[0], time[1]);
 } 
+
+std::vector<int> GameTime::getTime() const {
+    return { time[0], time[1] };  // 返回一个 std::vector
+}

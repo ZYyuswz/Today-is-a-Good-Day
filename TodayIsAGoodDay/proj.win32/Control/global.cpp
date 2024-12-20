@@ -174,7 +174,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             // 取消调度任务
             Director::getInstance()->getScheduler()->unschedule("moveLeft", this);
             leading_charactor.PersonStop(-10, 0);
-
+            control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_D:
             _moveRight = false;
@@ -182,6 +182,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             // 取消调度任务
             Director::getInstance()->getScheduler()->unschedule("moveRight", this);
             leading_charactor.PersonStop(10, 0);
+            control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_W:
             _moveUp = false;
@@ -189,6 +190,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             // 取消调度任务
             Director::getInstance()->getScheduler()->unschedule("moveUp", this);
             leading_charactor.PersonStop(0, 10);
+            control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_S:
             _moveDown = false;
@@ -196,6 +198,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             // 取消调度任务
             Director::getInstance()->getScheduler()->unschedule("moveDown", this);
             leading_charactor.PersonStop(0, -10);
+            control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_E:
 
@@ -462,3 +465,4 @@ Size MapManager::getCurrentTileSize()
     } 
 
 */
+

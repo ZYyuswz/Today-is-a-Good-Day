@@ -29,7 +29,35 @@ void control_mouseclick()
 //当人物移动到场景某位置时自动切换场景
 void control_changescene()
 {
+	Vec2 player_pos = leading_charactor.getTiledPosition();
+	std::string current_scene_name = Director::getInstance()->getRunningScene()->getName();
+	if (current_scene_name == SCENE_MANOR) {
+		if (player_pos.x > 60 && player_pos.y > 34) {
+			//庄园去小镇
+			manor_to_towm();
+		}
+		else if (player_pos.x > 30 && player_pos.y > 60 && player_pos.x < 36)
+		{
+			//庄园去矿洞
+			change_to_mine();
+		}
 
+	}
+	else if (current_scene_name == SCENE_SPRING_TOWN || current_scene_name == SCENE_SUMMER_TOWN || current_scene_name == SCENE_AUTUMN_TOWN || current_scene_name == SCENE_WINTER_TOWN) {
+		if (player_pos.x < 4 && player_pos.y > 24 && player_pos.y < 30) {
+			//回小镇
+			back_to_manor_from_town();
+			
+		}   
+		else if (player_pos.x > 25 && player_pos.x < 35 && player_pos.y > 0 && player_pos.y < 6)
+		{
+			//去沙滩
+			change_to_beach();
+		}
+	}
+	else if (current_scene_name == SCENE_MINE) {
+
+	}
 }
 
 

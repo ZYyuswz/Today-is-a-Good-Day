@@ -28,6 +28,8 @@ int gamemain()
     // 启动自动更新
     GameTime::getInstance()->startAutoUpdate();
 
+    
+
     //运行第一幕场景，即欢迎页面
     // run
     director->runWithScene(scene);
