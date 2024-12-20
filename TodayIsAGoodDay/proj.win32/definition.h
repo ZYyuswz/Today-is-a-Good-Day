@@ -6,9 +6,10 @@
 //图层显示关系宏定义
 #define FIRST 1
 
-#define OBJECT 3
-#define PLOUGH 2
-#define DROP 4
+#define OBJECT 2
+#define PLOUGH 3
+#define CROPS 4 
+#define DROP 5
 #define PERSON_LAYER 10
 
 #define RAINLAYER 100
@@ -68,6 +69,7 @@ enum class DIRECTION {
 
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
+#define CROPS_LAYER "CropsLayer"
 #define DROP_LAYER "DropLayer"
 #define PLAYER_CONTROLER "Player_cintrol_layer"
 /* 全局层相关宏定义 */
