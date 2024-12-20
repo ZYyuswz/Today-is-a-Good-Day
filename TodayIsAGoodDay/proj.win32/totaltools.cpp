@@ -141,6 +141,7 @@ MyObject* getSpriteOnMap(Vec2 tilePosition) {
     return nullptr;
 }
 
+
 /*工具：返回鼠标点击坐标上有没有耕地，如果没有为false
 * 传入参数：
 * Vec2 tilePosition：鼠标点击的坐标
@@ -172,6 +173,12 @@ bool is_have_plough(Vec2 tilePosition)
     return false;
 }
 
+/*工具：返回可拾取掉落物的vector容器
+* 传入参数：
+* Vec2 tilePosition：人物坐标
+* 返回值：
+* std::vector<Dropper*>*：储存掉落物指针vector指针
+*/
 std::vector<Dropper*>* getDrops(Vec2 personPosition) {
     auto pickDrops = new std::vector<Dropper*>();  // 创建一个新的 vector
     // 获取当前地图
@@ -204,3 +211,94 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
     return pickDrops;
 }
 
+
+
+/*工具：降低人物下方树的透明度并且将这些树储存在一个全局数组里
+* 传入参数：
+* Vec2 tilePosition：人物坐标
+* 返回值：
+* std::vector<Dropper*>*：储存掉落物指针vector指针
+*/
+// 储存目前被遮挡的树，树不遮挡人之后需要调用restoreOpacity()
+// std::vector<Tree*> tree_block; 这个已经在.h里声明了
+// PS:逻辑是你每次移动时候要调用，treeBlock函数，然后再调用updateTreeBlock去还原没有遮挡的树
+void treeBlock(Vec2 personPosition) {
+    // 获取当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--treeBlock");
+        return;
+    }
+    // 获取 objectLayer
+    auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
+    if (!objectLayer) {
+        CCLOG("ObjectLayer not found in the map!--getSpriteOnMap");
+        return;
+    }
+    // 遍历 ObjectLayer 的子节点
+    for (auto child : objectLayer->getChildren()) {
+        // 检查子节点是否是 Tree 类的实例
+        Tree* tree = dynamic_cast<Tree*>(child);
+        if (tree) {
+            Vec2 treePosition = tree->getTilePosition();
+            double delta_x = treePosition.x - personPosition.x;
+            double delta_y = treePosition.y - personPosition.y;
+            // 在3*6的范围
+            if (abs(delta_x) <= TREE_BLOCK_X && delta_y < TREE_BLOCK_Y) {
+                tree->reduceOpacity();
+                tree_block.push_back(tree);
+            }
+        }
+    }
+}
+
+void updateTreeBlock(Vec2 personPosition) {
+    // 遍历 ObjectLayer 的子节点
+    for (auto it = tree_block.begin(); it != tree_block.end(); ) {
+        Tree* tree = *it;
+        Vec2 treePosition = tree->getTilePosition();
+        double delta_x = treePosition.x - personPosition.x;
+        double delta_y = treePosition.y - personPosition.y;
+        // 在3*6的范围
+        if (abs(delta_x) <= TREE_BLOCK_X && delta_y < TREE_BLOCK_Y) {
+            // 什么也不干
+            ++it;  // 继续遍历下一个元素
+        }
+        else {
+            // 恢复透明度
+            tree->restoreOpacity();
+            it = tree_block.erase(it);  // 移除元素并更新迭代器
+        }
+    }
+}
+
+/*工具：返回鼠标点击坐标上有没有物体，如果没有为false
+* 传入参数：
+* Vec2 tilePosition：某个位置
+* 返回值：
+* bool类型：有无耕地
+*/
+bool is_have_object(Vec2 tilePosition)
+{
+    //得到当前地图
+    auto map = MapManager::getInstance()->getCurrentMap();
+    if (!map) {
+        CCLOG("Map not found in the scene!--is_have_object");
+        return;
+    }
+    // 获取 objectLayer
+    auto objectLayer = dynamic_cast<Layer*>(map->getChildByName("ObjectLayer"));
+    if (!objectLayer) {
+        CCLOG("ObjectLayer not found in the map!--is_have_object");
+        return;
+    }
+    // 遍历 ObjectLayer 的子节点
+    for (auto child : objectLayer->getChildren()) {
+        // 检查子节点是否是 MyObject 类的实例
+        MyObject* myObject = dynamic_cast<MyObject*>(child);
+        if (myObject && myObject->getTilePosition() == tilePosition) {
+            return true;
+        }
+    }
+    return false;
+}
