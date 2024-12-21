@@ -1,4 +1,4 @@
-﻿﻿#pragma once
+﻿#pragma once
 #include "definition.h"
 
 void control_mouseclick(Vec2 mouse_pos);
@@ -7,6 +7,5 @@ void control_mouseclick(Vec2 mouse_pos);
 void manor_change_map();
 
 //总控地图切换
-
-void control_changescene(); 
+void control_changescene();
 

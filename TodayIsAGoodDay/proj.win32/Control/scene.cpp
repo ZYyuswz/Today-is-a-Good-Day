@@ -1,4 +1,4 @@
-﻿﻿// 本cpp用于切换场景调用
+﻿// 本cpp用于切换场景调用
 
 
 #include "SimpleAudioEngine.h"
@@ -166,7 +166,7 @@ void force_back_to_manor() {
     Director::getInstance()->popToRootScene();
 }
 
-/* ---------- 场景初始化 ---------- */ 
+/* ---------- 场景初始化 ---------- */
 
 /*--------------------沙滩场景--------------------*/
 //沙滩场景初始化
