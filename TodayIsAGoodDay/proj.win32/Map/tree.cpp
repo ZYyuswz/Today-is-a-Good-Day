@@ -35,6 +35,17 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     objectLayer->addChild(this);
 }
 
+// 设置树的透明度
+void Tree::reduceOpacity() {
+    // 设置树的透明度
+    this->setOpacity(150);
+}
+
+// 恢复树的透明度
+void Tree::restoreOpacity() {
+    // 设置树的透明度
+    this->setOpacity(255);
+}
 // 播放被砍的动画 同时生成掉落物
 void Tree::deathAnimation() {
     // 动作序列

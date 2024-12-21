@@ -233,6 +233,7 @@ const std::map<std::string, int> itemPrices = {
 
     //物品有价格,必须是双斜杠，否则会报错
     {"carrat_drop",30},
+    {SEED_CARROT,20}
 };
 
 // 人物拾取半径
