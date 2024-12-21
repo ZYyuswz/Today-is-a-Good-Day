@@ -14,8 +14,8 @@
 USING_NS_CC;
 
 
-
-//按下时的调用 
+//总控鼠标按键
+//按下时的调用
 void control_mouseclick(Vec2 mouse_pos)
 {
 	//鼠标瓦片坐标
@@ -27,7 +27,7 @@ void control_mouseclick(Vec2 mouse_pos)
 	}
 	else
 	{
-		CCLOG("No map found for the current scene."); 
+		CCLOG("No map found for the current scene.");
 	}
 	Vec2 map_position = currentMap->getPosition();
 	mouse_tile_pos = convertWorldToTileCoord(mouse_pos, map_position);
