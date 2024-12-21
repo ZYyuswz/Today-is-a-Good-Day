@@ -1,5 +1,5 @@
-/* ----- ¸ÃÎÄ¼ş¼ĞÖ÷cpp ----- */
-/* ÏêÏ¸ÄÚÈİ²ÎÔÄ¿ª·¢ÕßÊÖ²á */
+ï»¿/* ----- è¯¥æ–‡ä»¶å¤¹ä¸»cpp ----- */
+/* è¯¦ç»†å†…å®¹å‚é˜…å¼€å‘è€…æ‰‹å†Œ */
 
 #include "person.h"
 #include "global.h"
@@ -10,7 +10,7 @@
 Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition, const Vec2& Tiledposition);
 
 
-/*¹ØÓÚÍ¼Æ¬£¬ÕâÀïÖ»¸ø³öÁËÒ»ÕÅ£¬Èç¹ûÒªÓĞÑ¡Ôñ½ÇÉ«¹¦ÄÜµÄ»°£¬ÄÇÃ´Í¼Æ¬Òª²»Ò»Ñù*/
+/*å…³äºå›¾ç‰‡ï¼Œè¿™é‡Œåªç»™å‡ºäº†ä¸€å¼ ï¼Œå¦‚æœè¦æœ‰é€‰æ‹©è§’è‰²åŠŸèƒ½çš„è¯ï¼Œé‚£ä¹ˆå›¾ç‰‡è¦ä¸ä¸€æ ·*/
 Person::Person()
 
 {
@@ -20,7 +20,7 @@ void Person::person_construction(const std::string& name, const int& sex, const 
     Scene* currentScene, int level, int HP, int energy, int money)
 {
 
-    //³õÊ¼»¯¸³Öµ
+    //åˆå§‹åŒ–èµ‹å€¼
     _name = name;
     _sex = sex;
     _farmName = farmName;
@@ -30,8 +30,8 @@ void Person::person_construction(const std::string& name, const int& sex, const 
     _energy = energy;
      
     auto newCharacterLayer = Layer::create();
-    currentScene->addChild(newCharacterLayer); // ½«ÈËÎï²ãÌí¼Óµ½µ±Ç°³¡¾°ÖĞ
-    // ´´½¨Ò»¸ö¾«Áé²¢Ìí¼Óµ½Person½ÚµãÖĞ
+    currentScene->addChild(newCharacterLayer); // å°†äººç‰©å±‚æ·»åŠ åˆ°å½“å‰åœºæ™¯ä¸­
+    // åˆ›å»ºä¸€ä¸ªç²¾çµå¹¶æ·»åŠ åˆ°PersonèŠ‚ç‚¹ä¸­
     _sprite = cocos2d::Sprite::create("/person/person_front_1.png");
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 screenCenter = Vec2(visibleSize.width / 2, visibleSize.height / 2);
@@ -60,7 +60,7 @@ bool Person::init()
 
 void Person::decreaseHP(const int attack)
 {
-    _HP -= attack;//¿ÛÑª
+    _HP -= attack;//æ‰£è¡€
     if (isDead()) {
         dead();
     }
@@ -72,13 +72,13 @@ void Person::dead()
     _money /= 10;
     _energy /= 10;
     //   setPosition(HOSPITAL_X, HOSPITAL_Y);
-     //  Director::getInstance()->replaceScene(town); //ÇĞ»»³¡¾°ÎªĞ¡Õò
+     //  Director::getInstance()->replaceScene(town); //åˆ‡æ¢åœºæ™¯ä¸ºå°é•‡
 }
 
 void Person::moneyUP(int deltaMoney)
 {
     _money += deltaMoney;
-    //Ô¤Áôº¯Êı½Ó¿Ú
+    //é¢„ç•™å‡½æ•°æ¥å£
 }
 
 Vec2 Person::getTiledPosition()
@@ -113,7 +113,7 @@ void Person::collectItems()
         return;
     }
     for (auto i = 0; i < dropVector->size(); i++) {
-        MyBag.addItem(item((*dropVector)[i]->type));
+        //MyBag.addItem(item((*dropVector)[i]->type));
     }
     delete dropVector;
 }

@@ -11,6 +11,7 @@
 #include "totaltools.h"
 #include "scene.h"
 #include "./Setting/setting.h"
+#include "Cooperation/cooperation.h"
 
 using namespace cocos2d;
 
@@ -180,7 +181,12 @@ void menu::onLoad(cocos2d::Ref* sender)
 //合作函数回调函数
 void menu::onCoop(cocos2d::Ref* sender)
 {
+    // 创建合作界面场景
+    auto coopScene = scene_coop::createScene();
 
+    // 切换到合作界面场景
+    // 使用 TransitionFade 添加淡入淡出效果，持续时间为 1.0 秒
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, coopScene));
 }
 
 
