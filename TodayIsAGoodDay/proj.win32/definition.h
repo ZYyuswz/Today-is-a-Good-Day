@@ -1,5 +1,8 @@
 #pragma once
 #include <map>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#pragma comment(lib, "ws2_32.lib") // 链接 Winsock 库
 //屏幕显示比例
 #define SMALL_WINDOW 1
 
@@ -38,17 +41,17 @@ enum class DIRECTION {
 #define TOOL_KETTLE "kettle"  //水壶
 #define TOOL_FISHING_POLE "fishing_pole"   //钓鱼竿
 
-#define SEED_CARROT "seed_carrot"   //胡萝卜
-#define SEED_GARLIC "seed_garlic"   //大蒜
-#define SEED_POTATO "seed_potato"   //土豆
-#define SEED_CORN  "seed_corn"      //玉米类
-#define SEED_MELON "seed_melon"  //瓜
-#define SEED_CABBAGE "seed_cabbage"   //白菜
-#define SEED_TOMATO "seed_tomato"    //西红柿
-#define SEED_PUMPIN "seed_pumpkin"   //南瓜
-#define SEED_EGGPLANT "seed_eggplant"  //茄子
+#define SEED_CARROT "Carrot_Seeds"   //胡萝卜
+#define SEED_GARLIC "Garlic_Seeds"   //大蒜
+#define SEED_POTATO "Potato_Seeds"   //土豆
+#define SEED_CORN  "Corn_Seeds"      //玉米类
+#define SEED_MELON "Melon_Seeds"  //瓜
+#define SEED_CABBAGE "Bok_Choy_Seeds"   //白菜
+#define SEED_TOMATO "Tomato_Seeds"    //西红柿
+#define SEED_PUMPIN "Pumpkin_Seeds"   //南瓜
+#define SEED_EGGPLANT "Eggplant_Seeds"  //茄子
 
-#define SEED_TREE "seed_tree"  //树苗
+#define SEED_TREE "seed_drop"  //树苗
 
 
 #define SEED_TREE_OAK "oak"  //橡树
@@ -124,7 +127,7 @@ enum class DIRECTION {
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.01f 
+#define UPDATE_INTERVAL 0.1f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16
@@ -232,8 +235,14 @@ const std::map<std::string, int> itemPrices = {
     {"fishing_pole",0},
 
     //物品有价格,必须是双斜杠，否则会报错
-    {"carrat_drop",30},
-    {SEED_CARROT,20}
+    {"corn_drop",30},
+    {SEED_CARROT,20},
+    {SEED_CORN,15},
+    {SEED_CABBAGE,15},
+    {SEED_EGGPLANT,20},
+    {SEED_GARLIC,20},
+    {SEED_MELON,15},
+
 };
 
 // 人物拾取半径
@@ -242,3 +251,35 @@ const std::map<std::string, int> itemPrices = {
 // 树遮挡的判定范围
 #define TREE_BLOCK_X 1
 #define TREE_BLOCK_Y 6
+
+// 定义鱼的种类枚举
+enum class FishType {
+    // 春季
+    Carp,        // 鲤鱼
+    Chub,        // 鲢鱼
+    Crab,        // 螃蟹
+    Eel,         // 鳗鱼
+
+    // 夏季
+    Lobster,     // 龙虾
+    Salmon,      // 三文鱼
+    Sardine,     // 沙丁鱼
+    Sea_Cucumber,// 海参
+
+    // 秋季
+    Shrimp,      // 虾
+    Squid,       // 鱿鱼
+    Sturgeon,    // 鲟鱼
+    Tuna,        // 金枪鱼
+
+    // 没有鱼
+    NullFish
+};
+
+// 宏定义
+#define FISHING_SUCCESS_RATE 0.5  // 钓鱼成功率（0.0 到 1.0）
+
+#define SERVER_IP "101.132.135.175"  // 服务器 IP
+#define PORT 12345
+// 定义全局变量
+extern SOCKET global_socket; // 全局 SOCKET 对象
