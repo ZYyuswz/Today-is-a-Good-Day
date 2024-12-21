@@ -49,7 +49,7 @@ public:
     void addItem(const item& MyItem); 
 
     // 移除工具或材料
-    void removeItem(const item& MyItem);
+    int removeItem(const item& MyItem);
 
     // 显示背包内容
     void displayBag();

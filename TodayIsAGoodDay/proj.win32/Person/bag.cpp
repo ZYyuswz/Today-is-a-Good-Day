@@ -24,7 +24,7 @@ Bag::Bag(): _selectedItemIndex(-1)
     _items.push_back(item("kettle"));
     _items.push_back(item("fishing_pole"));
 
-    _items.push_back(item(SEED_CARROT));
+    _items.push_back(item(SEED_GARLIC));
 
 }
 
@@ -62,7 +62,7 @@ void Bag::addItem(const item& MyItem)
     _items.emplace_back(MyItem);
 }
 
-void Bag::removeItem(const item& MyItem)
+int Bag::removeItem(const item& MyItem)
 {
     for (auto it = _items.begin(); it != _items.end(); ++it)
     {
@@ -75,8 +75,9 @@ void Bag::removeItem(const item& MyItem)
             if (it->num <= 0)
             {
                 _items.erase(it);
+                return 0;
             }
-            return;
+            return MyItem.num;
         }
     }
 }
