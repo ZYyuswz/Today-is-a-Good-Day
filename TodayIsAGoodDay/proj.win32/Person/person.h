@@ -23,7 +23,6 @@ const int KETTLE = 103;//Ë®ºø£¬½½»¨
 const int FISHING_POLE = 104;//µöÓã¸Í
 
 
-
 struct item
 {
     std::string name;
