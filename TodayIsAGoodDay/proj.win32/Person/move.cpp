@@ -3,7 +3,10 @@
 #include "person.h"
 #include "global.h"
 #include "totaltools.h"
+#include "npc.h"
+
 extern Person leading_charactor;
+extern NPC* npc1;
 
 //这两条应该是宏定义
 
@@ -162,6 +165,7 @@ void Person::PersonMove(float deltaX, float deltaY)
         moveTileMap(newTiledPosition, currentMap);
         
     }
+    npc1->runAction(MoveBy::create(0.5f, Vec2(-deltaX, -deltaY)));
     collectItems();
     treeBlock(_sprite->getPosition());
     updateTreeBlock(_sprite->getPosition());
