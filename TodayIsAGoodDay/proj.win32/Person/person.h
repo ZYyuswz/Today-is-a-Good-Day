@@ -30,7 +30,7 @@ struct item
     int num;
     int value; //toolsµÄvalueÎª0
     bool isTool;
-    item(const std::string itemName, const int itemValue = 0,const int itemNum = 1) 
+    item(const std::string itemName,const int itemNum = 1) 
         :name(itemName),value(itemPrices.find(itemName)->second),num(itemNum) {}
 };
 
@@ -138,6 +138,7 @@ public:
     Tool* getTool() { return currentTool; }
     Sprite* getSprite()const { return _sprite; }
 
+    int toolLevel() { return _level > 50 ? 2 : 1; }
     //¿ÛÑª
     void Person::decreaseHP(const int attack);
 

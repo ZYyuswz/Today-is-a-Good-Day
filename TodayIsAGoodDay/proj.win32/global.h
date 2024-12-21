@@ -2,7 +2,11 @@
 
 
 #include"Person/person.h"
-
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#pragma comment(lib, "ws2_32.lib") // 链接 Winsock 库
+// 定义全局变量
+extern SOCKET global_socket; // 全局 SOCKET 对象
 //创建唯一主人公
 
 extern Person leading_charactor;

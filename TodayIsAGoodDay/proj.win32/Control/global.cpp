@@ -18,6 +18,9 @@ USING_NS_CC;
 Person leading_charactor ;
 Tool axe("axe", 1, 100);
 
+/*联网socket初始化*/
+// 初始化全局变量
+SOCKET global_socket = INVALID_SOCKET;
 
 bool PlayerControlLayer::init() {
     if (!Layer::init())
@@ -132,7 +135,11 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 delete leading_charactor.getTool();
             }
             std::string toolName = leading_charactor.MyBag.getItems()[0].name;
-            Tool* changeTool = new Tool(toolName);
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);           
         }
             break;
@@ -142,7 +149,11 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 delete leading_charactor.getTool();
             }
             std::string toolName = leading_charactor.MyBag.getItems()[1].name;
-            Tool* changeTool = new Tool(toolName);
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
             break;
@@ -152,7 +163,11 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 delete leading_charactor.getTool();
             }
             std::string toolName = leading_charactor.MyBag.getItems()[2].name;
-            Tool* changeTool = new Tool(toolName);
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
             break;
@@ -162,15 +177,41 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 delete leading_charactor.getTool();
             }
             std::string toolName = leading_charactor.MyBag.getItems()[3].name;
-            Tool* changeTool = new Tool(toolName);
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
             break;
         case EventKeyboard::KeyCode::KEY_5:
-
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[4].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
             break;
         case EventKeyboard::KeyCode::KEY_6:
-
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[5].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
             break;
         case EventKeyboard::KeyCode::KEY_7:
 
