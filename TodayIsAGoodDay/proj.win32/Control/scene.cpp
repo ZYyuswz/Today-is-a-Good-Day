@@ -1,4 +1,4 @@
-﻿﻿// 本cpp用于切换场景调用
+﻿// 本cpp用于切换场景调用
 
 
 #include "SimpleAudioEngine.h"

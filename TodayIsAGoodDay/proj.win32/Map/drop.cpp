@@ -24,7 +24,7 @@ void Drop::addDropItem(const std::string& itemType, const std::string& texturePa
 }
 
 // 生成掉落物
-void Drop::generate() {
+void Drop::generate() { 
     if (!targetLayer) {
         CCLOG("Drop object has no target layer!");
         return;

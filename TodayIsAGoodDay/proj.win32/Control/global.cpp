@@ -1,4 +1,3 @@
-﻿
 ﻿#include "ui/CocosGUI.h"
 #include"cocos2d.h"
 
@@ -16,9 +15,7 @@
 USING_NS_CC;
 
 //创建主人公
-
-Person leading_charactor ;
-
+Person leading_charactor;
 
 /*联网socket初始化*/
 // 初始化全局变量
@@ -60,6 +57,7 @@ void PlayerControlLayer::setPlayer(Person* player) {
 
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
@@ -216,21 +214,21 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
         break;
         case EventKeyboard::KeyCode::KEY_7:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_8:
+            break;
+        case EventKeyboard::KeyCode::KEY_8:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_9:
+            break;
+        case EventKeyboard::KeyCode::KEY_9:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_EQUAL:
+            break;
+        case EventKeyboard::KeyCode::KEY_EQUAL:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_MINUS:
+            break;
+        case EventKeyboard::KeyCode::KEY_MINUS:
 
-        break;
-    default:
-        break;
+            break;
+        default:
+            break;
     }
 
     event->stopPropagation();
@@ -313,7 +311,6 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             break;
         default:
             break;
-
     }
 
     event->stopPropagation();
@@ -348,7 +345,44 @@ void PlayerControlLayer::onMouseDown(Event* event)
         */
 
         //鼠标点击之后调用函数
-        control_mouseclick(mousePos);
+
+        EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
+        if (mouseEvent)
+        {
+            // 获取按下的鼠标按钮
+            EventMouse::MouseButton mouseButton = mouseEvent->getMouseButton();
+
+            // 判断是左键还是右键
+            if (mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
+            {
+                CCLOG("Left mouse button pressed!");
+                // 在这里添加左键按下的逻辑
+                control_mouseclick(mousePos);
+            }
+            else if (mouseButton == EventMouse::MouseButton::BUTTON_RIGHT)
+            {
+                CCLOG("Right mouse button pressed!");
+                // 在这里添加右键按下的逻辑
+                //鼠标瓦片坐标
+                Vec2 mouse_tile_pos;
+
+                TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
+                if (currentMap)
+                {
+                    CCLOG("Current map name: %s", currentMap->getMapSize().width);
+                }
+                else
+                {
+                    CCLOG("No map found for the current scene.");
+                }
+                Vec2 map_position = currentMap->getPosition();
+                mouse_tile_pos = convertWorldToTileCoord(mousePos, map_position);
+                harvest(mouse_tile_pos);
+            }
+        }
+
+
+
 
         //manor_change_map();
     }
@@ -533,3 +567,4 @@ Size MapManager::getCurrentTileSize()
     }
 
 */
+

@@ -274,7 +274,7 @@ Garlic::Garlic(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st) {
     // 设置精灵的锚点为底部中心
     this->setAnchorPoint(Vec2(0.42f, -0.0f));
     // 设置精灵的位置
-    this->setPosition(pixelPosition);
+    this->setPosition(pixelPosition); 
     // 将精灵添加到物体层
     cropsLayer->addChild(this);
 }

@@ -1,5 +1,4 @@
 ﻿
-﻿
 #include"cocos2d.h"
 
 #include "menu.h"

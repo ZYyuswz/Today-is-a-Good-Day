@@ -25,7 +25,7 @@ public:
     // 更新时间的函数
     void updateTimeDisplay(float dt);
 
-
+     
     // 使用 CREATE_FUNC 宏
     CREATE_FUNC(GlobalLayer);
 

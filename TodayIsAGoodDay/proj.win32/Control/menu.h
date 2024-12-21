@@ -18,7 +18,7 @@ public:
     void onEixt(cocos2d::Ref* sender);    //退出选项回调
 
 
-
+     
 
     // implement the "static create()" method manually
     CREATE_FUNC(menu);

@@ -28,6 +28,7 @@ Bag::Bag(): _selectedItemIndex(-1)
 
 }
 
+
 //按键函数
 void Bag::changeBag()
 {

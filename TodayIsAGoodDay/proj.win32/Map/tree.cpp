@@ -3,7 +3,7 @@
 #include "tree.h"
 #include <iostream>
 // 构造函数
-Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st){
+Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Stage st) {
     // 基本项目的初始化
     this->type = ty;  // 初始化树种类
     this->tilePosition = tile;  // 初始化树的坐标
@@ -23,7 +23,7 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
 
     // 获取树木的像素坐标
     const Size mapSize = tileMap->getMapSize();
-    const Size tileSize = tileMap->getTileSize();
+    const Size tileSize = tileMap->getTileSize(); 
     Vec2 pixelPosition = getTilePixelPosition(tilePosition, tileSize, mapSize, TileCorner::BOTTOM_CENTER);
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
@@ -49,7 +49,7 @@ void Tree::restoreOpacity() {
 // 播放被砍的动画 同时生成掉落物
 void Tree::deathAnimation() {
     // 动作序列
-    Sequence *chopAction;
+    Sequence* chopAction;
     if (stage == Stage::Mature) {
         chopAction = Sequence::create(
             RotateBy::create(1.0f, 90),
@@ -97,55 +97,55 @@ void Tree::update() {
     if (stage == Stage::Childhood) {
         // 树苗阶段的贴图在所有季节都是相同的
         switch (current_season) {
-            case Season::Spring:
-                this->setSpriteFrame("sapling_spring.png");
-                break;
-            case Season::Summer:
-                this->setSpriteFrame("sapling_summer.png");
-                break;
-            case Season::Autumn:
-                this->setSpriteFrame("sapling_autumn.png");
-                break;
-            case Season::Winter:
-                this->setSpriteFrame("sapling_winter.png");
-                break;
-            default:
-                break;
+        case Season::Spring:
+            this->setSpriteFrame("sapling_spring.png");
+            break;
+        case Season::Summer:
+            this->setSpriteFrame("sapling_summer.png");
+            break;
+        case Season::Autumn:
+            this->setSpriteFrame("sapling_autumn.png");
+            break;
+        case Season::Winter:
+            this->setSpriteFrame("sapling_winter.png");
+            break;
+        default:
+            break;
         }
     }
     else {
         // 成熟阶段的贴图根据当前季节变化
         std::string season_suffix;
         switch (current_season) {
-            case Season::Spring:
-                season_suffix = "spring";
-                break;
-            case Season::Summer:
-                season_suffix = "summer";
-                break;
-            case Season::Autumn:
-                season_suffix = "autumn";
-                break;
-            case Season::Winter:
-                season_suffix = "winter";
-                break;
-            default:
-                break;
+        case Season::Spring:
+            season_suffix = "spring";
+            break;
+        case Season::Summer:
+            season_suffix = "summer";
+            break;
+        case Season::Autumn:
+            season_suffix = "autumn";
+            break;
+        case Season::Winter:
+            season_suffix = "winter";
+            break;
+        default:
+            break;
         }
 
         std::string sprite_name;
         switch (type) {
-            case TreeType::Oak:
-                sprite_name = "oak_mature_" + season_suffix + ".png";
-                break;
-            case TreeType::Pine:
-                sprite_name = "pine_mature_" + season_suffix + ".png";
-                break;
-            case TreeType::Maple:
-                sprite_name = "maple_mature_" + season_suffix + ".png";
-                break;
-            default:
-                break;
+        case TreeType::Oak:
+            sprite_name = "oak_mature_" + season_suffix + ".png";
+            break;
+        case TreeType::Pine:
+            sprite_name = "pine_mature_" + season_suffix + ".png";
+            break;
+        case TreeType::Maple:
+            sprite_name = "maple_mature_" + season_suffix + ".png";
+            break;
+        default:
+            break;
         }
 
         if (!sprite_name.empty()) {
@@ -232,4 +232,3 @@ void Tree::updateAll(Layer* objectLayer) {
         }
     }
 }
-

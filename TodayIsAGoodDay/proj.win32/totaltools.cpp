@@ -19,13 +19,13 @@ USING_NS_CC;
 * 返回值：
 * vec2类型：转换后在屏幕的坐标
 */
-Vec2 tile_change_screen(Size mapsize, Size tilesize, Vec2 original,float scale = 1.0f)
+Vec2 tile_change_screen(Size mapsize, Size tilesize, Vec2 original, float scale = 1.0f)
 {
-	float x = original.x * tilesize.width;
-	float y = original.y * tilesize.height;
-	Vec2 screenpos = Vec2(x, y);
-	screenpos = screenpos * scale;
-	return screenpos;
+    float x = original.x * tilesize.width;
+    float y = original.y * tilesize.height;
+    Vec2 screenpos = Vec2(x, y);
+    screenpos = screenpos * scale;
+    return screenpos;
 }
 
 
@@ -80,7 +80,7 @@ void people_remove_change()
             break;
         }
     }
-    
+
     if (currentCharacterLayer) {
         // 手动调用 onExit()
         currentCharacterLayer->onExit();
@@ -101,14 +101,14 @@ void people_change_scene(const Vec2 change_Vec2)
     auto nowTiledMap = MapManager::getInstance()->getCurrentMap();
     auto nowScene = Director::getInstance()->getRunningScene();
     nowScene->addChild(newCharacterLayer); // 将人物层添加到当前场景中
-//    leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
-    
+    //    leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
 
-        // 如果精灵不在运行中，可能需要重新初始化或重新添加
-        leading_charactor._sprite->release();
-        leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
-        newCharacterLayer->addChild(leading_charactor._sprite,PERSON_LAYER);
-        leading_charactor._sprite->setPosition(change_Vec2);
+
+            // 如果精灵不在运行中，可能需要重新初始化或重新添加
+    leading_charactor._sprite->release();
+    leading_charactor._sprite = Sprite::create("/person/person_front_1.png");
+    newCharacterLayer->addChild(leading_charactor._sprite, PERSON_LAYER);
+    leading_charactor._sprite->setPosition(change_Vec2);
 }
 
 /*工具：返回鼠标点击坐标的精灵的指针，如果没有为nullptr
@@ -338,7 +338,7 @@ void harvest(Vec2 tilePosition) {
     for (auto child : cropsLayer->getChildren()) {
         // 检查子节点是否是 Crops 类的实例
         Crops* crop = dynamic_cast<Crops*>(child);
-        if (crop && crop->getTilePosition() == tilePosition) {
+        if (crop && crop->getTilePosition() == tilePosition) { 
             // 检查是否成熟
             if (crop->getStage() == Stage::Mature) {
                 crop->harvest();
