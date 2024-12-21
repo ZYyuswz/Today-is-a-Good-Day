@@ -35,3 +35,4 @@ public:
     void restoreOpacity();
 };
 
+

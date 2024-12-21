@@ -179,6 +179,9 @@
     <ClInclude Include="Cooperation\cooperation.h">
       <Filter>Classes\Cooperation</Filter>
     </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

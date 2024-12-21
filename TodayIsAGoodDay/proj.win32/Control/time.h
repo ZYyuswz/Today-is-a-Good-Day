@@ -21,7 +21,7 @@ private:
     Season season;          // 当前季节 
     Weather weather;        // 当前天气 随机天气还没实现
     int totalDays;          // 总天数
-    int time[2];            // 当前时间：time[0] 表示小时，time[1] 表示分钟
+    int time[2];            // 当前时间：time[0] 表示小时，time[1] 表示分钟 
 
 
     // 单例模式：私有构造函数
