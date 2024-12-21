@@ -16,6 +16,8 @@ bool change_to_home();
 /* 返回场景调用 */
 // 小镇返回庄园
 bool back_to_manor_from_town();
+bool back_to_manor_from_mine();
+bool back_to_manor_from_home();
 
 //强制返回庄园
 void force_back_to_manor();
@@ -203,6 +205,51 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(scene_store);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
+};
+
+
+/*   ---------- 节日场景 --------- */
+class festival_spring_town : public cocos2d::Scene
+{
+public:
+    static cocos2d::Scene* createScene();
+
+    virtual bool init();
+
+    // a selector callback
+    void menuCloseCallback(cocos2d::Ref* pSender);
+
+
+    // implement the "static create()" method manually
+    CREATE_FUNC(festival_spring_town);
+
+    // 重写 onEnter 方法
+    virtual void onEnter() override;
+
+    // 重写 onExit 方法
+    virtual void onExit() override;
+};
+
+
+class festival_winter_town : public cocos2d::Scene
+{
+public:
+    static cocos2d::Scene* createScene();
+
+    virtual bool init();
+
+    // a selector callback
+    void menuCloseCallback(cocos2d::Ref* pSender);
+
+
+    // implement the "static create()" method manually
+    CREATE_FUNC(festival_winter_town);
 
     // 重写 onEnter 方法
     virtual void onEnter() override;

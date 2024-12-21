@@ -25,9 +25,11 @@ Bag::Bag(): _selectedItemIndex(-1),_items(36,item()), _itemSprites(36)
     _items[3]=(item("kettle"));
     _items[4]=(item("fishing_pole"));
 
+
     _items[5]=(item(SEED_CARROT));
     _items[6] = (item(SEED_CORN));
     _items[7] = (item(SEED_CABBAGE));
+
 
 }
 
@@ -79,10 +81,12 @@ int Bag::removeItem(const item& MyItem)
             // 如果物品数量为0或更少，则移除该物品
             if (it->num <= 0)
             {
+
                 _items[index] = item(); //改为nothing
                 return 0;
             }
             return it->num;
+
         }
         index++;
     }

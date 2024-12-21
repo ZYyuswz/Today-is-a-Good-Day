@@ -66,4 +66,8 @@ public:
 
     // 返回时间：小时+分钟
     std::vector<int> getTime() const;
+
+    //下雨天
+    ParticleRain* RainLayers();
 };
+
