@@ -29,10 +29,10 @@ struct item
     std::string name;
     int num;
     int value; //tools的value为0
-    bool isTool;
+
     item(const std::string itemName,const int itemNum = 1) 
         :name(itemName),value(itemPrices.find(itemName)->second),num(itemNum) {}
-    item(){}
+    item() : name("nothing"), num(0), value(0) {} // 默认构造函数
 };
 
 
@@ -63,7 +63,7 @@ public:
     std::vector<item> getItems() { return _items; };
 private:
     //物品列表
-    std::vector<item> _items;
+    std::vector<item> _items(36);
 
     //物品精灵列表
     std::vector<cocos2d::Sprite*> _itemSprites;

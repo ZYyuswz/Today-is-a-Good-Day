@@ -109,6 +109,7 @@ void Person::collectItems()
     std::vector <Dropper*>* dropVector= getDrops(currentTiledPosition);
     for (int i = 0; i < dropVector->size(); i++) {
         MyBag.addItem((*dropVector)[i]->type);
+        delete (*dropVector)[i];
     }
     delete[] dropVector;
 }
