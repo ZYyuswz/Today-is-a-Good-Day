@@ -1,5 +1,4 @@
 ﻿
-﻿
 #include"cocos2d.h"
 
 #include "menu.h"
@@ -15,7 +14,7 @@
 USING_NS_CC;
 
 
-//总控鼠标按键
+
 //按下时的调用 
 void control_mouseclick(Vec2 mouse_pos)
 {
