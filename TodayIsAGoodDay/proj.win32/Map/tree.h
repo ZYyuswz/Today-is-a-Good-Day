@@ -28,7 +28,11 @@ public:
     // 产生掉落物
     void generateDrops() override;
 
+    // 设置树的透明度
     void reduceOpacity();
 
+    // 恢复树的透明度
     void restoreOpacity();
 };
+
+

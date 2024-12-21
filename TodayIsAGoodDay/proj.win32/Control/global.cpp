@@ -16,7 +16,9 @@
 USING_NS_CC;
 
 //创建主人公
-Person leading_charactor;
+
+Person leading_charactor ;
+
 
 /*联网socket初始化*/
 // 初始化全局变量
@@ -58,162 +60,161 @@ void PlayerControlLayer::setPlayer(Person* player) {
 
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-
     switch (keyCode) {
-    case EventKeyboard::KeyCode::KEY_A:
-        _moveLeft = true;
+        case EventKeyboard::KeyCode::KEY_A:
+            _moveLeft = true;
 
-        _isRunning = true;
-        _currentDirection = "moveLeft"; // 设置当前方向
-        Director::getInstance()->getScheduler()->schedule(
-            CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
-            this,
-            0.0f,
-            kRepeatForever,
-            0.0f,
-            false,
-            "moveLeft"
-        );
+            _isRunning = true;
+            _currentDirection = "moveLeft"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveLeft"
+            );
 
 
 
-        break;
-    case EventKeyboard::KeyCode::KEY_D:
-        _moveRight = true;
-        _isRunning = true;
-        _currentDirection = "moveRight"; // 设置当前方向
-        Director::getInstance()->getScheduler()->schedule(
-            CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
-            this,
-            0.0f,
-            kRepeatForever,
-            0.0f,
-            false,
-            "moveRight"
-        );
+            break;
+        case EventKeyboard::KeyCode::KEY_D:
+            _moveRight = true;
+            _isRunning = true;
+            _currentDirection = "moveRight"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveRight"
+            );
 
-        break;
-    case EventKeyboard::KeyCode::KEY_W:
-        _moveUp = true;
-        _isRunning = true;
-        _currentDirection = "moveUp"; // 设置当前方向
-        Director::getInstance()->getScheduler()->schedule(
-            CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
-            this,
-            0.0f,
-            kRepeatForever,
-            0.0f,
-            false,
-            "moveUp"
-        );
+            break;
+        case EventKeyboard::KeyCode::KEY_W:
+            _moveUp = true;
+            _isRunning = true;
+            _currentDirection = "moveUp"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveUp"
+            );
 
-        break;
-    case EventKeyboard::KeyCode::KEY_S:
-        _moveDown = true;
-        _isRunning = true;
-        _currentDirection = "moveDown"; // 设置当前方向
-        Director::getInstance()->getScheduler()->schedule(
-            CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
-            this,
-            0.0f,
-            kRepeatForever,
-            0.0f,
-            false,
-            "moveDown"
-        );
+            break;
+        case EventKeyboard::KeyCode::KEY_S:
+            _moveDown = true;
+            _isRunning = true;
+            _currentDirection = "moveDown"; // 设置当前方向
+            Director::getInstance()->getScheduler()->schedule(
+                CC_CALLBACK_1(PlayerControlLayer::movePlayer, this),
+                this,
+                0.0f,
+                kRepeatForever,
+                0.0f,
+                false,
+                "moveDown"
+            );
 
-        break;
-    case EventKeyboard::KeyCode::KEY_E:
-        leading_charactor.MyBag.changeBag();
-        break;
-    case EventKeyboard::KeyCode::KEY_0:
-        leading_charactor.useTools();
-        break;
-    case EventKeyboard::KeyCode::KEY_1://限制变量的生命周期
-    {
-        if (leading_charactor.getTool() != nullptr) {
-            delete leading_charactor.getTool();
+            break;
+        case EventKeyboard::KeyCode::KEY_E:
+            leading_charactor.MyBag.changeBag();
+            break;
+        case EventKeyboard::KeyCode::KEY_0:
+            leading_charactor.useTools();
+            break;
+        case EventKeyboard::KeyCode::KEY_1://限制变量的生命周期
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[0].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
         }
-        std::string toolName = leading_charactor.MyBag.getItems()[0].name;
-        Tool* changeTool;
-        if (isFiveTool(toolName))
-            changeTool = new Tool(toolName, leading_charactor.toolLevel());
-        else
-            changeTool = new Tool(toolName);
-        leading_charactor.setTool(changeTool);
-    }
-    break;
-    case EventKeyboard::KeyCode::KEY_2:
-    {
-        if (leading_charactor.getTool() != nullptr) {
-            delete leading_charactor.getTool();
+        break;
+        case EventKeyboard::KeyCode::KEY_2:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[1].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
         }
-        std::string toolName = leading_charactor.MyBag.getItems()[1].name;
-        Tool* changeTool;
-        if (isFiveTool(toolName))
-            changeTool = new Tool(toolName, leading_charactor.toolLevel());
-        else
-            changeTool = new Tool(toolName);
-        leading_charactor.setTool(changeTool);
-    }
-    break;
-    case EventKeyboard::KeyCode::KEY_3:
-    {
-        if (leading_charactor.getTool() != nullptr) {
-            delete leading_charactor.getTool();
+        break;
+        case EventKeyboard::KeyCode::KEY_3:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[2].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
         }
-        std::string toolName = leading_charactor.MyBag.getItems()[2].name;
-        Tool* changeTool;
-        if (isFiveTool(toolName))
-            changeTool = new Tool(toolName, leading_charactor.toolLevel());
-        else
-            changeTool = new Tool(toolName);
-        leading_charactor.setTool(changeTool);
-    }
-    break;
-    case EventKeyboard::KeyCode::KEY_4:
-    {
-        if (leading_charactor.getTool() != nullptr) {
-            delete leading_charactor.getTool();
+        break;
+        case EventKeyboard::KeyCode::KEY_4:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[3].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
         }
-        std::string toolName = leading_charactor.MyBag.getItems()[3].name;
-        Tool* changeTool;
-        if (isFiveTool(toolName))
-            changeTool = new Tool(toolName, leading_charactor.toolLevel());
-        else
-            changeTool = new Tool(toolName);
-        leading_charactor.setTool(changeTool);
-    }
-    break;
-    case EventKeyboard::KeyCode::KEY_5:
-    {
-        if (leading_charactor.getTool() != nullptr) {
-            delete leading_charactor.getTool();
+        break;
+        case EventKeyboard::KeyCode::KEY_5:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[4].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
         }
-        std::string toolName = leading_charactor.MyBag.getItems()[4].name;
-        Tool* changeTool;
-        if (isFiveTool(toolName))
-            changeTool = new Tool(toolName, leading_charactor.toolLevel());
-        else
-            changeTool = new Tool(toolName);
-        leading_charactor.setTool(changeTool);
-    }
-    break;
-    case EventKeyboard::KeyCode::KEY_6:
-    {
-        if (leading_charactor.getTool() != nullptr) {
-            delete leading_charactor.getTool();
+        break;
+        case EventKeyboard::KeyCode::KEY_6:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[5].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
         }
-        std::string toolName = leading_charactor.MyBag.getItems()[5].name;
-        Tool* changeTool;
-        if (isFiveTool(toolName))
-            changeTool = new Tool(toolName, leading_charactor.toolLevel());
-        else
-            changeTool = new Tool(toolName);
-        leading_charactor.setTool(changeTool);
-    }
-    break;
-    case EventKeyboard::KeyCode::KEY_7:
+        break;
+        case EventKeyboard::KeyCode::KEY_7:
 
         break;
     case EventKeyboard::KeyCode::KEY_8:
@@ -239,79 +240,80 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
 void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
     switch (keyCode) {
-    case EventKeyboard::KeyCode::KEY_A:
-        _moveLeft = false;
-        _isRunning = false;
-        // 取消调度任务
-        Director::getInstance()->getScheduler()->unschedule("moveLeft", this);
-        leading_charactor.PersonStop(-10, 0);
-        control_changescene();
-        break;
-    case EventKeyboard::KeyCode::KEY_D:
-        _moveRight = false;
-        _isRunning = false;
-        // 取消调度任务
-        Director::getInstance()->getScheduler()->unschedule("moveRight", this);
-        leading_charactor.PersonStop(10, 0);
-        control_changescene();
-        break;
-    case EventKeyboard::KeyCode::KEY_W:
-        _moveUp = false;
-        _isRunning = false;
-        // 取消调度任务
-        Director::getInstance()->getScheduler()->unschedule("moveUp", this);
-        leading_charactor.PersonStop(0, 10);
-        control_changescene();
-        break;
-    case EventKeyboard::KeyCode::KEY_S:
-        _moveDown = false;
-        _isRunning = false;
-        // 取消调度任务
-        Director::getInstance()->getScheduler()->unschedule("moveDown", this);
-        leading_charactor.PersonStop(0, -10);
-        control_changescene();
-        break;
-    case EventKeyboard::KeyCode::KEY_E:
+        case EventKeyboard::KeyCode::KEY_A:
+            _moveLeft = false;
+            _isRunning = false;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveLeft", this);
+            leading_charactor.PersonStop(-10, 0);
+            control_changescene();
+            break;
+        case EventKeyboard::KeyCode::KEY_D:
+            _moveRight = false;
+            _isRunning = false;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveRight", this);
+            leading_charactor.PersonStop(10, 0);
+            control_changescene();
+            break;
+        case EventKeyboard::KeyCode::KEY_W:
+            _moveUp = false;
+            _isRunning = false;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveUp", this);
+            leading_charactor.PersonStop(0, 10);
+            control_changescene();
+            break;
+        case EventKeyboard::KeyCode::KEY_S:
+            _moveDown = false;
+            _isRunning = false;
+            // 取消调度任务
+            Director::getInstance()->getScheduler()->unschedule("moveDown", this);
+            leading_charactor.PersonStop(0, -10);
+            control_changescene();
+            break;
+        case EventKeyboard::KeyCode::KEY_E:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_0:
+            break;
+        case EventKeyboard::KeyCode::KEY_0:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_1:
+            break;
+        case EventKeyboard::KeyCode::KEY_1:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_2:
+            break;
+        case EventKeyboard::KeyCode::KEY_2:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_3:
+            break;
+        case EventKeyboard::KeyCode::KEY_3:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_4:
+            break;
+        case EventKeyboard::KeyCode::KEY_4:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_5:
+            break;
+        case EventKeyboard::KeyCode::KEY_5:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_6:
+            break;
+        case EventKeyboard::KeyCode::KEY_6:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_7:
+            break;
+        case EventKeyboard::KeyCode::KEY_7:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_8:
+            break;
+        case EventKeyboard::KeyCode::KEY_8:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_9:
+            break;
+        case EventKeyboard::KeyCode::KEY_9:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_EQUAL:
+            break;
+        case EventKeyboard::KeyCode::KEY_EQUAL:
 
-        break;
-    case EventKeyboard::KeyCode::KEY_MINUS:
+            break;
+        case EventKeyboard::KeyCode::KEY_MINUS:
 
-        break;
-    default:
-        break;
+            break;
+        default:
+            break;
+
     }
 
     event->stopPropagation();
@@ -347,8 +349,6 @@ void PlayerControlLayer::onMouseDown(Event* event)
 
         //鼠标点击之后调用函数
         control_mouseclick(mousePos);
-
-
 
         //manor_change_map();
     }
