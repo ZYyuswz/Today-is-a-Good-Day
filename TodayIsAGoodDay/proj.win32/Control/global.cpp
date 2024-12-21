@@ -1,3 +1,4 @@
+﻿
 ﻿#include "ui/CocosGUI.h"
 #include"cocos2d.h"
 
@@ -15,7 +16,9 @@
 USING_NS_CC;
 
 //创建主人公
+
 Person leading_charactor ;
+
 
 /*联网socket初始化*/
 // 初始化全局变量
@@ -57,7 +60,6 @@ void PlayerControlLayer::setPlayer(Person* player) {
 
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
@@ -214,21 +216,21 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
         break;
         case EventKeyboard::KeyCode::KEY_7:
 
-            break;
-        case EventKeyboard::KeyCode::KEY_8:
+        break;
+    case EventKeyboard::KeyCode::KEY_8:
 
-            break;
-        case EventKeyboard::KeyCode::KEY_9:
+        break;
+    case EventKeyboard::KeyCode::KEY_9:
 
-            break;
-        case EventKeyboard::KeyCode::KEY_EQUAL:
+        break;
+    case EventKeyboard::KeyCode::KEY_EQUAL:
 
-            break;
-        case EventKeyboard::KeyCode::KEY_MINUS:
+        break;
+    case EventKeyboard::KeyCode::KEY_MINUS:
 
-            break;
-        default:
-            break;
+        break;
+    default:
+        break;
     }
 
     event->stopPropagation();
@@ -311,6 +313,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             break;
         default:
             break;
+
     }
 
     event->stopPropagation();
@@ -382,8 +385,6 @@ void PlayerControlLayer::onMouseDown(Event* event)
         }
         
 
-        
-       
         //manor_change_map();
     }
 }
@@ -423,13 +424,13 @@ void PlayerControlLayer::movePlayer(float dt)
 {
     if (_player == nullptr || !_isRunning) return;
 
-  
+
 
     // 根据方向信息设置移动方向
     if (_currentDirection == "moveLeft")
     {
         _player->PersonMove(-MOVE_DISTANCE, 0);
-       
+
     }
     else if (_currentDirection == "moveRight")
     {
@@ -496,7 +497,7 @@ TMXTiledMap* MapManager::getCurrentMap()
     auto currentScene = Director::getInstance()->getRunningScene();
     auto children = currentScene->getChildren();
     TMXTiledMap* currentTiledMap;
-    
+
     for (auto child : children) {
         currentTiledMap = dynamic_cast<TMXTiledMap*>(child);
         if (currentTiledMap) {
@@ -564,7 +565,6 @@ Size MapManager::getCurrentTileSize()
     else
     {
         CCLOG("No map found for the current scene.");
-    } 
+    }
 
 */
-
