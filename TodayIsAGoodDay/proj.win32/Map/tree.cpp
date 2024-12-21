@@ -31,12 +31,9 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
     this->setAnchorPoint(Vec2(0.44f, -0.01f));
     // 设置精灵的位置
     this->setPosition(pixelPosition);
-    // 根据树的纵坐标设置层级
-    this->setLocalZOrder(64 - tilePosition.y);
     // 将精灵添加到物体层
     objectLayer->addChild(this);
 }
-
 
 // 设置树的透明度
 void Tree::reduceOpacity() {
@@ -45,11 +42,10 @@ void Tree::reduceOpacity() {
 }
 
 // 恢复树的透明度
-void Tree::restoreOpacity(){
+void Tree::restoreOpacity() {
     // 设置树的透明度
     this->setOpacity(255);
 }
-
 // 播放被砍的动画 同时生成掉落物
 void Tree::deathAnimation() {
     // 动作序列
@@ -236,3 +232,4 @@ void Tree::updateAll(Layer* objectLayer) {
         }
     }
 }
+

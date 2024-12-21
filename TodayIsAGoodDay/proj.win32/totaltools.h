@@ -32,3 +32,5 @@ void updateTreeBlock(Vec2 personPosition);
 bool is_have_plough(Vec2 tilePosition);
 
 bool is_have_object(Vec2 tilePosition);
+
+bool isFiveTool(const std::string& name);

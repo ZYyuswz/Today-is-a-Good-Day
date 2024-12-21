@@ -6,9 +6,10 @@
 //图层显示关系宏定义
 #define FIRST 1
 
-#define OBJECT 3
-#define PLOUGH 2
-#define DROP 4
+#define OBJECT 2
+#define PLOUGH 3
+#define CROPS 4 
+#define DROP 5
 #define PERSON_LAYER 10
 
 #define RAINLAYER 100
@@ -20,7 +21,7 @@
 
 // 人物
 // 人物移动像素点
-#define MOVE_DISTANCE 10.0f
+#define MOVE_DISTANCE 2.0f
 enum class DIRECTION {
     LEFT,  //左
     RIGHT,  //右
@@ -37,17 +38,17 @@ enum class DIRECTION {
 #define TOOL_KETTLE "kettle"  //水壶
 #define TOOL_FISHING_POLE "fishing_pole"   //钓鱼竿
 
-#define SEED_CARROT "carrot"   //胡萝卜
-#define SEED_GARLIC "garlic"   //大蒜
-#define SEED_POTATO "potato"   //土豆
-#define SEED_CORN  "corn"      //玉米类
-#define SEED_MELON "melon"  //瓜
-#define SEED_CABBAGE "cabbage"   //白菜
-#define SEED_TOMATO "tomato"    //西红柿
-#define SEED_PUMPIN "pumpkin"   //南瓜
-#define SEED_EGGPLANT "eggplant"  //茄子
+#define SEED_CARROT "seed_carrot"   //胡萝卜
+#define SEED_GARLIC "seed_garlic"   //大蒜
+#define SEED_POTATO "seed_potato"   //土豆
+#define SEED_CORN  "seed_corn"      //玉米类
+#define SEED_MELON "seed_melon"  //瓜
+#define SEED_CABBAGE "seed_cabbage"   //白菜
+#define SEED_TOMATO "seed_tomato"    //西红柿
+#define SEED_PUMPIN "seed_pumpkin"   //南瓜
+#define SEED_EGGPLANT "seed_eggplant"  //茄子
 
-#define SEED_TREE "tree"  //树苗
+#define SEED_TREE "seed_tree"  //树苗
 
 
 #define SEED_TREE_OAK "oak"  //橡树
@@ -69,6 +70,7 @@ enum class DIRECTION {
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
 #define DROP_LAYER "DropLayer"
+#define CROPS_LAYER "CropsLayer"
 #define PLAYER_CONTROLER "Player_cintrol_layer"
 /* 全局层相关宏定义 */
 
@@ -109,7 +111,7 @@ enum class DIRECTION {
 #define MANOR_TO_MINE_Y 0
 
 //家场景相关宏定义
-#define HOME_SMALL_SCALE 3.5f
+#define HOME_SMALL_SCALE 4.0f
 #define MANOR_TO_HOME_X 0
 #define MANOR_TO_HOME_Y 0
 
@@ -122,7 +124,7 @@ enum class DIRECTION {
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.1f 
+#define UPDATE_INTERVAL 0.01f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16
@@ -160,13 +162,8 @@ enum class StoneType {
     Gold,       // 金矿
     Coal        // 煤炭
 };
-
 // 掉落物缩小比例
 #define DROPS_SCALE 0.6f
-
-// 树遮挡的判定范围
-#define TREE_BLOCK_X 1
-#define TREE_BLOCK_Y 6
 
 // 矿洞中生成石头的数量
 #define STONE_GENERATE_NUM 20
@@ -236,8 +233,12 @@ const std::map<std::string, int> itemPrices = {
 
     //物品有价格,必须是双斜杠，否则会报错
     {"carrat_drop",30},
+    {SEED_CARROT,20}
 };
 
 // 人物拾取半径
 #define PICK_RADIUS 2.0
 
+// 树遮挡的判定范围
+#define TREE_BLOCK_X 1
+#define TREE_BLOCK_Y 6

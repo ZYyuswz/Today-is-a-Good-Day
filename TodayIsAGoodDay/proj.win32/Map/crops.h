@@ -38,67 +38,67 @@ public:
     // 扣血
     virtual void reduceHealth(int damage);
 
-    // 静态方法：遍历objectLayer的所有子节点并调用update
-    static void updateAll(Layer* objectLayer);
+    // 静态方法：遍历cropsLayer的所有子节点并调用update
+    static void updateAll(Layer* cropsLayer);
 };
 
 // 酸菜类
 class Withered : public Crops {
 public:
-    Withered(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Withered(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
     void update() override {};
 };
 
 // 胡萝卜类
 class Carrot : public Crops {
 public:
-    Carrot(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Carrot(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };
 
 // 大蒜类
 class Garlic : public Crops {
 public:
-    Garlic(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Garlic(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };
 
 // 土豆类
 class Potato : public Crops {
 public:
-    Potato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Potato(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };
 
 // 玉米类
 class Corn : public Crops {
 public:
-    Corn(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Corn(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };
 
 // 甜瓜类
 class Melon : public Crops {
 public:
-    Melon(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Melon(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };
 
 // 西红柿类
 class Tomato : public Crops {
 public:
-    Tomato(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Tomato(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };
 
 // 小白菜类
 class Cabbage : public Crops {
 public:
-    Cabbage(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Cabbage(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };
 
 // 茄子类
 class Eggplant : public Crops {
 public:
-    Eggplant(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Eggplant(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };
 
 // 南瓜类
 class Pumpkin : public Crops {
 public:
-    Pumpkin(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, Stage st = Stage::Childhood);
+    Pumpkin(TMXTiledMap* tileMap, Layer* cropsLayer, Vec2 tile, Stage st = Stage::Childhood);
 };

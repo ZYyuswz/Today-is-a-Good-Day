@@ -13,11 +13,13 @@
 #include"Person/tool.h"
 
 USING_NS_CC;
+
 //创建主人公
-
 Person leading_charactor ;
-Tool axe("axe", 1, 100);
 
+/*联网socket初始化*/
+// 初始化全局变量
+SOCKET global_socket = INVALID_SOCKET;
 
 bool PlayerControlLayer::init() {
     if (!Layer::init())
@@ -55,7 +57,7 @@ void PlayerControlLayer::setPlayer(Person* player) {
 
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-    
+
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
@@ -71,8 +73,8 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 false,
                 "moveLeft"
             );
-            
-           
+
+
 
             break;
         case EventKeyboard::KeyCode::KEY_D:
@@ -123,7 +125,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
         case EventKeyboard::KeyCode::KEY_E:
             leading_charactor.MyBag.changeBag();
             break;
-        case EventKeyboard::KeyCode::KEY_0: 
+        case EventKeyboard::KeyCode::KEY_0:
             leading_charactor.useTools();
             break;
         case EventKeyboard::KeyCode::KEY_1://限制变量的生命周期
@@ -137,9 +139,9 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName, leading_charactor.toolLevel());
             else
                 changeTool = new Tool(toolName);
-            leading_charactor.setTool(changeTool);           
+            leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_2:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -153,7 +155,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_3:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -167,7 +169,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_4:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -181,13 +183,13 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_5:
         {
             if (leading_charactor.getTool() != nullptr) {
                 delete leading_charactor.getTool();
             }
-            std::string toolName = leading_charactor.MyBag.getItems()[3].name;
+            std::string toolName = leading_charactor.MyBag.getItems()[4].name;
             Tool* changeTool;
             if (isFiveTool(toolName))
                 changeTool = new Tool(toolName, leading_charactor.toolLevel());
@@ -195,7 +197,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_6:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -209,7 +211,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_7:
 
             break;
@@ -269,30 +271,16 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_E:
-            leading_charactor.MyBag.changeBag();
+
             break;
         case EventKeyboard::KeyCode::KEY_0:
-            leading_charactor.useTools();
+
             break;
         case EventKeyboard::KeyCode::KEY_1:
-        {
-            if (leading_charactor.getTool() != nullptr) {
-                delete leading_charactor.getTool();
-            }
-            std::string toolName = leading_charactor.MyBag.getItems()[0].name;
-            Tool* changeTool = new Tool(toolName);
-            leading_charactor.setTool(changeTool);
-        }
+
             break;
         case EventKeyboard::KeyCode::KEY_2:
-        {
-            if (leading_charactor.getTool() != nullptr) {
-                delete leading_charactor.getTool();
-            }
-            std::string toolName = leading_charactor.MyBag.getItems()[1].name;
-            Tool* changeTool = new Tool(toolName);
-            leading_charactor.setTool(changeTool);
-        }
+
             break;
         case EventKeyboard::KeyCode::KEY_3:
 
@@ -328,6 +316,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
     event->stopPropagation();
 }
 
+
 //鼠标监听器
 void PlayerControlLayer::onMouseDown(Event* event)
 {
@@ -356,8 +345,11 @@ void PlayerControlLayer::onMouseDown(Event* event)
         */
 
         //鼠标点击之后调用函数
-
         control_mouseclick(mousePos);
+
+        
+       
+        //manor_change_map();
     }
 }
 
