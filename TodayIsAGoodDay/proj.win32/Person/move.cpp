@@ -31,9 +31,12 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
      
     auto _floorLayer = currentMap->getLayer("floor");
     
-    // 将目标位置转换为瓦片坐标
+    
+    // 将目标位置转换为左下瓦片坐标
     cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap->getPosition());
-    int floorGID = _floorLayer->getTileGIDAt(tileCoord);    
+    tileCoord.y = currentMap->getMapSize().height - tileCoord.y;
+    int floorGID = _floorLayer->getTileGIDAt(tileCoord);  
+
     
     if (floorGID != 0)
     {
