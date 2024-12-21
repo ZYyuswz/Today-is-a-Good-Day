@@ -1,16 +1,16 @@
-/* ----- ÊµÏÖÖ÷ÈË¹«ÒÆ¶¯¹¦ÄÜ ----- */
-/*Ïê¼û¿ª·¢ÕßÊÖ²á*/
+ï»¿/* ----- å®ç°ä¸»äººå…¬ç§»åŠ¨åŠŸèƒ½ ----- */
+/*è¯¦è§å¼€å‘è€…æ‰‹å†Œ*/
 #include "person.h"
 #include "global.h"
 #include "totaltools.h"
 extern Person leading_charactor;
 
-//ÕâÁ½ÌõÓ¦¸ÃÊÇºê¶¨Òå
+//è¿™ä¸¤æ¡åº”è¯¥æ˜¯å®å®šä¹‰
 
 const int ONE_CELL = 1.0f;
 const float SCALE_WORLD_TO_TILE = 16 * 3.5;
 
-//Ó¦Ê¹ÓÃºê¶¨ÒåÌæ»»Êı×Ö£¬µ«ÆÁÄ»³ß´çÎŞ·¨ÔÚ±àÒëÊ±»ñµÃ£¨»ñµÃÎª0£©
+//åº”ä½¿ç”¨å®å®šä¹‰æ›¿æ¢æ•°å­—ï¼Œä½†å±å¹•å°ºå¯¸æ— æ³•åœ¨ç¼–è¯‘æ—¶è·å¾—ï¼ˆè·å¾—ä¸º0ï¼‰
 const float HALF_TILED_WIDTH = 1024.0f / SCALE_WORLD_TO_TILE;
 const float HALF_TILED_HEIGHT = 576.0f / SCALE_WORLD_TO_TILE;
 
@@ -25,7 +25,7 @@ Vec2 convertWorldToTileCoord(const cocos2d::Vec2& worldPosition,const Vec2& Tile
 
 bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
 {
-    // ¼ÆËãÄ¿±êÎ»ÖÃ
+    // è®¡ç®—ç›®æ ‡ä½ç½®
     cocos2d::Vec2 currentPosition = _sprite->getPosition();
     cocos2d::Vec2 targetPosition = currentPosition + cocos2d::Vec2(deltaX, deltaY);
      
@@ -33,7 +33,7 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
     auto objectLayer = currentMap->getLayer("floor");
 
     
-    // ½«Ä¿±êÎ»ÖÃ×ª»»Îª×óÏÂÍßÆ¬×ø±ê
+    // å°†ç›®æ ‡ä½ç½®è½¬æ¢ä¸ºå·¦ä¸‹ç“¦ç‰‡åæ ‡
     cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap->getPosition());
     tileCoord.y = currentMap->getMapSize().height - tileCoord.y;
     int floorGID = _floorLayer->getTileGIDAt(tileCoord);  
@@ -50,7 +50,7 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
 
 void Person::moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap)
 {
-    // ÒÆ¶¯ÍßÆ¬µØÍ¼
+    // ç§»åŠ¨ç“¦ç‰‡åœ°å›¾
     tileMap->setPosition(playerPosition);
 }
 
@@ -58,10 +58,10 @@ Animation* Person::createAnimations(const std::string& direction)
 {
 
     auto animation = Animation::create();
-    // ´´½¨Ò»¸öÊı×é£¬´æ´¢¶¯»­µÄÃ¿Ò»Ö¡
+    // åˆ›å»ºä¸€ä¸ªæ•°ç»„ï¼Œå­˜å‚¨åŠ¨ç”»çš„æ¯ä¸€å¸§
     Vector<SpriteFrame*> frames;
 
-    // ¼ÓÔØ4ÕÅÍ¼Æ¬²¢Ìí¼Óµ½Ö¡Êı×éÖĞ
+    // åŠ è½½4å¼ å›¾ç‰‡å¹¶æ·»åŠ åˆ°å¸§æ•°ç»„ä¸­
     for (int i = 1; i <= 4; i++) {
         std::string frameName = "/person/person_" + direction + "_" + std::to_string(i) + ".png";
         animation->addSpriteFrameWithFile(frameName);
@@ -70,7 +70,7 @@ Animation* Person::createAnimations(const std::string& direction)
     animation->setDelayPerUnit(0.1f);
     animation->setRestoreOriginalFrame(true);
 
-    animation->setLoops(-1); // ÉèÖÃÎª²¥·ÅÒ»´Î
+    animation->setLoops(-1); // è®¾ç½®ä¸ºæ’­æ”¾ä¸€æ¬¡
 
     return animation;
    
@@ -92,7 +92,7 @@ void Person::createAnimate()
 void Person::PersonMove(float deltaX, float deltaY)
 {
     createAnimate();
-    // ¸ù¾İÒÆ¶¯·½ÏòÇĞ»»¶¯»­
+    // æ ¹æ®ç§»åŠ¨æ–¹å‘åˆ‡æ¢åŠ¨ç”»
     
     if (deltaX > 0)
     {
@@ -130,10 +130,10 @@ void Person::PersonMove(float deltaX, float deltaY)
         }
     }
  
-    //Ã»ÓÃ£¬Ö»ÊÇµ÷ÊÔÒ»ÏÂ
+    //æ²¡ç”¨ï¼Œåªæ˜¯è°ƒè¯•ä¸€ä¸‹
     Vec2 hello = convertWorldToTileCoord(_sprite->getPosition(), currentMap->getPosition());
 
-    //ÅĞ¶ÏÊÇ·ñ¿ÉÒÔÒÆ¶¯
+    //åˆ¤æ–­æ˜¯å¦å¯ä»¥ç§»åŠ¨
     if (!canMove(deltaX, deltaY,currentMap))
         return;
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -141,20 +141,20 @@ void Person::PersonMove(float deltaX, float deltaY)
   
     Vec2 newPlayerPosition = _sprite->getPosition() + cocos2d::Vec2(deltaX, deltaY);
 
-    //ÈËÎïĞÂÎ»ÖÃµÄÍßÆ¬×ø±ê
+    //äººç‰©æ–°ä½ç½®çš„ç“¦ç‰‡åæ ‡
     Vec2 PositionMiddle = convertWorldToTileCoord(newPlayerPosition, currentMap->getPosition());
 
-    // ¼ÆËãĞÂµÄÍßÆ¬µØÍ¼µÄÎ»ÖÃ
+    // è®¡ç®—æ–°çš„ç“¦ç‰‡åœ°å›¾çš„ä½ç½®
     cocos2d::Vec2 newTiledPosition = currentMap->getPosition()- cocos2d::Vec2(deltaX, deltaY);
     
-    Vec2 PositionLeftDown = PositionMiddle - Vec2(HALF_TILED_WIDTH, HALF_TILED_HEIGHT);//×óÏÂ½ÇµÄ×ø±ê
-    Vec2 PositionRightUp = PositionMiddle + Vec2(HALF_TILED_WIDTH, HALF_TILED_HEIGHT);//ÓÒÉÏ½ÇµÄ×ø±ê
+    Vec2 PositionLeftDown = PositionMiddle - Vec2(HALF_TILED_WIDTH, HALF_TILED_HEIGHT);//å·¦ä¸‹è§’çš„åæ ‡
+    Vec2 PositionRightUp = PositionMiddle + Vec2(HALF_TILED_WIDTH, HALF_TILED_HEIGHT);//å³ä¸Šè§’çš„åæ ‡
 
-    //Èç¹ûË®Æ½·½Ïò´ïµ½¼«ÏŞ£¬ÊúÖ±·½ÏòÒÆ¶¯ÈÔĞèÒÆ¶¯ÉãÏñÍ·
+    //å¦‚æœæ°´å¹³æ–¹å‘è¾¾åˆ°æé™ï¼Œç«–ç›´æ–¹å‘ç§»åŠ¨ä»éœ€ç§»åŠ¨æ‘„åƒå¤´
     if ((PositionLeftDown.x<0 && deltaY==0) || (PositionLeftDown.y<0 && deltaX==0) ||
         (PositionRightUp.x>64 && deltaY== 0 )||( PositionRightUp.y>64 && deltaX==0)) {
-        // Ê¹ÓÃ¶¯×÷À´Æ½»¬ÒÆ¶¯¾«Áé
-        auto moveAction = cocos2d::MoveTo::create(0.2f, newPlayerPosition); // 0.1ÃëÄÚÒÆ¶¯µ½ĞÂÎ»ÖÃ
+        // ä½¿ç”¨åŠ¨ä½œæ¥å¹³æ»‘ç§»åŠ¨ç²¾çµ
+        auto moveAction = cocos2d::MoveTo::create(0.2f, newPlayerPosition); // 0.1ç§’å†…ç§»åŠ¨åˆ°æ–°ä½ç½®
         _sprite->runAction(moveAction);
 //        _sprite->setPosition(newPlayerPosition);
     }
@@ -163,8 +163,8 @@ void Person::PersonMove(float deltaX, float deltaY)
         
     }
     collectItems();
-    treeBlock(_sprite->getPosition());
-    updateTreeBlock(_sprite->getPosition());
+    treeBlock(PositionMiddle);
+    updateTreeBlock(PositionMiddle);
 }
 
 

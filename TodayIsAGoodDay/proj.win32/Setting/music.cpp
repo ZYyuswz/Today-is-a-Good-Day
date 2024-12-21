@@ -1,4 +1,4 @@
-/* ----- 实现背景音乐调用及大小设置 ----- */
+﻿/* ----- 实现背景音乐调用及大小设置 ----- */
 #include <iostream>
 #include "SimpleAudioEngine.h"
 #include "definition.h"
@@ -87,10 +87,10 @@ MenuItemToggle* createVolumeButton() {
     // 创建一个 Toggle 按钮，初始状态为“播放”
     auto volumeButton = MenuItemToggle::createWithCallback(callback, playItem, pauseItem, nullptr);
     // 设置按钮的锚点为左上角
-    volumeButton->setAnchorPoint(Vec2(0, 1));
+    volumeButton->setAnchorPoint(Vec2(0.5f, 0.5f));
 
     // 设置按钮的位置为游戏界面的左上角
-    volumeButton->setPosition(Vec2(0, 0));
+    volumeButton->setPosition(Vec2(100, 400));
     return volumeButton;
 }
 

@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 
 #include "cocos2d.h"
 #include "person.h"
 USING_NS_CC;
 
 
-//5´ó¹¤¾ß
+//5å¤§å·¥å…·
 class Tool : public Node {
 protected:
     std::string _name;
@@ -24,7 +24,7 @@ public:
  //   CREATE_FUNC(Tool);
 
     
-    // »ñÈ¡ºÍÉèÖÃÊôĞÔ
+    // è·å–å’Œè®¾ç½®å±æ€§
     const std::string& getName() const { return _name; }
     void setName(const std::string& name) { _name = name; }
 
@@ -34,9 +34,9 @@ public:
     int getAttackPower() const { return _attackPower; }
     void setAttackPower(int attackPower) { _attackPower = attackPower; }
 
-    // Ê¹ÓÃ¹¤¾ß
+    // ä½¿ç”¨å·¥å…·
 //    virtual void use();
 
-    // Éı¼¶¹¤¾ß
+    // å‡çº§å·¥å…·
 //    virtual void upgrade();
 };

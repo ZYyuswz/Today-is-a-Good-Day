@@ -167,11 +167,19 @@ void GlobalLayer::scene_setting()
         auto backitem = MenuItemImage::create("menu/back_no.png",
             "menu/back_yes.png", 
             CC_CALLBACK_1(GlobalLayer::back, this));
-        backitem->setPosition(Vec2(700, 400));
+        backitem->setPosition(Vec2(800, 470));
+        backitem->setScale(0.5);
         auto menu = Menu::create(backitem, nullptr);
         menu->setPosition(Vec2::ZERO);
         backgroung->addChild(menu);
-
+        auto volumn_button = createVolumeButton();
+        backgroung->addChild(volumn_button);
+        if (volumn_button) {
+            CCLOG("Volume button created successfully!");
+        }
+        else {
+            CCLOG("Failed to create volume button!");
+        }
         SETTING_MODE = true;
     }
     
