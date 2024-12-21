@@ -28,7 +28,7 @@ Stone::Stone(TMXTiledMap* tileMap, Layer* objectLayer, const Vec2& tile, StoneTy
 			break;
 	}
 	// 获取石头的像素坐标
-	const Size mapSize = tileMap->getMapSize();
+	const Size mapSize = tileMap->getMapSize(); 
 	const Size tileSize = tileMap->getTileSize();
 	Vec2 pixelPosition = getTilePixelPosition(tilePosition, tileSize, mapSize, TileCorner::CENTER);
 	// 将精灵的图像上下颠倒

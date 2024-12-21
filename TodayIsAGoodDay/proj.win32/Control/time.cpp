@@ -21,7 +21,7 @@ GameTime::GameTime() {
     totalDays = 1;
     season = Season::Spring;
     weather = Weather::Sunny;
-    // 使用系统时间初始化游戏时间
+    // 使用系统时间初始化游戏时间 
     time[0] = 6;  // 初始时间为早上 6 点
     time[1] = 0;  // 初始分钟为 0
 }

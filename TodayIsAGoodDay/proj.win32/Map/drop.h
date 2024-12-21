@@ -26,7 +26,7 @@ public:
     Vec2 getTilePosition() { return tilePosition; }
 };
 
-class Drop {
+class Drop { 
 protected:
     Vec2 dropPosition;                       // 掉落物的初始坐标
     std::vector<DropItem> dropItems;         // 掉落物的类型和贴图列表

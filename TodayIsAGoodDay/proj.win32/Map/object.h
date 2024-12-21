@@ -24,7 +24,7 @@ public:
     // 减少血量
     virtual void reduceHealth(int damage) {
         health -= damage;
-        if (health <= 0) {
+        if (health <= 0) { 
             // 物体被摧毁
             auto deathAnim = CallFunc::create([this]() {
                 deathAnimation();  // 播放死亡动画
