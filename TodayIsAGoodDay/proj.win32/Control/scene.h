@@ -1,4 +1,3 @@
-﻿
 ﻿#pragma once
 
 
@@ -28,7 +27,7 @@ void test();
 
 // 沙滩场景调用
 class beach : public cocos2d::Scene
-{ 
+{
 public:
     static cocos2d::Scene* createScene();
 
