@@ -21,7 +21,7 @@ GameTime::GameTime() {
     totalDays = 1;
     season = Season::Spring;
     weather = Weather::Sunny;
-    // 使用系统时间初始化游戏时间
+    // 使用系统时间初始化游戏时间 
     time[0] = 6;  // 初始时间为早上 6 点
     time[1] = 0;  // 初始分钟为 0
 }
@@ -76,10 +76,16 @@ void GameTime::updateDay() {
         CCLOG("ObjectLayer not found in the map!--Time");
         return;
     }
+    // 获取 cropsLayer
+    auto cropsLayer = dynamic_cast<Layer*>(map->getChildByName("CropsLayer"));
+    if (!cropsLayer) {
+        CCLOG("CropsLayer not found in the map!--Time");
+        return;
+    }
     // 1.tree
     Tree::updateAll(objectLayer);
     // 2.crops
-    Crops::updateAll(objectLayer);
+    Crops::updateAll(cropsLayer);
     // 3. plough
     Plough::updateAll(ploughLayer);
 
@@ -114,7 +120,7 @@ void GameTime::updateTime(){
         // 送回家
         updateDay();
     }
-    printTime();
+    //printTime();
 }
 
 void GameTime::startAutoUpdate() {

@@ -4,8 +4,9 @@
 #include "person.h"
 USING_NS_CC;
 
+
 //tool是可以手持的
-class Tool : public cocos2d::Node {
+class Tool : public Node {
 protected:
     std::string _name;
     int _level;
@@ -26,7 +27,7 @@ public:
     const std::string& getName() const { return _name; }
     void setName(const std::string& name) { _name = name; }
 
-    int getLevel() const { return _level; }
+    int getLevel() const { return _level; } 
     void setLevel(int level) { _level = level; }
 
     int getAttackPower() const { return _attackPower; }

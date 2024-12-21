@@ -13,10 +13,9 @@
 #include"Person/tool.h"
 
 USING_NS_CC;
-//创建主人公
 
-Person leading_charactor ;
-Tool axe("axe", 1, 100);
+//创建主人公
+Person leading_charactor;
 
 /*联网socket初始化*/
 // 初始化全局变量
@@ -58,7 +57,7 @@ void PlayerControlLayer::setPlayer(Person* player) {
 
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-    
+
     switch (keyCode) {
         case EventKeyboard::KeyCode::KEY_A:
             _moveLeft = true;
@@ -74,8 +73,8 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 false,
                 "moveLeft"
             );
-            
-           
+
+
 
             break;
         case EventKeyboard::KeyCode::KEY_D:
@@ -126,7 +125,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
         case EventKeyboard::KeyCode::KEY_E:
             leading_charactor.MyBag.changeBag();
             break;
-        case EventKeyboard::KeyCode::KEY_0: 
+        case EventKeyboard::KeyCode::KEY_0:
             leading_charactor.useTools();
             break;
         case EventKeyboard::KeyCode::KEY_1://限制变量的生命周期
@@ -140,9 +139,9 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName, leading_charactor.toolLevel());
             else
                 changeTool = new Tool(toolName);
-            leading_charactor.setTool(changeTool);           
+            leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_2:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -156,7 +155,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_3:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -170,7 +169,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_4:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -184,7 +183,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_5:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -198,7 +197,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_6:
         {
             if (leading_charactor.getTool() != nullptr) {
@@ -212,7 +211,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
                 changeTool = new Tool(toolName);
             leading_charactor.setTool(changeTool);
         }
-            break;
+        break;
         case EventKeyboard::KeyCode::KEY_7:
 
             break;
@@ -272,10 +271,10 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
             control_changescene();
             break;
         case EventKeyboard::KeyCode::KEY_E:
-            
+
             break;
         case EventKeyboard::KeyCode::KEY_0:
-           
+
             break;
         case EventKeyboard::KeyCode::KEY_1:
 
@@ -317,6 +316,7 @@ void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* ev
     event->stopPropagation();
 }
 
+
 //鼠标监听器
 void PlayerControlLayer::onMouseDown(Event* event)
 {
@@ -346,13 +346,44 @@ void PlayerControlLayer::onMouseDown(Event* event)
 
         //鼠标点击之后调用函数
 
+        EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
+        if (mouseEvent)
+        {
+            // 获取按下的鼠标按钮
+            EventMouse::MouseButton mouseButton = mouseEvent->getMouseButton();
 
-        //测试用例
-        //manor_to_towm();
-        //test();
-        change_to_mine();
-        
-       
+            // 判断是左键还是右键
+            if (mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
+            {
+                CCLOG("Left mouse button pressed!");
+                // 在这里添加左键按下的逻辑
+                control_mouseclick(mousePos);
+            }
+            else if (mouseButton == EventMouse::MouseButton::BUTTON_RIGHT)
+            {
+                CCLOG("Right mouse button pressed!");
+                // 在这里添加右键按下的逻辑
+                //鼠标瓦片坐标
+                Vec2 mouse_tile_pos;
+
+                TMXTiledMap* currentMap = MapManager::getInstance()->getCurrentMap();
+                if (currentMap)
+                {
+                    CCLOG("Current map name: %s", currentMap->getMapSize().width);
+                }
+                else
+                {
+                    CCLOG("No map found for the current scene.");
+                }
+                Vec2 map_position = currentMap->getPosition();
+                mouse_tile_pos = convertWorldToTileCoord(mousePos, map_position);
+                harvest(mouse_tile_pos);
+            }
+        }
+
+
+
+
         //manor_change_map();
     }
 }
@@ -392,13 +423,13 @@ void PlayerControlLayer::movePlayer(float dt)
 {
     if (_player == nullptr || !_isRunning) return;
 
-  
+
 
     // 根据方向信息设置移动方向
     if (_currentDirection == "moveLeft")
     {
         _player->PersonMove(-MOVE_DISTANCE, 0);
-       
+
     }
     else if (_currentDirection == "moveRight")
     {
@@ -465,7 +496,7 @@ TMXTiledMap* MapManager::getCurrentMap()
     auto currentScene = Director::getInstance()->getRunningScene();
     auto children = currentScene->getChildren();
     TMXTiledMap* currentTiledMap;
-    
+
     for (auto child : children) {
         currentTiledMap = dynamic_cast<TMXTiledMap*>(child);
         if (currentTiledMap) {
@@ -533,7 +564,7 @@ Size MapManager::getCurrentTileSize()
     else
     {
         CCLOG("No map found for the current scene.");
-    } 
+    }
 
 */
 

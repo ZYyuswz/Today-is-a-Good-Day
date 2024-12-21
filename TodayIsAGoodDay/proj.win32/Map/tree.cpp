@@ -23,7 +23,7 @@ Tree::Tree(TMXTiledMap* tileMap, Layer* objectLayer, Vec2 tile, TreeType ty, Sta
 
     // 获取树木的像素坐标
     const Size mapSize = tileMap->getMapSize();
-    const Size tileSize = tileMap->getTileSize();
+    const Size tileSize = tileMap->getTileSize(); 
     Vec2 pixelPosition = getTilePixelPosition(tilePosition, tileSize, mapSize, TileCorner::BOTTOM_CENTER);
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);

@@ -27,7 +27,7 @@ bool GlobalLayer::init()
 
     // 创建设置图标
     auto settingsIcon = Sprite::create("setting/setting_.png");
-    settingsIcon->setPosition(Vec2(50, Director::getInstance()->getWinSize().height - 50)); // 左上角
+    settingsIcon->setPosition(Vec2(50, Director::getInstance()->getWinSize().height - 50)); // 左上角 
     this->addChild(settingsIcon);
     //创建时间显示
     auto dis_time = Sprite::create("setting/display_time.png");

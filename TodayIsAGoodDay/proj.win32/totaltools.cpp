@@ -194,10 +194,11 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
         CCLOG("DropLayer not found in the map!--getDrops");
         return nullptr;
     }
-    // 遍历 dropLayer 的子节点
-    for (auto child : dropLayer->getChildren()) {
+    // 手动迭代 dropLayer 的子节点
+    auto children = dropLayer->getChildren(); // 获取子节点列表
+    for (auto it = children.begin(); it != children.end(); /* 不手动递增 */) {
         // 转换为 Dropper 类
-        Dropper* drop = dynamic_cast<Dropper*>(child);
+        Dropper* drop = dynamic_cast<Dropper*>(*it);
         if (drop) {
             Vec2 dropPosition = drop->getTilePosition();
             double delta_x = dropPosition.x - personPosition.x;
@@ -206,7 +207,14 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
             if (abs(delta_x) <= PICK_RADIUS && abs(delta_y) <= PICK_RADIUS) {
                 pickDrops->push_back(drop);
                 dropLayer->removeChild(drop, false);  // 移除节点但不销毁
+                it = children.erase(it); // 手动移除迭代器
             }
+            else {
+                ++it; // 递增迭代器
+            }
+        }
+        else {
+            ++it; // 递增迭代器
         }
     }
     return pickDrops;
@@ -242,9 +250,12 @@ void treeBlock(Vec2 personPosition) {
         if (tree) {
             Vec2 treePosition = tree->getTilePosition();
             double delta_x = treePosition.x - personPosition.x;
-            double delta_y = treePosition.y - personPosition.y;
+            double delta_y = personPosition.y - treePosition.y;
+            //CCLOG("personPosition.x:%f,personPosition.y:%f", personPosition.x, personPosition.y);
+            //CCLOG("delta_x:%f,delta_y:%f", delta_x, delta_y);
             // 在3*6的范围
             if (abs(delta_x) <= TREE_BLOCK_X && delta_y < TREE_BLOCK_Y) {
+                CCLOG("in  3*6");
                 tree->reduceOpacity();
                 tree_block.push_back(tree);
             }
@@ -258,7 +269,7 @@ void updateTreeBlock(Vec2 personPosition) {
         Tree* tree = *it;
         Vec2 treePosition = tree->getTilePosition();
         double delta_x = treePosition.x - personPosition.x;
-        double delta_y = treePosition.y - personPosition.y;
+        double delta_y = personPosition.y - treePosition.y;
         // 在3*6的范围
         if (abs(delta_x) <= TREE_BLOCK_X && delta_y < TREE_BLOCK_Y) {
             // 什么也不干
@@ -338,7 +349,7 @@ void harvest(Vec2 tilePosition) {
     for (auto child : cropsLayer->getChildren()) {
         // 检查子节点是否是 Crops 类的实例
         Crops* crop = dynamic_cast<Crops*>(child);
-        if (crop && crop->getTilePosition() == tilePosition) {
+        if (crop && crop->getTilePosition() == tilePosition) { 
             // 检查是否成熟
             if (crop->getStage() == Stage::Mature) {
                 crop->harvest();

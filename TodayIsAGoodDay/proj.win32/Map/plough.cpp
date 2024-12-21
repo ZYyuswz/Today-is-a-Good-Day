@@ -25,7 +25,7 @@ Plough::Plough(TMXTiledMap* tileMap, Layer* ploughLayer,const Vec2 tile, LandSta
     // 将精灵的图像上下颠倒
     this->setFlippedY(false);
     // 设置精灵的锚点为底部中心
-    this->setAnchorPoint(Vec2(0.5f, 0.5f));
+    this->setAnchorPoint(Vec2(0.5f, 0.5f)); 
     // 设置精灵的位置
     this->setPosition(pixelPosition);
     // 将精灵添加到ploughLayer层

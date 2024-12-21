@@ -32,6 +32,7 @@ struct item
     bool isTool;
     item(const std::string itemName,const int itemNum = 1) 
         :name(itemName),value(itemPrices.find(itemName)->second),num(itemNum) {}
+    item(){}
 };
 
 
@@ -45,7 +46,7 @@ public:
     void changeBag();
 
     // 添加工具或材料
-    void addItem(const item& MyItem);
+    void addItem(const item& MyItem); 
 
     // 移除工具或材料
     void removeItem(const item& MyItem);

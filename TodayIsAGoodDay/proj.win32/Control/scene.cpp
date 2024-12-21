@@ -21,7 +21,7 @@ bool first_to_manor() {
     auto spring_scene = spring_manor::createScene();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
     //leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
-   
+
     // GameTime* gametime = GameTime::getInstance();
     //if(gametime->getWeather()==Weather::Rainy)spring_scene->addChild(RainLayer(),RAINLAYER); //下雨场景实现示例
     return true;
@@ -45,7 +45,7 @@ bool manor_to_towm()
         //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
         //Director::getInstance()->replaceScene(town_scene);
         Director::getInstance()->pushScene(town_scene);
-        
+
         CCLOG("after");
 
         return true;
@@ -91,7 +91,7 @@ void test()
 //切换到沙滩场景
 bool change_to_beach()
 {
-  
+
     auto beach_scene = beach::createScene();
     CCLOG("before");
     //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
@@ -115,7 +115,7 @@ bool change_to_mine()
 
     CCLOG("after");
 
-  
+
     return true;
 }
 
@@ -136,7 +136,7 @@ bool change_to_home()
 //切换到商店场景
 bool change_to_store()
 {
-    
+
     return true;
 }
 
@@ -198,9 +198,9 @@ bool beach::init() {
     int visiablemood = get_window_size();
     if (visiablemood == SMALL_WINDOW)
     {
-       //设置图缩放比例
+        //设置图缩放比例
         scene_beach->setScale(BEACH_SMALL_SCALE);
-        
+
         //获取当前屏幕大小
         Size screensize = Director::getInstance()->getVisibleSize();
         //设置进入的瓦片地图坐标
@@ -222,7 +222,7 @@ bool beach::init() {
 
 
     }
-    
+
     auto objectLayer = Layer::create();
     objectLayer->setName(OBJECT_LAYER);  // 设置名字
     objectLayer->setLocalZOrder(OBJECT);   // 设置层级
@@ -358,6 +358,7 @@ bool spring_manor::init() {
     auto cropsLayer = Layer::create();
     cropsLayer->setName(CROPS_LAYER);
     cropsLayer->setLocalZOrder(CROPS);
+    scene_spring->addChild(cropsLayer);
     dropLayer->setName(DROP_LAYER);  // 设置名字
     dropLayer->setLocalZOrder(DROP);   // 设置层级
     scene_spring->addChild(dropLayer);
@@ -378,7 +379,7 @@ bool spring_manor::init() {
     return true;
 }
 
-void spring_manor::onEnter ()
+void spring_manor::onEnter()
 {
     Scene::onEnter(); // 调用父类的 onEnter
 
@@ -488,10 +489,10 @@ bool spring_town::init() {
     Size tilesize = MapManager::getInstance()->getCurrentTileSize();
 
     Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
-   
+
     this->addChild(scene_spring);
 
-  
+
 
     // 添加全局层
     auto globalLayer = GlobalLayer::create();

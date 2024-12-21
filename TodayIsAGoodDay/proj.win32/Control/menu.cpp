@@ -39,8 +39,8 @@ bool menu::init()
 
     auto welcome = TMXTiledMap::create("menu/welcome_small.tmx"); // 替换为你的 .tmx 文件名
     //auto welcome = TMXTiledMap::create("map/beach.tmx"); // 替换为你的 .tmx 文件名
-    
-   
+
+
     if (welcome)
     {
         this->addChild(welcome); // 将地图添加到场景中
@@ -75,7 +75,7 @@ bool menu::init()
     }
 
     //加载地图完毕
-    
+
 
     //加载菜单项
     //加载创建选项
@@ -120,8 +120,8 @@ bool menu::init()
     //new选项放置位置
     Vec2 new_pos = Vec2(POS_NEW_X, POS_NEW_Y);
     //NEW选项转换屏幕位置
-    
-    Vec2 screenpos_new = tile_change_screen(mapsize, tilesize, new_pos,welcome->getScale());
+
+    Vec2 screenpos_new = tile_change_screen(mapsize, tilesize, new_pos, welcome->getScale());
 
     //load选项放置位置
     Vec2 load_pos = Vec2(POS_LOAD_X, POS_LOAD_Y);
@@ -143,9 +143,9 @@ bool menu::init()
     exitItem->setPosition(screenpos_exit);
 
     //创建菜单项
-    auto my_menu = Menu::create(createItem, loadItem,coopItem,exitItem,nullptr);
+    auto my_menu = Menu::create(createItem, loadItem, coopItem, exitItem, nullptr);
     my_menu->setPosition(Vec2::ZERO);
-    this->addChild(my_menu,1);
+    this->addChild(my_menu, 1);
 
 
 
@@ -166,7 +166,7 @@ void menu::onCreate(cocos2d::Ref* sender)
 
     //测试，应创建主场景，先用沙滩测试
     first_to_manor();
-    
+
 }
 
 //读档菜单回调函数
@@ -188,7 +188,7 @@ void menu::onCoop(cocos2d::Ref* sender)
 void menu::onEixt(cocos2d::Ref* sender)
 {
     //可能需要加存档选项
-    
+
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->end();
 
