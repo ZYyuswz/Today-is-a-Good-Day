@@ -23,6 +23,7 @@ const int KETTLE = 103;//水壶，浇花
 const int FISHING_POLE = 104;//钓鱼竿
 
 
+
 struct item
 {
     std::string name;
@@ -67,8 +68,8 @@ private:
     //物品精灵列表
     std::vector<cocos2d::Sprite*> _itemSprites;
 
-    //物品标签，只有一个，根据鼠标移动显示
-    cocos2d::Label* _itemInfoLabel;
+    //物品标签列表
+    std::vector<Label* >_itemLabels;
     int _selectedItemIndex;
 
     bool isOpen;
@@ -111,7 +112,7 @@ public:
 
     // 构造函数
     Person();
-    //   ~Person() { _sprite->setPosition(200, 200); }
+
        // 初始化函数
     virtual bool init();
 

@@ -1,5 +1,8 @@
 #pragma once
 #include <map>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#pragma comment(lib, "ws2_32.lib") // 链接 Winsock 库
 //屏幕显示比例
 #define SMALL_WINDOW 1
 
@@ -249,3 +252,35 @@ const std::map<std::string, int> itemPrices = {
 // 树遮挡的判定范围
 #define TREE_BLOCK_X 1
 #define TREE_BLOCK_Y 6
+
+// 定义鱼的种类枚举
+enum class FishType {
+    // 春季
+    Carp,        // 鲤鱼
+    Chub,        // 鲢鱼
+    Crab,        // 螃蟹
+    Eel,         // 鳗鱼
+
+    // 夏季
+    Lobster,     // 龙虾
+    Salmon,      // 三文鱼
+    Sardine,     // 沙丁鱼
+    Sea_Cucumber,// 海参
+
+    // 秋季
+    Shrimp,      // 虾
+    Squid,       // 鱿鱼
+    Sturgeon,    // 鲟鱼
+    Tuna,        // 金枪鱼
+
+    // 没有鱼
+    NullFish
+};
+
+// 宏定义
+#define FISHING_SUCCESS_RATE 0.5  // 钓鱼成功率（0.0 到 1.0）
+
+#define SERVER_IP "101.132.135.175"  // 服务器 IP
+#define PORT 12345
+// 定义全局变量
+extern SOCKET global_socket; // 全局 SOCKET 对象
