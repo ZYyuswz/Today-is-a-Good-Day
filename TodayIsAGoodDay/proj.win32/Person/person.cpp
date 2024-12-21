@@ -110,5 +110,5 @@ void Person::collectItems()
     for (int i = 0; i < dropVector->size(); i++) {
         MyBag.addItem((*dropVector)[i]->type);
     }
-    delete dropVector;
+    delete[] dropVector;
 }

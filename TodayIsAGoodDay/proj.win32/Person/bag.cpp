@@ -8,10 +8,10 @@
 #include "totaltools.h"
 
 
-const int BAG_LEFT_LOCATION = 500;
-const int BAG_UP_LOCATION = 1000;
-const int BAG_RIGHT_LOCATION = 1500;
-const int BAG_CELL = 100;
+const float BAG_LEFT_LOCATION = 393.25;
+const int BAG_UP_LOCATION = 700.5;
+const int BAG_RIGHT_LOCATION = 1654.75;
+const int BAG_CELL = 105.125;
 
 Bag::Bag(): _selectedItemIndex(-1)
 {
