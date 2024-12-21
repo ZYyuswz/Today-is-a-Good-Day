@@ -9,9 +9,9 @@
 
 
 const float BAG_LEFT_LOCATION = 393.25;
-const int BAG_UP_LOCATION = 700.5;
-const int BAG_RIGHT_LOCATION = 1654.75;
-const int BAG_CELL = 105.125;
+const float BAG_UP_LOCATION = 700.5;
+const float BAG_RIGHT_LOCATION = 1654.75;
+const float BAG_CELL = 105.125;
 
 Bag::Bag(): _selectedItemIndex(-1)
 {

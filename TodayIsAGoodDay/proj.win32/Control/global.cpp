@@ -134,6 +134,8 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
             if (leading_charactor.getTool() != nullptr) {
                 delete leading_charactor.getTool();
             }
+            if (leading_charactor.MyBag.getItems().size() < 1)
+                return;
             std::string toolName = leading_charactor.MyBag.getItems()[0].name;
             Tool* changeTool;
             if (isFiveTool(toolName))
