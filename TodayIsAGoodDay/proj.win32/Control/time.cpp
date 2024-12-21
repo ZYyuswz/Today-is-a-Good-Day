@@ -76,10 +76,16 @@ void GameTime::updateDay() {
         CCLOG("ObjectLayer not found in the map!--Time");
         return;
     }
+    // 获取 cropsLayer
+    auto cropsLayer = dynamic_cast<Layer*>(map->getChildByName("CropsLayer"));
+    if (!cropsLayer) {
+        CCLOG("CropsLayer not found in the map!--Time");
+        return;
+    }
     // 1.tree
     Tree::updateAll(objectLayer);
     // 2.crops
-    Crops::updateAll(objectLayer);
+    Crops::updateAll(cropsLayer);
     // 3. plough
     Plough::updateAll(ploughLayer);
 
@@ -114,7 +120,7 @@ void GameTime::updateTime(){
         // 送回家
         updateDay();
     }
-    printTime();
+    //printTime();
 }
 
 void GameTime::startAutoUpdate() {
