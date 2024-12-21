@@ -1,4 +1,4 @@
-#include "cocos2d.h"
+﻿#include "cocos2d.h"
 #include <vector>
 #include <string>
 #include "person.h"
@@ -26,7 +26,7 @@ Bag::Bag(): _selectedItemIndex(-1),_items(36,item()), _itemSprites(36)
     _items[4]=(item("fishing_pole"));
 
 
-    _items[5]=(item(SEED_CARROT));
+    _items[5]=(item(SEED_CARROT,20));
     _items[6] = (item(SEED_CORN));
     _items[7] = (item(SEED_CABBAGE));
 
@@ -146,7 +146,7 @@ void Bag::closeBag()
     {
         sprite->removeFromParent();
     }
-    _itemSprites.clear();
+  //  _itemSprites.clear();
 
     // 清除物品信息标签
 //    _itemInfoLabel->setString("");
