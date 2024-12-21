@@ -28,7 +28,7 @@ void Person::person_construction(const std::string& name, const int& sex, const 
     _HP = HP;
     _money = money;
     _energy = energy;
-
+     
     auto newCharacterLayer = Layer::create();
     currentScene->addChild(newCharacterLayer); // 将人物层添加到当前场景中
     // 创建一个精灵并添加到Person节点中
@@ -106,9 +106,9 @@ void Person::collectItems()
     Vec2 currentPosition = _sprite->getPosition();
     auto currentTiledMap = MapManager::getInstance()->getCurrentMap();
     Vec2 currentTiledPosition = convertWorldToTileCoord(currentPosition, currentTiledMap->getPosition());
-    std::vector <DropItem>* dropVector;//= getDrops(currentTiledPosition);
+    std::vector <Dropper*>* dropVector= getDrops(currentTiledPosition);
     for (int i = 0; i < dropVector->size(); i++) {
-        MyBag.addItem((*dropVector)[i].type);
+        MyBag.addItem((*dropVector)[i]->type);
     }
-    delete dropVector;
+    delete[] dropVector;
 }

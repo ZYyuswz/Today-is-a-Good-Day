@@ -21,7 +21,7 @@ protected:
     static std::vector<Node*> nodesToRemove;  
 public:
     // 更新生长天数
-    void grow();
+    void grow(); 
         
     // 死亡动画
     void deathAnimation() override;

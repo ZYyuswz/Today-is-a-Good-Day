@@ -45,7 +45,7 @@ bool menu::init()
     {
         this->addChild(welcome); // 将地图添加到场景中
         // 获取地图的尺寸  
-        Size mapSize = welcome->getMapSize();
+        Size mapSize = welcome->getMapSize(); 
         Size tileSize = welcome->getTileSize();
 
         // 计算地图的总尺寸（宽 x 高）

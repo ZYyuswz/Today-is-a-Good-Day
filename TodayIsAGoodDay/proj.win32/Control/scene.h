@@ -1,3 +1,4 @@
+﻿
 ﻿#pragma once
 
 
@@ -27,7 +28,7 @@ void test();
 
 // 沙滩场景调用
 class beach : public cocos2d::Scene
-{
+{ 
 public:
     static cocos2d::Scene* createScene();
 
@@ -35,7 +36,7 @@ public:
 
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
-   
+
 
     // implement the "static create()" method manually
     CREATE_FUNC(beach);
@@ -75,7 +76,7 @@ public:
 /*--------------------小镇场景--------------------*/
 
 //小镇春天场景
-class  spring_town:public cocos2d::Scene
+class  spring_town :public cocos2d::Scene
 {
 public:
     static cocos2d::Scene* createScene();
@@ -100,7 +101,7 @@ public:
 
 
 //小镇秋天场景
-class autumn_town:public cocos2d::Scene
+class autumn_town :public cocos2d::Scene
 {
 public:
     static cocos2d::Scene* createScene();

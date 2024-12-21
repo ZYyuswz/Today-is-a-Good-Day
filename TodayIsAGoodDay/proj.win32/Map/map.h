@@ -16,4 +16,4 @@ USING_NS_CC;
  * @param corner 需要获取的角落类型（TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT）。
  * @return 指定角落的像素坐标。
  */
-Vec2 getTilePixelPosition(const Vec2& tileCoord,const Size& tileSize, const Size& mapSize, TileCorner corner = CENTER);
+Vec2 getTilePixelPosition(const Vec2& tileCoord,const Size& tileSize, const Size& mapSize, TileCorner corner = CENTER); 

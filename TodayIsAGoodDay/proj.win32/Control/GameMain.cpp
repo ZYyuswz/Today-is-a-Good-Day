@@ -23,7 +23,7 @@ int gamemain()
     spriteFrameCache->addSpriteFramesWithFile("Stone/stone.plist");
     spriteFrameCache->addSpriteFramesWithFile("Plough/plough.plist");
     spriteFrameCache->addSpriteFramesWithFile("Crops/crops.plist");
-    spriteFrameCache->addSpriteFramesWithFile("Drops/drops_1.plist");
+    spriteFrameCache->addSpriteFramesWithFile("Drops/drops_1.plist"); 
 
     // 启动自动更新
     GameTime::getInstance()->startAutoUpdate();

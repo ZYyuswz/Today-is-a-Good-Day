@@ -23,4 +23,4 @@ void Person::useTools()
 		               rotateClockwise->clone(), pause, fade,nullptr);
 	currentTool->_toolsprite->runAction(useSequence);
 
-}
+} 
