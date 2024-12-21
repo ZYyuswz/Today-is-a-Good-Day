@@ -8,14 +8,14 @@
 #include "totaltools.h"
 
 
-const int BAG_LEFT_LOCATION = 500;
-const int BAG_UP_LOCATION = 1000;
-const int BAG_RIGHT_LOCATION = 1500;
-const int BAG_CELL = 100;
+const float BAG_LEFT_LOCATION = 393.25;
+const float BAG_UP_LOCATION = 700.5;
+const float BAG_RIGHT_LOCATION = 1654.75;
+const float BAG_CELL = 105.125;
 
 Bag::Bag(): _selectedItemIndex(-1)
 {
-    // ´´½¨Ò»¸ö±êÇ©ÓÃÓÚÏÔÊ¾ÎïÆ·ĞÅÏ¢
+    // åˆ›å»ºä¸€ä¸ªæ ‡ç­¾ç”¨äºæ˜¾ç¤ºç‰©å“ä¿¡æ¯
     _itemInfoLabel = cocos2d::Label::createWithSystemFont("", "Arial", 24);
     isOpen = false;
     _items.push_back(item("axe"));
@@ -23,10 +23,12 @@ Bag::Bag(): _selectedItemIndex(-1)
     _items.push_back(item("draft"));
     _items.push_back(item("kettle"));
     _items.push_back(item("fishing_pole"));
+
     _items.push_back(item(SEED_CARROT));
+
 }
 
-//°´¼üº¯Êı
+//æŒ‰é”®å‡½æ•°
 void Bag::changeBag()
 {
     isOpen = !isOpen;
@@ -44,18 +46,18 @@ void Bag::changeBag()
 
 void Bag::addItem(const item& MyItem)
 {
-    // ¼ì²é±³°üÖĞÊÇ·ñÒÑÓĞ¸ÃÎïÆ·
+    // æ£€æŸ¥èƒŒåŒ…ä¸­æ˜¯å¦å·²æœ‰è¯¥ç‰©å“
     for (auto& item : _items)
     {
         if (item.name == MyItem.name)
         {
-            // ºÏ²¢Í¬ÀàÎïÆ·
+            // åˆå¹¶åŒç±»ç‰©å“
             item.num += MyItem.num;
             return;
         }
     }
 
-    // Èç¹ûÃ»ÓĞ¸ÃÎïÆ·£¬ÔòÌí¼ÓĞÂÎïÆ·
+    // å¦‚æœæ²¡æœ‰è¯¥ç‰©å“ï¼Œåˆ™æ·»åŠ æ–°ç‰©å“
     _items.emplace_back(MyItem);
 }
 
@@ -65,10 +67,10 @@ void Bag::removeItem(const item& MyItem)
     {
         if (it->name == MyItem.name)
         {
-            // ¼õÉÙÎïÆ·ÊıÁ¿
+            // å‡å°‘ç‰©å“æ•°é‡
             it->num -= MyItem.num;
 
-            // Èç¹ûÎïÆ·ÊıÁ¿Îª0»ò¸üÉÙ£¬ÔòÒÆ³ı¸ÃÎïÆ·
+            // å¦‚æœç‰©å“æ•°é‡ä¸º0æˆ–æ›´å°‘ï¼Œåˆ™ç§»é™¤è¯¥ç‰©å“
             if (it->num <= 0)
             {
                 _items.erase(it);
@@ -81,7 +83,7 @@ void Bag::removeItem(const item& MyItem)
 void Bag::displayBag()
 {
     
-    // Çå³ıÖ®Ç°µÄÎïÆ·¾«Áé
+    // æ¸…é™¤ä¹‹å‰çš„ç‰©å“ç²¾çµ
     for (auto sprite : _itemSprites)
     {
         sprite->removeFromParent();
@@ -89,16 +91,16 @@ void Bag::displayBag()
     _itemSprites.clear();
     
 
-    // ÏÔÊ¾±³°üÍø¸ñ±³¾°Í¼Æ¬
-    auto bagBackground = cocos2d::Sprite::create("bag/BagBackground.png"); //´´½¨¾«Áé
-    bagBackground->setAnchorPoint(Vec2(0.5f,0.5f));//ÉèÖÃÃªµãÎ»ÓÚÖĞĞÄ
+    // æ˜¾ç¤ºèƒŒåŒ…ç½‘æ ¼èƒŒæ™¯å›¾ç‰‡
+    auto bagBackground = cocos2d::Sprite::create("bag/BagBackground.png"); //åˆ›å»ºç²¾çµ
+    bagBackground->setAnchorPoint(Vec2(0.5f,0.5f));//è®¾ç½®é”šç‚¹ä½äºä¸­å¿ƒ
     bagBackground->setPosition(1024.0f,576.0f);
     bagBackground->setScale(1.5f);
     bagBackground->setName("bagBackground");
     Director::getInstance()->getRunningScene()->addChild(bagBackground);
 
-    /*
-    // ÏÔÊ¾±³°ü¸ñµÄÍ¼Æ¬ºÍÎïÆ·Í¼°¸
+    
+    // æ˜¾ç¤ºèƒŒåŒ…æ ¼çš„å›¾ç‰‡å’Œç‰©å“å›¾æ¡ˆ
     int x = BAG_LEFT_LOCATION;
     int y = BAG_UP_LOCATION;
     for (const auto& item : _items)
@@ -108,7 +110,7 @@ void Bag::displayBag()
             itemSprite = cocos2d::Sprite::create("tool/" + item.name +
             std::to_string(leading_charactor.toolLevel()) + ".png");
         else
-            itemSprite = cocos2d::Sprite::create(item.name + ".png"); // ¼ÙÉèÃ¿¸öÎïÆ·¶¼ÓĞÒ»¸ö¶ÔÓ¦µÄÍ¼Æ¬
+            itemSprite = cocos2d::Sprite::create(item.name + ".png"); // å‡è®¾æ¯ä¸ªç‰©å“éƒ½æœ‰ä¸€ä¸ªå¯¹åº”çš„å›¾ç‰‡
         itemSprite->setPosition(cocos2d::Vec2(x, y));
         this->addChild(itemSprite);
         _itemSprites.push_back(itemSprite);
@@ -120,40 +122,40 @@ void Bag::displayBag()
             y -= BAG_CELL;
         }
     }
-    */
+    
 }
 
 void Bag::closeBag()
 {
-    // Çå³ıÎïÆ·¾«Áé
+    // æ¸…é™¤ç‰©å“ç²¾çµ
     for (auto sprite : _itemSprites)
     {
         sprite->removeFromParent();
     }
     _itemSprites.clear();
 
-    // Çå³ıÎïÆ·ĞÅÏ¢±êÇ©
+    // æ¸…é™¤ç‰©å“ä¿¡æ¯æ ‡ç­¾
 //    _itemInfoLabel->setString("");
 
-    // ÖØÖÃÑ¡ÖĞÎïÆ·µÄË÷Òı
+    // é‡ç½®é€‰ä¸­ç‰©å“çš„ç´¢å¼•
     _selectedItemIndex = -1;
 
     auto currentScene = Director::getInstance()->getRunningScene();
-    // ÒÆ³ı±³°üÍø¸ñ±³¾°Í¼Æ¬
+    // ç§»é™¤èƒŒåŒ…ç½‘æ ¼èƒŒæ™¯å›¾ç‰‡
     auto bagBackground = currentScene->getChildByName("bagBackground");
     if (bagBackground)
     {
         bagBackground->removeFromParent();
     }
 
-    // ¹Ø±Õ±³°ü½çÃæ
+    // å…³é—­èƒŒåŒ…ç•Œé¢
     isOpen = false;
 }
 
 
 void Bag::updateItemInfo(cocos2d::Vec2 position)
 {
-    // ¼ì²éÊó±êÎ»ÖÃÊÇ·ñÔÚÄ³¸öÎïÆ·ÉÏ
+    // æ£€æŸ¥é¼ æ ‡ä½ç½®æ˜¯å¦åœ¨æŸä¸ªç‰©å“ä¸Š
     for (int i = 0; i < _itemSprites.size(); ++i)
     {
         auto nowScene = Director::getInstance()->getRunningScene();
@@ -168,7 +170,7 @@ void Bag::updateItemInfo(cocos2d::Vec2 position)
         }
     }
 
-    // Èç¹ûÊó±ê²»ÔÚÈÎºÎÎïÆ·ÉÏ£¬Çå³ıÎïÆ·ĞÅÏ¢
+    // å¦‚æœé¼ æ ‡ä¸åœ¨ä»»ä½•ç‰©å“ä¸Šï¼Œæ¸…é™¤ç‰©å“ä¿¡æ¯
     _itemInfoLabel->setString("");
     _selectedItemIndex = -1;
 }

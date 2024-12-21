@@ -4,8 +4,9 @@
 #include "person.h"
 USING_NS_CC;
 
+
 //tool是可以手持的
-class Tool : public cocos2d::Node {
+class Tool : public Node {
 protected:
     std::string _name;
     int _level;
