@@ -5,18 +5,19 @@
 USING_NS_CC;
 
 
-//tool是可以手持的
+//5大工具
 class Tool : public Node {
 protected:
     std::string _name;
     int _level;
     int _attackPower;
-    
+//    int _num;
 
 public:
     cocos2d::Sprite* _toolsprite;
     Tool(){}
-    Tool(const std::string& name, int level = -1, int attackPower = 0):_name(name),_level(level),_attackPower(attackPower){}
+    Tool(const std::string& name, int level = 1, int attackPower = 0):
+        _name(name),_level(level),_attackPower(attackPower){}
 //    virtual ~Tool();
 
     bool init(const std::string& name, int level = 1, int attackPower = 0);

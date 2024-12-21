@@ -49,7 +49,7 @@ public:
     void addItem(const item& MyItem); 
 
     // 移除工具或材料
-    void removeItem(const item& MyItem);
+    int removeItem(const item& MyItem);
 
     // 显示背包内容
     void displayBag();
@@ -63,7 +63,7 @@ public:
     std::vector<item> getItems() { return _items; };
 private:
     //物品列表
-    std::vector<item> _items(36);
+    std::vector<item> _items;
 
     //物品精灵列表
     std::vector<cocos2d::Sprite*> _itemSprites;

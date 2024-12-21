@@ -39,7 +39,7 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
     int floorGID = _floorLayer->getTileGIDAt(tileCoord);  
     int ObjectGID = objectLayer->getTileGIDAt(tileCoord);
     
-    if (floorGID != 0 && ObjectGID == 0)
+    if (floorGID != 0 /* && ObjectGID == 0*/)
     {
         return true;
     }
