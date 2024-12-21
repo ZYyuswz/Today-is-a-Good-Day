@@ -24,7 +24,7 @@ void Drop::addDropItem(const std::string& itemType, const std::string& texturePa
 }
 
 // 生成掉落物
-void Drop::generate() { 
+void Drop::generate() {
     if (!targetLayer) {
         CCLOG("Drop object has no target layer!");
         return;
@@ -53,11 +53,18 @@ void Drop::generate() {
         dropSprite->setPosition(pixelPosition + offset);
         // 使用 ID 设置标记
         dropSprite->setTag(item.id);
+        // 赋予名字
+        (*dropSprite).type = this->getType();
         // 将精灵的图像上下颠倒
         dropSprite->setFlippedY(false);
         // 将掉落物添加到目标层
         targetLayer->addChild(dropSprite);
     }
+}
+
+// 返回掉落物的类型
+std::string Drop::getType() {
+    return this->dropItems.front().type;
 }
 
 // 删除掉落物（根据 ID）

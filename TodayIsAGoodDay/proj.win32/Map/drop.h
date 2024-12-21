@@ -17,16 +17,16 @@ struct DropItem {
 };
 
 // 掉落物类型结构
-class Dropper : public Sprite{
+class Dropper : public Sprite {
 public:
     std::string type;
     Vec2 tilePosition;
-    Dropper(Vec2 tile) :tilePosition(tile){}
+    Dropper(Vec2 tile) :tilePosition(tile) {}
     // 获取掉落物的瓦片坐标
     Vec2 getTilePosition() { return tilePosition; }
 };
 
-class Drop { 
+class Drop {
 protected:
     Vec2 dropPosition;                       // 掉落物的初始坐标
     std::vector<DropItem> dropItems;         // 掉落物的类型和贴图列表
@@ -52,6 +52,9 @@ public:
 
     // 删除掉落物（根据 ID）
     void removeDropItemById(int id);
+
+    // 返回掉落物的类型
+    std::string getType();
 };
 
 class TreeDrop : public Drop {

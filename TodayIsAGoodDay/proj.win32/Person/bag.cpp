@@ -158,8 +158,7 @@ void Bag::closeBag()
         bagBackground->removeFromParent();
     }
 
-    // 关闭背包界面
-    isOpen = false;
+   
 }
 
 
