@@ -15,7 +15,7 @@ USING_NS_CC;
 
 
 //总控鼠标按键
-//按下时的调用
+//按下时的调用 
 void control_mouseclick(Vec2 mouse_pos)
 {
 	//鼠标瓦片坐标
