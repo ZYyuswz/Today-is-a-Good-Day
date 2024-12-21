@@ -173,7 +173,6 @@ bool is_have_plough(Vec2 tilePosition)
     return false;
 }
 
-
 /*工具：返回可拾取掉落物的vector容器
 * 传入参数：
 * Vec2 tilePosition：人物坐标
