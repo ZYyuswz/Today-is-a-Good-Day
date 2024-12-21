@@ -30,15 +30,16 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
     cocos2d::Vec2 targetPosition = currentPosition + cocos2d::Vec2(deltaX, deltaY);
      
     auto _floorLayer = currentMap->getLayer("floor");
-    
+    auto objectLayer = currentMap->getLayer("floor");
+
     
     // 将目标位置转换为左下瓦片坐标
     cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap->getPosition());
     tileCoord.y = currentMap->getMapSize().height - tileCoord.y;
     int floorGID = _floorLayer->getTileGIDAt(tileCoord);  
-
+    int ObjectGID = objectLayer->getTileGIDAt(tileCoord);
     
-    if (floorGID != 0)
+    if (floorGID != 0 /* && ObjectGID == 0*/)
     {
         return true;
     }
@@ -159,8 +160,11 @@ void Person::PersonMove(float deltaX, float deltaY)
     }
     else {
         moveTileMap(newTiledPosition, currentMap);
+        
     }
-
+    collectItems();
+    treeBlock(_sprite->getPosition());
+    updateTreeBlock(_sprite->getPosition());
 }
 
 

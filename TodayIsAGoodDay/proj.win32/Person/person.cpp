@@ -106,9 +106,14 @@ void Person::collectItems()
     Vec2 currentPosition = _sprite->getPosition();
     auto currentTiledMap = MapManager::getInstance()->getCurrentMap();
     Vec2 currentTiledPosition = convertWorldToTileCoord(currentPosition, currentTiledMap->getPosition());
-    std::vector <Dropper*>* dropVector= getDrops(currentTiledPosition);
-    for (int i = 0; i < dropVector->size(); i++) {
-        MyBag.addItem((*dropVector)[i]->type);
+    std::vector <Dropper*>* dropVector = getDrops(currentTiledPosition);
+    if (dropVector->empty()) {
+        CCLOG("EMPTY");
+        delete dropVector;
+        return;
     }
-    delete[] dropVector;
+    for (auto i = 0; i < dropVector->size(); i++) {
+        MyBag.addItem(item((*dropVector)[i]->type));
+    }
+    delete dropVector;
 }

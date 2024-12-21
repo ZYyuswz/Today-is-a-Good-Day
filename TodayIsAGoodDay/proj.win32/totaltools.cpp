@@ -173,7 +173,6 @@ bool is_have_plough(Vec2 tilePosition)
     return false;
 }
 
-
 /*工具：返回可拾取掉落物的vector容器
 * 传入参数：
 * Vec2 tilePosition：人物坐标
@@ -194,10 +193,11 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
         CCLOG("DropLayer not found in the map!--getDrops");
         return nullptr;
     }
-    // 遍历 dropLayer 的子节点
-    for (auto child : dropLayer->getChildren()) {
+    // 手动迭代 dropLayer 的子节点
+    auto children = dropLayer->getChildren(); // 获取子节点列表
+    for (auto it = children.begin(); it != children.end(); /* 不手动递增 */) {
         // 转换为 Dropper 类
-        Dropper* drop = dynamic_cast<Dropper*>(child);
+        Dropper* drop = dynamic_cast<Dropper*>(*it);
         if (drop) {
             Vec2 dropPosition = drop->getTilePosition();
             double delta_x = dropPosition.x - personPosition.x;
@@ -206,7 +206,14 @@ std::vector<Dropper*>* getDrops(Vec2 personPosition) {
             if (abs(delta_x) <= PICK_RADIUS && abs(delta_y) <= PICK_RADIUS) {
                 pickDrops->push_back(drop);
                 dropLayer->removeChild(drop, false);  // 移除节点但不销毁
+                it = children.erase(it); // 手动移除迭代器
             }
+            else {
+                ++it; // 递增迭代器
+            }
+        }
+        else {
+            ++it; // 递增迭代器
         }
     }
     return pickDrops;
