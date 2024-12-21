@@ -29,7 +29,7 @@ enum class DIRECTION {
     DOWN   //下
 };
 //人物最远鼠标点击距离
-#define MAX_PERSON_LENTH 4
+#define MAX_PERSON_LENTH 4 
 
 //工具宏定义
 #define TOOL_HAMMER "hammer" //锤子

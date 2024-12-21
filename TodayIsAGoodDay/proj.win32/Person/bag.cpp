@@ -27,7 +27,7 @@ Bag::Bag(): _selectedItemIndex(-1)
 }
 
 //°´¼üº¯Êý
-void Bag::changeBag()
+void Bag::changeBag() 
 {
     isOpen = !isOpen;
     if (isOpen)

@@ -26,7 +26,7 @@ int preload_BGM() {
     return 0;
 }
 void play_BGM(Weather current_weather)
-{
+{ 
     SimpleAudioEngine::getInstance()->playBackgroundMusic("setting/BGM.mp3", true);
     if (current_weather == Weather::Rainy)SimpleAudioEngine::getInstance()->playEffect("setting/Rain_BGM.mp3", true); // 使用 playEffect 播放音效
 }

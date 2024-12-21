@@ -26,7 +26,7 @@ public:
     const std::string& getName() const { return _name; }
     void setName(const std::string& name) { _name = name; }
 
-    int getLevel() const { return _level; }
+    int getLevel() const { return _level; } 
     void setLevel(int level) { _level = level; }
 
     int getAttackPower() const { return _attackPower; }

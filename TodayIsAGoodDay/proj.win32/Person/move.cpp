@@ -28,7 +28,7 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
     // 计算目标位置
     cocos2d::Vec2 currentPosition = _sprite->getPosition();
     cocos2d::Vec2 targetPosition = currentPosition + cocos2d::Vec2(deltaX, deltaY);
-
+     
     auto _floorLayer = currentMap->getLayer("floor");
     
     // 将目标位置转换为瓦片坐标

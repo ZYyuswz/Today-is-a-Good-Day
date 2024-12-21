@@ -45,7 +45,7 @@ public:
     void changeBag();
 
     // 添加工具或材料
-    void addItem(const item& MyItem);
+    void addItem(const item& MyItem); 
 
     // 移除工具或材料
     void removeItem(const item& MyItem);

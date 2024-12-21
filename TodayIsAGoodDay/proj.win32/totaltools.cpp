@@ -337,7 +337,7 @@ void harvest(Vec2 tilePosition) {
     for (auto child : cropsLayer->getChildren()) {
         // 检查子节点是否是 Crops 类的实例
         Crops* crop = dynamic_cast<Crops*>(child);
-        if (crop && crop->getTilePosition() == tilePosition) {
+        if (crop && crop->getTilePosition() == tilePosition) { 
             // 检查是否成熟
             if (crop->getStage() == Stage::Mature) {
                 crop->harvest();
