@@ -9,9 +9,13 @@
 #include"menu.h"
 #include "Time.h"
 #include "Setting/setting.h"
-
-//本游戏总控函数
 using namespace cocos2d;
+
+//本游戏启动函数
+//加载纹理图集
+//启动BGM
+//进入初始场景
+
 int gamemain()
 {
     // create a scene. it's an autorelease object

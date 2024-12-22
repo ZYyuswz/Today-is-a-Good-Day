@@ -1632,3 +1632,4 @@ void store_thing::tomatoseed(Ref* sender) {
     auto tomato = item(SEED_TOMATO); // 创建番茄种子
     leading_charactor.MyBag.addItem(tomato); // 将种子添加到角色的背包
 }
+

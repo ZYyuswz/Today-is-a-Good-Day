@@ -56,7 +56,7 @@ void PlayerControlLayer::setPlayer(Person* player) {
     this->_player = player;
 }
 
-
+//键盘监听按下时逻辑
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 
@@ -215,20 +215,86 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
         }
         break;
         case EventKeyboard::KeyCode::KEY_7:
-           
-            break;
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[6].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        break;
         case EventKeyboard::KeyCode::KEY_8:
-
-            break;
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[7].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        break;
         case EventKeyboard::KeyCode::KEY_9:
-
-            break;
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[8].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        break;
         case EventKeyboard::KeyCode::KEY_EQUAL:
-
-            break;
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[11].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        break;
         case EventKeyboard::KeyCode::KEY_MINUS:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[10].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        case EventKeyboard::KeyCode::KEY_F:
+        {
+            // 创建 Pig
+            auto pig = Pig::create();
+            auto currentTiledMap = MapManager::getInstance()->getCurrentMap();
+            currentTiledMap->addChild(pig, 10);
+            //           pig->setTilePosition(Vec2(35, 35), currentTiledMap); // 设置 Pig 在瓦片地图上的初始位置            
+            pig->setScale(1.0f);
+            pig->setPosition(500, 500);
 
-            break;
+        }
+        break;
         case EventKeyboard::KeyCode::KEY_SPACE:
             npc1->showDialog();
             npc1->updateDialog();
@@ -240,7 +306,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
     event->stopPropagation();
 }
 
-
+//键盘监听抬起时逻辑
 void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
     switch (keyCode) {

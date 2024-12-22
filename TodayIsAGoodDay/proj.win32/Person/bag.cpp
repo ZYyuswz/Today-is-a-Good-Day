@@ -29,7 +29,7 @@ Bag::Bag(): _selectedItemIndex(-1),_items(36,item()), _itemSprites(36),_itemLabe
     _items[5]=(item(SEED_CARROT,20));
     _items[6] = (item(SEED_CORN));
     _items[7] = (item(SEED_CABBAGE));
-
+    
 
 }
 

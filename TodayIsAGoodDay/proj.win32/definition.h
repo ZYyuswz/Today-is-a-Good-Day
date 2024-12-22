@@ -128,7 +128,7 @@ enum class DIRECTION {
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.1f 
+#define UPDATE_INTERVAL 1.0f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16
@@ -279,7 +279,7 @@ enum class FishType {
 };
 
 // 宏定义
-#define FISHING_SUCCESS_RATE 0.5  // 钓鱼成功率（0.0 到 1.0）
+#define FISHING_SUCCESS_RATE 1  // 钓鱼成功率（0.0 到 1.0）
 
 #define SERVER_IP "101.132.135.175"  // 服务器 IP
 #define PORT 12345

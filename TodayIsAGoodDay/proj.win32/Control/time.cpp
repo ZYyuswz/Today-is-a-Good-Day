@@ -53,7 +53,7 @@ void GameTime::updateDay() {
         }
     }
     // 随机生成天气
-    bool weather_condition = random_bernoulli(0.8);
+    bool weather_condition = random_bernoulli(0.5);
     if (weather_condition)
     {
         weather = Weather::Rainy;

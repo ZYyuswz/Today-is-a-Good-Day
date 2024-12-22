@@ -13,7 +13,7 @@ void volume_adjustment(float num);
 
 ui::Slider* createVolumeSlider();
 
-/* --------- 全局层 ---------- */
+/* --------- 全局设置与显示层 ---------- */
 class GlobalLayer : public cocos2d::Layer
 {
 public:
