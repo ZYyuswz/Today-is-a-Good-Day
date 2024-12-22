@@ -130,4 +130,69 @@ void GlobalLayer::updateTimeDisplay(float dt)
     
     _timeLabel->setString("Year" + st_year + " " + st_season + " Day " + st_day);
     _timeLabell->setString(st_hour + " : " + st_minute);
+
+}
+
+
+void GlobalLayer::scene_setting()
+{
+    
+    Scene* currentscene = MapManager::getInstance()->getCurrentScene();
+    if (SETTING_MODE == true) {
+
+
+        SETTING_MODE = false;
+    }
+    else {
+        auto backgroung = Sprite::create("menu/settingbackground.png"); // 替换为你的 .tmx 文件名
+
+
+
+        //测试
+        int visiablemood = get_window_size();
+        if (visiablemood == SMALL_WINDOW)
+        {
+            //设置图缩放比例
+            backgroung->setScale(2.0);
+            // 获取当前窗口的尺寸
+            auto director = Director::getInstance();
+            auto glview = director->getOpenGLView();
+            float screenWidth = glview->getFrameSize().width;
+            float screenHeight = glview->getFrameSize().height;
+            backgroung->setAnchorPoint(Vec2(0.5f, 0.5f));
+            backgroung->setPosition(screenWidth / 2, screenHeight / 2);
+            backgroung->setName("setting_background");
+        }
+        currentscene->addChild(backgroung);
+        auto backitem = MenuItemImage::create("menu/back_no.png",
+            "menu/back_yes.png", 
+            CC_CALLBACK_1(GlobalLayer::back, this));
+        backitem->setPosition(Vec2(800, 470));
+        backitem->setScale(0.5);
+        auto menu = Menu::create(backitem, nullptr);
+        menu->setPosition(Vec2::ZERO);
+        backgroung->addChild(menu);
+        auto volumn_button = createVolumeButton();
+        backgroung->addChild(volumn_button);
+        if (volumn_button) {
+            CCLOG("Volume button created successfully!");
+        }
+        else {
+            CCLOG("Failed to create volume button!");
+        }
+        SETTING_MODE = true;
+    }
+    
+   
+
+}
+
+void GlobalLayer::back(cocos2d::Ref* sender)
+{
+    Scene* currentscene = MapManager::getInstance()->getCurrentScene();
+    auto shezhi = currentscene->getChildByName("setting_background");
+    if (shezhi) {
+        shezhi->removeFromParent();
+    }
+
 }

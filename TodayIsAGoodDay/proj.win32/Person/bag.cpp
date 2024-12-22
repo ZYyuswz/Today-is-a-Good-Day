@@ -150,6 +150,7 @@ void Bag::closeBag()
     {
         sprite->removeFromParent();
     }
+
     // 清除物品信息标签
     for (auto label : _itemLabels)
     {

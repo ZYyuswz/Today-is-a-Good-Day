@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "cocos2d.h"
 #include "Map/drop.h"
 #include <map>
@@ -7,7 +7,7 @@
 
 USING_NS_CC;
 
-/*ÕâÒ»²¿·ÖÊÇºê¶¨Òå£¬Îª±ÜÃâºê¶¨Òå³åÍ»£¬ºóÆÚÓ¦¸Ã»¹ÒªºÏ²¢µ½Ò»¸öÍ³Ò»µÄÍ·ÎÄ¼ş*/
+/*è¿™ä¸€éƒ¨åˆ†æ˜¯å®å®šä¹‰ï¼Œä¸ºé¿å…å®å®šä¹‰å†²çªï¼ŒåæœŸåº”è¯¥è¿˜è¦åˆå¹¶åˆ°ä¸€ä¸ªç»Ÿä¸€çš„å¤´æ–‡ä»¶*/
 const int MAN = 1;
 const int WOMAN = 0;
 
@@ -16,11 +16,11 @@ const int INIT_MONEY = 100;
 const int INIT_PX = 0;
 const int INIT_PY = 0;
 
-const int AXE = 100;//¸«Í·£¬¿³Ê÷ÓÃ
-const int HAMMER = 101;//ÀÆÍ·£¬ÔäÊ¯Í·
-const int DRAFT = 102; //³úÍ·£¬³úµØÓÃ
-const int KETTLE = 103;//Ë®ºø£¬½½»¨
-const int FISHING_POLE = 104;//µöÓã¸Í
+const int AXE = 100;//æ–§å¤´ï¼Œç æ ‘ç”¨
+const int HAMMER = 101;//æ¦”å¤´ï¼Œå‡¿çŸ³å¤´
+const int DRAFT = 102; //é”„å¤´ï¼Œé”„åœ°ç”¨
+const int KETTLE = 103;//æ°´å£¶ï¼Œæµ‡èŠ±
+const int FISHING_POLE = 104;//é’“é±¼ç«¿
 
 
 
@@ -28,53 +28,54 @@ struct item
 {
     std::string name;
     int num;
-    int value; //toolsµÄvalueÎª0
+    int value; //toolsçš„valueä¸º0
 
-    item(const std::string itemName,const int itemNum = 1) 
-        :name(itemName),value(itemPrices.find(itemName)->second),num(itemNum) {}
-    item() : name("nothing"), num(0), value(0) {} // Ä¬ÈÏ¹¹Ôìº¯Êı
+    item( std::string itemName, const int itemNum = 1)
+        :name(itemName), value(itemPrices.find(itemName)->second), num(itemNum) {}
+    item() : name("nothing"), num(0), value(0) {} // é»˜è®¤æ„é€ å‡½æ•°
 };
 
 
 class Bag : public Node
 {
 public:
-    // ¹¹Ôìº¯Êı
+    // æ„é€ å‡½æ•°
     Bag();
 
-    //¼àÌıÆ÷£¬°´E´ò¿ª±³°ü
+    //ç›‘å¬å™¨ï¼ŒæŒ‰Eæ‰“å¼€èƒŒåŒ…
     void changeBag();
 
-    // Ìí¼Ó¹¤¾ß»ò²ÄÁÏ
-    void addItem(const item& MyItem); 
+    // æ·»åŠ å·¥å…·æˆ–ææ–™
+    void addItem(const item& MyItem);
 
-    // ÒÆ³ı¹¤¾ß»ò²ÄÁÏ
+    // ç§»é™¤å·¥å…·æˆ–ææ–™
     int removeItem(const item& MyItem);
 
-    // ÏÔÊ¾±³°üÄÚÈİ
+    // æ˜¾ç¤ºèƒŒåŒ…å†…å®¹
     void displayBag();
 
-    //¹Ø±Õ±³°ü
+    //å…³é—­èƒŒåŒ…
     void closeBag();
 
-    // ¸üĞÂÎïÆ·ĞÅÏ¢
+    // æ›´æ–°ç‰©å“ä¿¡æ¯
     void updateItemInfo(cocos2d::Vec2 position);
 
     std::vector<item> getItems() { return _items; };
 private:
-    //ÎïÆ·ÁĞ±í
+    //ç‰©å“åˆ—è¡¨
     std::vector<item> _items;
 
-    //ÎïÆ·¾«ÁéÁĞ±í
+    //ç‰©å“ç²¾çµåˆ—è¡¨
     std::vector<cocos2d::Sprite*> _itemSprites;
 
-    //ÎïÆ·±êÇ©ÁĞ±í
+
     std::vector<Label* >_itemLabels;
+
     int _selectedItemIndex;
 
     bool isOpen;
 
-    cocos2d::EventListenerKeyboard* _keyboardListener;  //¼üÅÌ¼àÌıÆ÷
+    cocos2d::EventListenerKeyboard* _keyboardListener;  //é”®ç›˜ç›‘å¬å™¨
 };
 
 
@@ -83,15 +84,15 @@ class Person// : public cocos2d::Node
 protected:
     std::string _name;
     std::string _farmName;
-    int _sex;                                                    //Íæ¼ÒĞÔ±ğ
+    int _sex;                                                    //ç©å®¶æ€§åˆ«
     int _level;
     int _energy;
-    int _HP;                                                // Íæ¼ÒÉúÃüÖµ
+    int _HP;                                                // ç©å®¶ç”Ÿå‘½å€¼
     int _money;
     int experience_all;
-    
 
-    //ÒÆ¶¯¶¯»­
+
+    //ç§»åŠ¨åŠ¨ç”»
     cocos2d::Animation* _frontWalkAnimation;
     cocos2d::Animation* _backWalkAnimation;
     cocos2d::Animation* _leftWalkAnimation;
@@ -104,19 +105,20 @@ protected:
 
     Tool* currentTool;
 
-public: 
+public:
     friend Tool;
     friend Bag;
-    Sprite* _sprite;   //ÈËÎï¾«Áé
+    Sprite* _sprite;   //äººç‰©ç²¾çµ
     Bag MyBag;
 
-    // ¹¹Ôìº¯Êı
+    // æ„é€ å‡½æ•°
     Person();
 
-       // ³õÊ¼»¯º¯Êı
+
+    // åˆå§‹åŒ–å‡½æ•°
     virtual bool init();
 
-    // »ñÈ¡ºÍÉèÖÃÊôĞÔ
+    // è·å–å’Œè®¾ç½®å±æ€§
     std::string getname() const { return _name; }
     void setName(const std::string& name) { _name = name; }
 
@@ -140,44 +142,44 @@ public:
     Sprite* getSprite()const { return _sprite; }
 
     int toolLevel() { return _level > 50 ? 2 : 1; }
-    //¿ÛÑª
+    //æ‰£è¡€
     void Person::decreaseHP(const int attack);
 
-    //ÅĞ¶ÏËÀÃ»ËÀ
+    //åˆ¤æ–­æ­»æ²¡æ­»
     bool isDead() { return _HP <= 0; }
 
-    //ËÀÁË£¬¶ÔÊ¬Ìå½øĞĞ´¦Àí
+    //æ­»äº†ï¼Œå¯¹å°¸ä½“è¿›è¡Œå¤„ç†
     void dead();
 
     void levelUP();
 
     void moneyUP(int deltaMoney);
 
-    /*ÒÔÏÂÎªmove¹¦ÄÜÏà¹Øº¯Êı*/
-    // ´´½¨¶¯»­
+    /*ä»¥ä¸‹ä¸ºmoveåŠŸèƒ½ç›¸å…³å‡½æ•°*/
+    // åˆ›å»ºåŠ¨ç”»
     Animation* createAnimations(const std::string& direction);
     void createAnimate();
 
     void collectItems();
 
     void Person::useTools();
-    // ¸¨Öú·½·¨£ºÒÆ¶¯ÍßÆ¬µØÍ¼
+    // è¾…åŠ©æ–¹æ³•ï¼šç§»åŠ¨ç“¦ç‰‡åœ°å›¾
     void moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap);
 
-    // ¸¨Öú·½·¨£ºÒÆ¶¯ÈËÎï
+    // è¾…åŠ©æ–¹æ³•ï¼šç§»åŠ¨äººç‰©
     void movePlayer(const cocos2d::Vec2& playerPosition);
 
-    // ¸¨Öú·½·¨£ºÅĞ¶ÏÊÇ·ñÔÚ±ß½çÖ®ÄÚ
+    // è¾…åŠ©æ–¹æ³•ï¼šåˆ¤æ–­æ˜¯å¦åœ¨è¾¹ç•Œä¹‹å†…
     bool isWithinBoundary(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap);
 
-    // ÒÆ¶¯º¯Êı
+    // ç§»åŠ¨å‡½æ•°
     void PersonMove(float deltaX, float deltaY);
     void PersonStop(float deltaX, float deltaY);
 
-    //ÅĞ¶ÏÊÇ·ñ¿ÉÒÔÒÆ¶¯
+    //åˆ¤æ–­æ˜¯å¦å¯ä»¥ç§»åŠ¨
     bool canMove(float deltaX, float deltaY, TMXTiledMap* currentMap);
 
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     void person_construction(const std::string& name, const int& sex, const std::string& farmName, Scene* currentScene,
         int level = 0, int HP = 0, int energy = 0, int money = 0);
 
