@@ -113,7 +113,7 @@ void Person::collectItems()
         return;
     }
     for (auto i = 0; i < dropVector->size(); i++) {
-        //MyBag.addItem(item((*dropVector)[i]->type));
+        MyBag.addItem(item((*dropVector)[i]->type));
     }
     delete dropVector;
 }
