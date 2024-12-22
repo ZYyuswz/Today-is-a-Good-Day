@@ -88,10 +88,7 @@ void control_mouseclick(Vec2 mouse_pos)
 					//IF fishingpole
 
 				}
-				else if (person_tool == TOOL_KETTLE) {
-					//if kattle
-
-				}
+				
 			}
 			else {
 
@@ -185,6 +182,15 @@ void control_mouseclick(Vec2 mouse_pos)
 						if (leading_charactor.MyBag.removeItem(item(SEED_TOMATO)) == 0) {
 							delete leading_charactor.getTool();
 							leading_charactor.setTool(nullptr);
+						}
+					}
+					else if (person_tool == TOOL_KETTLE) {
+						//if kattle
+						extern Plough* getPloughOnMap(Vec2 tilePosition);
+						auto item = getPloughOnMap(mouse_tile_pos);
+						if (item != NULL) {
+							leading_charactor.useTools();
+							item->water();
 						}
 					}
 				}
@@ -509,6 +515,38 @@ void manor_change_map()
 	return;
 }
 
+
+
+
+/*工具：返回鼠标点击坐标的plough的指针，如果没有为nullptr
+* 传入参数：
+* Vec2 tilePosition：鼠标点击的坐标
+* 返回值：
+* Plough*：基类指针
+*/
+Plough* getPloughOnMap(Vec2 tilePosition) {
+	//得到当前地图
+	auto map = MapManager::getInstance()->getCurrentMap();
+	if (!map) {
+		CCLOG("Map not found in the scene!-getPloughOnMap");
+		return nullptr;
+	}
+	// 获取 ploughLayer
+	auto ploughLayer = dynamic_cast<Layer*>(map->getChildByName("PloughLayer"));
+	if (!ploughLayer) {
+		CCLOG("ObjectLayer not found in the map!-getPloughOnMap");
+		return nullptr;
+	}
+	// 遍历 ObjectLayer 的子节点
+	for (auto child : ploughLayer->getChildren()) {
+		// 检查子节点是否是 Plough 类的实例
+		Plough* plough = dynamic_cast<Plough*>(child);
+		if (plough && plough->getTilePosition() == tilePosition) {
+			return plough;
+		}
+	}
+	return nullptr;
+}
 
 
 

@@ -2,7 +2,6 @@
 
 #include "totaltools.h"
 
-#include "global.h"
 
 #include <random>
 
