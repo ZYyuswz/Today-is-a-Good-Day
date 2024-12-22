@@ -71,22 +71,22 @@ void Bag::addItem(const item& MyItem)
 int Bag::removeItem(const item& MyItem)
 {
     int index = 0;
-    for (index = 0; _items[index].name != "nothing" && index < 36; ++index)
+    for (auto it = _items.begin(); it != _items.end(); ++it)
     {
-        if (_items[index].name == MyItem.name)
+        if (it->name == MyItem.name)
         {
             // 减少物品数量
-            _items[index].num -= MyItem.num;
+            it->num -= MyItem.num;
 
             // 如果物品数量为0或更少，则移除该物品
-            if (_items[index].num <= 0)
+            if (it->num <= 0)
             {
                 _items[index] = item(); //改为nothing
                 return 0;
             }
-            return _items[index].num;
+            return it->num;
         }
-        return -1;
+        index++;
     }
 }
 
