@@ -40,14 +40,28 @@ void GameTime::updateDay() {
             year++;
         season = static_cast<Season>((static_cast<int>(season) + 1) % 4);  // 切换季节
 
-        force_back_to_manor();
-        manor_change_map();
+        //force_back_to_manor();
+        //manor_change_map();
 
     }
+    Scene* currentscene = MapManager::getInstance()->getCurrentScene();
+    if (GameTime::getInstance()->getWeather() == Weather::Rainy) {
+        // 检查是否存在名为 "RainEffect" 的粒子效果
+        auto rain = currentscene->getChildByName("RainEffect");
+        if (rain) {
+            rain->removeFromParent(); // 安全移除
+        }
+    }
     // 随机生成天气
-    bool weather_condition = random_bernoulli(0.8);
+    bool weather_condition = random_bernoulli(0.5);
     if (weather_condition)
+    {
         weather = Weather::Rainy;
+        GameTime* gametime = GameTime::getInstance();
+        Scene* currentscene = MapManager::getInstance()->getCurrentScene();
+        if (gametime->getWeather() == Weather::Rainy)
+            currentscene->addChild(gametime->RainLayers(), RAINLAYER); //下雨场景实现示例
+    }
     else
         weather = Weather::Sunny;
     CCLOG("Weather changed to: %d", static_cast<int>(weather));  // 输出天气切换日志
@@ -88,19 +102,10 @@ void GameTime::updateDay() {
     Crops::updateAll(cropsLayer);
     // 3. plough
     Plough::updateAll(ploughLayer);
-
-    //// test
-    //auto tree2 = new Tree(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-6), TreeType::Maple, Stage::Mature);
-    //tree2->reduceHealth(100);
-    //auto Pumpkin1 = new Pumpkin(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y - 7), Stage::Mature);
-    //Pumpkin1->harvest();
-    //auto stone1 = new Stone(map, objectLayer, Vec2(SPRING_MANOR_ENTER_X, SPRING_MANOR_ENTER_Y-8), StoneType::Gold);
-    //stone1->reduceHealth(100);
-
 }
 
 // 每隔 1 秒（UPDATE_INTERVAL 定义为 1.0f）调用一次updateTime()方法游戏时间增加10分钟
-void GameTime::updateTime(){
+void GameTime::updateTime() {
     // 增加十分钟
     time[1] += 10;
 
@@ -115,12 +120,78 @@ void GameTime::updateTime(){
         }
     }
 
+    // 获取当前场景
+    auto currentScene = MapManager::getInstance()->getCurrentScene();
+    if (!currentScene) {
+        CCLOG("Current scene not found!");
+        return;
+    }
+    // 如果在矿洞和家里取消下雨特效
+    if (currentScene->getName() == SCENE_MINE || currentScene->getName() == SCENE_HOME||currentScene->getName()==SCENE_STORE) {
+        if (GameTime::getInstance()->getWeather() == Weather::Rainy) {
+            // 检查是否存在名为 "RainEffect" 的粒子效果
+            auto rain = currentScene->getChildByName("RainEffect");
+            if (rain) {
+                rain->removeFromParent(); // 安全移除
+            }
+            else {
+                CCLOG("non rain");
+            }
+        }
+    }
+    else {
+        if (GameTime::getInstance()->getWeather() == Weather::Rainy) {
+            // 检查是否已存在雨水粒子效果
+            if (!currentScene->getChildByName("RainEffect")) {
+                auto rainLayer = GameTime::getInstance()->RainLayers();
+                rainLayer->setName("RainEffect"); // 设置名字以便管理
+                currentScene->addChild(rainLayer, RAINLAYER); // 安全添加雨水效果
+            }
+        }
+    }
+    // 特殊逻辑：如果时间达到 18:00 或 2:00，则天黑
+    if (time[0] >= 18 || time[0] <= 2) {
+        // 检查是否在特定场景（如 SCENE_MINE 或 SCENE_HOME）
+        if (currentScene->getName() == SCENE_MINE || currentScene->getName() == SCENE_HOME || currentScene->getName() == SCENE_STORE) {
+            // 直接处理时间达到 2:00 的逻辑
+            if (time[0] == 2) {
+                updateDay();
+            }
+            return;
+        }
+        // 处理天黑逻辑
+        auto overlay = currentScene->getChildByName("Overlay");
+        if (!overlay) {
+            overlay = LayerColor::create(Color4B(0, 0, 0, 0)); // 初始透明度为 0
+            overlay->setName("Overlay");
+            overlay->setPosition(0, 0);
+            currentScene->addChild(overlay);
+        }
+        // 使用 Action 实现透明度的渐变（逐渐变暗）
+        auto fadeAction = FadeTo::create(1.0f, 128); // 1.0f 是渐变时间（1 秒），128 是目标透明度
+        overlay->runAction(fadeAction);
+    }
+    else {
+        // 处理天亮逻辑
+        auto overlay = currentScene->getChildByName("Overlay");
+        if (overlay) {
+            // 使用 Action 实现透明度的渐变（逐渐变亮）
+            auto fadeAction = FadeTo::create(1.0f, 0); // 1.0f 是渐变时间（1 秒），0 是目标透明度
+            overlay->runAction(fadeAction);
+
+            // 渐变完成后移除 Overlay 节点
+            auto removeAction = CallFunc::create([overlay, currentScene]() {
+                currentScene->removeChild(overlay);
+                });
+            overlay->runAction(Sequence::create(fadeAction, removeAction, nullptr));
+        }
+    }
     // 特殊逻辑：如果时间达到 2:00，则送回家并更新天数
     if (time[0] == 2) {
-        // 送回家
         updateDay();
     }
-    //printTime();
+    // printTime();
+    return;
 }
 
 void GameTime::startAutoUpdate() {
@@ -174,9 +245,39 @@ int GameTime::getTotalDays() const {
 
 // 打印时间，调试用
 void GameTime::printTime() const {
-    CCLOG("Day:%d, TotalDays:%d, Hour:%d, Minute:%d",day,totalDays,time[0], time[1]);
-} 
+    CCLOG("Day:%d, TotalDays:%d, Hour:%d, Minute:%d", day, totalDays, time[0], time[1]);
+}
 
 std::vector<int> GameTime::getTime() const {
     return { time[0], time[1] };  // 返回一个 std::vector
+}
+
+//下雨场景添加
+ParticleRain* GameTime::RainLayers() {
+    // 添加雨水粒子效果
+    auto rainParticle = ParticleRain::create();
+    rainParticle->setName("RainEffect"); // 设置粒子系统的名字
+    Size screensize = Director::getInstance()->getVisibleSize();
+    rainParticle->setPosition(Vec2(screensize.width / 2, screensize.height)); // 设置粒子系统的位置
+    rainParticle->setLife(10.0f); // 设置雨滴的生命周期
+    rainParticle->setSpeed(400.0f); // 设置雨滴的速度
+    rainParticle->setAngle(-90.0f); // 设置雨滴的角度
+    rainParticle->setStartColor(Color4F(0.5f, 0.5f, 1.0f, 1.0f)); // 设置雨滴的颜色
+    rainParticle->setEndColor(Color4F(0.5f, 0.5f, 1.0f, 0.8f)); // 设置雨滴的透明度
+    rainParticle->setTotalParticles(2000); // 设置雨滴的数量
+
+    // 设置雨滴的大小
+    rainParticle->setStartSize(18.0f); // 设置雨滴的初始大小为 18 像素
+    rainParticle->setStartSizeVar(5.0f); // 设置雨滴大小的变化范围为 5 像素
+    rainParticle->setEndSize(10.0f); // 设置雨滴的结束大小为 10 像素
+    rainParticle->setEndSizeVar(2.0f); // 设置雨滴结束大小的变化范围为 2 像素
+
+    // 检查纹理是否正确加载
+    if (rainParticle->getTexture() == nullptr) {
+        CCLOG("Error: Particle texture is missing!");
+    }
+    else {
+        CCLOG("Particle texture loaded successfully!");
+    }
+    return rainParticle;
 }

@@ -8,10 +8,14 @@
 #include "ui/CocosGUI.h"
 #include"menu.h"
 #include "Time.h"
-
-
-//本游戏总控函数
+#include "Setting/setting.h"
 using namespace cocos2d;
+
+//本游戏启动函数
+//加载纹理图集
+//启动BGM
+//进入初始场景
+
 int gamemain()
 {
     // create a scene. it's an autorelease object
@@ -25,11 +29,9 @@ int gamemain()
     spriteFrameCache->addSpriteFramesWithFile("Crops/crops.plist");
     spriteFrameCache->addSpriteFramesWithFile("Drops/drops_1.plist"); 
 
-    // 启动自动更新
-    GameTime::getInstance()->startAutoUpdate();
-
+  
     
-
+    play_BGM();
     //运行第一幕场景，即欢迎页面
     // run
     director->runWithScene(scene);

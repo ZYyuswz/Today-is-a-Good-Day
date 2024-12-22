@@ -24,7 +24,7 @@
 
 // 人物
 // 人物移动像素点
-#define MOVE_DISTANCE 2.0f
+#define MOVE_DISTANCE 5.0f
 enum class DIRECTION {
     LEFT,  //左
     RIGHT,  //右
@@ -69,6 +69,7 @@ enum class DIRECTION {
 #define SCENE_BEACH "scene_beach"
 #define SCENE_HOME "scene_home"
 #define SCENE_MINE "scene_mine"
+#define SCENE_STORE "scene_store"
 
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
@@ -127,7 +128,7 @@ enum class DIRECTION {
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.1f 
+#define UPDATE_INTERVAL 1.0f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16
@@ -278,7 +279,7 @@ enum class FishType {
 };
 
 // 宏定义
-#define FISHING_SUCCESS_RATE 0.5  // 钓鱼成功率（0.0 到 1.0）
+#define FISHING_SUCCESS_RATE 1  // 钓鱼成功率（0.0 到 1.0）
 
 #define SERVER_IP "101.132.135.175"  // 服务器 IP
 #define PORT 12345

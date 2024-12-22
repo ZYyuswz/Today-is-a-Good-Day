@@ -1,4 +1,4 @@
-#include "cocos2d.h"
+﻿#include "cocos2d.h"
 #include <vector>
 #include <string>
 #include "person.h"
@@ -11,7 +11,8 @@
 const float BAG_LEFT_LOCATION = 500.0;
 const float BAG_UP_LOCATION = 675.0;
 const float BAG_RIGHT_LOCATION = 1600;
-const float BAG_CELL = 95.0;
+const float BAG_CELL_X = 95.0;
+const float BAG_CELL_Y = 105.0;
 
 Bag::Bag(): _selectedItemIndex(-1),_items(36,item()), _itemSprites(36),_itemLabels(36)
 {
@@ -28,7 +29,7 @@ Bag::Bag(): _selectedItemIndex(-1),_items(36,item()), _itemSprites(36),_itemLabe
     _items[5]=(item(SEED_CARROT,20));
     _items[6] = (item(SEED_CORN));
     _items[7] = (item(SEED_CABBAGE));
-
+    
 
 }
 
@@ -132,11 +133,11 @@ void Bag::displayBag()
         _itemLabels[index] = itemLabel;
 
         //挪到下一格
-        x += BAG_CELL;
+        x += BAG_CELL_X;
         if (x > BAG_RIGHT_LOCATION)
         {
             x = BAG_LEFT_LOCATION;
-            y -= BAG_CELL;
+            y -= BAG_CELL_Y;
         }
         index++;
     }

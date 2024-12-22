@@ -3,7 +3,7 @@
 #include "person.h"
 #include "global.h"
 #include "totaltools.h"
-#include "npc.h"
+
 
 extern Person leading_charactor;
 extern NPC* npc1;
@@ -31,24 +31,25 @@ bool Person::canMove(float deltaX, float deltaY, TMXTiledMap* currentMap)
     // 计算目标位置
     cocos2d::Vec2 currentPosition = _sprite->getPosition();
     cocos2d::Vec2 targetPosition = currentPosition + cocos2d::Vec2(deltaX, deltaY);
-     
-    auto _floorLayer = currentMap->getLayer("floor");
-    auto objectLayer = currentMap->getLayer("floor");
 
-    
+    auto _floorLayer = currentMap->getLayer("floor");
+
+
     // 将目标位置转换为左下瓦片坐标
     cocos2d::Vec2 tileCoord = convertWorldToTileCoord(targetPosition, currentMap->getPosition());
+    if (is_have_object(tileCoord - Vec2(0, 1))) { //判断有无物体,需要y轴减1，我也不知道为什么
+        return false;
+    }
+    CCLOG("TP:%f,%f", tileCoord.x, tileCoord.y);
     tileCoord.y = currentMap->getMapSize().height - tileCoord.y;
-    int floorGID = _floorLayer->getTileGIDAt(tileCoord);  
-    int ObjectGID = objectLayer->getTileGIDAt(tileCoord);
-    
-    if (floorGID != 0 /* && ObjectGID == 0*/)
+    int floorGID = _floorLayer->getTileGIDAt(tileCoord);
+
+    if (floorGID != 0)
     {
         return true;
     }
     return false;
 }
-
 
 
 void Person::moveTileMap(const cocos2d::Vec2& playerPosition, TMXTiledMap* tileMap)
@@ -165,7 +166,7 @@ void Person::PersonMove(float deltaX, float deltaY)
         moveTileMap(newTiledPosition, currentMap);
         
     }
-    npc1->runAction(MoveBy::create(0.5f, Vec2(-deltaX, -deltaY)));
+  //  npc1->runAction(MoveBy::create(0.5f, Vec2(-deltaX, -deltaY)));
     collectItems();
     treeBlock(PositionMiddle);
     updateTreeBlock(PositionMiddle);

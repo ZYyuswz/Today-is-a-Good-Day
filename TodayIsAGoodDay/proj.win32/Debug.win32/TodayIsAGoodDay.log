@@ -1,3 +1,512 @@
-﻿  TodayIsAGoodDay.vcxproj -> D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Debug.win32\TodayIsAGoodDay.exe
+﻿  GameMain.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\GameMain.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  menu.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\menu.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  cooperation.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Cooperation\cooperation.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  map.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/map.cpp”)
+  
+  plough.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+  stone.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+  sundry.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\sundry.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+  action.cpp
+  bag.cpp
+  move.cpp
+  person.cpp
+  music.cpp
+  setting.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Setting\setting.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Time.cpp
+  controler.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+  global.cpp
+  scene.cpp
+  crops.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\Crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+  drop.cpp
+  tree.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/drop.cpp”)
+  
+  totaltools.cpp
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/music.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Cooperation/cooperation.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Cooperation/cooperation.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Cooperation/cooperation.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/map.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/plough.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/GameMain.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/stone.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/menu.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/action.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/action.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/action.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/sundry.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/bag.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/move.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Person/person.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Person\person.cpp(115,24): warning C4018: “<”: 有符号/无符号不匹配
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Person\person.cpp(169,28): warning C4018: “>=”: 有符号/无符号不匹配
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/Time.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Setting/setting.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/controler.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Setting\setting.cpp(195,24): warning C4305: “参数”: 从“double”到“float”截断
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Setting\setting.cpp(196,25): warning C4305: “参数”: 从“double”到“float”截断
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/crops.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“totaltools.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/drop.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/drop.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Map/tree.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/global.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Cooperation\cooperation.cpp(428,1): warning C4715: “<lambda_21093736bab8b3b2eed3d6517f144f34>::operator()”: 不是所有的控件路径都返回值
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Cooperation\cooperation.cpp(548,1): warning C4715: “<lambda_f362b3e83a76b4e05e3935b689897496>::operator()”: 不是所有的控件路径都返回值
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\definition.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\drop.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\map.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\object.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\tree.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\Time.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\crops.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\plough.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Map\stone.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“Control/scene.cpp”)
+  
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Person\bag.cpp(91,1): warning C4715: “Bag::removeItem”: 不是所有的控件路径都返回值
+D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Control\scene.cpp(1471,1): warning C4715: “store_thing::init”: 不是所有的控件路径都返回值
+  TodayIsAGoodDay.vcxproj -> D:\GitHubZY\Today-is-a-Good-Day\TodayIsAGoodDay\proj.win32\Debug.win32\TodayIsAGoodDay.exe
   正在执行自定义生成步骤
   复制了 0 个文件

@@ -10,7 +10,7 @@ extern SOCKET global_socket; // 全局 SOCKET 对象
 //创建唯一主人公
 
 extern Person leading_charactor;
-
+extern NPC* npc1;
 //实现庄园地图切换
 void manor_change_map();
 

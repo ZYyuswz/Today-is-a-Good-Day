@@ -31,7 +31,7 @@ struct item
     int value; //tools的value为0
 
     item( std::string itemName, const int itemNum = 1)
-        :name(itemName), value(itemPrices.find(itemName)->second), num(itemNum) {}
+        :name(itemName), value(0), num(itemNum) {}
     item() : name("nothing"), num(0), value(0) {} // 默认构造函数
 };
 
@@ -185,5 +185,91 @@ public:
 
     Vec2 getTiledPosition();
     Vec2 getWorldPosition();
+    void startFishing();
+    void endFishing();
 };
 
+class NPC : public Sprite {
+public:
+    NPC();
+    ~NPC();
+
+    // 初始化 NPC
+    bool init() override;
+
+    // 显示对话框
+    void showDialog();
+
+    // 更新对话内容
+    void updateDialog();
+
+    // 增加好感度
+    void increaseAffinity(int amount);
+
+    // 检查好感度是否达到阈值
+    bool isAffinityThresholdReached();
+
+    // 创建 NPC
+    CREATE_FUNC(NPC);
+
+private:
+    // 对话内容
+    std::vector<std::string> dialogs;
+
+    // 当前对话索引
+    int currentDialogIndex;
+
+    // 好感度
+    int affinity;
+
+    // 好感度阈值
+    int affinityThreshold;
+
+    // 对话框
+    cocos2d::Label* dialogLabel;
+
+    // NPC 在瓦片地图上的位置
+    cocos2d::Vec2 tilePosition;
+
+    cocos2d::Sprite* chatBackground;
+};
+
+class Pig : public cocos2d::Sprite {
+public:
+    Pig();
+    ~Pig();
+
+    // 初始化 Pig
+    bool init() override;
+
+    // 设置 Pig 在瓦片地图上的位置
+    void setTilePosition(const cocos2d::Vec2& tilePosition, cocos2d::TMXTiledMap* tileMap);
+
+    // 移动 Pig 到目标瓦片位置
+    void moveToTile(const cocos2d::Vec2& targetTilePosition, cocos2d::TMXTiledMap* tileMap);
+
+    // 更新 Pig 的位置
+    void update(float dt);
+
+    // 创建 Pig
+    CREATE_FUNC(Pig);
+
+private:
+    // 目标瓦片位置
+    cocos2d::Vec2 targetTilePosition;
+
+    // 移动速度
+    float moveSpeed;
+
+    // 是否正在移动
+    bool isMoving;
+
+    // 当前方向
+    int currentDirection;
+
+    // 方向图片
+    cocos2d::SpriteFrame* upFrame;
+    cocos2d::SpriteFrame* downFrame;
+    cocos2d::SpriteFrame* leftFrame;
+    cocos2d::SpriteFrame* rightFrame;
+};

@@ -11,13 +11,13 @@
 #include "controler.h"
 #include "Map/tree.h"
 #include"Person/tool.h"
-#include "npc.h"
 
 USING_NS_CC;
 
 //创建主人公
 Person leading_charactor;
 NPC* npc1;
+
 
 /*联网socket初始化*/
 // 初始化全局变量
@@ -56,7 +56,7 @@ void PlayerControlLayer::setPlayer(Person* player) {
     this->_player = player;
 }
 
-
+//键盘监听按下时逻辑
 void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 
@@ -215,23 +215,89 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
         }
         break;
         case EventKeyboard::KeyCode::KEY_7:
-            npc1 = NPC::create();
-            npc1->setPosition(500, 500);
-            npc1->setScale(3.0f);
-            Director::getInstance()->getRunningScene()->addChild(npc1);
-            break;
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[6].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        break;
         case EventKeyboard::KeyCode::KEY_8:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[7].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        break;
+        case EventKeyboard::KeyCode::KEY_9:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[8].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        break;
+        case EventKeyboard::KeyCode::KEY_EQUAL:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[11].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        break;
+        case EventKeyboard::KeyCode::KEY_MINUS:
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[10].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
+        case EventKeyboard::KeyCode::KEY_F:
+        {
+            // 创建 Pig
+            auto pig = Pig::create();
+            auto currentTiledMap = MapManager::getInstance()->getCurrentMap();
+            currentTiledMap->addChild(pig, 10);
+            //           pig->setTilePosition(Vec2(35, 35), currentTiledMap); // 设置 Pig 在瓦片地图上的初始位置            
+            pig->setScale(1.0f);
+            pig->setPosition(500, 500);
+
+        }
+        break;
+        case EventKeyboard::KeyCode::KEY_SPACE:
             npc1->showDialog();
             npc1->updateDialog();
-            break;
-        case EventKeyboard::KeyCode::KEY_9:
-
-            break;
-        case EventKeyboard::KeyCode::KEY_EQUAL:
-
-            break;
-        case EventKeyboard::KeyCode::KEY_MINUS:
-
             break;
         default:
             break;
@@ -240,7 +306,7 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
     event->stopPropagation();
 }
 
-
+//键盘监听抬起时逻辑
 void PlayerControlLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
     switch (keyCode) {
