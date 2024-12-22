@@ -128,7 +128,18 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
             leading_charactor.MyBag.changeBag();
             break;
         case EventKeyboard::KeyCode::KEY_0:
-            leading_charactor.useTools();
+        {
+            if (leading_charactor.getTool() != nullptr) {
+                delete leading_charactor.getTool();
+            }
+            std::string toolName = leading_charactor.MyBag.getItems()[9].name;
+            Tool* changeTool;
+            if (isFiveTool(toolName))
+                changeTool = new Tool(toolName, leading_charactor.toolLevel());
+            else
+                changeTool = new Tool(toolName);
+            leading_charactor.setTool(changeTool);
+        }
             break;
         case EventKeyboard::KeyCode::KEY_1://限制变量的生命周期
         {
