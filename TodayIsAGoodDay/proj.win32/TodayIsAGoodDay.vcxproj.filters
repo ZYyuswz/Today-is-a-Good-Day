@@ -182,9 +182,6 @@
     <ClInclude Include="global.h">
       <Filter>win32</Filter>
     </ClInclude>
-    <ClInclude Include="Map\sundry.h">
-      <Filter>Classes\Map</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

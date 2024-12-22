@@ -12,7 +12,7 @@
 #include "scene.h"
 #include "./Setting/setting.h"
 #include "global.h"
-#include "Time.h"
+#include "time.h"
 
 #include "Map/stone.h"
 
@@ -22,6 +22,8 @@ bool first_to_manor() {
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f, spring_scene));
     //leading_charactor.person_construction("zy", 1, "zyh", spring_scene);
 
+    // GameTime* gametime = GameTime::getInstance();
+    //if(gametime->getWeather()==Weather::Rainy)spring_scene->addChild(RainLayer(),RAINLAYER); //下雨场景实现示例
     return true;
 }
 
@@ -37,40 +39,14 @@ bool manor_to_towm()
     Season season = GameTime::getInstance()->getSeason();
     if (season == Season::Spring || season == Season::Summer)
     {
-        if (season == Season::Spring)
-        {
-            int current_day = GameTime::getInstance()->getDay();
-            if (current_day >= 1 && current_day <= 2) {
-                auto festival_spring = festival_spring_town::createScene();
-                CCLOG("before");
-                
-                Director::getInstance()->pushScene(festival_spring);
+        auto town_scene = spring_town::createScene();
 
-                CCLOG("after");
-            }
-            else {
-                auto town_scene = spring_town::createScene();
+        CCLOG("before");
+        //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
+        //Director::getInstance()->replaceScene(town_scene);
+        Director::getInstance()->pushScene(town_scene);
 
-                CCLOG("before");
-                //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
-                //Director::getInstance()->replaceScene(town_scene);
-                Director::getInstance()->pushScene(town_scene);
-
-                CCLOG("after");
-            }
-        }
-        else {
-            auto town_scene = spring_town::createScene();
-
-            CCLOG("before");
-            //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
-            //Director::getInstance()->replaceScene(town_scene);
-            Director::getInstance()->pushScene(town_scene);
-
-            CCLOG("after");
-        }
-       
-
+        CCLOG("after");
 
         return true;
     }
@@ -115,7 +91,7 @@ void test()
 //切换到沙滩场景
 bool change_to_beach()
 {
-    people_remove_change();
+
     auto beach_scene = beach::createScene();
     CCLOG("before");
     //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
@@ -131,7 +107,6 @@ bool change_to_beach()
 //切换到矿洞场景
 bool change_to_mine()
 {
-    people_remove_change();
     auto mine_scene = scene_mine::createScene();
     CCLOG("before");
     //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
@@ -147,7 +122,6 @@ bool change_to_mine()
 //切换到家的场景
 bool change_to_home()
 {
-    people_remove_change();
     auto home_scene = scene_home::createScene();
     CCLOG("before");
     //Director::getInstance()->replaceScene(TransitionFade::create(1.0f, town_scene));
@@ -177,7 +151,6 @@ bool back_to_manor_from_town()
 //矿洞返回庄园
 bool back_to_manor_from_mine()
 {
-    
     Director::getInstance()->popScene();
     return true;
 }
@@ -1028,249 +1001,5 @@ void scene_home::onExit()
 
 }
 
-
-/* ---------- 节日场景 ---------- */
-Scene* festival_spring_town::createScene()
-{
-    /*
-    //创建场景
-    auto scene_spring = Scene::create();
-    //添加层
-    auto layer = spring_town::create();
-    scene_spring->addChild(layer);
-
-    return scene_spring;
-    */
-    return festival_spring_town::create();
-}
-
-bool festival_spring_town::init() {
-    if (!Scene::init()) {
-        return false;
-    }
-    // 加载 TMX 文件
-    //FileUtils::getInstance()->addSearchPath("Resources/menu");
-
-
-    auto scene_spring = TMXTiledMap::create("map/town_spring_festival.tmx"); // 替换为你的 .tmx 文件名
-
-
-
-    //测试
-    int visiablemood = get_window_size();
-    if (visiablemood == SMALL_WINDOW)
-    {
-        //设置图缩放比例
-        scene_spring->setScale(TOWN_SMALL_SCALE);
-
-        //获取当前屏幕大小
-        Size screensize = Director::getInstance()->getVisibleSize();
-        //设置进入的瓦片地图坐标
-        Vec2 entrence = Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y);
-        // 获取地图的尺寸  
-        Size mapSize = scene_spring->getMapSize();
-        Size tileSize = scene_spring->getTileSize();
-        //设置进入的屏幕坐标
-        Vec2 screen_enterence = tile_change_screen(mapSize, tileSize, entrence, scene_spring->getScale());
-
-        //屏幕左下角
-        Vec2 point_row;
-
-        point_row.x = screen_enterence.x;
-        point_row.y = (screensize.height / 2) - screen_enterence.y;
-
-        scene_spring->setAnchorPoint(Vec2(0, 0));
-        scene_spring->setPosition(point_row);
-
-
-    }
-
-    //将地图和场景关联
-    //MapManager::getInstance()->registerSceneMap(this, scene_spring);
-
-    auto objectLayer = Layer::create();
-    objectLayer->setName(OBJECT_LAYER);  // 设置名字
-    objectLayer->setLocalZOrder(OBJECT);   // 设置层级
-    scene_spring->addChild(objectLayer);
-    auto ploughLayer = Layer::create();
-    ploughLayer->setName(PLOUGH_LAYER);  // 设置名字
-    ploughLayer->setLocalZOrder(PLOUGH);   // 设置层级
-    scene_spring->addChild(ploughLayer);
-    auto dropLayer = Layer::create();
-    dropLayer->setName(DROP_LAYER);  // 设置名字
-    dropLayer->setLocalZOrder(DROP);   // 设置层级
-    scene_spring->addChild(dropLayer);
-
-    Size mapsize = MapManager::getInstance()->getCurrentMapSize();
-    Size tilesize = MapManager::getInstance()->getCurrentTileSize();
-
-    Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
-
-    this->addChild(scene_spring);
-
-
-
-    // 添加全局层
-    auto globalLayer = GlobalLayer::create();
-    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
-
-    //设置名字
-    this->setName(SCENE_SPRING_TOWN);
-
-    return true;
-}
-
-
-void festival_spring_town::onEnter()
-{
-    Scene::onEnter(); // 调用父类的 onEnter
-
-    CCLOG("MyScene onEnter");
-    std::string player_name = leading_charactor.getname();
-    std::string farm_name = leading_charactor.getFarmName();
-    int sex = leading_charactor.getSex();
-    leading_charactor.person_construction(player_name, sex, farm_name, this);
-
-    auto playerControlLayer = PlayerControlLayer::create();
-    playerControlLayer->setPlayer(&leading_charactor);
-    playerControlLayer->setName(PLAYER_CONTROLER);
-    this->addChild(playerControlLayer);
-
-}
-
-void festival_spring_town ::onExit()
-{
-    Scene::onExit(); // 调用父类的 onExit
-
-    CCLOG("MyScene onExit");
-    // 在这里添加自定义逻辑
-    this->removeChildByName(PLAYER_CONTROLER);
-
-    /* 移除人物 */
-    people_remove_change();
-
-}
-
-
-Scene* festival_winter_town::createScene()
-{
-    /*
-    //创建场景
-    auto scene_winter = Scene::create();
-    //添加层
-    auto layer = winter_town::create();
-    scene_winter->addChild(layer);
-
-    return scene_winter;
-    */
-    return festival_winter_town::create();
-}
-
-bool festival_winter_town::init() {
-    if (!Scene::init()) {
-        return false;
-    }
-    // 加载 TMX 文件
-    //FileUtils::getInstance()->addSearchPath("Resources/menu");
-
-
-    auto scene_winter = TMXTiledMap::create("map/town_winter_festival.tmx"); // 替换为你的 .tmx 文件名
-
-
-
-    //测试
-    int visiablemood = get_window_size();
-    if (visiablemood == SMALL_WINDOW)
-    {
-        //设置图缩放比例
-        scene_winter->setScale(TOWN_SMALL_SCALE);
-
-        //获取当前屏幕大小
-        Size screensize = Director::getInstance()->getVisibleSize();
-        //设置进入的瓦片地图坐标
-        Vec2 entrence = Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y);
-        // 获取地图的尺寸  
-        Size mapSize = scene_winter->getMapSize();
-        Size tileSize = scene_winter->getTileSize();
-        //设置进入的屏幕坐标
-        Vec2 screen_enterence = tile_change_screen(mapSize, tileSize, entrence, scene_winter->getScale());
-
-        //屏幕左下角
-        Vec2 point_row;
-
-        point_row.x = screen_enterence.x;
-        point_row.y = (screensize.height / 2) - screen_enterence.y;
-
-        scene_winter->setAnchorPoint(Vec2(0, 0));
-        scene_winter->setPosition(point_row);
-
-
-    }
-
-    //将地图和场景关联
-    //MapManager::getInstance()->registerSceneMap(this, scene_winter);
-
-    auto objectLayer = Layer::create();
-    objectLayer->setName(OBJECT_LAYER);  // 设置名字
-    objectLayer->setLocalZOrder(OBJECT);   // 设置层级
-    scene_winter->addChild(objectLayer);
-    auto ploughLayer = Layer::create();
-    ploughLayer->setName(PLOUGH_LAYER);  // 设置名字
-    ploughLayer->setLocalZOrder(PLOUGH);   // 设置层级
-    scene_winter->addChild(ploughLayer);
-    auto dropLayer = Layer::create();
-    dropLayer->setName(DROP_LAYER);  // 设置名字
-    dropLayer->setLocalZOrder(DROP);   // 设置层级
-    scene_winter->addChild(dropLayer);
-
-    Size mapsize = MapManager::getInstance()->getCurrentMapSize();
-    Size tilesize = MapManager::getInstance()->getCurrentTileSize();
-
-    Vec2 pos_player = tile_change_screen(mapsize, tilesize, Vec2(MANOR_TO_TOWN_X, MANOR_TO_TOWN_Y), TOWN_SMALL_SCALE);
-
-    this->addChild(scene_winter);
-
-
-
-    // 添加全局层
-    auto globalLayer = GlobalLayer::create();
-    this->addChild(globalLayer, SETTING_LAYER); // 设置较高的 z-order，确保全局层在顶部
-
-    //设置名字
-    this->setName(SCENE_WINTER_TOWN);
-
-    return true;
-}
-
-
-void festival_winter_town::onEnter()
-{
-    Scene::onEnter(); // 调用父类的 onEnter
-
-    CCLOG("MyScene onEnter");
-    std::string player_name = leading_charactor.getname();
-    std::string farm_name = leading_charactor.getFarmName();
-    int sex = leading_charactor.getSex();
-    leading_charactor.person_construction(player_name, sex, farm_name, this);
-
-    auto playerControlLayer = PlayerControlLayer::create();
-    playerControlLayer->setPlayer(&leading_charactor);
-    playerControlLayer->setName(PLAYER_CONTROLER);
-    this->addChild(playerControlLayer);
-
-}
-
-void festival_winter_town::onExit()
-{
-    Scene::onExit(); // 调用父类的 onExit
-
-    CCLOG("MyScene onExit");
-    // 在这里添加自定义逻辑
-    this->removeChildByName(PLAYER_CONTROLER);
-
-    /* 移除人物 */
-    people_remove_change();
-
-}
 
 //商店场景

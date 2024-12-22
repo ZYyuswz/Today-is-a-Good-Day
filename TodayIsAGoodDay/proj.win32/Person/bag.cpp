@@ -1,4 +1,4 @@
-﻿#include "cocos2d.h"
+#include "cocos2d.h"
 #include <vector>
 #include <string>
 #include "person.h"
@@ -10,13 +10,12 @@
 
 const float BAG_LEFT_LOCATION = 500.0;
 const float BAG_UP_LOCATION = 675.0;
-const float BAG_RIGHT_LOCATION = 1654.75;
+const float BAG_RIGHT_LOCATION = 1600;
 const float BAG_CELL = 95.0;
 
-Bag::Bag(): _selectedItemIndex(-1),_items(36,item()), _itemSprites(36)
+Bag::Bag(): _selectedItemIndex(-1),_items(36,item()), _itemSprites(36),_itemLabels(36)
 {
-    // 创建一个标签用于显示物品信息
-    _itemInfoLabel = cocos2d::Label::createWithSystemFont("", "Arial", 24);
+
     isOpen = false;
     
     _items[0]=(item("axe"));
@@ -81,12 +80,10 @@ int Bag::removeItem(const item& MyItem)
             // 如果物品数量为0或更少，则移除该物品
             if (it->num <= 0)
             {
-
                 _items[index] = item(); //改为nothing
                 return 0;
             }
             return it->num;
-
         }
         index++;
     }
@@ -100,7 +97,7 @@ void Bag::displayBag()
     bagBackground->setPosition(1024.0f,576.0f);
     bagBackground->setScale(1.5f);
     bagBackground->setName("bagBackground");
-    Director::getInstance()->getRunningScene()->addChild(bagBackground);
+    Director::getInstance()->getRunningScene()->addChild(bagBackground,101);
 
     
     // 显示背包格的图片和物品图案
@@ -110,24 +107,31 @@ void Bag::displayBag()
     for (const auto& item : _items)
     {
         Sprite* itemSprite;
+        //为精灵找到图片并创建
         if (isFiveTool(item.name)) {
             itemSprite = cocos2d::Sprite::create("tool/" + item.name +
                 std::to_string(leading_charactor.toolLevel()) + ".png");
             itemSprite->setScale(3.0f);
-        }
-        
+        }       
         else if (item.name.find("drop") != std::string::npos) {
             itemSprite = cocos2d::Sprite::create("bag/"+item.name + ".png");
             itemSprite->setScale(4.0f);
         }
         else {
-            itemSprite = cocos2d::Sprite::create("bag/"+item.name + ".png"); // 假设每个物品都有一个对应的图片
+            itemSprite = cocos2d::Sprite::create("bag/"+item.name + ".png");
         }
         itemSprite->setPosition(cocos2d::Vec2(x, y));
         
-        Director::getInstance()->getRunningScene()->addChild(itemSprite,10);
-        _itemSprites[index] = (itemSprite);
+        Director::getInstance()->getRunningScene()->addChild(itemSprite,102);
+        _itemSprites[index] = itemSprite;
 
+        //创建标签
+        auto itemLabel = Label::createWithSystemFont(std::to_string(item.num), "Arial", 20);
+        Director::getInstance()->getRunningScene()->addChild(itemLabel, 102);
+        itemLabel->setPosition(x + 25, y - 25);
+        _itemLabels[index] = itemLabel;
+
+        //挪到下一格
         x += BAG_CELL;
         if (x > BAG_RIGHT_LOCATION)
         {
@@ -146,10 +150,12 @@ void Bag::closeBag()
     {
         sprite->removeFromParent();
     }
-  //  _itemSprites.clear();
 
     // 清除物品信息标签
-//    _itemInfoLabel->setString("");
+    for (auto label : _itemLabels)
+    {
+        label->removeFromParent();
+    }
 
     // 重置选中物品的索引
     _selectedItemIndex = -1;
@@ -162,29 +168,7 @@ void Bag::closeBag()
         bagBackground->removeFromParent();
     }
 
-    // 关闭背包界面
-    isOpen = false;
+   
 }
 
 
-void Bag::updateItemInfo(cocos2d::Vec2 position)
-{
-    // 检查鼠标位置是否在某个物品上
-    for (int i = 0; i < _itemSprites.size(); ++i)
-    {
-        auto nowScene = Director::getInstance()->getRunningScene();
-        nowScene->addChild(_itemInfoLabel);
-        _itemInfoLabel->setPosition(position);
-        auto sprite = _itemSprites[i];
-        if (sprite->getBoundingBox().containsPoint(position))
-        {
-            _itemInfoLabel->setString(_items[i].name + std::to_string(_items[i].num));
-            _selectedItemIndex = i;
-            return;
-        }
-    }
-
-    // 如果鼠标不在任何物品上，清除物品信息
-    _itemInfoLabel->setString("");
-    _selectedItemIndex = -1;
-}

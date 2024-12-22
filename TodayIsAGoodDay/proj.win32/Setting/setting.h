@@ -29,14 +29,7 @@ public:
     // 使用 CREATE_FUNC 宏
     CREATE_FUNC(GlobalLayer);
 
-    void scene_setting();
-
-    void back(cocos2d::Ref* sender);
-
 private:
     cocos2d::Label* _timeLabel; // 用于显示时间的文本框
     cocos2d::Label* _timeLabell; // 用于显示时间的文本框
-
-    bool SETTING_MODE = false;
 };
-

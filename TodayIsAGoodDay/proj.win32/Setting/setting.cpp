@@ -91,7 +91,6 @@ void GlobalLayer::onSettingsClicked(cocos2d::Event* event)
 {
     CCLOG("Settings icon clicked!");
     // 在这里处理设置图标的点击事件
-    scene_setting();
 
 }
 
@@ -131,6 +130,7 @@ void GlobalLayer::updateTimeDisplay(float dt)
     
     _timeLabel->setString("Year" + st_year + " " + st_season + " Day " + st_day);
     _timeLabell->setString(st_hour + " : " + st_minute);
+
 }
 
 
@@ -198,4 +198,5 @@ void GlobalLayer::back(cocos2d::Ref* sender)
     if (shezhi) {
         shezhi->removeFromParent();
     }
+
 }
