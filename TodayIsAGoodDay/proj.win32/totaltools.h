@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "cocos2d.h"
 #include "definition.h"
 #include "global.h"
@@ -36,3 +36,5 @@ bool is_have_object(Vec2 tilePosition);
 bool isFiveTool(const std::string& name);
 
 void harvest(Vec2 tilePosition);
+
+//Plough* _getPloughOnMap(Vec2 tilePosition);

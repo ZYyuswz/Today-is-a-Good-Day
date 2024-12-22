@@ -127,7 +127,7 @@ enum class DIRECTION {
 #define SEASON_LENGTH 28  // 每个季节持续28天
 
 // 更新时间的间隔为 1 秒
-#define UPDATE_INTERVAL 0.01f 
+#define UPDATE_INTERVAL 0.1f 
 
 // 定义一个瓦片的尺寸
 #define TILESIZE 16

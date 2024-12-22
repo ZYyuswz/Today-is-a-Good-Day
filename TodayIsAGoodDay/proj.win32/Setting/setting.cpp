@@ -172,6 +172,9 @@ void GlobalLayer::scene_setting()
         auto menu = Menu::create(backitem, nullptr);
         menu->setPosition(Vec2::ZERO);
         backgroung->addChild(menu);
+        // 创建一个单点触摸事件监听器（父节点） 
+        auto parentTouchListener = EventListenerTouchOneByOne::create(); 
+        
         auto volumn_button = createVolumeButton();
         backgroung->addChild(volumn_button);
         if (volumn_button) {
@@ -180,6 +183,7 @@ void GlobalLayer::scene_setting()
         else {
             CCLOG("Failed to create volume button!");
         }
+
         SETTING_MODE = true;
     }
     
