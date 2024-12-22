@@ -248,9 +248,9 @@ void treeBlock(Vec2 personPosition) {
         if (tree) {
             Vec2 treePosition = tree->getTilePosition();
             double delta_x = treePosition.x - personPosition.x;
-            double delta_y = treePosition.y - personPosition.y;
+            double delta_y = personPosition.y - treePosition.y;
             // 在3*6的范围
-            if (abs(delta_x) <= TREE_BLOCK_X && delta_y < TREE_BLOCK_Y) {
+            if (abs(delta_x) <= TREE_BLOCK_X && delta_y < TREE_BLOCK_Y && delta_y > 0) {
                 tree->reduceOpacity();
                 tree_block.push_back(tree);
             }
@@ -264,9 +264,9 @@ void updateTreeBlock(Vec2 personPosition) {
         Tree* tree = *it;
         Vec2 treePosition = tree->getTilePosition();
         double delta_x = treePosition.x - personPosition.x;
-        double delta_y = treePosition.y - personPosition.y;
+        double delta_y = personPosition.y - treePosition.y;
         // 在3*6的范围
-        if (abs(delta_x) <= TREE_BLOCK_X && delta_y < TREE_BLOCK_Y) {
+        if (abs(delta_x) <= TREE_BLOCK_X && delta_y < TREE_BLOCK_Y && delta_y > 0) {
             // 什么也不干
             ++it;  // 继续遍历下一个元素
         }

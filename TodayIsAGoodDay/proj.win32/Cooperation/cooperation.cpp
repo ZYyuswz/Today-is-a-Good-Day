@@ -1,4 +1,4 @@
-/* 由活性炭单独撰写 */ 
+/* 由活性炭单独撰写 */
 
 #include <iostream>
 #include <string>
@@ -12,9 +12,13 @@
 #include <thread>
 #include <stdexcept>  // 包含标准异常类
 #include <cstring>    // 包含 memset
-
+#include "global.h"
+#include "Control/scene.h"
 USING_NS_CC;
-
+// 在后台线程中调用此函数
+void postToMainThread(const std::function<void()>& func) {
+    Director::getInstance()->getScheduler()->performFunctionInCocosThread(func);
+}
 // 监听线程函数
 void listenThread() {
     char buffer[1024];
@@ -38,36 +42,43 @@ void listenThread() {
             // 将接收到的消息转换为字符串
             std::string receivedMessage(buffer, bytesRead);
             CCLOG("Received from server: %s", receivedMessage.c_str());
-            try {
-                // 根据消息内容执行不同的操作
-                if (receivedMessage.find("MATCHED") != std::string::npos) {
-                    handleMatchedMessage(receivedMessage);
+            // 将消息处理逻辑调度到主线程执行
+            postToMainThread([receivedMessage]() {
+                try {
+                    if (receivedMessage.find("MATCHED") != std::string::npos) {
+                        handleMatchedMessage(receivedMessage);
+                    }
+                    else if (receivedMessage.find("FAILED") != std::string::npos) {
+                        handleFailedMessage(receivedMessage);
+                    }
+                    else if (receivedMessage.find("RELEASE") != std::string::npos) {
+                        handlePlayerReleaseMessage(receivedMessage);
+                    }
+                    else if (receivedMessage.find("MOVE") != std::string::npos) {
+                        handlePlayerMoveMessage(receivedMessage);
+                    }
+                    else if (receivedMessage.find("TREE") != std::string::npos) {
+                        handleTreeActionMessage(receivedMessage);
+                    }
+                    else if (receivedMessage.find("PLOUGH") != std::string::npos) {
+                        handlePloughActionMessage(receivedMessage);
+                    }
+                    else if (receivedMessage.find("STONE") != std::string::npos) {
+                        handleMineActionMessage(receivedMessage);
+                    }
+                    else if (receivedMessage.find("PLANT") != std::string::npos) {
+                        handlePlantActionMessage(receivedMessage);
+                    }
+                    else {
+                        throw std::runtime_error("Unknown message: " + receivedMessage);
+                    }
                 }
-                else if (receivedMessage.find("TREE") != std::string::npos) {
-                    //handleTreeActionMessage(receivedMessage);
+                catch (const std::exception& e) {
+                    std::cerr << "Error: " << e.what() << std::endl;
+                    CCLOG("Original message: %s", receivedMessage.c_str());
                 }
-                else if (receivedMessage.find("MOVE") != std::string::npos) {
-                    //handlePlayerMoveMessage(receivedMessage);
-                }
-                else if (receivedMessage.find("PLOUGH") != std::string::npos) {
-                    //handlePloughActionMessage(receivedMessage);
-                }
-                else if (receivedMessage.find("MINNER") != std::string::npos) {
-                    //handleMineActionMessage(receivedMessage);
-                }
-                else if (receivedMessage.find("HARVEST") != std::string::npos) {
-                    //handleHarvestActionMessage(receivedMessage);
-                }
-                else {
-                    // 未知消息，抛出异常
-                    throw std::runtime_error("Unknown message: " + receivedMessage);
-                }
-            }
-            catch (const std::exception& e) {
-                // 捕获并处理异常
-                std::cerr << "Error: " << e.what() << std::endl;
-                CCLOG("Original message: %s", receivedMessage.c_str());
-            }
+                });
+
         }
         else if (bytesRead == 0) {
             // 服务器关闭连接
@@ -84,6 +95,83 @@ void listenThread() {
     // 关闭套接字
     closesocket(global_socket);
     global_socket = INVALID_SOCKET;
+}
+//匹配
+void handleMatchedMessage(std::string receivedMessage) {
+
+   
+    first_to_manor();
+   
+    CCLOG("connected!!!");
+    //创建场景功能未实现
+
+}
+void handleFailedMessage(std::string receivedMessage) {
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    auto connectingfailedLabel = Label::createWithTTF("Connection Failed", "fonts/Marker Felt.ttf", 48);
+    connectingfailedLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+    MapManager::getInstance()->getCurrentScene()->addChild(connectingfailedLabel);
+    connectingfailedLabel->setString("Connection failed");
+    connectingfailedLabel->setColor(Color3B::RED);
+ 
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    auto maincoopScene = scene_coop::createScene();
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, maincoopScene));
+}
+//处理按键释放消息
+void handlePlayerReleaseMessage(std::string receivedMessage) {
+    // 解析消息，提取按键信息
+    std::string key = receivedMessage.substr(receivedMessage.find(" ") + 1); // 提取 "A", "D", "W", "S"
+
+    // 根据按键信息更新合作者的动画状态
+    if (key == "A") {
+
+    }
+    else if (key == "D") {
+
+    }
+    else if (key == "W") {
+
+    }
+    else if (key == "S") {
+
+    }
+}
+//处理按键按下消息
+void handlePlayerMoveMessage(std::string receivedMessage) {
+    // 解析消息，提取按键信息
+    std::string key = receivedMessage.substr(receivedMessage.find(" ") + 1); // 提取 "A", "D", "W", "S"
+
+    // 根据按键信息更新合作者的动画状态
+    if (key == "A") {
+
+    }
+    else if (key == "D") {
+
+    }
+    else if (key == "W") {
+
+    }
+    else if (key == "S") {
+
+    }
+}
+//处理砍树动作消息
+void handleTreeActionMessage(std::string receivedMessage) {
+
+}
+//处理采矿动作消息
+void handleMineActionMessage(std::string receivedMessage) {
+
+}
+//处理种植动作消息
+void handlePlantActionMessage(std::string receivedMessage) {
+
+}
+//处理耕地动作信息
+void handlePloughActionMessage(std::string receivedMessage) {
+
 }
 
 // 启动监听线程
@@ -106,7 +194,7 @@ void sendMessageToServer(const std::string& message) {
         std::cerr << "Error sending message to server: " << WSAGetLastError() << std::endl;
     }
     else {
-        std::cout << "Sent to server: " << message << std::endl;
+        CCLOG("Sent to server: &s", message);
     }
 }
 
@@ -153,49 +241,7 @@ void cleanupWinsock() {
     }
     WSACleanup();
 }
-
-// 监听服务器信号的线程函数
-void listen_server_signal(SOCKET sock) {
-    char buffer[1024] = { 0 };
-    fd_set read_fds; // 用于 select 的文件描述符集合
-    struct timeval timeout;
-    timeout.tv_sec = 10; // 设置超时时间为 10 秒
-    timeout.tv_usec = 0;
-
-    while (true) {
-        FD_ZERO(&read_fds);
-        FD_SET(sock, &read_fds);
-
-        // 使用 select 等待数据
-        int activity = select(0, &read_fds, nullptr, nullptr, &timeout);
-        if (activity == 0) {
-            // 超时，关闭线程
-            CCLOG("Timeout: No message received from server in 10 seconds.");
-            break;
-        }
-        else if (activity < 0) {
-            // 错误，关闭线程
-            CCLOG("Error: Failed to listen for server signal.");
-            break;
-        }
-
-        // 检查是否有数据可读
-        if (FD_ISSET(sock, &read_fds)) {
-            int valread = recv(sock, buffer, 1024, 0);
-            if (valread > 0) {
-                // 接收到消息，输出到日志
-                CCLOG("Received message from server: %s", buffer);
-                break; // 关闭线程
-            }
-            else {
-                // 服务器断开连接
-                CCLOG("Server disconnected.");
-                break;
-            }
-        }
-    }
-}
-
+/*---------------------界面实现--------------------*/
 // 初始化合作界面
 bool scene_coop::init() {
     if (!Scene::init()) {
@@ -372,7 +418,7 @@ bool scene_create::init() {
             return -1;
         }
         CCLOG("Connected to server.");
-        sendMessageToServer("CREATE_COOP " + userInput);
+        sendMessageToServer(userInput);
 
         // 切换到 ConnectingScene
         CCLOG("Switching to ConnectingScene...");
@@ -492,7 +538,7 @@ bool scene_join::init() {
             return -1;
         }
         CCLOG("Connected to server.");
-        sendMessageToServer("CONNECT_COOP " + userInput);
+        sendMessageToServer(userInput);
 
         // 切换到 ConnectingScene
         CCLOG("Switching to ConnectingScene...");
@@ -505,6 +551,7 @@ bool scene_join::init() {
     return true;
 }
 
+/* 初始化 ConnectingScene */
 /* 初始化 ConnectingScene */
 bool ConnectingScene::init() {
     if (!Scene::init()) {
@@ -540,10 +587,7 @@ bool ConnectingScene::init() {
     // 启动监听线程
     startListeningThread();
 
+
     return true;
 }
 
-void handleMatchedMessage(std::string receivedMessage) {
-
-    CCLOG("connected!!!");
-}

@@ -71,6 +71,7 @@ public:
     // 使用 CREATE_FUNC 宏来自动生成 create 函数
     CREATE_FUNC(ConnectingScene);
 };
+
 //监听线程函数
 void listenThread();
 //启动监听线程
@@ -81,14 +82,17 @@ void sendMessageToServer(const std::string& message);
 bool connectToServer();
 //匹配成功函数
 void handleMatchedMessage(std::string receivedMessage);
+//处理连接错误信息
+void handleFailedMessage(std::string receivedMessage);
 //处理玩家移动消息
-void handlePlayerMoveMessage(std::string receivedMessage);
-//处理种树动作消息
+void handlePlayerReleaseMessage(std::string receivedMessage);
+//处理砍树动作消息
 void handleTreeActionMessage(std::string receivedMessage);
 //处理采矿动作消息
 void handleMineActionMessage(std::string receivedMessage);
-//处理收割作物动作消息
-void handleHarvestActionMessage(std::string receivedMessage);
+//处理种植动作消息
+void handlePlantActionMessage(std::string receivedMessage);
 //处理耕地动作信息
 void handlePloughActionMessage(std::string receivedMessage);
 
+void handlePlayerMoveMessage(std::string receivedMessage);

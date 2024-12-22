@@ -25,35 +25,9 @@ int preload_BGM() {
 
     return 0;
 }
-void play_BGM(Weather current_weather)
-{ 
+void play_BGM()
+{
     SimpleAudioEngine::getInstance()->playBackgroundMusic("setting/BGM.mp3", true);
-    if (current_weather == Weather::Rainy)SimpleAudioEngine::getInstance()->playEffect("setting/Rain_BGM.mp3", true); // 使用 playEffect 播放音效
-}
-
-// 播放或暂停背景音乐和音效
-void toggleBGM(Ref* pSender) {
-    if (SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()) {
-        // 如果背景音乐正在播放，则暂停
-        SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-
-        // 暂停音效（如果有音效正在播放）
-        SimpleAudioEngine::getInstance()->pauseAllEffects();
-
-        // 更新按钮状态为“播放”
-        static_cast<MenuItemToggle*>(pSender)->setSelectedIndex(0);
-    }
-    else {
-        // 如果背景音乐没有播放，则播放
-        SimpleAudioEngine::getInstance()->playBackgroundMusic("setting/BGM.mp3", true);
-
-        // 播放音效（如果是雨天）
-        if (1)//这里需要调用天气情况
-            SimpleAudioEngine::getInstance()->playEffect("setting/Rain_BGM.mp3", true);
-
-        // 更新按钮状态为“暂停”
-        static_cast<MenuItemToggle*>(pSender)->setSelectedIndex(1);
-    }
 }
 
 // 调整背景音乐音量,num的范围为0~1。
@@ -73,26 +47,6 @@ void volume_adjustment(float num)
     CCLOG("Background music volume adjusted to: %f", num);
 }
 
-// 创建音量按钮
-MenuItemToggle* createVolumeButton() {
-    // 创建“播放”和“暂停”按钮的图像
-    auto playItem = MenuItemImage::create("setting/play_button.png", "setting/play_button.png");
-    auto pauseItem = MenuItemImage::create("setting/mute_button.png", "setting/mute_button.png");
-    // 调整按钮大小（缩放到 0.1 倍）
-    playItem->setScale(0.1);
-    pauseItem->setScale(0.1);
-    // 使用 std::bind 绑定回调函数
-    auto callback = bind(toggleBGM, std::placeholders::_1);
-
-    // 创建一个 Toggle 按钮，初始状态为“播放”
-    auto volumeButton = MenuItemToggle::createWithCallback(callback, playItem, pauseItem, nullptr);
-    // 设置按钮的锚点为左上角
-    volumeButton->setAnchorPoint(Vec2(0.5f, 0.5f));
-
-    // 设置按钮的位置为游戏界面的左上角
-    volumeButton->setPosition(Vec2(100, 400));
-    return volumeButton;
-}
 
 
 // 创建音量调整进度条

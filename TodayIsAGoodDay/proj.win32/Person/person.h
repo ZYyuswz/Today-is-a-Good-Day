@@ -31,7 +31,7 @@ struct item
     int value; //tools的value为0
 
     item( std::string itemName, const int itemNum = 1)
-        :name(itemName), value(itemPrices.find(itemName)->second), num(itemNum) {}
+        :name(itemName), value(0), num(itemNum) {}
     item() : name("nothing"), num(0), value(0) {} // 默认构造函数
 };
 
@@ -187,3 +187,47 @@ public:
     Vec2 getWorldPosition();
 };
 
+class NPC : public Sprite {
+public:
+    NPC();
+    ~NPC();
+
+    // 初始化 NPC
+    bool init() override;
+
+    // 显示对话框
+    void showDialog();
+
+    // 更新对话内容
+    void updateDialog();
+
+    // 增加好感度
+    void increaseAffinity(int amount);
+
+    // 检查好感度是否达到阈值
+    bool isAffinityThresholdReached();
+
+    // 创建 NPC
+    CREATE_FUNC(NPC);
+
+private:
+    // 对话内容
+    std::vector<std::string> dialogs;
+
+    // 当前对话索引
+    int currentDialogIndex;
+
+    // 好感度
+    int affinity;
+
+    // 好感度阈值
+    int affinityThreshold;
+
+    // 对话框
+    cocos2d::Label* dialogLabel;
+
+    // NPC 在瓦片地图上的位置
+    cocos2d::Vec2 tilePosition;
+
+    cocos2d::Sprite* chatBackground;
+};

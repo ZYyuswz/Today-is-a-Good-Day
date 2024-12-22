@@ -11,13 +11,13 @@
 #include "controler.h"
 #include "Map/tree.h"
 #include"Person/tool.h"
-#include "npc.h"
 
 USING_NS_CC;
 
 //创建主人公
 Person leading_charactor;
 NPC* npc1;
+
 
 /*联网socket初始化*/
 // 初始化全局变量
@@ -215,14 +215,10 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
         }
         break;
         case EventKeyboard::KeyCode::KEY_7:
-            npc1 = NPC::create();
-            npc1->setPosition(500, 500);
-            npc1->setScale(3.0f);
-            Director::getInstance()->getRunningScene()->addChild(npc1);
+           
             break;
         case EventKeyboard::KeyCode::KEY_8:
-            npc1->showDialog();
-            npc1->updateDialog();
+
             break;
         case EventKeyboard::KeyCode::KEY_9:
 
@@ -232,6 +228,10 @@ void PlayerControlLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* eve
             break;
         case EventKeyboard::KeyCode::KEY_MINUS:
 
+            break;
+        case EventKeyboard::KeyCode::KEY_SPACE:
+            npc1->showDialog();
+            npc1->updateDialog();
             break;
         default:
             break;

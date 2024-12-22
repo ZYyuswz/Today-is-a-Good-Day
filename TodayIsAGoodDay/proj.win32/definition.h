@@ -24,7 +24,7 @@
 
 // 人物
 // 人物移动像素点
-#define MOVE_DISTANCE 2.0f
+#define MOVE_DISTANCE 5.0f
 enum class DIRECTION {
     LEFT,  //左
     RIGHT,  //右
@@ -69,6 +69,7 @@ enum class DIRECTION {
 #define SCENE_BEACH "scene_beach"
 #define SCENE_HOME "scene_home"
 #define SCENE_MINE "scene_mine"
+#define SCENE_STORE "scene_store"
 
 #define OBJECT_LAYER "ObjectLayer"
 #define PLOUGH_LAYER "PloughLayer"
