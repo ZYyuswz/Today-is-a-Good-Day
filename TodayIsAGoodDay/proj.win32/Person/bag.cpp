@@ -14,22 +14,22 @@ const float BAG_RIGHT_LOCATION = 1600;
 const float BAG_CELL_X = 95.0;
 const float BAG_CELL_Y = 105.0;
 
-Bag::Bag(): _selectedItemIndex(-1),_items(36,item()), _itemSprites(36),_itemLabels(36)
+Bag::Bag() : _selectedItemIndex(-1), _items(36, item()), _itemSprites(36), _itemLabels(36)
 {
 
     isOpen = false;
-    
-    _items[0]=(item("axe"));
-    _items[1]=(item("hammer"));
-    _items[2]=(item("draft"));
-    _items[3]=(item("kettle"));
-    _items[4]=(item("fishing_pole"));
+
+    _items[0] = (item("axe"));
+    _items[1] = (item("hammer"));
+    _items[2] = (item("draft"));
+    _items[3] = (item("kettle"));
+    _items[4] = (item("fishing_pole"));
 
 
-    _items[5]=(item(SEED_CARROT,20));
-    _items[6] = (item(SEED_CORN));
-    _items[7] = (item(SEED_CABBAGE));
-    
+    _items[5] = (item(SEED_CARROT, 20));
+    _items[6] = (item(SEED_CORN, 20));
+    _items[7] = (item(SEED_CABBAGE, 20));
+
 
 }
 
@@ -54,7 +54,7 @@ void Bag::addItem(const item& MyItem)
 {
     int index = 0;
     // 检查背包中是否已有该物品
-    for (index = 0;_items[index].name!="nothing"; index++)
+    for (index = 0; _items[index].name != "nothing"; index++)
     {
         if (_items[index].name == MyItem.name)
         {
@@ -71,22 +71,22 @@ void Bag::addItem(const item& MyItem)
 int Bag::removeItem(const item& MyItem)
 {
     int index = 0;
-    for (auto it = _items.begin(); it != _items.end(); ++it)
+    for (index = 0; _items[index].name != "nothing" && index < 36; ++index)
     {
-        if (it->name == MyItem.name)
+        if (_items[index].name == MyItem.name)
         {
             // 减少物品数量
-            it->num -= MyItem.num;
+            _items[index].num -= MyItem.num;
 
             // 如果物品数量为0或更少，则移除该物品
-            if (it->num <= 0)
+            if (_items[index].num <= 0)
             {
                 _items[index] = item(); //改为nothing
                 return 0;
             }
-            return it->num;
+            return _items[index].num;
         }
-        index++;
+        return -1;
     }
 }
 
@@ -94,13 +94,13 @@ void Bag::displayBag()
 {
     // 显示背包网格背景图片
     auto bagBackground = cocos2d::Sprite::create("bag/BagBackground.png"); //创建精灵
-    bagBackground->setAnchorPoint(Vec2(0.5f,0.5f));//设置锚点位于中心
-    bagBackground->setPosition(1024.0f,576.0f);
+    bagBackground->setAnchorPoint(Vec2(0.5f, 0.5f));//设置锚点位于中心
+    bagBackground->setPosition(1024.0f, 576.0f);
     bagBackground->setScale(1.5f);
     bagBackground->setName("bagBackground");
-    Director::getInstance()->getRunningScene()->addChild(bagBackground,101);
+    Director::getInstance()->getRunningScene()->addChild(bagBackground, BAGLAYER);
 
-    
+
     // 显示背包格的图片和物品图案
     float x = BAG_LEFT_LOCATION;
     float y = BAG_UP_LOCATION;
@@ -113,22 +113,22 @@ void Bag::displayBag()
             itemSprite = cocos2d::Sprite::create("tool/" + item.name +
                 std::to_string(leading_charactor.toolLevel()) + ".png");
             itemSprite->setScale(3.0f);
-        }       
+        }
         else if (item.name.find("drop") != std::string::npos) {
-            itemSprite = cocos2d::Sprite::create("bag/"+item.name + ".png");
+            itemSprite = cocos2d::Sprite::create("bag/" + item.name + ".png");
             itemSprite->setScale(4.0f);
         }
         else {
-            itemSprite = cocos2d::Sprite::create("bag/"+item.name + ".png");
+            itemSprite = cocos2d::Sprite::create("bag/" + item.name + ".png");
         }
         itemSprite->setPosition(cocos2d::Vec2(x, y));
-        
-        Director::getInstance()->getRunningScene()->addChild(itemSprite,102);
+
+        Director::getInstance()->getRunningScene()->addChild(itemSprite, BAGLAYER);
         _itemSprites[index] = itemSprite;
 
         //创建标签
         auto itemLabel = Label::createWithSystemFont(std::to_string(item.num), "Arial", 20);
-        Director::getInstance()->getRunningScene()->addChild(itemLabel, 102);
+        Director::getInstance()->getRunningScene()->addChild(itemLabel, BAGLAYER);
         itemLabel->setPosition(x + 25, y - 25);
         _itemLabels[index] = itemLabel;
 
@@ -141,7 +141,7 @@ void Bag::displayBag()
         }
         index++;
     }
-    
+
 }
 
 void Bag::closeBag()
@@ -151,7 +151,6 @@ void Bag::closeBag()
     {
         sprite->removeFromParent();
     }
-
     // 清除物品信息标签
     for (auto label : _itemLabels)
     {
@@ -169,7 +168,7 @@ void Bag::closeBag()
         bagBackground->removeFromParent();
     }
 
-   
+
 }
 
 
